@@ -1100,7 +1100,7 @@
 </div>
 
 <script>
-const BUILD = '202611220840';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611220905';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2757,9 +2757,10 @@ function hudWalk(pos){
   $('sCourseLeft').textContent = '🏁 ' + (fd >= 1000 ? (fd / 1000).toFixed(fd >= 100000 ? 0 : 1) + 'km' : Math.round(fd) + 'm'); $('sCourseLeft').classList.toggle('hidden', !showLeft); $('sCourseLeft').parentElement.classList.toggle('hasLeft', showLeft);
   $('sNextName').textContent = other ? '🚩 ' + tr(nh.lm.name) + ' ' + (nh.d >= 1000 ? (nh.d/1000).toFixed(1) + 'km' : Math.round(nh.d) + 'm')
     : (sp > 0 ? T.approx + ' ' + Math.max(1, Math.round(gl / (sp/3.6) / 60)) + T.min : '');
-  $('sTodayLabel').textContent = T.today;
-  $('sToday').textContent = (S.sessionM / 1000).toFixed(2) + ' km';
-  $('sTime').textContent = fmtTime(S.elapsed) + ' · ' + (autoActive() ? T.stepsN.replace('{n}', SENS.sessSteps) : S.act === 'bike' ? T.aBike : (sp >= WALK_RUN_LIMIT ? T.run : T.walk));
+  /* 11/22 보스 폰(탑정호 자전거) "오른쪽 아래는 시간을 크게, 거리는 작게" → 산 코스와 같은 짜임: 운동 시간(크게) + 오늘 거리(작게) */
+  $('sTodayLabel').textContent = T.runTime;
+  $('sToday').textContent = fmtTime(S.elapsed);
+  $('sTime').textContent = (S.sessionM / 1000).toFixed(2) + ' km · ' + (autoActive() ? T.stepsN.replace('{n}', SENS.sessSteps) : S.act === 'bike' ? T.aBike : (sp >= WALK_RUN_LIMIT ? T.run : T.walk));
   $('progBar').style.width = (pos / L * 100).toFixed(1) + '%';   // 코스 전체 진행
   const wn = walkNote(pos); $('notePill').textContent = wn[0]; $('notePill').classList.toggle('hidden', wn[1]);
   altChip();
@@ -5214,9 +5215,10 @@ function hudFree(){
   $('sCourseLeft').classList.add('hidden'); $('sCourseLeft').parentElement.classList.remove('hasLeft');
   $('sNextDist').textContent = S.freeGoal ? (up ? Math.ceil(left / FLOOR_M) + T.floorUnit : fmtM(left)) : fmtM(S.sessionM);
   $('sNextName').textContent = S.freeGoal && left > 0 ? T.approx + ' ' + Math.max(1, Math.round(up ? left / climbMpm() : left / Math.max(0.3, sp / 3.6) / 60)) + T.min : (S.freeHit ? '🎉' : '');
-  $('sTodayLabel').textContent = up ? T.todayUp : T.today;
-  $('sToday').textContent = up ? Math.round(S.sessionM) + ' m' : (S.sessionM / 1000).toFixed(2) + ' km';
-  $('sTime').textContent = fmtTime(S.elapsed) + ' · ' + (up ? T.machineFloors.replace('{n}', Math.floor(S.sessionM / FLOOR_M)) : S.act === 'bike' ? T.aBike : (sp >= WALK_RUN_LIMIT ? T.run : T.walk));
+  /* 11/22 보스: 일반 운동도 오른쪽 = 운동 시간(크게). 목표가 없으면 왼쪽이 이미 오늘 거리라 작은 줄엔 거리를 또 쓰지 않음 */
+  $('sTodayLabel').textContent = T.runTime;
+  $('sToday').textContent = fmtTime(S.elapsed);
+  $('sTime').textContent = (S.freeGoal ? (up ? '↑ ' + Math.round(S.sessionM).toLocaleString() + 'm' : (S.sessionM / 1000).toFixed(2) + ' km') + ' · ' : '') + (up ? T.machineFloors.replace('{n}', Math.floor(S.sessionM / FLOOR_M)) : S.act === 'bike' ? T.aBike : (sp >= WALK_RUN_LIMIT ? T.run : T.walk));
   $('progBar').style.width = (S.freeGoal ? Math.min(100, S.sessionM / goalM * 100) : 0).toFixed(1) + '%';
 }
 function drawFree(){   // 목표 링: 가운데 큰 숫자, 둘레가 차오름
