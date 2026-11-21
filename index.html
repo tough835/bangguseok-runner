@@ -433,6 +433,12 @@
   /* 공통 보조 버튼 = 점선 상자 대신 조용한 한 줄 */
   .toggle{height:44px;border:0;border-radius:12px;background:var(--ch2);color:var(--tx);font-size:14px;font-weight:600}
   #setBox .toggle{text-align:left;padding:0 14px;height:auto;min-height:44px;line-height:1.4}   /* 11/21 보스: 설정 아래 글은 왼쪽 정렬 */
+  #setBox .kbasis{background:var(--ch2);border-radius:12px;padding:0 14px}   /* 11/22 보스: 산 코스 읽는 법도 위아래 상자와 같은 모양 */
+  #setBox .kbasis summary{box-sizing:border-box;list-style:none;display:flex;align-items:center;min-height:44px;padding:10px 0;font-size:14px;font-weight:600;color:var(--tx);line-height:1.4}
+  #setBox .kbasis summary::-webkit-details-marker{display:none}
+  #setBox .kbasis summary::after{content:'▾';margin-left:auto;padding-left:8px;color:var(--mut);font-size:12px}
+  #setBox .kbasis[open] summary::after{content:'▴'}
+  #setBox .kbasis > div{padding-bottom:10px}
   .titlebar .back{height:34px;border:0;border-radius:999px;background:var(--ch2);color:var(--tx);font-size:13px;font-weight:700;padding:0 12px}
   .stepbtn,.recbtn,.zoneBtn{background:var(--ch2)}
   /* 내 기록 */
@@ -1094,7 +1100,7 @@
 </div>
 
 <script>
-const BUILD = '202611212250';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611220840';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
