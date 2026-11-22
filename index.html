@@ -35,7 +35,8 @@
   #edActs button.on{background:var(--vt);border-color:var(--vt);color:#1b1c1f}
   #sCourseLeft{position:absolute;bottom:10px;right:12px;font-size:14px;font-style:normal;font-weight:800;color:var(--vtx)}   /* 11/18 보스: 코스 전체 남은 거리도 줄어들게 */
   #sCourseLeft:not(.hidden) ~ b{margin-top:0}
-  .stat.hasLeft small{padding-right:5.4em}   /* 11/21 검수 B1: 큰 글씨에서 '약 3분'과 '🏁 4.7km'가 겹치던 것 */
+  .stat.hasLeft small{padding-right:5.4em}
+  .stat small strong{font-weight:800;color:var(--vtx)}   /* 11/22: 다음 거점까지 거리 */   /* 11/21 검수 B1: 큰 글씨에서 '약 3분'과 '🏁 4.7km'가 겹치던 것 */
   .stat span{display:block;font-size:13px;opacity:.75}
   .stat b{display:block;font-size:34px;font-weight:900;line-height:1.15;letter-spacing:-.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .stat small{display:block;font-size:15px;font-weight:600;opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -192,7 +193,7 @@
   #autoNote.hidden{display:none}
   .spdRow button.dim{opacity:.25}
   .spdBox em{white-space:nowrap;margin-left:4px;font-style:normal;font-size:12px;background:#d7f548;color:#1b1c1f;border-radius:99px;padding:2px 8px;align-self:center}
-  #toast{z-index:40;position:fixed;left:50%;top:calc(110px + env(safe-area-inset-top));transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 16px;border-radius:12px;font-size:15px;max-width:86vw}
+  #toast{z-index:40;position:fixed;left:50%;top:calc(110px + env(safe-area-inset-top));transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 16px;border-radius:12px;font-size:15px;max-width:86vw;pointer-events:none}   /* 11/22: 알림 글이 아래 버튼(자전거 등) 누르기를 막던 것 */
   .sum .wide{flex:2.2}
   .sum .wide span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .sel3{display:flex;gap:6px}
@@ -1100,7 +1101,7 @@
 </div>
 
 <script>
-const BUILD = '202611220925';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611221000';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1693,7 +1694,7 @@ const TEXT = {
     today: '오늘', todayUp: '오늘 오른 높이', toSummit: '정상까지', upLeft: '남은 오르막', hNow: '⛰ 지금 높이 / 정상', toTop: '꼭대기까지', runTime: '운동 시간',
     alti: '해발', floorUnit: '층', machineFloors: '🏢 {n}층 높이', machineLv: '기계 {n}층', summit: '정상!', elevAt: '해발 {e}m',
     done: '🎉 {course} 완주!', doneN: '누적 {n}회째', photoSlot: '사진 자리', approx: '약', min: '분', times: '회',
-    goal: '오늘 목표', gNext: '다음 거점', gSpot: '거점 고르기', gDist: '거리', toGoal: '🎯', nextHub: '다음 거점',
+    goal: '오늘 목표', gNext: '다음 거점', gSpot: '거점 고르기', gDist: '거리', toGoal: '🎯', toFin: '완주까지', nextHub: '다음 거점',
     goalReach: '🎯 목표 달성!', soClose: '{s}까지 {d} 남았어요', reachBy: '→ {s} 도착',
     arrive: '도착', passedBy: '지나온 곳', trail: '지나온 길', trailPre: '이 코스 거점 (앞으로 지날 곳)', trailNone: '아직 이 코스에서 지나온 곳이 없어요. 흐린 칸은 앞으로 지날 거점이에요.',
     stampSum: '거점 {a}/{b} · 지나온 명소 {c}/{d}', visits: '도착 {n}회 · 처음 {d}', notYet: '아직 도착 전', aheadOf: '여기서 {d}', atKm: '{k}km 지점',
@@ -2750,14 +2751,14 @@ function hudWalk(pos){
   const sp = effSpeed(), nh = nextSpotFrom(totalNow()), gl = Math.max(0, S.goalAt - totalNow());
   $('namePill').textContent = tr(COURSE.short || COURSE.name) + ' · ' + gradeText(pos);   // 해발은 오른쪽 위 고도 칸(11/18)
   if (!S.gps) altSet(elevAt(pos));
-  const other = !S.goalFin && (S.goalDist || tr(nh.lm.name) !== S.goalName);   // 완주 지점이 목표면 다음 바퀴 거점은 안 보여 줌     // 목표가 '다음 거점'이 아닐 때는 다음 거점도 작게 보여 줌
-  $('sNextLabel').textContent = S.goalDist ? T.toGoal + ' ' + S.goalName : (S.goalFin ? '🏁 ' : '🚩 ') + S.goalName;
-  $('sNextDist').textContent = fmtM(gl);
-  const fd = L - (((totalNow() % L) + L) % L), showLeft = !S.goalFin && Math.abs(fd - gl) > 30 && gl < fd * 0.7;   // 목표가 완주 지점이면 같은 숫자라 숨김 · 11/22 보스 폰(탑정호 6.92km·🏁8.2km "둘 다 줄고 있네?"): 목표가 완주 지점 가까이에 있으면 두 숫자가 같이 줄어 헷갈림 → 완주 거리는 목표가 완주보다 확실히 가까울 때만
-  $('sCourseLeft').textContent = '🏁 ' + (fd >= 1000 ? (fd / 1000).toFixed(fd >= 100000 ? 0 : 1) + 'km' : Math.round(fd) + 'm'); $('sCourseLeft').classList.toggle('hidden', !showLeft); $('sCourseLeft').parentElement.classList.toggle('hasLeft', showLeft);
-  $('sNextName').textContent = other ? '🚩 ' + tr(nh.lm.name) + ' ' + (nh.d >= 1000 ? (nh.d/1000).toFixed(1) + 'km' : Math.round(nh.d) + 'm')
-    : (sp > 0 ? T.approx + ' ' + Math.max(1, Math.round(gl / (sp/3.6) / 60)) + T.min : '');
-  /* 11/22 보스 폰(탑정호 자전거) "오른쪽 아래는 시간을 크게, 거리는 작게" → 산 코스와 같은 짜임: 운동 시간(크게) + 오늘 거리(작게) */
+  /* 11/22 보스 폰(탑정호) "왼쪽 아래는 최종 목표 거리를 크게, 거점 거리는 아래로 · 거점과 목표가 비슷해도 둘 다 지우지 말고"
+     큰 숫자 = 최종 목표(오늘 목표 km · 고른 거점 · 없으면 완주 지점)까지 / 작은 줄 = 다음 거점까지 거리 + 이름 (늘 보임) */
+  const pick = S.goalDist || S.goalPick, fd = L - (((totalNow() % L) + L) % L), fin = pick ? gl : fd, nt = nextTarget(totalNow());
+  $('sNextLabel').textContent = (pick ? T.toGoal + ' ' + (S.goalDist ? T.goal.replace('오늘 ', '') + ' ' : '') + S.goalName : '🏁 ' + T.toFin) + (sp > 0 ? ' · ' + T.approx + ' ' + Math.max(1, Math.round(fin / (sp/3.6) / 60)) + T.min : '');
+  $('sNextDist').textContent = fmtM(fin);
+  $('sCourseLeft').classList.add('hidden'); $('sCourseLeft').parentElement.classList.remove('hasLeft');
+  const nd = nt.d >= 1000 ? (nt.d / 1000).toFixed(nt.d >= 100000 ? 0 : 1) + 'km' : Math.round(nt.d) + 'm', nn = (nt.fin ? '🏁 ' : '🚩 ') + '<strong>' + nd + '</strong> ' + esc(nt.name);
+  if ($('sNextName').innerHTML !== nn) $('sNextName').innerHTML = nn;
   $('sTodayLabel').textContent = T.runTime;
   $('sToday').textContent = fmtTime(S.elapsed);
   $('sTime').textContent = (S.sessionM / 1000).toFixed(2) + ' km · ' + (autoActive() ? T.stepsN.replace('{n}', SENS.sessSteps) : S.act === 'bike' ? T.aBike : (sp >= WALK_RUN_LIMIT ? T.run : T.walk));
@@ -4182,13 +4183,14 @@ $('scClose').onclick = () => $('spotCard').classList.add('hidden');
 /* 운동 중 목표 체크 */
 function startGoal(){ const km = !S.gps && DB.roadKm > 0 && !COURSE.long ? DB.roadKm : 0, g = km ? { at: S.startTotal + km * 1000, name: km + 'km', dist: true } : goalFrom(S.startTotal); S.goalFin = false;
   if (!g.dist && DB.goal.type !== 'spot'){ const t = nextTarget(S.startTotal); g.at = S.startTotal + t.d; g.name = t.name; S.goalFin = !!t.fin; }
+  S.goalPick = !g.dist && DB.goal.type === 'spot';   // 11/22: 내가 고른 거점이 최종 목표
   S.goalAt = g.at; S.goalName = g.name; S.goalStart = S.startTotal; S.goalDist = !!g.dist; }
 function checkGoal(){
   if (totalNow() < S.goalAt) return;
   const n = nextSpotFrom(totalNow());
   if (S.goalDist){ celebrate('🎯 목표 달성!'); say('오늘 목표 ' + S.goalName + ' 달성했습니다.'); showPopup(T.goalReach + ' ' + S.goalName, '여기서 끝내도 좋아요 · 남은 길은 다음에 이어서' + (n.d <= 1000 ? ' · ' + T.soClose.replace('{s}', tr(n.lm.name)).replace('{d}', fmtM(n.d)) : ''), false); }
   // 거점 목표는 도착 알림(🎯)이 이미 떴음 → 다음 거점을 새 목표로
-  const t = nextTarget(totalNow()); S.goalStart = totalNow(); S.goalAt = totalNow() + t.d; S.goalName = t.name; S.goalFin = !!t.fin; S.goalDist = false;
+  const t = nextTarget(totalNow()); S.goalStart = totalNow(); S.goalAt = totalNow() + t.d; S.goalName = t.name; S.goalFin = !!t.fin; S.goalDist = false; S.goalPick = false;
 }
 
 /* =====================================================================
@@ -5782,7 +5784,7 @@ function wkTick(force){
   if (!force && !alert && now - WK.t < 15000) return;
   WK.t = now; WK.km = Math.max(WK.km, km);
   const dist = isClimb() ? '↑ ' + Math.round(S.sessionM) + 'm' : (S.sessionM / 1000).toFixed(2) + 'km';
-  const next = ($('sNextLabel').textContent + ' ' + $('sNextDist').textContent).trim();
+  const next = ($('sNextLabel').textContent.replace(/ · 약 \d+분$/, '') + ' ' + $('sNextDist').textContent).trim();
   try { WK.P.show({ title: (S.paused ? '⏸ ' : '🏃 ') + dist + ' · ' + fmtTime(S.elapsed), text: $('spdVal').textContent + ' ' + $('spdUnit').textContent + (next ? ' · ' + next : ''), paused: !!S.paused, alert }); } catch(e){}
 }
 function wkStop(){ if (!WK.P) return; try { WK.P.clear(); WK.P.media({ on: false }); WK.L && WK.L.remove(); } catch(e){} WK.P = null; WK.L = null; }
