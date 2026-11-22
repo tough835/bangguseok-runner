@@ -18,6 +18,6 @@ jobs:
         continue-on-error: true
       - run: |
           git config user.name "hub-bot"; git config user.email "hub-bot@users.noreply.github.com"
-          git add data/hub_probe.json
+          git add data/hub_probe*.json
           git commit -m "거점 보강 후보 (오픈스트리트맵)" || echo "no change"
           git pull --rebase origin main && git push origin HEAD:main
