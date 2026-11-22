@@ -132,3 +132,4 @@ sorigil-gil 높이만 채움
 dumulmeori-gil 높이만 채움
 seomjin-bike 높이만 채움
 daecheong-bike 높이만 채움
+tapjeong-road OSRM 18.91km / 공식 24.00km (x0.79) 598점 거점 3

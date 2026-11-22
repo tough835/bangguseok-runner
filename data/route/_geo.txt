@@ -428,3 +428,14 @@
   높이 실패: HTTP Error 429: Too Many Requests
   높이 실패: HTTP Error 429: Too Many Requests
   높이 실패: <urlopen error _ssl.c:994: The handshake operation timed out>
+[tapjeong-road]
+  윤곽 후보 탑정호 water reservoir 둘레 19117m
+  병암유원지 → 못 찾음
+  딸기향농촌테마공원 → [36.191267, 127.166872, 'N 딸기향농촌테마공원, 충곡리, 논산시, 충청남도, 대한민국']
+  점 36개 → 28.11km (곁가지 빼기 전 31.97km)
+  점 16개 → 25.60km (곁가지 빼기 전 26.67km)
+  점 12개 → 21.19km (곁가지 빼기 전 24.99km)
+  점 8개 → 21.19km (곁가지 빼기 전 23.07km)
+  점 6개 → 20.53km (곁가지 빼기 전 22.53km)
+  점 5개 → 18.91km (곁가지 빼기 전 21.48km)
+  점 4개 → 21.19km (곁가지 빼기 전 21.19km)
