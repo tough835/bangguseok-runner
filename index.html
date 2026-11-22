@@ -20,6 +20,23 @@
   #altChip small{display:block;font-size:11px;font-weight:700;color:var(--vtx)}
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
+  /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
+  #bYt{position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
+  #bYt b{color:#ff5a4d;margin-right:4px}
+  body.vidOn #bYt{display:none}
+  #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #vidBox.mine #vidTop{display:block}
+  #vidBar .vb{display:flex;gap:6px;flex:none}
+  #ytBox .sb{max-height:86vh;overflow:auto}
+  #ytBox .big{width:100%;min-height:52px;border:0;border-radius:14px;background:var(--volt,#d7f548);color:#1b1c1f;font-size:17px;font-weight:900}
+  #ytBox .row{display:flex;gap:8px;margin-top:10px}
+  #ytBox input{flex:1;min-width:0;height:46px;border-radius:12px;padding:0 12px;font-size:15px}
+  #ytBox .row button,#ytBox .mbtn button{min-height:46px}
+  #ytBox .row button{flex:none;padding:0 14px;border:0;border-radius:12px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:15px;font-weight:800}
+  #ytRecent{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+  #ytRecent button{padding:0;border:0;border-radius:10px;overflow:hidden;background:#000;aspect-ratio:16/9;min-height:44px}
+  #ytRecent img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (orientation: landscape) and (max-height: 560px){ #bYt{right:310px;top:auto;bottom:10px} }
   #hudTop{position:fixed;top:calc(10px + env(safe-area-inset-top));left:10px;right:116px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
   .pill{background:rgba(0,0,0,.45);padding:6px 11px;border-radius:999px;font-size:14px;line-height:1.2;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pill.alt{font-size:24px;font-weight:900;padding:7px 14px}
@@ -664,7 +681,19 @@
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내"></button>
   <button class="pill satb hidden" id="bVid">🎬 맛보기</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
-<div id="vidBox" class="hidden"><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><button id="vidOff">🗺 지도로</button></div></div>
+<button id="bYt" class="hidden" aria-label="유튜브 영상 띄우기"><b>▶</b>유튜브</button>
+<div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">▶ 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
+<div id="ytBox" class="modal hidden">
+  <div class="sb">
+    <div class="st">▶ 유튜브 영상 띄우기</div>
+    <button class="big" id="ytOpen">유튜브에서 고르기</button>
+    <div class="muted" style="margin-top:8px;line-height:1.5">영상에서 <b>공유 → 링크 복사</b>를 누르고 돌아오면 바로 떠요.</div>
+    <div class="row"><input id="ytIn" placeholder="유튜브 링크" inputmode="url" autocomplete="off"><button id="ytGo">붙여넣기</button></div>
+    <div class="muted hidden" id="ytMsg" style="margin-top:6px"></div>
+    <div id="ytRecentBox" class="hidden"><h2>최근 본 영상</h2><div id="ytRecent"></div></div>
+    <div class="mbtn" style="margin-top:14px"><button id="ytClose">닫기</button></div>
+  </div>
+</div>
 <div id="altChip" class="hidden"></div>   <!-- 11/18 고도: 오른쪽 위 작은 칸 (지금 해발 · 오늘 오른 높이) -->
 
 <div id="hudBottom" class="hidden">
@@ -1101,7 +1130,7 @@
 </div>
 
 <script>
-const BUILD = '202611221040';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611221100';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1322,7 +1351,7 @@ const WORLD = {
           ]
         },
         'odojae-15k': {
-          id: 'odojae-15k', name: { ko: '지리산 가는 길 (상림→오도재→마천)' }, short: { ko: '오도재' }, kind: '도보',   /* 11/22 보스 "자전거 코스는 평지만": 해발 165→773m 고갯길이라 자전거 목록에서 뺌 */
+          id: 'odojae-15k', name: { ko: '지리산 가는 길 (상림→오도재→마천)' }, short: { ko: '오도재' }, kind: '자전거',   /* 11/22 보스 "차가 다닐 수 있는 도로는 자전거도 됨 · 산길(등산로)만 빼기": 오도재는 찻길이라 자전거 코스 그대로 */
           mode: 'distance', lengthM: 15000, loop: false,
           elev: [[0,165],[2900,210],[5900,370],[9700,773],[10200,740],[15000,380]],   // 고도(m) [거리, 해발] — 추정, 실측 때 보정
           note: '지리산 가는 길 12.1km는 자료 기준, 읍내 구간 약 2.9km와 중간 위치는 추정', source: '함양읍 구룡리~마천면 구양리 12.1km + 상림에서 읍내 구간',
@@ -2833,72 +2862,53 @@ function cheerFx(c){   // 큰 응원: 테두리 번쩍 + 그림문자가 아래�
    쿵쿵 소리에 자다 깬 방구석 주인(런닝셔츠 바람)이 문을 열고 한소리 → 운동인 걸 알고 응원 → 하품하며 들어감 · 약 7초 · 작게(84×128) · 눌림은 그대로 통과
    캐릭터 그림 = 아리 v2(11/20, img/who/). 향후 교체 예정 — WHO_IMG의 4장만 바꾸면 됨 */
 /* 11/22 보스 "응원은 출발 직후·4분의 1·중간·4분의 3·도착에 한 번씩 · 매번 같은 문구면 지겨우니 여러 개를 무작위로 · 코스가 있는 지역 사투리로"
-   한 장면 = [빼꼼(졸림), 버럭, 응원, 다시 자러] 네 마디 — 마디마다 여러 개 중 하나를 뽑아 이어 붙임 (지역마다 4×4×3×4 = 192가지 × 다섯 때)
-   gs 경상(기본·앱 얼굴) · jl 전라 · cc 충청 · gw 강원 · jj 제주 · std 서울·경기 — 사투리 문구는 초안, 그 지역 분께 확인 필요 */
+   한 장면 = [빼꼼(졸림), 버럭, 응원, 다시 자러] 네 마디 — 마디마다 여러 개 중 하나를 뽑아 이어 붙임 (지역마다 수백 가지 × 다섯 때)
+   gs 경상(기본·앱 얼굴) · jl 전라 · cc 충청 · std 서울·경기 — 11/22 보스 "아미가 확인해서 가능한 것만": 강원·제주는 자신 있게 쓸 수 없어 뺌(경상으로 나옴)
+   경상에는 부산 영화 명대사를 비튼 농담도 섞음(그대로 옮기지 않고 운동 말로 바꿈) */
 const DOOR_DL = {
   gs: {
-    peek: ['…누고?', '…몇 시고?', '또 쿵쿵…', '…뭔 소리고?'],
-    angry: ['아 쿵쿵쿵!<br>잠 좀 자자!!', '방에서 뭐 하노!!', '잠 다 깼다 아이가!!', '지진 난 줄 알았다!!'],
-    bye: ['난 더 잔다…', '깨우지 마래이…', '꿈에서 응원할게…', '치킨은 내 꺼… 쿨'],
-    start: ['…운동 시작이가?<br>그라모 화이링~!!', '오~ 오늘도 하나<br>살살 가래이~', '시작이 반이라 카더라<br>벌써 반 했네!'],
-    q1: ['4분의 1 왔다꼬?<br>오~ 쫌 치네!', '벌써 몸 풀렸네~<br>그대로 쭉 가래이', '초반 좋다!<br>화이링 화이링~'],
-    half: ['절반 왔다꼬?<br>잘한다 잘한다~!!', '반 넘었데이~<br>인자 금방이다', '딱 반이다!<br>물 한 모금 무라'],
-    q3: ['다 왔네!<br>쪼매만 더 해라~', '4분의 3? 진짜 다 왔다~<br>(이번엔 진짜)', '막판이다<br>쫙 밀어라~!!'],
-    arr: ['도착했다꼬?!<br>욕봤데이~!!', '와~ 해냈네!<br>니 쫌 멋있다', '다 했나?<br>인자 내 좀 자자~ 수고했데이'],
-    keep: ['오~ 땀 난다<br>그대로 쭉 가래이~', '대단하다 진짜~<br>물 한 모금 무라', '근데 쫌 멋있네~<br>화이링!!'] },
+    peek: ['…누고?', '…몇 시고?', '또 쿵쿵…', '…뭔 소리고?', '…와 이라노?', '…니 누꼬?'],
+    angry: ['아 쿵쿵쿵!<br>잠 좀 자자!!', '방에서 뭐 하노!!', '잠 다 깼다 아이가!!', '지진 난 줄 알았다!!', '마! 시끄럽다!!', '아랫집에서 올라온다 카이!!'],
+    bye: ['난 더 잔다…', '깨우지 마래이…', '꿈에서 응원할게…', '치킨은 내 꺼… 쿨', '내는 간데이…', '단디 해라… 쿨'],
+    start: ['…운동 시작이가?<br>그라모 화이링~!!', '오~ 오늘도 하나<br>살살 가래이~', '시작이 반이라 카더라<br>벌써 반 했네!', '단디 해래이~<br>오늘도 화이링!!', '살아있네~<br>오늘도 나왔네!'],
+    q1: ['4분의 1 왔다꼬?<br>오~ 쫌 치네!', '벌써 몸 풀렸네~<br>그대로 쭉 가래이', '초반 좋다!<br>화이링 화이링~', '억수로 잘하네~<br>이대로 가자'],
+    half: ['절반 왔다꼬?<br>잘한다 잘한다~!!', '반 넘었데이~<br>인자 금방이다', '딱 반이다!<br>물 한 모금 무라', '반 했다 아이가~<br>남은 건 덤이다', '내가 니 응원단장이가?<br>…맞다, 화이링!!'],
+    q3: ['다 왔네!<br>쪼매만 더 해라~', '4분의 3? 진짜 다 왔다~<br>(이번엔 진짜)', '막판이다<br>쫙 밀어라~!!', '쪼매 남았다<br>쌔리 밀어뿌라~!!', '니가 가라, 끝까지~<br>내는 잘란다'],
+    arr: ['도착했다꼬?!<br>욕봤데이~!!', '와~ 해냈네!<br>니 쫌 멋있다', '다 했나?<br>인자 내 좀 자자~ 수고했데이', '고마해라~<br>마이 뛰었다 아이가!', '쥑이네~<br>다 했다 아이가!!'],
+    keep: ['오~ 땀 난다<br>그대로 쭉 가래이~', '대단하다 진짜~<br>물 한 모금 무라', '근데 쫌 멋있네~<br>화이링!!', '와 이리 잘하노~<br>쉬엄쉬엄 해라'] },
   jl: {
-    peek: ['…누구여?', '…시방 몇 시여?', '또 쿵쿵거리네…', '…뭔 소리당가?'],
-    angry: ['아따 쿵쿵쿵!<br>잠 좀 자장께!!', '방에서 뭣 하는 것이여!!', '잠 다 깨부렀네!!', '집 무너지는 줄 알았당께!!'],
-    bye: ['나는 더 잘라네…', '깨우지 말어잉…', '꿈에서 응원할랑께…', '치킨은 내 것이여… 쿨'],
-    start: ['…운동 시작한 것이여?<br>그라믄 화이링~!!', '오메~ 오늘도 하네잉<br>살살 가랑께~', '시작이 반이랑께<br>벌써 반 해부렀네!'],
-    q1: ['4분의 1 와부렀어?<br>오메 잘하네잉!', '몸 풀려부렀구만~<br>고대로 쭉 가소', '초반 겁나 좋아부러!<br>화이링~'],
-    half: ['절반 와부렀다고?<br>잘한다 잘해~!!', '반 넘어부렀네잉~<br>인자 금방이여', '딱 반이여!<br>물 한 모금 하소'],
-    q3: ['다 와부렀네!<br>쪼까만 더 하소~', '4분의 3? 참말로 다 왔어야~<br>(이번엔 진짜여)', '막판이여<br>확 밀어부러~!!'],
-    arr: ['도착해부렀어?!<br>욕봤소잉~!!', '오메~ 해내부렀네!<br>겁나게 멋져부러', '다 했는가?<br>인자 나 좀 자세~ 수고했소'],
+    peek: ['…누구여?', '…시방 몇 시여?', '또 쿵쿵거리네…', '…뭔 소리당가?', '…워매, 뭐여?'],
+    angry: ['아따 쿵쿵쿵!<br>잠 좀 자장께!!', '방에서 뭣 하는 것이여!!', '잠 다 깨부렀네!!', '집 무너지는 줄 알았당께!!', '아따 시끄러워 죽겄네!!'],
+    bye: ['나는 더 잘라네…', '깨우지 말어잉…', '꿈에서 응원할랑께…', '치킨은 내 것이여… 쿨', '거시기… 나 간다잉…'],
+    start: ['…운동 시작한 것이여?<br>그라믄 화이링~!!', '오메~ 오늘도 하네잉<br>살살 가랑께~', '시작이 반이랑께<br>벌써 반 해부렀네!', '아따 오늘도 나왔네잉<br>거시기 화이링!!'],
+    q1: ['4분의 1 와부렀어?<br>오메 잘하네잉!', '몸 풀려부렀구만~<br>고대로 쭉 가소', '초반 겁나 좋아부러!<br>화이링~', '허벌나게 잘해부네~<br>이대로 가장께'],
+    half: ['절반 와부렀다고?<br>잘한다 잘해~!!', '반 넘어부렀네잉~<br>인자 금방이여', '딱 반이여!<br>물 한 모금 하소', '반 해부렀당께~<br>나머지는 덤이여'],
+    q3: ['다 와부렀네!<br>쪼까만 더 하소~', '4분의 3? 참말로 다 왔어야~<br>(이번엔 진짜여)', '막판이여<br>확 밀어부러~!!', '쪼까 남았어야<br>끝까지 가부러~!!'],
+    arr: ['도착해부렀어?!<br>욕봤소잉~!!', '오메~ 해내부렀네!<br>겁나게 멋져부러', '다 했는가?<br>인자 나 좀 자세~ 수고했소', '워매~ 다 해부렀네!<br>징하게 잘했어잉'],
     keep: ['오메~ 땀 나네잉<br>고대로 쭉 가소~', '참말로 대단해부러~<br>물 한 모금 하소', '근디 쪼까 멋있네잉~<br>화이링!!'] },
   cc: {
-    peek: ['…누구여?', '…시방 몇 시여?', '또 쿵쿵거리는겨…', '…뭔 소리여?'],
-    angry: ['아 쿵쿵쿵!<br>잠 좀 자유!!', '방에서 뭐 하는겨!!', '잠 다 깼잖여!!', '집 무너지는 줄 알았슈!!'],
-    bye: ['난 더 잘 거여…', '깨우지 말어유…', '꿈에서 응원할게유…', '치킨은 내 거여… 쿨'],
-    start: ['…운동 시작한겨?<br>그럼 화이링이여~!!', '오늘도 하는겨?<br>급할 거 없슈~ 살살 혀', '시작이 반이라는디<br>벌써 반 했네유!'],
-    q1: ['4분의 1 왔다고?<br>제법이네유~', '몸 풀렸구먼~<br>그냥 쭉 가유', '초반 괜찮여!<br>화이링이여~'],
-    half: ['절반 온겨?<br>잘혀 잘혀~!!', '반 넘었슈~<br>이제 금방이여', '딱 반이여!<br>물 한 모금 혀유'],
-    q3: ['다 왔네유!<br>쪼끔만 더 혀~', '4분의 3이여? 진짜 다 온겨~<br>(이번엔 참말이여)', '막판이여<br>냅다 밀어유~!!'],
-    arr: ['도착한겨?!<br>애썼슈~!!', '야~ 해냈네유!<br>대단혀', '다 한겨?<br>이제 나 좀 자유~ 수고혔슈'],
+    peek: ['…누구여?', '…시방 몇 시여?', '또 쿵쿵거리는겨…', '…뭔 소리여?', '…뭐여 이게?'],
+    angry: ['아 쿵쿵쿵!<br>잠 좀 자유!!', '방에서 뭐 하는겨!!', '잠 다 깼잖여!!', '집 무너지는 줄 알았슈!!', '그렇게 뛰어서<br>방바닥 꺼지겄슈!!'],
+    bye: ['난 더 잘 거여…', '깨우지 말어유…', '꿈에서 응원할게유…', '치킨은 내 거여… 쿨', '됐슈… 난 가유…'],
+    start: ['…운동 시작한겨?<br>그럼 화이링이여~!!', '오늘도 하는겨?<br>급할 거 없슈~ 살살 혀', '시작이 반이라는디<br>벌써 반 했네유!', '그려~ 오늘도 나왔구먼<br>화이링이여!!'],
+    q1: ['4분의 1 왔다고?<br>제법이네유~', '몸 풀렸구먼~<br>그냥 쭉 가유', '초반 괜찮여!<br>화이링이여~', '벌써 이만큼 온겨?<br>뭐가 그리 급혀~'],
+    half: ['절반 온겨?<br>잘혀 잘혀~!!', '반 넘었슈~<br>이제 금방이여', '딱 반이여!<br>물 한 모금 혀유', '반 했으면 다 한 거여~<br>그려 그려'],
+    q3: ['다 왔네유!<br>쪼끔만 더 혀~', '4분의 3이여? 진짜 다 온겨~<br>(이번엔 참말이여)', '막판이여<br>냅다 밀어유~!!', '쪼끔 남았슈<br>그냥 마저 혀유~!!'],
+    arr: ['도착한겨?!<br>애썼슈~!!', '야~ 해냈네유!<br>대단혀', '다 한겨?<br>이제 나 좀 자유~ 수고혔슈', '다 했으면 됐슈~<br>참말로 애썼어유'],
     keep: ['땀 나는구먼~<br>그냥 쭉 가유', '대단혀 참말~<br>물 한 모금 혀유', '근디 좀 멋있네유~<br>화이링이여!!'] },
-  gw: {
-    peek: ['…누구래요?', '…몇 시래요?', '또 쿵쿵거리네야…', '…뭔 소리래요?'],
-    angry: ['아 쿵쿵쿵!<br>잠 좀 자자니!!', '방에서 뭐 하는 기래!!', '잠 마카 깼잖소!!', '집 무너지는 줄 알았잖소!!'],
-    bye: ['난 더 잘 기래요…', '깨우지 마우야…', '꿈에서 응원할 기래요…', '치킨은 내 거래요… 쿨'],
-    start: ['…운동 시작했나?<br>그럼 화이링이래요~!!', '오늘도 하나?<br>어여 살살 가우야~', '시작이 반이래요<br>벌써 반 했잖소!'],
-    q1: ['4분의 1 왔나?<br>제법이래요~', '몸 풀렸잖소~<br>그대로 쭉 가우야', '초반 좋잖소!<br>화이링이래요~'],
-    half: ['절반 왔나?<br>잘한다 잘해~!!', '반 넘었잖소~<br>이제 금방이래요', '딱 반이래요!<br>물 한 모금 하우야'],
-    q3: ['다 왔잖소!<br>쪼매만 더 하우야~', '4분의 3이래요? 진짜 다 왔잖소~<br>(이번엔 참말이래요)', '막판이래요<br>어여 밀어 보우야~!!'],
-    arr: ['도착했나?!<br>욕봤소야~!!', '야~ 해냈잖소!<br>마카 멋있다야', '다 했나?<br>이제 나 좀 자우야~ 수고했소'],
-    keep: ['땀 나잖소~<br>그대로 쭉 가우야', '대단하다야 참말~<br>물 한 모금 하우야', '근데 좀 멋있잖소~<br>화이링이래요!!'] },
-  jj: {
-    peek: ['…누게우꽈?', '…멧 시우꽈?', '또 쿵쿵…', '…무신 소리우꽈?'],
-    angry: ['아 쿵쿵쿵!<br>좀 자게 헙서!!', '방에서 뭐 헴수과!!', '잠 다 깨불었수다!!', '집 무너지는 줄 알았수다!!'],
-    bye: ['난 더 자쿠다…', '깨우지 맙서…', '꿈에서 응원허쿠다…', '치킨은 나 거우다… 쿨'],
-    start: ['…운동 시작헴수과?<br>게민 화이링~!!', '오늘도 헴수과?<br>놀멍 쉬멍 갑서~', '시작이 반이우다<br>벌써 반 했수다!'],
-    q1: ['4분의 1 왔수과?<br>잘도 잘 헴수다!', '몸 풀렸수다~<br>경 쭉 갑서', '초반 좋수다!<br>화이링~'],
-    half: ['절반 왔수과?<br>잘 헴수다~!!', '반 넘었수다~<br>이제 금방이우다', '딱 반이우다!<br>물 한 모금 헙서'],
-    q3: ['다 왔수다!<br>호끔만 더 헙서~', '4분의 3이우꽈? 진짜 다 왔수다~<br>(이번엔 진짜우다)', '막판이우다<br>혼저 갑서~!!'],
-    arr: ['도착했수과?!<br>폭삭 속았수다~!!', '와~ 해냈수다!<br>잘도 멋지우다', '다 했수과?<br>이제 나 좀 자쿠다~ 속았수다'],
-    keep: ['땀 남수다~<br>경 쭉 갑서', '잘도 대단허우다~<br>물 한 모금 헙서', '게난 좀 멋지우다~<br>화이링!!'] },
   std: {
-    peek: ['…누구세요?', '…지금 몇 시야?', '또 쿵쿵…', '…무슨 소리야?'],
-    angry: ['아 쿵쿵쿵!<br>잠 좀 자자고!!', '방에서 뭐 하는 거야!!', '잠 다 깼잖아!!', '지진 난 줄 알았네!!'],
-    bye: ['난 더 잔다…', '깨우지 마…', '꿈에서 응원할게…', '치킨은 내 거… 쿨'],
-    start: ['…운동 시작이야?<br>그럼 화이링~!!', '오~ 오늘도 하네<br>살살 가자~', '시작이 반이래<br>벌써 반 했네!'],
-    q1: ['4분의 1 왔다고?<br>오~ 좀 하는데!', '벌써 몸 풀렸네~<br>그대로 쭉 가', '초반 좋아!<br>화이링 화이링~'],
-    half: ['절반 왔다고?<br>잘한다 잘한다~!!', '반 넘었어~<br>이제 금방이야', '딱 반이야!<br>물 한 모금 마셔'],
-    q3: ['다 왔네!<br>조금만 더 해~', '4분의 3? 진짜 다 왔어~<br>(이번엔 진짜)', '막판이야<br>쫙 밀어~!!'],
-    arr: ['도착했다고?!<br>고생했어~!!', '와~ 해냈네!<br>너 좀 멋있다', '다 했어?<br>이제 나 좀 자자~ 수고했어'],
+    peek: ['…누구세요?', '…지금 몇 시야?', '또 쿵쿵…', '…무슨 소리야?', '…뭐야 이 소리?'],
+    angry: ['아 쿵쿵쿵!<br>잠 좀 자자고!!', '방에서 뭐 하는 거야!!', '잠 다 깼잖아!!', '지진 난 줄 알았네!!', '아랫집에서 올라온다고!!'],
+    bye: ['난 더 잔다…', '깨우지 마…', '꿈에서 응원할게…', '치킨은 내 거… 쿨', '난 간다… 쿨'],
+    start: ['…운동 시작이야?<br>그럼 화이링~!!', '오~ 오늘도 하네<br>살살 가자~', '시작이 반이래<br>벌써 반 했네!', '오늘도 나왔네~<br>가 보자고!!'],
+    q1: ['4분의 1 왔다고?<br>오~ 좀 하는데!', '벌써 몸 풀렸네~<br>그대로 쭉 가', '초반 좋아!<br>화이링 화이링~', '페이스 좋은데~<br>이대로 가자'],
+    half: ['절반 왔다고?<br>잘한다 잘한다~!!', '반 넘었어~<br>이제 금방이야', '딱 반이야!<br>물 한 모금 마셔', '반 했으면 다 한 거지~<br>나머지는 덤이야'],
+    q3: ['다 왔네!<br>조금만 더 해~', '4분의 3? 진짜 다 왔어~<br>(이번엔 진짜)', '막판이야<br>쫙 밀어~!!', '조금 남았어<br>끝까지 가 보자~!!'],
+    arr: ['도착했다고?!<br>고생했어~!!', '와~ 해냈네!<br>너 좀 멋있다', '다 했어?<br>이제 나 좀 자자~ 수고했어', '와 진짜 다 했네!<br>오늘 좀 멋있었다'],
     keep: ['오~ 땀 난다<br>그대로 쭉 가~', '대단하다 진짜~<br>물 한 모금 마셔', '근데 좀 멋있네~<br>화이링!!'] },
 };
 const DOOR_PROV = { 'busan-si': 'gs', 'daegu-si': 'gs', 'ulsan-si': 'gs', gyeongbuk: 'gs', gyeongnam: 'gs', 'daejeon-si': 'cc', 'sejong-si': 'cc', chungbuk: 'cc', chungnam: 'cc',
-  'gwangju-si': 'jl', jeonbuk: 'jl', jeonnam: 'jl', gangwon: 'gw', 'jeju-do': 'jj', 'seoul-si': 'std', 'incheon-si': 'std', 'gyeonggi-do': 'std' };
+  'gwangju-si': 'jl', jeonbuk: 'jl', jeonnam: 'jl', 'seoul-si': 'std', 'incheon-si': 'std', 'gyeonggi-do': 'std' };   // 강원·제주 = 아직 없음 → 경상(기본)
 function doorDialect(){   // 지금 코스가 있는 지역 → 말투 (일반 운동·해외·장거리·내 코스 = 경상, 앱 얼굴)
   try { if (S.free) return 'gs';
     const t = isClimb() ? TGT(DB.climb.sel) : null, ids = t ? [t.cityId].concat(t.also || []) : [CITY.id];
@@ -6478,6 +6488,8 @@ function vidLay(){ const hb = $('hudBottom'); document.documentElement.style.set
 function vidFit(){
   const w = $('vidWrap'), f = w.querySelector('iframe') || $('vidFrame'), ar = (COURSE.video && COURSE.video.ar) || 9 / 16;
   const bw = w.clientWidth, bh = w.clientHeight; if (!bw || !bh) return;
+  if (VID.mine){ let mw = bw, mh = bw * 9 / 16; if (mh > bh){ mh = bh; mw = bh * 16 / 9; }   /* 내가 고른 영상: 자르지 않고 16:9 그대로 */
+    Object.assign(f.style, { width: mw + 'px', height: mh + 'px', left: (bw - mw) / 2 + 'px', top: (bh - mh) / 2 + 'px' }); return; }
   let fw = bw, fh = bw / ar; if (fh < bh){ fh = bh; fw = bh * ar; }
   /* 11/21 보스 "아래(그림자)는 자르고 위를 살려": 넘치는 높이 중 위는 vy만큼만 자르고 나머지는 아래에서 자름 (vy 0 = 위 그대로, 0.5 = 가운데) */
   const vy = COURSE.video && COURSE.video.vy != null ? COURSE.video.vy : 0;
@@ -6486,6 +6498,8 @@ function vidFit(){
 window.addEventListener('resize', () => { if (VID.on) vidLay(); });
 async function vidOn(){
   const v = COURSE.video; if (!v) return;
+  if (VID.mine){ VID.mine = null; vidDrop(); }
+  $('vidBox').classList.remove('mine'); $('vidPick').classList.add('hidden');
   VID.on = true; document.body.classList.add('vidOn'); $('vidBox').classList.remove('hidden'); vidLay(); $('vidTx').textContent = '🎬 ' + (v.note || '영상') + ' · 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
   if (!VID.on) return;
@@ -6495,9 +6509,11 @@ async function vidOn(){
               onStateChange: e => { if (e.data === 0) { VID.P.seekTo(0); VID.P.playVideo(); } },
               onError: e => { $('vidTx').textContent = '영상 재생 오류 ' + e.data + ' (일부 공개인지 확인)'; } } });
 }
-function vidOffNow(){ VID.on = false; document.body.classList.remove('vidOn'); $('vidBox').classList.add('hidden'); try { VID.ready && VID.P.pauseVideo(); } catch(e){} }
+function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
+function vidOffNow(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); }
+  VID.on = false; document.body.classList.remove('vidOn'); $('vidBox').classList.add('hidden'); try { VID.ready && VID.P.pauseVideo(); } catch(e){} }
 function vidTick(kmh){
-  if (!VID.on || !VID.ready) return;
+  if (!VID.on || !VID.ready || VID.mine) return;   // 내가 고른 영상은 속도에 맞추지 않음
   const v = COURSE.video, go = S.running && !S.paused && kmh > 0;
   try {
     if (!go){ VID.P.pauseVideo(); $('vidTx').textContent = '⏸ 멈춤'; return; }
@@ -6509,6 +6525,50 @@ function vidTick(kmh){
 }
 $('bVid').onclick = e => { e.stopPropagation(); VID.on ? vidOffNow() : vidOn(); };
 $('vidOff').onclick = e => { e.stopPropagation(); vidOffNow(); };
+/* ---- ▶ 내가 고른 유튜브 영상 (11/22 보스) ----
+   운동 화면 오른쪽 '▶ 유튜브' → 유튜브에서 고르고 '공유 → 링크 복사' → 돌아오면 지도 자리에 바로 재생
+   · 유튜브 규칙: 영상 위에 글·숫자를 겹치지 않음 → 코스 이름·정상은 영상 위 띠(#vidTop), 숫자 칸은 영상 아래 그대로
+   · 영상이 떠 있는 동안 문 응원은 안 나옴(영상을 가리므로) · 화면을 끄면 영상도 멈춤(유튜브 규칙)
+   · 검색을 앱 안에서 하려면 유튜브 검색 열쇠(API 키)가 필요 — 그 전까지는 링크 복사 방식 */
+const MYT = { wait: 0, last: '' };
+const ytVid = t => { const m = /(?:youtu\.be\/|[?&]v=|\/shorts\/|\/live\/|\/embed\/)([\w-]{11})/.exec(String(t || '')); return m ? m[1] : (/^[\w-]{11}$/.test(String(t || '').trim()) ? String(t).trim() : null); };
+function ytList(){ try { return JSON.parse(localStorage.getItem('bgsj_yt') || '[]').filter(x => /^[\w-]{11}$/.test(x)).slice(0, 6); } catch(e){ return []; } }
+function ytKeep(id){ try { localStorage.setItem('bgsj_yt', JSON.stringify([id].concat(ytList().filter(x => x !== id)).slice(0, 6))); } catch(e){} }
+function ytBoxOpen(msg){
+  const l = ytList(); $('ytRecentBox').classList.toggle('hidden', !l.length);
+  $('ytRecent').innerHTML = l.map(id => '<button data-yt="' + id + '" aria-label="최근 본 영상"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" alt="" loading="lazy"></button>').join('');
+  $('ytRecent').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
+  $('ytIn').value = ''; $('ytMsg').textContent = msg || ''; $('ytMsg').classList.toggle('hidden', !msg); $('ytBox').classList.remove('hidden');
+}
+async function ytPlay(id){
+  $('ytBox').classList.add('hidden'); MYT.wait = 0; MYT.last = id; ytKeep(id);
+  VID.mine = id; VID.on = true; document.body.classList.add('vidOn'); $('vidBox').classList.add('mine'); $('vidBox').classList.remove('hidden'); $('vidPick').classList.remove('hidden');
+  ytTop(); vidLay(); $('vidTx').textContent = '▶ 불러오는 중…';
+  try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
+  if (VID.mine !== id) return;
+  vidDrop();
+  VID.P = new window.YT.Player('vidFrame', { videoId: id, playerVars: { playsinline: 1, autoplay: 1, rel: 0 },
+    events: { onReady: () => { VID.ready = true; vidFit(); try { VID.P.playVideo(); } catch(e){} $('vidTx').textContent = '▶ 내 영상'; },
+              onError: e => { $('vidTx').textContent = e.data === 101 || e.data === 150 ? '이 영상은 유튜브에서만 볼 수 있게 막혀 있어요' : '영상 재생 오류 ' + e.data; } } });
+}
+function ytTop(){ if (!VID.mine) return; const a = $('altiPill'), t = $('namePill').textContent + (a.classList.contains('hidden') ? '' : ' · ' + a.textContent); if ($('vidTop').textContent !== t) $('vidTop').textContent = t; }
+async function ytClip(byTap){   // 복사해 둔 링크 읽기 — 폰에 따라 막혀 있으면 직접 붙여넣기
+  let t = '';
+  try { t = await navigator.clipboard.readText(); } catch(e){ t = ''; }
+  const id = ytVid(t);
+  if (id && (byTap || id !== MYT.last)){ ytPlay(id); return true; }
+  if (byTap){ $('ytMsg').textContent = t ? '복사한 글에 유튜브 링크가 없어요' : '칸을 길게 눌러 붙여넣은 뒤 한 번 더 눌러 주세요'; $('ytMsg').classList.remove('hidden'); try { $('ytIn').focus(); } catch(e){} }
+  return false;
+}
+$('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
+$('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
+$('ytClose').onclick = () => $('ytBox').classList.add('hidden');
+$('ytOpen').onclick = () => { MYT.wait = Date.now(); try { window.open('https://m.youtube.com/', '_blank'); } catch(e){} };
+$('ytGo').onclick = () => { const id = ytVid($('ytIn').value); if (id) ytPlay(id); else ytClip(true); };
+$('ytIn').addEventListener('input', () => { const id = ytVid($('ytIn').value); $('ytGo').textContent = id ? '띄우기' : '붙여넣기'; });
+function ytBack(){ if (!MYT.wait || Date.now() - MYT.wait > 900000 || !S.running) return; setTimeout(async () => { if (!(await ytClip(false)) && $('ytBox').classList.contains('hidden')) ytBoxOpen('복사한 링크를 붙여넣어 주세요'); }, 400); }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) ytBack(); });
+window.addEventListener('focus', ytBack);
 /* ---- 🌍 사용자 코스 공개 신청 (11/21 보스 "사용자가 코스·영상을 올리는 생태계") ----
    내 코스 → 신청(Supabase bgr_course_sub, 넣기만) → 아미 검수 → 보스 승인 → 공식 코스로 추가 + "개척: 닉네임"
    개인 보호: 출발·끝 200m 잘라서 보냄 (집 위치) · 이름·연락처 없음 */
@@ -6548,6 +6608,7 @@ $('pubYes').onclick = async () => {
 };
 function v3dBtn(){
   $('bVid').classList.toggle('hidden', !(COURSE.video && !S.gps && !S.free && !isClimb()));
+  $('bYt').classList.toggle('hidden', !(S.running && !S.gps)); ytTop();   // 방구석 운동 중에만
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
   b.classList.toggle('hidden', m.length < 2); if (m.length < 2) return;
   const c = mapCur(m); b.textContent = MAPL[c] + ' ↻'; if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
