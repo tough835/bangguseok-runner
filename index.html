@@ -1100,7 +1100,7 @@
 </div>
 
 <script>
-const BUILD = '202611220905';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611220925';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2753,7 +2753,7 @@ function hudWalk(pos){
   const other = !S.goalFin && (S.goalDist || tr(nh.lm.name) !== S.goalName);   // 완주 지점이 목표면 다음 바퀴 거점은 안 보여 줌     // 목표가 '다음 거점'이 아닐 때는 다음 거점도 작게 보여 줌
   $('sNextLabel').textContent = S.goalDist ? T.toGoal + ' ' + S.goalName : (S.goalFin ? '🏁 ' : '🚩 ') + S.goalName;
   $('sNextDist').textContent = fmtM(gl);
-  const fd = L - (((totalNow() % L) + L) % L), showLeft = !S.goalFin && Math.abs(fd - gl) > 30;   // 목표가 완주 지점이면 같은 숫자라 숨김
+  const fd = L - (((totalNow() % L) + L) % L), showLeft = !S.goalFin && Math.abs(fd - gl) > 30 && gl < fd * 0.7;   // 목표가 완주 지점이면 같은 숫자라 숨김 · 11/22 보스 폰(탑정호 6.92km·🏁8.2km "둘 다 줄고 있네?"): 목표가 완주 지점 가까이에 있으면 두 숫자가 같이 줄어 헷갈림 → 완주 거리는 목표가 완주보다 확실히 가까울 때만
   $('sCourseLeft').textContent = '🏁 ' + (fd >= 1000 ? (fd / 1000).toFixed(fd >= 100000 ? 0 : 1) + 'km' : Math.round(fd) + 'm'); $('sCourseLeft').classList.toggle('hidden', !showLeft); $('sCourseLeft').parentElement.classList.toggle('hasLeft', showLeft);
   $('sNextName').textContent = other ? '🚩 ' + tr(nh.lm.name) + ' ' + (nh.d >= 1000 ? (nh.d/1000).toFixed(1) + 'km' : Math.round(nh.d) + 'm')
     : (sp > 0 ? T.approx + ' ' + Math.max(1, Math.round(gl / (sp/3.6) / 60)) + T.min : '');
