@@ -1,0 +1,21 @@
+name: yt-probe
+on:
+  workflow_dispatch:
+  push:
+    paths: [ 'tools/yt_probe.py', 'tools/yt_lists.py' ]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python tools/yt_probe.py
+      - run: '[ -f tools/yt_lists.py ] && python tools/yt_lists.py || true'
+      - run: |
+          git config user.name "yt-bot"; git config user.email "yt-bot@users.noreply.github.com"
+          git add data/yt_*.json
+          git commit -m "유튜브 추천 칸 후보" || echo "no change"
+          git pull --rebase origin main && git push origin HEAD:main
