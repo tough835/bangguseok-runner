@@ -33,7 +33,7 @@
   #ytBox input{flex:1;min-width:0;height:46px;border-radius:12px;padding:0 12px;font-size:15px}
   #ytBox .row button,#ytBox .mbtn button{min-height:46px}
   #ytBox .row button{flex:none;padding:0 14px;border:0;border-radius:12px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:15px;font-weight:800}
-  #ytChips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}#ytChips button{min-height:36px;padding:0 12px;border:0;border-radius:18px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:13px;font-weight:700}
+  #ytChips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}#ytChips button{min-height:36px;padding:0 12px;border:0;border-radius:18px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:13px;font-weight:700}#ytChips button.on{background:var(--volt,#d7f548);color:#1b1c1f}
   #ytRes{margin-top:8px;display:flex;flex-direction:column;gap:8px}
   #ytRes button{display:flex;gap:10px;align-items:center;text-align:left;padding:0;border:0;background:none;color:var(--tx,#fff);min-height:64px}
   #ytRes img{width:112px;height:63px;object-fit:cover;border-radius:8px;flex:none;background:#000}
@@ -694,7 +694,7 @@
 <div id="ytBox" class="modal hidden">
   <div class="sb">
     <div class="st">▶ 유튜브 영상 띄우기</div>
-    <form class="row" id="ytQF" style="margin-top:0"><input id="ytQ" type="search" placeholder="유튜브 검색 (예: 러닝 음악)" enterkeyhint="search" autocomplete="off"><button id="ytQGo">검색</button></form>
+    <form class="row" id="ytQF" style="margin-top:0"><input id="ytQ" type="search" placeholder="다른 영상 검색" enterkeyhint="search" autocomplete="off"><button id="ytQGo">검색</button></form>
     <div id="ytChips"></div>
     <div class="muted hidden" id="ytQMsg" style="margin-top:6px"></div>
     <div id="ytRes"></div>
@@ -1144,7 +1144,7 @@
 </div>
 
 <script>
-const BUILD = '202611221113';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611221945';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3674,6 +3674,7 @@ $('bStart').onclick = () => {
   S.hikeGps = hikeGps; if (hikeGps) S.act = 'walk';   // 달리는 동안은 거리 운동으로 기록, 끝나면 등산으로 바꿈(fillHike)
   S.gps = DB.zone === 'out'; GPS.track = []; GPS.tt = []; GPS.t0 = 0;
   S.running = true; S.paused = false; S.sessionM = 0; S.elapsed = 0; S.passed = []; S.siteHubs = []; CLIMB_SLOW = false; NAV.px = NAV.py = 0; NAV.drag = false; S.door = null; S.doorAt = null; try { doorPre(); } catch(e){}
+  $('bYt').classList.toggle('hidden', !!S.gps);   // 11/22: ▶ 유튜브 버튼은 시작하자마자 (지도 다시 그릴 때까지 안 보이던 것)
   S.sessionId = Date.now(); S.lastT = Date.now(); S.lastSave = Date.now();
   S.free = isFree(); S.freeGoal = S.free && !hikeGps ? freeGoalVal() : 0; S.freeHit = false; voiceReset(); V3D.hot = false; meterStart();
   try { tel('start', { zone: DB.zone, act: S.act, course: telCourse() }); } catch(e){}
@@ -3927,6 +3928,7 @@ function doEnd(){
   meterEnd(); try { panReset(); } catch(e){}
   try { if (S.sessionM > 10) tel('finish', { zone: DB.zone, act: S.act, course: telCourse(), km: isClimb() ? null : Math.round(S.sessionM / 10) / 100, up_m: isClimb() ? Math.round(S.sessionM) : null, min: Math.round(S.elapsed / 6) / 10 }); } catch(e){}
   S.running = false; S.paused = false; $('pauseBadge').classList.add('hidden'); $('bPause').textContent = '⏸ ' + T.paused;   // 11/18 보스 폰: 일시정지 중에 종료하면 '일시정지' 표시가 끝 화면에 남아 지워지지 않던 것
+  $('bYt').classList.add('hidden'); $('ytBox').classList.add('hidden');
   zoomTag(); cancelAnimationFrame(raf); sensorStop(); gpsStop(); altStop(); wkStop(); autosave(true);
   try { wakeLock && wakeLock.release(); } catch(e){}
   showRun(false); clearPopups(); mtnClear(); $('fixMsg').textContent = ''; $('fixIn').value = ''; $('endConq').classList.add('hidden');
@@ -6575,6 +6577,7 @@ function ytBoxOpen(msg){
   const l = ytList(); $('ytRecentBox').classList.toggle('hidden', !l.length);
   $('ytRecent').innerHTML = l.map(id => '<button data-yt="' + id + '" aria-label="최근 본 영상"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" alt="" loading="lazy"></button>').join('');
   $('ytRecent').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
+  if (!$('ytQ').value) ytTab(YTS.tab || ytTabFor());   // 검색 안 해도 바로 영상 목록
   $('ytIn').value = ''; $('ytMsg').textContent = msg || ''; $('ytMsg').classList.toggle('hidden', !msg); $('ytBox').classList.remove('hidden');
 }
 async function ytPlay(id){
@@ -6599,14 +6602,31 @@ async function ytClip(byTap){   // 복사해 둔 링크 읽기 — 폰에 따라
 }
 /* 11/22 보스 "앱 안 우리 창에서 검색 · 바로 보기": Supabase 함수(bgr-yt-search)가 유튜브 검색 열쇠를 숨겨 들고 대신 물어봄
    유튜브 검색은 하루 호출 수가 적어(기본 100번) 같은 검색어는 이 폰에 하루 저장 · 함수도 6시간 저장 */
-const YTS = { url: TEL.url.replace('/rest/v1/bgr_event', '/functions/v1/bgr-yt-search'), chips: ['러닝 음악', '걷기 풍경 4K', '등산 브이로그', '자전거 라이딩', '홈트 음악'] };
+/* 11/22 보스 "검색 안 해도 기본으로 보기": 아미가 고른 재생목록을 칸으로 — 창을 열면 운동 종류에 맞는 칸이 바로 깔림 (검색 한도와 별개) */
+const YTS = { url: TEL.url.replace('/rest/v1/bgr_event', '/functions/v1/bgr-yt-search'), tab: '',
+  tabs: [['러닝 음악', 'PLx1uUaAhAnmvPQYN48PWINQ7RKewq7cjJ'], ['케이팝 운동', 'PL4fQaQrmnpKD8IEhkVNU3L6t6-a5NaV01'], ['서울 걷기', 'PLnAxu-ique9fiejvmVYCVeEYTPI6deaJd'], ['세계 걷기', 'PL0eFt2-5YwurCWrdyEnzV6U1vSXP5T4BI'],
+         ['국내 라이딩', 'PLmJZvsihZooOmkCLlSZsBW3d9bKy89ite'], ['자전거 풍경', 'PLYKRCrVXG2QCR6GmX4yMQW0sh1nyb5gOc'], ['산길 걷기', 'PLbWPytS1GWJKR7K-l8WRXtdhksrGzGz0m']] };
+const ytTabFor = () => isClimb() ? '산길 걷기' : S.act === 'bike' ? '국내 라이딩' : S.act === 'walk' ? '서울 걷기' : '러닝 음악';
+function ytChipOn(name){ $('ytChips').querySelectorAll('[data-q]').forEach(b => b.classList.toggle('on', b.dataset.q === name)); }
+async function ytTab(name){
+  const t = YTS.tabs.find(x => x[0] === name); if (!t) return; YTS.tab = name; ytChipOn(name); $('ytQ').value = '';
+  const ck = 'bgsj_ytp:' + t[1], msg = m => { $('ytQMsg').textContent = m; $('ytQMsg').classList.toggle('hidden', !m); };
+  try { const c = JSON.parse(localStorage.getItem(ck) || 'null'); if (c && Date.now() - c.t < 432e5 && c.items.length){ msg(''); ytResShow(c.items); return; } } catch(e){}
+  msg('불러오는 중…'); $('ytRes').innerHTML = '';
+  try {
+    const r = await fetch(YTS.url + '?pl=' + encodeURIComponent(t[1]), { headers: { apikey: TEL.key } }), j = await r.json().catch(() => ({}));
+    if (YTS.tab !== name) return;
+    if (!r.ok || j.err || !j.items || !j.items.length){ msg(j.err === 'nokey' ? '영상 목록 준비 중이에요 — 아래 "링크로 띄우기"를 써 주세요' : '목록을 못 불러왔어요 (인터넷 확인)'); return; }
+    msg(''); ytResShow(j.items); try { localStorage.setItem(ck, JSON.stringify({ t: Date.now(), items: j.items })); } catch(e){}
+  } catch(e){ msg('목록을 못 불러왔어요 (인터넷 확인)'); }
+}
 const ytDec = t => { const d = document.createElement('textarea'); d.innerHTML = t; return d.value; };
 function ytResShow(items){
   $('ytRes').innerHTML = items.map(x => '<button data-yt="' + esc(x.id) + '"><img src="https://i.ytimg.com/vi/' + esc(x.id) + '/mqdefault.jpg" alt="" loading="lazy"><span><b>' + esc(ytDec(x.t)) + '</b><small>' + esc(ytDec(x.ch)) + (x.live ? ' · 🔴 라이브' : '') + '</small></span></button>').join('');
   $('ytRes').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
 }
 async function ytSearch(q){
-  q = String(q || '').trim(); if (!q) return; $('ytQ').value = q; try { $('ytQ').blur(); } catch(e){}
+  q = String(q || '').trim(); if (!q) return; $('ytQ').value = q; try { $('ytQ').blur(); } catch(e){} YTS.tab = ''; ytChipOn('');
   const ck = 'bgsj_yts:' + q.toLowerCase(), msg = t => { $('ytQMsg').textContent = t; $('ytQMsg').classList.toggle('hidden', !t); };
   try { const c = JSON.parse(localStorage.getItem(ck) || 'null'); if (c && Date.now() - c.t < 864e5){ msg(''); ytResShow(c.items); return; } } catch(e){}
   msg('찾는 중…'); $('ytRes').innerHTML = '';
@@ -6618,8 +6638,8 @@ async function ytSearch(q){
   } catch(e){ msg('검색이 안 돼요 (인터넷 확인)'); }
 }
 $('ytQF').onsubmit = e => { e.preventDefault(); ytSearch($('ytQ').value); };
-$('ytChips').innerHTML = YTS.chips.map(c => '<button type="button" data-q="' + c + '">' + c + '</button>').join('');
-$('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytSearch(b.dataset.q));
+$('ytChips').innerHTML = YTS.tabs.map(c => '<button type="button" data-q="' + c[0] + '">' + c[0] + '</button>').join('');
+$('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytTab(b.dataset.q));
 $('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('ytClose').onclick = () => $('ytBox').classList.add('hidden');
