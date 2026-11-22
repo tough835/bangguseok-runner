@@ -33,6 +33,13 @@
   #ytBox input{flex:1;min-width:0;height:46px;border-radius:12px;padding:0 12px;font-size:15px}
   #ytBox .row button,#ytBox .mbtn button{min-height:46px}
   #ytBox .row button{flex:none;padding:0 14px;border:0;border-radius:12px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:15px;font-weight:800}
+  #ytChips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}#ytChips button{min-height:36px;padding:0 12px;border:0;border-radius:18px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:13px;font-weight:700}
+  #ytRes{margin-top:8px;display:flex;flex-direction:column;gap:8px}
+  #ytRes button{display:flex;gap:10px;align-items:center;text-align:left;padding:0;border:0;background:none;color:var(--tx,#fff);min-height:64px}
+  #ytRes img{width:112px;height:63px;object-fit:cover;border-radius:8px;flex:none;background:#000}
+  #ytRes b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14px;font-weight:700;line-height:1.35}
+  #ytRes small{display:block;color:var(--mut,#999);font-size:12px;margin-top:2px}
+  #ytMore summary{cursor:pointer;min-height:36px;display:flex;align-items:center}
   #ytRecent{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
   #ytRecent button{padding:0;border:0;border-radius:10px;overflow:hidden;background:#000;aspect-ratio:16/9;min-height:44px}
   #ytRecent img{width:100%;height:100%;object-fit:cover;display:block}
@@ -53,6 +60,7 @@
   #sCourseLeft{position:absolute;bottom:10px;right:12px;font-size:14px;font-style:normal;font-weight:800;color:var(--vtx)}   /* 11/18 보스: 코스 전체 남은 거리도 줄어들게 */
   #sCourseLeft:not(.hidden) ~ b{margin-top:0}
   .stat.hasLeft small{padding-right:5.4em}
+  .fixAsk{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.fixAsk button{min-height:44px;padding:0 14px;border:0;border-radius:12px;background:var(--volt,#d7f548);color:#1b1c1f;font-size:15px;font-weight:800}.fixAsk button.sub{background:var(--ch3,#34373c);color:var(--tx,#fff)}
   .stat small strong{font-weight:800;color:var(--vtx)}   /* 11/22: 다음 거점까지 거리 */   /* 11/21 검수 B1: 큰 글씨에서 '약 3분'과 '🏁 4.7km'가 겹치던 것 */
   .stat span{display:block;font-size:13px;opacity:.75}
   .stat b{display:block;font-size:34px;font-weight:900;line-height:1.15;letter-spacing:-.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -686,11 +694,17 @@
 <div id="ytBox" class="modal hidden">
   <div class="sb">
     <div class="st">▶ 유튜브 영상 띄우기</div>
-    <button class="big" id="ytOpen">유튜브에서 고르기</button>
-    <div class="muted" style="margin-top:8px;line-height:1.5">영상에서 <b>공유 → 링크 복사</b>를 누르고 돌아오면 바로 떠요.</div>
-    <div class="row"><input id="ytIn" placeholder="유튜브 링크" inputmode="url" autocomplete="off"><button id="ytGo">붙여넣기</button></div>
-    <div class="muted hidden" id="ytMsg" style="margin-top:6px"></div>
+    <form class="row" id="ytQF" style="margin-top:0"><input id="ytQ" type="search" placeholder="유튜브 검색 (예: 러닝 음악)" enterkeyhint="search" autocomplete="off"><button id="ytQGo">검색</button></form>
+    <div id="ytChips"></div>
+    <div class="muted hidden" id="ytQMsg" style="margin-top:6px"></div>
+    <div id="ytRes"></div>
     <div id="ytRecentBox" class="hidden"><h2>최근 본 영상</h2><div id="ytRecent"></div></div>
+    <details id="ytMore" style="margin-top:12px"><summary class="muted">링크로 띄우기</summary>
+      <button class="toggle" id="ytOpen" style="margin-top:8px">유튜브 앱에서 고르기</button>
+      <div class="muted" style="margin-top:6px;line-height:1.5">영상에서 <b>공유 → 링크 복사</b> 뒤 돌아오면 떠요.</div>
+      <div class="row"><input id="ytIn" placeholder="유튜브 링크" inputmode="url" autocomplete="off"><button id="ytGo">붙여넣기</button></div>
+      <div class="muted hidden" id="ytMsg" style="margin-top:6px"></div>
+    </details>
     <div class="mbtn" style="margin-top:14px"><button id="ytClose">닫기</button></div>
   </div>
 </div>
@@ -1130,7 +1144,7 @@
 </div>
 
 <script>
-const BUILD = '202611221100';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611221113';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1581,6 +1595,7 @@ const WORLD = {
     } },
     nonsan: { id: 'nonsan', name: { ko: '논산시' }, country: 'KR', courses: {
         'tapjeong-gil': {"id": "tapjeong-gil", "official": "data/route/tapjeong-gil.json", "name": {"ko": "탑정호 한 바퀴"}, "short": {"ko": "탑정호"}, "kind": "도보", "mode": "distance", "lengthM": 17420, "loop": true, "elev": [[0, 30], [539, 30], [1072, 37], [1585, 34], [2122, 38], [2645, 28], [3378, 24], [3907, 24], [4411, 28], [4937, 43], [5487, 31], [5993, 31], [6573, 30], [7039, 33], [7576, 33], [8101, 30], [8632, 30], [9162, 32], [9737, 36], [10287, 32], [10790, 29], [11266, 29], [11789, 29], [12320, 29], [12868, 29], [13406, 29], [13908, 36], [14429, 68], [14977, 96], [15504, 89], [16042, 58], [16563, 32], [17077, 30], [17420, 30]], "note": "거리 = 오픈스트리트맵 길 찾기로 잰 실제 길 17.4km", "source": "호수 물가 길 한 바퀴", "segments": [{"from": 0, "to": 17420, "scene": "river"}], "landmarks": [{"id": "tapjeong-1", "name": {"ko": "탑정호 출발점"}, "at": 40, "side": 1, "art": "gate", "photo": null, "desc": {"ko": ""}}, {"id": "tapjeong-gil-x1", "name": {"ko": "탑정호 출렁다리"}, "at": 1663, "side": 1, "art": "sign", "photo": null, "desc": {"ko": "호수 위를 건너는 600m 출렁다리"}, "hub": true, "off": 250, "src": "osm", "ll": [36.18217, 127.158855]}, {"id": "tapjeong-gil-x2", "name": {"ko": "봉황산"}, "at": 4795, "side": -1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}, {"id": "tapjeong-gil-x3", "name": {"ko": "갈마산"}, "at": 10212, "side": 1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true, "off": 550, "src": "osm", "ll": [36.166717, 127.194683]}, {"id": "tapjeong-gil-x4", "name": {"ko": "고정산"}, "at": 15313, "side": -1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}, {"id": "tapjeong-2", "name": {"ko": "백제군사박물관"}, "at": 16176, "side": -1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true}, {"id": "tapjeong-3", "name": {"ko": "탑정호수변생태공원"}, "at": 17267, "side": 1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true}], "path": [[36.19094, 127.17065], [36.18601, 127.15984], [36.18363, 127.15051], [36.17446, 127.14974], [36.17085, 127.16025], [36.1729, 127.16921], [36.16243, 127.17189], [36.16504, 127.18407], [36.173, 127.19268], [36.17655, 127.20086], [36.18358, 127.19174], [36.18376, 127.18555], [36.19119, 127.18153], [36.19094, 127.17065]]},
+        'tapjeong-road': {"id": "tapjeong-road", "official": "data/route/tapjeong-road.json", "name": {"ko": "탑정호 찻길 한 바퀴"}, "short": {"ko": "탑정호 찻길"}, "kind": "자전거", "mode": "distance", "lengthM": 18910, "loop": true, "elev": [[0, 31], [576, 36], [1157, 67], [1720, 33], [2348, 45], [2923, 18], [3446, 18], [4073, 15], [4588, 14], [5159, 29], [5733, 33], [6308, 29], [6887, 38], [7458, 45], [8037, 52], [8600, 50], [9228, 35], [9748, 29], [10326, 32], [11017, 40], [11469, 42], [12068, 33], [12612, 33], [13192, 31], [13776, 31], [14347, 37], [14909, 32], [15485, 42], [16050, 39], [16655, 44], [17201, 98], [17783, 38], [18343, 32], [18910, 31], [18910, 31]], "note": "거리 = 오픈스트리트맵 찻길 길 찾기로 잰 실제 길 18.9km (차가 다니는 도로만 · 11/22 보스 \"탑정호는 도로길로 자전거길 추가\")", "source": "탑정호 둘레 찻길 한 바퀴", "segments": [{"from": 0, "to": 18910, "scene": "river"}], "landmarks": [{"id": "tapjeong-road-9", "name": {"ko": "딸기향농촌테마공원"}, "at": 132, "side": -1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": false, "src": "osm"}, {"id": "tapjeong-road-2", "name": {"ko": "안천리"}, "at": 1348, "side": 1, "art": "village", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}, {"id": "tapjeong-road-1", "name": {"ko": "탑정호 출렁다리"}, "at": 1573, "side": -1, "art": "village", "photo": null, "desc": {"ko": "호수 위를 건너는 600m 출렁다리"}, "hub": true, "src": "osm", "off": 300, "ll": [36.18217, 127.158855]}, {"id": "tapjeong-road-3", "name": {"ko": "종연리"}, "at": 4989, "side": -1, "art": "village", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm", "off": 350, "ll": [36.171297, 127.152579]}, {"id": "tapjeong-road-4", "name": {"ko": "조정리"}, "at": 8482, "side": 1, "art": "village", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm", "off": 200, "ll": [36.17331, 127.172095]}, {"id": "tapjeong-road-5", "name": {"ko": "산노리"}, "at": 10820, "side": -1, "art": "village", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}, {"id": "tapjeong-road-6", "name": {"ko": "병암리"}, "at": 12351, "side": 1, "art": "village", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}, {"id": "tapjeong-road-7", "name": {"ko": "백제군사박물관"}, "at": 17477, "side": -1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm", "off": 400, "ll": [36.192413, 127.181376]}, {"id": "tapjeong-road-8", "name": {"ko": "탑정호수변생태공원"}, "at": 18873, "side": 1, "art": "sign", "photo": null, "desc": {"ko": ""}, "hub": true, "src": "osm"}], "path": [[36.19143, 127.1697], [36.18804, 127.16796], [36.18814, 127.16359], [36.1858, 127.15959], [36.18427, 127.15628], [36.18592, 127.15355], [36.18526, 127.15199], [36.18739, 127.14806], [36.18553, 127.1454], [36.18062, 127.14848], [36.17506, 127.1467], [36.17439, 127.15102], [36.17585, 127.15411], [36.1775, 127.15745], [36.17764, 127.15973], [36.17761, 127.16095], [36.17413, 127.16193], [36.17065, 127.16136], [36.17191, 127.16316], [36.17242, 127.16654], [36.17421, 127.16744], [36.17329, 127.16905], [36.17136, 127.17179], [36.16785, 127.17313], [36.16309, 127.17192], [36.1612, 127.17888], [36.16456, 127.18754], [36.17054, 127.19024], [36.1738, 127.19316], [36.17381, 127.19894], [36.17485, 127.20371], [36.17751, 127.20349], [36.18401, 127.20518], [36.18749, 127.1985], [36.19101, 127.19659], [36.1938, 127.19209], [36.19353, 127.18876], [36.18806, 127.18372], [36.189, 127.17728], [36.1922, 127.17291], [36.19143, 127.1697]]},
     } },
     mungyeong: { id: 'mungyeong', name: { ko: '문경시' }, country: 'KR', courses: {
         'saejae-gil': {"id": "saejae-gil", "official": "data/route/saejae-gil.json", "name": {"ko": "문경새재 과거길 (1관문→2관문→3관문)"}, "short": {"ko": "문경새재"}, "kind": "도보", "mode": "distance", "lengthM": 6110, "loop": false, "elev": [[0, 251], [227, 251], [449, 254], [660, 262], [911, 278], [1097, 284], [1339, 294], [1547, 294], [1747, 305], [1986, 313], [2184, 332], [2405, 341], [2632, 352], [2846, 376], [3058, 393], [3277, 407], [3506, 420], [3710, 447], [3940, 454], [4147, 462], [4374, 472], [4584, 489], [4813, 506], [5022, 522], [5240, 536], [5456, 559], [5685, 581], [5905, 607], [6110, 644]], "note": "거리 = 오픈스트리트맵 길 찾기로 잰 실제 길 6.1km", "source": "주흘관 → 조곡관 → 조령관", "segments": [{"from": 0, "to": 6110, "scene": "valley"}], "landmarks": [{"id": "saejae-1", "name": {"ko": "주흘관"}, "at": 40, "side": 1, "art": "gate", "photo": null, "desc": {"ko": "문경새재 제1관문"}, "hub": true}, {"id": "saejae-2", "name": {"ko": "조곡관"}, "at": 2958, "side": -1, "art": "sign", "photo": null, "desc": {"ko": "문경새재 제2관문"}, "hub": true}, {"id": "saejae-3", "name": {"ko": "조령관"}, "at": 6070, "side": 1, "art": "sign", "photo": null, "desc": {"ko": "문경새재 제3관문"}, "hub": true}], "path": [[36.76837, 128.07526], [36.77243, 128.07531], [36.77336, 128.07057], [36.77645, 128.06714], [36.78046, 128.06633], [36.78431, 128.06538], [36.78829, 128.0657], [36.79191, 128.06497], [36.7957, 128.0656], [36.79952, 128.06466], [36.80332, 128.06605], [36.80675, 128.06591], [36.80956, 128.06241], [36.8104, 128.0579]]},
@@ -3917,9 +3932,31 @@ function doEnd(){
   showRun(false); clearPopups(); mtnClear(); $('fixMsg').textContent = ''; $('fixIn').value = ''; $('endConq').classList.add('hidden');
   fillEnd(); $('endScreen').classList.remove('hidden');
 }
+/* 11/22 보스 폰(탑정호 3번 나눠 탐: 5.00 + 6.86 + 17.18km > 코스 17.4km): 실내자전거 계기판이 '오늘 누적'이라 마지막에 넣은 숫자가 앞 기록까지 더해진 값
+   → 넣은 숫자가 운동 시간에 비해 말이 안 되게 빠르면(자전거 시속 45km·걷기/달리기 22km 넘음) 바로 넣지 않고,
+     오늘 같은 운동 앞 기록을 뺀 값을 먼저 권함 */
+function fixGuard(v){
+  if (isClimb() || !(S.elapsed > 60) || !(v > 0)) return null;
+  const cap = S.act === 'bike' ? 45 : 22, h = S.elapsed / 3600, kmh = v / h;
+  if (kmh <= cap) return null;
+  const day = new Date(S.sessionId).toDateString(), grp = actGrp(S.act);
+  const prev = DB.records.filter(r => r.id !== S.sessionId && r.id < S.sessionId && new Date(r.id).toDateString() === day && actGrp(r.act) === grp).reduce((a, r) => a + (r.distM || 0), 0) / 1000;
+  const sub = Math.round((v - prev) * 100) / 100;
+  return { kmh: Math.round(kmh), prev: Math.round(prev * 100) / 100, sub: prev > 0 && sub > 0 && sub / h <= cap ? sub : null };
+}
+$('fixMsg').addEventListener('click', e => { const b = e.target.closest('[data-fixv]'); if (!b) return; $('fixIn').value = b.dataset.fixv; FIXOK = true; $('bFix').click(); });
+let FIXOK = false;
 $('bFix').onclick = () => {   // 기계에 찍힌 숫자로 맞추기
   const v = parseFloat($('fixIn').value);
   if (!(v >= 0)){ $('fixMsg').textContent = T.badNum; return; }
+  const g = FIXOK ? null : fixGuard(v); FIXOK = false;
+  if (g){
+    const mins = Math.round(S.elapsed / 60);
+    $('fixMsg').innerHTML = '⚠️ ' + mins + '분에 ' + v + 'km면 시속 ' + g.kmh + 'km예요.' +
+      (g.sub != null ? '<br>계기판이 오늘 누적 거리라면 앞 기록 ' + g.prev + 'km를 뺀 <b>' + g.sub + 'km</b>가 맞아요.' : '<br>숫자를 한 번 더 확인해 주세요.') +
+      '<div class="fixAsk">' + (g.sub != null ? '<button data-fixv="' + g.sub + '">' + g.sub + 'km로 맞추기</button>' : '') + '<button data-fixv="' + v + '" class="sub">' + v + 'km 그대로</button></div>';
+    return;
+  }
   const oldM = S.sessionM, usedSensor = SENS.sessDist > 0;
   if (S.free) S.sessionM = isClimb() ? v * FLOOR_M : v * 1000;
   else if (isClimb()){ const m = TGT(DB.climb.sel), b = S.startTotal + S.sessionM; S.sessionM = v * FLOOR_M;
@@ -6560,6 +6597,29 @@ async function ytClip(byTap){   // 복사해 둔 링크 읽기 — 폰에 따라
   if (byTap){ $('ytMsg').textContent = t ? '복사한 글에 유튜브 링크가 없어요' : '칸을 길게 눌러 붙여넣은 뒤 한 번 더 눌러 주세요'; $('ytMsg').classList.remove('hidden'); try { $('ytIn').focus(); } catch(e){} }
   return false;
 }
+/* 11/22 보스 "앱 안 우리 창에서 검색 · 바로 보기": Supabase 함수(bgr-yt-search)가 유튜브 검색 열쇠를 숨겨 들고 대신 물어봄
+   유튜브 검색은 하루 호출 수가 적어(기본 100번) 같은 검색어는 이 폰에 하루 저장 · 함수도 6시간 저장 */
+const YTS = { url: TEL.url.replace('/rest/v1/bgr_event', '/functions/v1/bgr-yt-search'), chips: ['러닝 음악', '걷기 풍경 4K', '등산 브이로그', '자전거 라이딩', '홈트 음악'] };
+const ytDec = t => { const d = document.createElement('textarea'); d.innerHTML = t; return d.value; };
+function ytResShow(items){
+  $('ytRes').innerHTML = items.map(x => '<button data-yt="' + esc(x.id) + '"><img src="https://i.ytimg.com/vi/' + esc(x.id) + '/mqdefault.jpg" alt="" loading="lazy"><span><b>' + esc(ytDec(x.t)) + '</b><small>' + esc(ytDec(x.ch)) + (x.live ? ' · 🔴 라이브' : '') + '</small></span></button>').join('');
+  $('ytRes').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
+}
+async function ytSearch(q){
+  q = String(q || '').trim(); if (!q) return; $('ytQ').value = q; try { $('ytQ').blur(); } catch(e){}
+  const ck = 'bgsj_yts:' + q.toLowerCase(), msg = t => { $('ytQMsg').textContent = t; $('ytQMsg').classList.toggle('hidden', !t); };
+  try { const c = JSON.parse(localStorage.getItem(ck) || 'null'); if (c && Date.now() - c.t < 864e5){ msg(''); ytResShow(c.items); return; } } catch(e){}
+  msg('찾는 중…'); $('ytRes').innerHTML = '';
+  try {
+    const r = await fetch(YTS.url + '?q=' + encodeURIComponent(q), { headers: { apikey: TEL.key } }), j = await r.json().catch(() => ({}));
+    if (!r.ok || j.err){ msg(j.err === 'nokey' ? '검색 준비 중이에요 — 아래 "링크로 띄우기"를 써 주세요' : j.err === 'quota' ? '오늘 검색을 다 썼어요 (내일 다시) — 최근 본 영상이나 링크로 띄워 주세요' : j.err === 'rate' ? '잠시 뒤 다시 검색해 주세요' : '검색이 안 돼요 (인터넷 확인)'); if (j.err === 'nokey' || j.err === 'quota') $('ytMore').open = true; return; }
+    if (!j.items.length){ msg('찾은 영상이 없어요'); return; }
+    msg(''); ytResShow(j.items); try { localStorage.setItem(ck, JSON.stringify({ t: Date.now(), items: j.items })); } catch(e){}
+  } catch(e){ msg('검색이 안 돼요 (인터넷 확인)'); }
+}
+$('ytQF').onsubmit = e => { e.preventDefault(); ytSearch($('ytQ').value); };
+$('ytChips').innerHTML = YTS.chips.map(c => '<button type="button" data-q="' + c + '">' + c + '</button>').join('');
+$('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytSearch(b.dataset.q));
 $('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('ytClose').onclick = () => $('ytBox').classList.add('hidden');
