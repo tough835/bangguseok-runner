@@ -31,15 +31,15 @@ def hav(a, b):
     return 6371000 * 2 * math.asin(math.sqrt(h))
 
 
-def overpass(ql):
-    for k in range(3):
+def overpass(ql):   # 11/22 2판: 서버마다 한 번씩 · 60초 (첫 판은 실패 때 재시도가 길어 35분 넘게 걸림)
+    for k in range(2):
         for host in OVP:
             try:
                 req = urllib.request.Request(host, data=urllib.parse.urlencode({'data': ql}).encode(), headers=UA)
-                with urllib.request.urlopen(req, timeout=120) as r: return json.load(r)
-            except Exception as e: print('  overpass 실패', host[8:30], str(e)[:80])
-            time.sleep(3)
-        time.sleep(10 * (k + 1))
+                with urllib.request.urlopen(req, timeout=75) as r: return json.load(r)
+            except Exception as e: print('  overpass 실패', host[8:30], str(e)[:80], flush=True)
+            time.sleep(2)
+        time.sleep(8)
     return None
 
 
@@ -53,10 +53,13 @@ for cid, f in TARGETS.items():
     for i in range(1, len(co)):
         if cum[i] - last >= 300: line.append(co[i]); last = cum[i]
     line.append(co[-1])
-    poly = ','.join('%.5f,%.5f' % (a, b) for a, b in line)
-    q = '[out:json][timeout:110];(' + ''.join('nwr(around:%d,%s)["name"]["%s"~"^(%s)$"];' % (R, poly, k, v) for k, v in KEYS) + ');out center tags;'
+    # 2판: 긴 선(around) 대신 노선을 감싼 네모(bbox)로 가볍게 받고, 1.5km 안인지는 여기서 거름
+    la0 = min(a for a, b in co) - 0.015; la1 = max(a for a, b in co) + 0.015
+    lo0 = min(b for a, b in co) - 0.018; lo1 = max(b for a, b in co) + 0.018
+    bb = '%.4f,%.4f,%.4f,%.4f' % (la0, lo0, la1, lo1)
+    q = '[out:json][timeout:60];(' + ''.join('nwr(%s)["name"]["%s"~"^(%s)$"];' % (bb, k, v) for k, v in KEYS) + ');out center tags;'
     j = overpass(q); res = []
-    if j is None: out[cid] = {'err': 'overpass 실패'}; continue
+    if j is None: out[cid] = {'err': 'overpass 실패'}; print(cid, '실패', flush=True); continue
     seen = set()
     for el in j.get('elements', []):
         t = el.get('tags') or {}; nm = t.get('name:ko') or t.get('name')
@@ -64,11 +67,13 @@ for cid, f in TARGETS.items():
         la = el.get('lat') or (el.get('center') or {}).get('lat'); lo = el.get('lon') or (el.get('center') or {}).get('lon')
         if la is None: continue
         i = min(range(len(co)), key=lambda i: hav(co[i], [la, lo])); off = hav(co[i], [la, lo])
+        if off > R: continue
         kind = next(('%s=%s' % (k, t[k]) for k, _ in KEYS if k in t), '')
         wiki = 1 if ('wikidata' in t or 'wikipedia' in t) else 0
         seen.add(nm); res.append([nm, round(cum[i]), round(off), kind, wiki, round(la, 6), round(lo, 6)])
     res.sort(key=lambda r: r[1])
     out[cid] = {'len': round(cum[-1]), 'n': len(res), 'c': res}
-    print(cid, round(cum[-1]), '후보', len(res))
+    print(cid, round(cum[-1]), '후보', len(res), flush=True)
+    json.dump(out, open('data/hub_probe.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)   # 하나 끝날 때마다 저장
     time.sleep(5)
 json.dump(out, open('data/hub_probe.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
