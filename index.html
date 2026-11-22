@@ -1144,7 +1144,7 @@
 </div>
 
 <script>
-const BUILD = '202611222019';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611222039';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2998,8 +2998,8 @@ function doorScene(when){   // 한 장면 뽑기 — 바로 앞에 나온 마디
   const one = k => { const l = dl[k] || DOOR_DL.gs[k]; let i = Math.floor(Math.random() * l.length); if (l.length > 1 && i === DOOR_LAST[k]) i = (i + 1) % l.length; DOOR_LAST[k] = i; return l[i]; };
   return [one('peek'), one('angry'), one(when), one('bye')];
 }
-const WHO_IMG = ['sleepy', 'angry', 'cheer', 'yawn'];   // 11/20 아리 그림 v2 (img/who/*.webp, 270×354) — 캐릭터를 바꿀 때는 이 4장만 갈아 끼움
-function doorWho(){ return WHO_IMG.map((k, i) => '<img class="dw' + i + '" src="img/who/' + k + '.webp?v=1" alt="" draggable="false">').join(''); }
+const WHO_IMG = ['sleepy', 'angry', 'cheer', 'yawn'];   // 11/22 보스 얼굴 캐리커처 '방구석 빌런'(아리 제작, 머리·주먹까지 잘라 270×354) · 이전 그림은 img/who/v1-ari/ — 캐릭터를 바꿀 때는 이 4장만 갈아 끼움
+function doorWho(){ return WHO_IMG.map((k, i) => '<img class="dw' + i + '" src="img/who/' + k + '.webp?v=2" alt="" draggable="false">').join(''); }
 function doorWhoOld(){
   const S5 = 'stroke="#111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"';
   const body = '<path d="M38 232 Q30 170 62 158 L118 158 Q150 170 142 232 Z" fill="#fff" ' + S5 + '/><path d="M70 160 Q90 186 110 160" fill="#ffe1c2" ' + S5 + '/><path d="M52 176 Q62 196 50 214 M128 176 Q118 196 130 214" fill="none" stroke="#111" stroke-width="3"/>';
@@ -3013,7 +3013,7 @@ function doorWhoOld(){
   return F.map((f, i) => '<svg viewBox="0 0 180 236" class="dw' + i + '">' + body + head + f + '</svg>').join('');
 }
 const DOOR = { t: [], on: false };
-function doorPre(){ if (doorPre.d) return; doorPre.d = 1; WHO_IMG.forEach(k => { const i = new Image(); i.src = 'img/who/' + k + '.webp?v=1'; }); }
+function doorPre(){ if (doorPre.d) return; doorPre.d = 1; WHO_IMG.forEach(k => { const i = new Image(); i.src = 'img/who/' + k + '.webp?v=2'; }); }
 function doorFx(lines){
   const el = $('doorFx'), bub = $('doorBub'); if (DOOR.on || !lines) return; DOOR.on = true; S.doorAt = S.elapsed; MTC.last = Date.now();
   if (!$('doorWho').firstChild) $('doorWho').innerHTML = doorWho();
@@ -3071,7 +3071,7 @@ function doorTick(){   /* 11/22 보스: 출발 직후 · 4분의 1 · 중간 · 
 function doorFxHide(){ DOOR.t.forEach(clearTimeout); DOOR.t = []; DOOR.on = false; $('doorFx').className = 'hidden out'; $('doorBub').className = 'hidden'; }
 function cheerFxHide(){ const el = $('cheerFx'); clearTimeout(MTC.t2); if (el.classList.contains('hidden')) return; el.classList.add('out'); setTimeout(() => el.classList.add('hidden'), 500); }
 function cheerShow(c){
-  const el = $('cheer'); cheerFxHide(); if (WHO_IMG.includes(c.emo)) $('chEmo').innerHTML = '<img src="img/who/' + c.emo + '.webp?v=1" alt="">'; else $('chEmo').textContent = c.emo; $('chTx').textContent = c.tx; $('chRest').classList.toggle('hidden', !c.rest);
+  const el = $('cheer'); cheerFxHide(); if (WHO_IMG.includes(c.emo)) $('chEmo').innerHTML = '<img src="img/who/' + c.emo + '.webp?v=2" alt="">'; else $('chEmo').textContent = c.emo; $('chTx').textContent = c.tx; $('chRest').classList.toggle('hidden', !c.rest);
   { let pt = 0; ['map', 'hudTop', 'infoPanel'].forEach(id => { const e = $(id); if (e && !e.classList.contains('hidden')) pt = Math.max(pt, e.getBoundingClientRect().bottom); }); if (pt) el.style.top = Math.round(pt + 8) + 'px'; }   // 거점 알림과 같은 자리(위쪽 칸 바로 아래) — 화살표(내 위치)를 가리지 않게
   el.classList.remove('hidden', 'out'); el.style.animation = 'none'; void el.offsetWidth; el.style.animation = '';   // 뜰 때마다 통통 튀게
   try { if (!document.hidden) navigator.vibrate && navigator.vibrate(60); } catch(e){}
