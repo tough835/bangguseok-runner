@@ -141,14 +141,14 @@ def prune(co):   # 갔다가 같은 점으로 되돌아오는 곁가지를 잘�
         if len(st) >= 2 and st[-2] == p: st.pop()
         elif not st or st[-1] != p: st.append(p)
     return st
-def route(cid, pts, bike):   # (방법, 거리 m, [[위도, 경도] …]) 또는 None
+def route(cid, pts, bike):   # (방법, 거리 m, [[위도, 경도] …]) 또는 None · 11/22: bike == 'car' 이면 찻길(차가 다니는 도로)만
     try:
-        u = 'https://routing.openstreetmap.de/' + ('routed-bike' if bike else 'routed-foot') + '/route/v1/driving/' + ';'.join('%.5f,%.5f' % (q[1], q[0]) for q in pts) + '?overview=full&geometries=geojson'
+        u = 'https://routing.openstreetmap.de/' + ('routed-car' if bike == 'car' else 'routed-bike' if bike else 'routed-foot') + '/route/v1/driving/' + ';'.join('%.5f,%.5f' % (q[1], q[0]) for q in pts) + '?overview=full&geometries=geojson'
         j = get(u); rt = j['routes'][0]; return ('OSRM', rt['distance'], [[round(x[1], 6), round(x[0], 6)] for x in rt['geometry']['coordinates']])
     except Exception as e:
         log.append(cid + ' OSRM ' + str(e)[:80])
         try:
-            q = {'locations': [{'lat': x[0], 'lon': x[1], 'type': 'break_through'} for x in pts], 'costing': 'bicycle' if bike else 'pedestrian', 'directions_type': 'none'}
+            q = {'locations': [{'lat': x[0], 'lon': x[1], 'type': 'break_through'} for x in pts], 'costing': 'auto' if bike == 'car' else 'bicycle' if bike else 'pedestrian', 'directions_type': 'none'}
             j = get('https://valhalla1.openstreetmap.de/route?json=' + urllib.parse.quote(json.dumps(q)))
             co = []; [co.extend(poly6(l['shape'])) for l in j['trip']['legs']]
             return ('Valhalla', j['trip']['summary']['length'] * 1000, co)
@@ -175,7 +175,7 @@ for c in src:
                     if el: o['elev'] = el; o['ev'] = 2; json.dump(o, open('data/route/%s.json' % c['id'], 'w', encoding='utf-8'), separators=(',', ':'), ensure_ascii=False); log.append(c['id'] + ' 높이만 채움')
             except Exception as e: log.append(c['id'] + ' 높이 채우기 실패 ' + str(e)[:60])
         continue
-    bike = c.get('mode') == 'bike'; extra = {}; named = []; res = None
+    bike = 'car' if c.get('mode') == 'car' else c.get('mode') == 'bike'; extra = {}; named = []; res = None   # 11/22: "mode": "car" = 찻길로 (자전거용 호수 한 바퀴)
     near = c.get('near'); box = c.get('box', 0.1)
     if c.get('ring') or c.get('via'): glog.append('[%s]' % c['id'])
     if c.get('ring'):

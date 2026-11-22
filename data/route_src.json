@@ -64,5 +64,6 @@
 {"id": "dalseong-bike", "loop": false, "lengthM": 22000, "near": [35.79, 128.44], "box": 0.12, "mode": "bike", "via": ["강정고령보", "사문진주막촌|사문진나루터|사문진교", "달성보"]},
 {"id": "tangeum-bike", "loop": false, "lengthM": 18000, "near": [36.99, 127.93], "box": 0.12, "mode": "bike", "via": ["충주댐", "탄금대", "중앙탑사적공원|중앙탑|충주 탑평리 칠층석탑"]},
 {"id": "seomjin-bike", "loop": false, "lengthM": 27000, "near": [35.48, 127.15], "box": 0.14, "mode": "bike", "via": ["섬진강댐", "장군목|요강바위|장군목유원지", "향가유원지|향가터널"]},
-{"id": "daecheong-bike", "loop": false, "lengthM": 22000, "near": [36.42, 127.42], "box": 0.1, "mode": "bike", "via": ["엑스포다리", "신구교", "대청댐"]}
+{"id": "daecheong-bike", "loop": false, "lengthM": 22000, "near": [36.42, 127.42], "box": 0.1, "mode": "bike", "via": ["엑스포다리", "신구교", "대청댐"]},
+{"id": "tapjeong-road", "mode": "car", "loop": true, "lengthM": 24000, "near": [36.17, 127.17], "box": 0.09, "ring": "탑정호|탑정저수지", "start": [36.19107, 127.1709], "marks": ["탑정호 출렁다리", "탑정호수변생태공원|탑정호 수변생태공원", "백제군사박물관", "탑정리 석탑", "병암유원지", "딸기향농촌테마공원"]}
 ]
