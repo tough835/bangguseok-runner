@@ -24,6 +24,8 @@
   #bYt{position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
   #bYt b{color:#ff5a4d;margin-right:4px}
   body.vidOn #bYt{display:none}
+  /* 11/23 보스 "유튜브 옆이 비어 있다 → 꽉 채워": 영상을 자르면 유튜브 규칙 위반 → 대신 영상은 맨 위에 가로 폭 가득(16:9), 남는 아래는 코스 화면이 그대로 보이게 (세로 화면) */
+  @media (orientation: portrait){ body.vidMine #vidBox{bottom:auto} body.vidMine #vidWrap{flex:none;height:56.25vw} }
   #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vidBox.mine #vidTop{display:block}
   #vidBar .vb{display:flex;gap:6px;flex:none}
@@ -3059,7 +3061,7 @@ function doorTick(){   /* 11/22 보스: 출발 직후 · 4분의 1 · 중간 · 
   if (!want) return;
   if (want === 'start' && e > 90){ d.seen.start = 1; return; }   // 놓친 출발 인사는 건너뜀
   const shown = id => !$(id).classList.contains('hidden');
-  let busy = !doorFree() || ['popup', 'cheerFx', 'lapBox', 'confirmBox', 'restBox', 'vidBox'].some(shown);
+  let busy = !doorFree() || ['popup', 'cheerFx', 'lapBox', 'confirmBox', 'restBox'].some(shown) || (shown('vidBox') && !(document.body.classList.contains('vidMine') && !landUI()));   // 11/23 내 영상(세로)은 위에만 있어 문 응원과 안 겹침
   if (!busy && shown('cheer')){ if (want === 'arr') cheerHide(); else busy = true; }   // 도착 인사는 작은 응원 글을 치우고 나옴
   if (busy){ if (want === 'arr'){ d.pend = d.pend || e; if (e - d.pend < 60) return; } else return; }   // 도착 인사는 1분까지 기다렸다가, 그래도 바쁘면 건너뜀
   d.at = e;
@@ -5763,6 +5765,7 @@ var NAV = { full: false, zoom: 1, alt: false, fz: 1, fx: 0, fy: 0, fa: 0, px: 0,
 const landUI = () => matchMedia('(orientation: landscape) and (max-height: 560px)').matches;   // 11/21 검수 B5
 function viewArea(){   // 지도를 그릴 세로 범위: 위 정보칸 아래 ~ 아래 조작판 위 (가로 화면은 숫자가 오른쪽이라 끝까지)
   const hb = landUI() ? 36 : ($('hudBottom').offsetHeight || innerHeight * 0.4), ip = NAV.full ? $('infoPanel').offsetHeight + 16 : 0;
+  if (document.body.classList.contains('vidMine') && !landUI()){ const vb = $('vidBox').getBoundingClientRect().bottom; return { top: Math.round((vb + 8) * DPR), bot: Math.round((innerHeight - hb + 36) * DPR) }; }   // 11/23 내 영상은 위, 코스 화면은 그 아래
   return { top: Math.round(ip * DPR), bot: Math.round((innerHeight - hb + 36) * DPR) };
 }
 function fadeBottom(g, vh){
@@ -6599,7 +6602,7 @@ function vidFit(){
 window.addEventListener('resize', () => { if (VID.on) vidLay(); });
 async function vidOn(){
   const v = COURSE.video; if (!v) return;
-  if (VID.mine){ VID.mine = null; vidDrop(); }
+  if (VID.mine){ VID.mine = null; vidDrop(); document.body.classList.remove('vidMine'); }
   $('vidBox').classList.remove('mine'); $('vidPick').classList.add('hidden');
   VID.on = true; document.body.classList.add('vidOn'); $('vidBox').classList.remove('hidden'); vidLay(); $('vidTx').textContent = '🎬 ' + (v.note || '영상') + ' · 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
@@ -6611,7 +6614,7 @@ async function vidOn(){
               onError: e => { $('vidTx').textContent = '영상 재생 오류 ' + e.data + ' (일부 공개인지 확인)'; } } });
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
-function vidOffNow(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); }
+function vidOffNow(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn'); $('vidBox').classList.add('hidden'); try { VID.ready && VID.P.pauseVideo(); } catch(e){} }
 function vidTick(kmh){
   if (!VID.on || !VID.ready || VID.mine) return;   // 내가 고른 영상은 속도에 맞추지 않음
@@ -6644,7 +6647,7 @@ function ytBoxOpen(msg){
 }
 async function ytPlay(id){
   $('ytBox').classList.add('hidden'); MYT.wait = 0; MYT.last = id; ytKeep(id);
-  VID.mine = id; VID.on = true; document.body.classList.add('vidOn'); $('vidBox').classList.add('mine'); $('vidBox').classList.remove('hidden'); $('vidPick').classList.remove('hidden');
+  VID.mine = id; VID.on = true; document.body.classList.add('vidOn', 'vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); $('vidBox').classList.add('mine'); $('vidBox').classList.remove('hidden'); $('vidPick').classList.remove('hidden');
   ytTop(); vidLay(); $('vidTx').textContent = '▶ 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
   if (VID.mine !== id) return;

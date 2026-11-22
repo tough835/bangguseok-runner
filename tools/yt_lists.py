@@ -8,6 +8,6 @@ out = {}
 for k, pl in P.items():
     try:
         with urllib.request.urlopen(F + urllib.parse.urlencode({'pl': pl}), timeout=40) as r: j = json.load(r)
-        out[k] = {'pl': pl, 'n': len(j.get('items', [])), 'err': j.get('err'), 'first': [x['t'][:50] for x in j.get('items', [])[:4]]}
+        out[k] = {'pl': pl, 'n': len(j.get('items', [])), 'err': j.get('err'), 'first': [x['t'][:50] for x in j.get('items', [])[:4]], 'all': [[x['id'], x.get('d'), x['t'][:70]] for x in j.get('items', [])] if k in ('서울 걷기', '국내 라이딩') else None}
     except Exception as e: out[k] = {'pl': pl, 'err': str(e)[:120]}
 json.dump(out, open('data/yt_lists.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
