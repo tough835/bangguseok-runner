@@ -26,13 +26,20 @@ public class StepStore {
         String today = dayKey();
         String day = sp.getString("day", null);
         long base = sp.getLong("base", value), carry = sp.getLong("carry", 0), last = sp.getLong("last", value);
+        long lastT = sp.getLong("time", 0), now = System.currentTimeMillis();
         if (day == null) { day = today; base = value; carry = 0; last = value; }   // 처음 설치: 지금부터 셈
         boolean rebooted = value < last;
         if (rebooted) { carry += Math.max(0, last - base); base = 0; }
         if (!today.equals(day)) {   // 날이 바뀜: 어제 합계를 기록으로 남기고 새로 시작
-            long yesterday = carry + Math.max(0, (rebooted ? 0 : last) - base);
+            /* 11/23 보스 폰(아침 8시 삼성 187 · 앱 374): 밤에 폰이 잠들면 15분 읽기가 몇 시간씩 밀려,
+               마지막 읽기 뒤 걸음(대부분 0시 전)이 다음 날 첫 읽기 때 '오늘'로 몰렸음.
+               → 마지막 읽기가 30분 넘게 지났으면 그사이 걸음은 어제 것으로 봄 (밤 사이엔 거의 안 걷고, 23:45 알람이 마지막 읽기를 0시 가까이로 당김)
+                 30분 안이면 예전처럼 마지막 읽기에서 끊음 */
+            boolean longGap = lastT > 0 && now - lastT > 30L * 60 * 1000;
+            long upTo = rebooted ? 0 : (longGap ? value : last);
+            long yesterday = carry + Math.max(0, upTo - base);
             ed.putLong("hist_" + day, yesterday);
-            base = rebooted ? 0 : last; carry = 0; day = today;
+            base = upTo; carry = 0; day = today;
         }
         long steps = carry + Math.max(0, value - base);
         ed.putString("day", day).putLong("base", base).putLong("carry", carry).putLong("last", value)

@@ -33,6 +33,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+        <receiver android:name="com.dolgurum.bangguseok.StepMidnight" android:exported="false" />   <!-- 11/23 걸음 하루 경계 23:45 읽기 -->
     </application>
 
     <!-- 음성 안내: 안드로이드 11+는 폰 음성 엔진을 찾으려면 이 선언이 필요 -->

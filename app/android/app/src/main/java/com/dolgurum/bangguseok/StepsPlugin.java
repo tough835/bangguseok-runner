@@ -30,6 +30,7 @@ public class StepsPlugin extends Plugin {
     private void schedule() {
         PeriodicWorkRequest req = new PeriodicWorkRequest.Builder(StepWorker.class, 15, TimeUnit.MINUTES).build();
         WorkManager.getInstance(getContext()).enqueueUniquePeriodicWork("bgsj-steps", ExistingPeriodicWorkPolicy.KEEP, req);
+        StepMidnight.schedule(getContext());   // 11/23: 매일 23:45 한 번 더 읽기
     }
 
     @PluginMethod
