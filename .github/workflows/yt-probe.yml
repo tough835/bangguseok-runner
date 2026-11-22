@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: python tools/yt_probe.py
+      - run: '[ -f data/yt_probe.json ] || python tools/yt_probe.py'
       - run: '[ -f tools/yt_lists.py ] && python tools/yt_lists.py || true'
       - run: |
           git config user.name "yt-bot"; git config user.email "yt-bot@users.noreply.github.com"
