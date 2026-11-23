@@ -29,9 +29,9 @@ M = [  # id, 산 이름(정상), 지점들(출발→…→정상), 상자, 공�
  ('gamtu', '감투산', ['빼빼재', '감투산'], HY, 1.0),
  ('sambong', '삼봉산', ['오도재', '오도봉', '삼봉산'], HY, 3.7),
  ('daebong', '계관봉', ['빼빼재', '감투산', '대봉산', '계관봉'], HY, 4.6),
- ('baegun', '백운산', ['빼빼재', '대방령', '서래봉', '백운산'], HY, 5.1),
- ('yeongchwi', '영취산', ['부전', '덕운봉', '영취산'], HY, 4.7),
- ('dosung', '도숭산', ['주암', '도숭산'], HY, 5.3),
+ ('baegun', '백운산', ['빼빼재', '서래봉', '백운산'], HY, 5.1),
+ ('yeongchwi', '영취산', ['부전마을', '덕운봉', '영취산'], HY, 4.7),
+ ('dosung', '도숭산', ['주암마을', '도숭산'], HY, 5.3),
  ('wolbong', '월봉산', ['노상', '큰목재', '월봉산'], HY, 5.0),
  ('wabul', '와불산', ['벽송사', '와불산'], HY, 4.8),
  ('geomang', '거망산', ['용추사', '거망산'], HY, 4.7),
@@ -102,7 +102,7 @@ for mid, peak, via, box, km in M:
     try:
         pts = []
         for i, nm in enumerate(via):
-            f = find(nm, box, peak=(i == len(via) - 1) or i > 0); rec['via'].append([nm, f]); time.sleep(1.5)
+            f = find(nm, box, peak=(i == len(via) - 1) or i > 0); rec['via'].append([nm, f]); time.sleep(3)
             if f: pts.append(f[:2])
         if len(via) == 1 and pts:   # 오름: 정상만 알면 → 가장 가까운 주차장에서 출발
             s0 = pts[0]; q = '[out:json][timeout:60];node["amenity"="parking"](around:1500,%f,%f);out 10;' % (s0[0], s0[1])

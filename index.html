@@ -1150,7 +1150,7 @@
 </div>
 
 <script>
-const BUILD = '202611231352';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231353';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1434,17 +1434,17 @@ const WORLD = {
           kind: 'mountain',
           note: '정상 높이는 함양군 자료, 출발 높이는 추정',
           segments: [
-            { id: 'gamtu', name: { ko: '감투산' }, summit: 1035, base: 800, baseName: { ko: '빼빼재 주차장' }, trail: { ko: '빼빼재 주차장→감투산(1km)' }, photo: null },
-            { id: 'sambong', name: { ko: '삼봉산' }, summit: 1187, base: 750, baseName: { ko: '제일문휴게소 주차장' }, trail: { ko: '제일문휴게소 주차장→오도봉→삼봉산(3.7km)' }, photo: null },
-            { id: 'daebong', name: { ko: '대봉산(계관봉)' }, summit: 1253, base: 800, baseName: { ko: '빼빼재 주차장' }, trail: { ko: '빼빼재 주차장→감투산→대봉산→계관봉(4.6km)' }, photo: null },
+            { id: 'gamtu', geo: 'data/mtn/gamtu.json', name: { ko: '감투산' }, summit: 1035, base: 800, baseName: { ko: '빼빼재 주차장' }, trail: { ko: '빼빼재 주차장→감투산(1km)' }, photo: null },
+            { id: 'sambong', geo: 'data/mtn/sambong.json', name: { ko: '삼봉산' }, summit: 1187, base: 750, baseName: { ko: '제일문휴게소 주차장' }, trail: { ko: '제일문휴게소 주차장→오도봉→삼봉산(3.7km)' }, photo: null },
+            { id: 'daebong', geo: 'data/mtn/daebong.json', name: { ko: '대봉산(계관봉)' }, summit: 1253, base: 800, baseName: { ko: '빼빼재 주차장' }, trail: { ko: '빼빼재 주차장→감투산→대봉산→계관봉(4.6km)' }, photo: null },
             { id: 'baegun', name: { ko: '백운산' }, summit: 1279, base: 800, baseName: { ko: '빼빼재 주차장' }, trail: { ko: '빼빼재 주차장→대방령→서래봉→백운산(5.1km)' }, photo: null },
             { id: 'yeongchwi', name: { ko: '영취산' }, summit: 1076, base: 550, baseName: { ko: '부전마을 주차장' }, trail: { ko: '부전마을 주차장→극락바위→덕운봉→영취산(4.7km)' }, photo: null },
             { id: 'dosung', name: { ko: '도숭산' }, summit: 1044, base: 450, baseName: { ko: '양지주암마을' }, trail: { ko: '양지주암마을→도숭산(5.3km)' }, photo: null },
-            { id: 'wolbong', name: { ko: '월봉산' }, summit: 1279, base: 600, baseName: { ko: '노상마을' }, trail: { ko: '노상마을→노상저수지→큰목재→월봉산(5km)' }, photo: null },
-            { id: 'wabul', name: { ko: '와불산(상내봉)' }, summit: 1210, base: 520, baseName: { ko: '서암 주차장' }, trail: { ko: '서암 주차장→벽송사→와불산(4.8km)' }, photo: null },
-            { id: 'geomang', name: { ko: '거망산' }, summit: 1184, base: 450, baseName: { ko: '일주문 주차장' }, trail: { ko: '일주문 주차장→사평→태장골→거망산(4.7km)' }, photo: null },
+            { id: 'wolbong', geo: 'data/mtn/wolbong.json', name: { ko: '월봉산' }, summit: 1279, base: 600, baseName: { ko: '노상마을' }, trail: { ko: '노상마을→노상저수지→큰목재→월봉산(5km)' }, photo: null },
+            { id: 'wabul', geo: 'data/mtn/wabul.json', name: { ko: '와불산(상내봉)' }, summit: 1210, base: 520, baseName: { ko: '서암 주차장' }, trail: { ko: '서암 주차장→벽송사→와불산(4.8km)' }, photo: null },
+            { id: 'geomang', geo: 'data/mtn/geomang.json', name: { ko: '거망산' }, summit: 1184, base: 450, baseName: { ko: '일주문 주차장' }, trail: { ko: '일주문 주차장→사평→태장골→거망산(4.7km)' }, photo: null },
             { id: 'namdeogyu', geo: 'data/mtn/namdeogyu.json', name: { ko: '남덕유산' }, summit: 1507, base: 649, baseName: { ko: '남덕유산 주차장' }, trail: { ko: '남덕유산 주차장→영각사→남덕유산(4.1km)' }, photo: null },
-            { id: 'samjeong', name: { ko: '삼정산' }, summit: 1182, base: 400, baseName: { ko: '도마마을 주차장' }, trail: { ko: '도마마을 주차장→견승골→삼불사→삼정산(5km)' }, photo: null },
+            { id: 'samjeong', geo: 'data/mtn/samjeong.json', name: { ko: '삼정산' }, summit: 1182, base: 400, baseName: { ko: '도마마을 주차장' }, trail: { ko: '도마마을 주차장→견승골→삼불사→삼정산(5km)' }, photo: null },
             { id: 'geumwon', geo: 'data/mtn/geumwon.json', name: { ko: '금원산' }, summit: 1353, base: 675, baseName: { ko: '금원산 자연휴양림 숲속의집' }, trail: { ko: '금원산 자연휴양림→유안청폭포→금원산(2.9km)' }, photo: null },
             { id: 'gibaek', geo: 'data/mtn/gibaek.json', name: { ko: '기백산' }, summit: 1331, base: 479, baseName: { ko: '일주문 주차장' }, trail: { ko: '일주문 주차장→도숫골→기백산(4.2km)' }, photo: null },
             { id: 'hwangseok', geo: 'data/mtn/hwangseok.json', name: { ko: '황석산' }, summit: 1192, base: 382, baseName: { ko: '심원정 주차장' }, trail: { ko: '심원정 주차장→유동마을→망월대→황석산(4.5km)' }, photo: null },
@@ -5346,7 +5346,7 @@ function drawGeoProfile(g, x0, x1, top, bot, st, mini){
     (m.waypoints || []).filter(w => w.gi != null).sort((a, b) => b.gi - a.gi).forEach(w => flag(G.d[w.gi], E[w.gi], tr(w.name) + ' ' + Math.round(E[w.gi]).toLocaleString() + 'm', false, w.gi <= ci));
     g.fillStyle = '#24332a'; g.font = '700 ' + Math.round(12 * DPR) + 'px sans-serif'; g.fillText('▶ ' + tr(m.baseName || { ko: '' }) + ' ' + m.base + 'm', x0, bot + 22 * DPR);
     g.textAlign = 'right'; g.fillText((G.D / 1000).toFixed(1) + 'km', x1, bot + 22 * DPR); g.textAlign = 'left';
-    g.font = (10 * DPR) + 'px sans-serif'; g.fillStyle = 'rgba(36,51,42,.6)'; g.fillText('등산로·높이: 산림청 100대명산 GPX' + (G.gap ? ' · ' + G.gap : ''), x0, bot + 40 * DPR);
+    g.font = (10 * DPR) + 'px sans-serif'; g.fillStyle = 'rgba(36,51,42,.6)'; g.fillText('등산로·높이: ' + (/오픈스트리트맵/.test(G.src || '') ? '오픈스트리트맵 · Open-Meteo' : '산림청 100대명산 GPX') + (G.gap ? ' · ' + G.gap : ''), x0, bot + 40 * DPR);
   }
   const px = X(q.dist), py = Y(q.ele), pulse = 1 + 0.25 * Math.sin(performance.now() / 300);
   g.fillStyle = 'rgba(232,87,74,.25)'; g.beginPath(); g.arc(px, py, (mini ? 8 : 16) * DPR * pulse, 0, 7); g.fill();
@@ -6335,7 +6335,7 @@ function drawClimbMap(g, vw, vh, st, mini){
   g.fillStyle = 'rgba(232,87,74,.25)'; g.beginPath(); g.arc(ax, ay, a * 1.7 * pulse, 0, 7); g.fill();
   g.fillStyle = '#e8574a'; g.strokeStyle = '#fff'; g.lineWidth = 2.5 * DPR;
   g.beginPath(); g.moveTo(ax, ay - a); g.lineTo(ax + a * 0.75, ay + a * 0.75); g.lineTo(ax, ay + a * 0.35); g.lineTo(ax - a * 0.75, ay + a * 0.75); g.closePath(); g.fill(); g.stroke();
-  if (!mini){ fadeBottom(g, vh); g.font = (10 * DPR) + 'px sans-serif'; g.fillStyle = 'rgba(255,255,255,.8)'; g.fillText(mapCredit() + ' · 등산로 산림청 100대명산 GPX', 8 * DPR, vh - 12 * DPR); }
+  if (!mini){ fadeBottom(g, vh); g.font = (10 * DPR) + 'px sans-serif'; g.fillStyle = 'rgba(255,255,255,.8)'; g.fillText(mapCredit() + ' · 등산로 ' + (/오픈스트리트맵/.test((st.geo && st.geo.src) || '') ? '© 오픈스트리트맵' : '산림청 100대명산 GPX'), 8 * DPR, vh - 12 * DPR); }
 }
 /* ---- 11/17 13:43 보스: "길·산은 3D가 훨씬 나음" → 운동 화면의 큰 화면 = 3D 지형(위성 사진 + 실제 높낮이). 버튼으로 평면과 오감
    · 되는 곳: 실제 길 좌표가 있는 길 코스 · 실제 등산로가 있는 산 (방구석 테마). 빌딩·바깥 GPS·일반 운동·그림 지도 코스는 예전 화면 그대로
