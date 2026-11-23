@@ -21,15 +21,13 @@
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
-  #bYt{position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
+  #bYt{display:none!important;position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
   #bYt b{color:#ff5a4d;margin-right:4px}
   body.vidOn #bYt{display:none}
-  /* 11/23 보스 "유튜브 옆이 비어 있다 → 꽉 채워": 영상을 자르면 유튜브 규칙 위반 → 대신 영상은 맨 위에 가로 폭 가득(16:9), 남는 아래는 코스 화면이 그대로 보이게 (세로 화면) */
-  @media (orientation: portrait){ body.vidMine #vidBox{bottom:auto} body.vidMine #vidWrap{flex:none;height:56.25vw} }
   #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vidBox.mine #vidTop{display:block}
   #vidBar .vb{display:flex;gap:6px;flex:none}
-  #ytBox .sb{max-height:86vh;overflow:auto}
+  #ytBox .sb{max-height:86vh;overflow:auto}#ytBox .st{position:sticky;top:-20px;z-index:2;background:inherit;margin:-20px -20px 10px;padding:14px 20px 8px}
   #ytBox .big{width:100%;min-height:52px;border:0;border-radius:14px;background:var(--volt,#d7f548);color:#1b1c1f;font-size:17px;font-weight:900}
   #ytBox .row{display:flex;gap:8px;margin-top:10px}
   #ytBox input{flex:1;min-width:0;height:46px;border-radius:12px;padding:0 12px;font-size:15px}
@@ -689,13 +687,14 @@
   <button class="pill satb hidden" id="bSat"></button>
   <button class="pill satb hidden" id="b3d"></button>
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내"></button>
-  <button class="pill satb hidden" id="bVid">🎬 맛보기</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
+  <button class="pill satb hidden" id="bVid">🎬 영상</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
-<button id="bYt" class="hidden" aria-label="유튜브 영상 띄우기"><b>▶</b>유튜브</button>
-<div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">▶ 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
+<button id="bYt" class="hidden" aria-hidden="true" tabindex="-1"></button>   <!-- 11/23 보스 "탭이 난잡": 위 왼쪽 🎬 영상 하나로 합침 (이 버튼은 안 씀) -->
+<div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">🎬 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
 <div id="ytBox" class="modal hidden">
   <div class="sb">
-    <div class="st">▶ 유튜브 영상 띄우기</div>
+    <div class="st" style="display:flex;align-items:center;justify-content:space-between;gap:8px">🎬 영상으로 달리기<button id="ytX" aria-label="닫기" style="min-width:44px;min-height:44px;border:0;border-radius:22px;background:var(--ch3,#34373c);color:var(--tx,#fff);font-size:18px;font-weight:900">✕</button></div>
+    <button class="big hidden" id="ytCourse" style="margin-bottom:10px"></button>
     <form class="row" id="ytQF" style="margin-top:0"><input id="ytQ" type="search" placeholder="다른 영상 검색" enterkeyhint="search" autocomplete="off"><button id="ytQGo">검색</button></form>
     <div id="ytChips"></div>
     <div class="muted hidden" id="ytQMsg" style="margin-top:6px"></div>
@@ -1146,7 +1145,7 @@
 </div>
 
 <script>
-const BUILD = '202611230841';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231216';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3061,7 +3060,7 @@ function doorTick(){   /* 11/22 보스: 출발 직후 · 4분의 1 · 중간 · 
   if (!want) return;
   if (want === 'start' && e > 90){ d.seen.start = 1; return; }   // 놓친 출발 인사는 건너뜀
   const shown = id => !$(id).classList.contains('hidden');
-  let busy = !doorFree() || ['popup', 'cheerFx', 'lapBox', 'confirmBox', 'restBox'].some(shown) || (shown('vidBox') && !(document.body.classList.contains('vidMine') && !landUI()));   // 11/23 내 영상(세로)은 위에만 있어 문 응원과 안 겹침
+  let busy = !doorFree() || ['popup', 'cheerFx', 'lapBox', 'confirmBox', 'restBox', 'vidBox'].some(shown);   // 영상 중엔 문 응원 쉼 (영상 위에 겹치면 유튜브 규칙 위반)
   if (!busy && shown('cheer')){ if (want === 'arr') cheerHide(); else busy = true; }   // 도착 인사는 작은 응원 글을 치우고 나옴
   if (busy){ if (want === 'arr'){ d.pend = d.pend || e; if (e - d.pend < 60) return; } else return; }   // 도착 인사는 1분까지 기다렸다가, 그래도 바쁘면 건너뜀
   d.at = e;
@@ -3739,7 +3738,7 @@ $('bStart').onclick = () => {
   S.gps = DB.zone === 'out'; GPS.track = []; GPS.tt = []; GPS.t0 = 0;
   S.running = true; S.paused = false; S.sessionM = 0; S.elapsed = 0; S.passed = []; S.siteHubs = []; CLIMB_SLOW = false; NAV.px = NAV.py = 0; NAV.drag = false; S.door = null; S.doorAt = null; try { doorPre(); } catch(e){}
   $('bYt').classList.toggle('hidden', !!S.gps);   // 11/22: ▶ 유튜브 버튼은 시작하자마자 (지도 다시 그릴 때까지 안 보이던 것)
-  $('bVid').classList.toggle('hidden', !(COURSE.video && !S.gps && !S.free && !isClimb()));   // 11/23 맛보기 버튼도 시작하자마자
+  $('bVid').classList.toggle('hidden', !!S.gps);   // 11/23 🎬 영상 버튼은 시작하자마자
   S.sessionId = Date.now(); S.lastT = Date.now(); S.lastSave = Date.now();
   S.free = isFree(); S.freeGoal = S.free && !hikeGps ? freeGoalVal() : 0; S.freeHit = false; voiceReset(); V3D.hot = false; meterStart();
   try { tel('start', { zone: DB.zone, act: S.act, course: telCourse() }); } catch(e){}
@@ -4056,6 +4055,8 @@ const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', res
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
+  if (shown('ytBox')){ $('ytBox').classList.add('hidden'); return true; }   // 11/23 영상 고르는 창 → 영상 → 운동 끝 묻기 순서
+  if (VID.on){ vidOffNow(); return true; }
   if (shown('dupBox')) return true;                       // 둘 중 하나를 골라야 하는 창
   if (S.running){ openConfirm(); return true; }
   if (shown('recScreen')){ $('recBack').click(); return true; }
@@ -4066,7 +4067,7 @@ function backStep(){   // 닫은 것이 있으면 true
 window.bgrBack = () => { try { return backStep(); } catch(e){ return false; } };
 if (!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform())) (() => {
   let armed = !!(history.state && history.state.bgr), skipPop = false;
-  const canBack = () => S.running || !shown('homeScreen') || shown('gallery') || shown('dupBox') || Object.keys(BACK_BOX).some(shown);
+  const canBack = () => S.running || !shown('homeScreen') || shown('gallery') || shown('dupBox') || shown('ytBox') || Object.keys(BACK_BOX).some(shown);
   const syncBack = () => { try { const need = canBack();
     if (need && !armed){ history.pushState({ bgr: 1 }, ''); armed = true; }
     else if (!need && armed){ armed = false; skipPop = true; setTimeout(() => { skipPop = false; }, 600); history.back(); } } catch(e){} };
@@ -5766,7 +5767,6 @@ var NAV = { full: false, zoom: 1, alt: false, fz: 1, fx: 0, fy: 0, fa: 0, px: 0,
 const landUI = () => matchMedia('(orientation: landscape) and (max-height: 560px)').matches;   // 11/21 검수 B5
 function viewArea(){   // 지도를 그릴 세로 범위: 위 정보칸 아래 ~ 아래 조작판 위 (가로 화면은 숫자가 오른쪽이라 끝까지)
   const hb = landUI() ? 36 : ($('hudBottom').offsetHeight || innerHeight * 0.4), ip = NAV.full ? $('infoPanel').offsetHeight + 16 : 0;
-  if (document.body.classList.contains('vidMine') && !landUI()){ const vb = $('vidBox').getBoundingClientRect().bottom; return { top: Math.round((vb + 8) * DPR), bot: Math.round((innerHeight - hb + 36) * DPR) }; }   // 11/23 내 영상은 위, 코스 화면은 그 아래
   return { top: Math.round(ip * DPR), bot: Math.round((innerHeight - hb + 36) * DPR) };
 }
 function fadeBottom(g, vh){
@@ -6604,7 +6604,7 @@ window.addEventListener('resize', () => { if (VID.on) vidLay(); });
 async function vidOn(){
   const v = COURSE.video; if (!v) return;
   if (VID.mine){ VID.mine = null; vidDrop(); document.body.classList.remove('vidMine'); }
-  $('vidBox').classList.remove('mine'); $('vidPick').classList.add('hidden');
+  $('vidBox').classList.remove('mine'); $('vidPick').classList.remove('hidden');   // 11/23 코스 영상 중에도 다른 영상으로 바꾸기
   VID.on = true; document.body.classList.add('vidOn'); document.body.classList.toggle('vidMine', v.fit === 'top'); $('vidBox').classList.remove('hidden'); vidLay(); if (v.fit === 'top') setTimeout(() => window.dispatchEvent(new Event('resize')), 60);   // 11/23 가로 영상 코스 = 자르지 않고 위에 (유튜브 규칙) $('vidTx').textContent = '🎬 ' + (v.note || '영상') + ' · 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
   if (!VID.on) return;
@@ -6628,7 +6628,7 @@ function vidTick(kmh){
     $('vidTx').textContent = '🎬 ' + r.toFixed(2).replace(/0$/, '') + '배속' + (kmh / v.kmh > 2 ? ' · 영상은 최대 2배' : '');
   } catch(e){}
 }
-$('bVid').onclick = e => { e.stopPropagation(); VID.on ? vidOffNow() : vidOn(); };
+$('bVid').onclick = e => { e.stopPropagation(); if (VID.on) vidOffNow(); else ytBoxOpen(''); };   // 11/23 영상 창 하나로
 $('vidOff').onclick = e => { e.stopPropagation(); vidOffNow(); };
 /* ---- ▶ 내가 고른 유튜브 영상 (11/22 보스) ----
    운동 화면 오른쪽 '▶ 유튜브' → 유튜브에서 고르고 '공유 → 링크 복사' → 돌아오면 지도 자리에 바로 재생
@@ -6640,6 +6640,7 @@ const ytVid = t => { const m = /(?:youtu\.be\/|[?&]v=|\/shorts\/|\/live\/|\/embe
 function ytList(){ try { return JSON.parse(localStorage.getItem('bgsj_yt') || '[]').filter(x => /^[\w-]{11}$/.test(x)).slice(0, 6); } catch(e){ return []; } }
 function ytKeep(id){ try { localStorage.setItem('bgsj_yt', JSON.stringify([id].concat(ytList().filter(x => x !== id)).slice(0, 6))); } catch(e){} }
 function ytBoxOpen(msg){
+  const cv = COURSE.video && !S.free && !isClimb(); $('ytCourse').classList.toggle('hidden', !cv); if (cv) $('ytCourse').textContent = '이 코스 영상 · 내 속도에 맞춰';
   const l = ytList(); $('ytRecentBox').classList.toggle('hidden', !l.length);
   $('ytRecent').innerHTML = l.map(id => '<button data-yt="' + id + '" aria-label="최근 본 영상"><img src="https://i.ytimg.com/vi/' + id + '/mqdefault.jpg" alt="" loading="lazy"></button>').join('');
   $('ytRecent').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
@@ -6709,6 +6710,8 @@ $('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytTab(b
 $('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('ytClose').onclick = () => $('ytBox').classList.add('hidden');
+$('ytX').onclick = () => $('ytBox').classList.add('hidden');
+$('ytCourse').onclick = () => { $('ytBox').classList.add('hidden'); vidOn(); };
 $('ytOpen').onclick = () => { MYT.wait = Date.now(); try { window.open('https://m.youtube.com/', '_blank'); } catch(e){} };
 $('ytGo').onclick = () => { const id = ytVid($('ytIn').value); if (id) ytPlay(id); else ytClip(true); };
 $('ytIn').addEventListener('input', () => { const id = ytVid($('ytIn').value); $('ytGo').textContent = id ? '띄우기' : '붙여넣기'; });
@@ -6753,7 +6756,7 @@ $('pubYes').onclick = async () => {
   } catch(e){ $('pubYes').disabled = false; toastMsg('보내지 못했어요 · 인터넷을 확인해 주세요'); }
 };
 function v3dBtn(){
-  $('bVid').classList.toggle('hidden', !(COURSE.video && !S.gps && !S.free && !isClimb()));
+  $('bVid').classList.toggle('hidden', !(S.running && !S.gps));   // 11/23: 🎬 영상 = 이 코스 영상 + 유튜브 고르기 한 창
   $('bYt').classList.toggle('hidden', !(S.running && !S.gps)); ytTop();   // 방구석 운동 중에만
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
   b.classList.toggle('hidden', m.length < 2); if (m.length < 2) return;
