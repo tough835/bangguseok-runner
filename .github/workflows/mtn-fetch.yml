@@ -1,0 +1,22 @@
+name: mtn-fetch
+# 등산로 자료가 없는 산 → 오픈스트리트맵 등산로 (data/mtn/*.json)
+on:
+  workflow_dispatch:
+  push:
+    paths: [ 'tools/mtn_fetch.py' ]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: python tools/mtn_fetch.py
+      - run: |
+          git config user.name "mtn-bot"; git config user.email "mtn-bot@users.noreply.github.com"
+          git add data/mtn data/mtn_fetch_log.json
+          git commit -m "산 등산로 자동 생성 (OSM)" || echo "no change"
+          git pull --rebase origin main && git push origin HEAD:main
