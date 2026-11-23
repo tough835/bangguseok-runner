@@ -133,3 +133,15 @@ dumulmeori-gil 높이만 채움
 seomjin-bike 높이만 채움
 daecheong-bike 높이만 채움
 tapjeong-road OSRM 18.91km / 공식 24.00km (x0.79) 598점 거점 3
+zurich-lake OSRM 2.33km / 공식 3.50km (x0.67) 175점 거점 3
+luzern-lake OSRM 3.08km / 공식 3.50km (x0.88) 142점 거점 4
+geneva-lake OSRM 2.90km / 공식 4.00km (x0.73) 255점 거점 4
+lavaux-bike OSRM 20.27km / 공식 20.00km (x1.01) 1156점 거점 5
+retiro-loop OSRM 5.14km / 공식 4.20km (x1.22) 259점 거점 0
+madrid-rio OSRM 4.93km / 공식 6.00km (x0.82) 163점 거점 4
+barcelona-beach OSRM 5.03km / 공식 4.50km (x1.12) 189점 거점 3
+formentor-bike OSRM 23.28km / 공식 19.00km (x1.23) 1429점 거점 2
+copenhagen-lakes OSRM 6.24km / 공식 6.40km (x0.98) 317점 거점 0
+djurgarden-loop OSRM 9.89km / 공식 9.00km (x1.10) 514점 거점 3
+akerselva OSRM 9.41km / 공식 8.00km (x1.18) 957점 거점 3
+atlantic-road OSRM 9.06km / 공식 8.30km (x1.09) 407점 거점 3
