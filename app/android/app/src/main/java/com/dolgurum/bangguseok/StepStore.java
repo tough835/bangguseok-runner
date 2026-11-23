@@ -35,7 +35,13 @@ public class StepStore {
                마지막 읽기 뒤 걸음(대부분 0시 전)이 다음 날 첫 읽기 때 '오늘'로 몰렸음.
                → 마지막 읽기가 30분 넘게 지났으면 그사이 걸음은 어제 것으로 봄 (밤 사이엔 거의 안 걷고, 23:45 알람이 마지막 읽기를 0시 가까이로 당김)
                  30분 안이면 예전처럼 마지막 읽기에서 끊음 */
-            boolean longGap = lastT > 0 && now - lastT > 30L * 60 * 1000;
+            /* 11/24 보스 폰(아침 삼성 159 · 앱 0): 23:45 알람으로 마지막 읽기가 0시 직전인데도 '30분 넘게 지남'으로 보고
+               밤~아침 걸음을 전부 어제로 넘겨 버렸음 → 마지막 읽기가 어제 23시 이후면 그 뒤 걸음은 오늘 것(0시 전 몇 분치만 오차)
+               마지막 읽기가 그보다 이르면(알람이 못 울림) 예전처럼 그사이 걸음은 어제 것 */
+            Calendar mid = Calendar.getInstance(); mid.set(Calendar.HOUR_OF_DAY, 0); mid.set(Calendar.MINUTE, 0); mid.set(Calendar.SECOND, 0); mid.set(Calendar.MILLISECOND, 0);
+            long midnight = mid.getTimeInMillis();
+            boolean lateRead = lastT >= midnight - 60L * 60 * 1000 && lastT <= midnight + 5L * 60 * 1000;
+            boolean longGap = !lateRead && lastT > 0 && now - lastT > 30L * 60 * 1000;
             long upTo = rebooted ? 0 : (longGap ? value : last);
             long yesterday = carry + Math.max(0, upTo - base);
             ed.putLong("hist_" + day, yesterday);
