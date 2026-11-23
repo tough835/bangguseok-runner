@@ -30,8 +30,8 @@ M = [  # id, 산 이름(정상), 지점들(출발→…→정상), 상자, 공�
  ('sambong', '삼봉산', ['오도재', '오도봉', '삼봉산'], HY, 3.7),
  ('daebong', '계관봉', ['빼빼재', '감투산', '대봉산', '계관봉'], HY, 4.6),
  ('baegun', '백운산', ['빼빼재', '서래봉', '백운산'], HY, 5.1),
- ('yeongchwi', '영취산', ['부전마을', '덕운봉', '영취산'], HY, 4.7),
- ('dosung', '도숭산', ['주암마을', '도숭산'], HY, 5.3),
+ ('yeongchwi', '영취산', ['부전리|서상면 부전리|부전계곡', '영취산'], (35.58, 127.55, 35.70, 127.70), 4.7),
+ ('dosung', '도숭산', ['주암리|양지마을|운산리', '도숭산'], (35.54, 127.66, 35.66, 127.78), 5.3),
  ('wolbong', '월봉산', ['노상', '큰목재', '월봉산'], HY, 5.0),
  ('wabul', '와불산', ['벽송사', '와불산'], HY, 4.8),
  ('geomang', '거망산', ['용추사', '거망산'], HY, 4.7),
@@ -42,7 +42,7 @@ M = [  # id, 산 이름(정상), 지점들(출발→…→정상), 상자, 공�
  ('darangswi', '다랑쉬오름', ['다랑쉬오름'], JJ, 1.3),
  ('saebyeol', '새별오름', ['새별오름'], JJ, 1.0),
  ('seongsan', '성산일출봉', ['성산일출봉'], JJ, 1.0),
- ('fuji-yoshida', '富士山', ['富士スバルライン五合目', '剣ヶ峰'], FJ, 6.8),
+ ('fuji-yoshida', '富士山', [[35.3953, 138.7334], '剣ヶ峰'], FJ, 6.8),
 ]
 OVP = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']
 def ovp(q):
@@ -97,17 +97,30 @@ os.makedirs('data/mtn', exist_ok=True)
 try: log = json.load(open('data/mtn_fetch_log.json', encoding='utf-8'))
 except Exception: log = {}
 for mid, peak, via, box, km in M:
-    if mid in log and 'km' in log[mid]: continue
+    if mid in log and 'km' in log[mid] and mid not in ('yeongchwi', 'seongsan'): continue
     rec = {'via': []}
     try:
         pts = []
         for i, nm in enumerate(via):
-            f = find(nm, box, peak=(i == len(via) - 1) or i > 0); rec['via'].append([nm, f]); time.sleep(3)
+            if isinstance(nm, list): pts.append(nm); rec['via'].append([str(nm), nm]); continue   # 11/23 좌표를 직접 줌
+            f = None
+            for q in nm.split('|'):
+                f = find(q, box, peak=(i == len(via) - 1) or i > 0); time.sleep(3)
+                if f: break
+            rec['via'].append([nm, f])
             if f: pts.append(f[:2])
         if len(via) == 1 and pts:   # 오름: 정상만 알면 → 가장 가까운 주차장에서 출발
-            s0 = pts[0]; q = '[out:json][timeout:60];node["amenity"="parking"](around:1500,%f,%f);out 10;' % (s0[0], s0[1])
-            ps = sorted(ovp(q).get('elements', []), key=lambda x: hav(s0, (x['lat'], x['lon'])))
-            if ps: pts = [[ps[0]['lat'], ps[0]['lon']]] + pts; rec['start'] = 'parking %dm' % hav(s0, pts[0])
+            s0 = pts[0]; q = '[out:json][timeout:60];(node["amenity"="parking"](around:1500,%f,%f);way["amenity"="parking"](around:1500,%f,%f););out center 10;' % (s0[0], s0[1], s0[0], s0[1])
+            ps = []
+            try: ps = [(x['lat'], x['lon']) if 'lat' in x else (x['center']['lat'], x['center']['lon']) for x in ovp(q).get('elements', [])]
+            except Exception as ex: print('  parking fail', ex, flush=True)
+            if not ps:   # 11/23 주차장이 없으면 가장 가까운 찻길 점에서 출발
+                q = '[out:json][timeout:60];way["highway"~"^(primary|secondary|tertiary|unclassified|residential|service)$"](around:1500,%f,%f);out geom 30;' % (s0[0], s0[1])
+                try: ps = [(g['lat'], g['lon']) for w in ovp(q).get('elements', []) for g in w.get('geometry', [])]
+                except Exception as ex: print('  road fail', ex, flush=True)
+            ps = sorted(ps, key=lambda x: hav(s0, x))
+            ps = [x for x in ps if hav(s0, x) > 250] or ps
+            if ps: pts = [list(ps[0])] + pts; rec['start'] = 'start %dm' % hav(s0, pts[0])
         if len(pts) < 2: rec['err'] = 'points'; log[mid] = rec; continue
         co = thin(route(pts)); L = sum(hav(co[i], co[i + 1]) for i in range(len(co) - 1))
         es = elev(co)
