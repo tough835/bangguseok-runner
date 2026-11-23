@@ -168,7 +168,7 @@
   .chips button b{display:block;font-size:24px}
   .chips button.on{background:#d7f548;color:#1b1c1f;border-color:#d7f548}
   .mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(var(--ink),.07);font-size:16px;line-height:1.45}
-  .mrow:last-child{border-bottom:0}
+  .mrow:last-child{border-bottom:0}.mrow .mk{font-size:14px;letter-spacing:2px;white-space:nowrap}
   .mrow.sel{background:rgba(215,245,72,.2);margin:0 -10px;padding:10px;border-radius:12px}
   .mrow .r{flex:none;text-align:right;font-size:13px;opacity:.8}
   .real{color:#ffd27a;font-size:13px}
@@ -1145,7 +1145,7 @@
 </div>
 
 <script>
-const BUILD = '202611231216';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231225';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3403,9 +3403,15 @@ function renderCourseRows(lists, onlySel){
 /* 11/18 A11: 코스 한 줄 모양을 세 탭(지역별·주제별·내 주변)이 함께 씀
    · 길 = 이름 / 거리 · (지역) · 거점 N곳 [종류]   · 산·빌딩 = 이름 [등산로] / (지역) · 높이 · 오를 높이
    · o = { attr, sel, place(지역 이름 — 지역별 탭에선 뺌), extra(내 주변 거리), open(목록이 펼쳐져 있음 → 고른 산의 '다른 길' 버튼 표시) } */
+/* 11/23 보스: 코스 목록에 간단한 마크 — 🎬 영상 코스 · ⭐ 내 코스 · 🧪 시험 중(해외 시험 코스·시험 영상) */
+const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
+Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
+const cMarks = c => (c.video && !/^시험/.test(c.video.note || '') ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (c.lab ? '🧪' : '');
+const MARK_KEY = '<div class="muted" style="font-size:13px;padding:10px 0 2px">🎬 영상으로 달리기 · ⭐ 내 코스 · 🧪 시험 중</div>';
 function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
-  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + tr(c.name) + '</b><br><span class="muted"><b class="km">' +
+  const mk = cMarks(c);
+  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + tr(c.name) + '</b>' + (mk ? ' <span class="mk">' + mk + '</span>' : '') + '<br><span class="muted"><b class="km">' +
     (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span></div>' +
     '<div class="r">' + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (laps ? '<br>✅ ' + laps + T.times : '') + '</div></div>';
 }
@@ -3417,7 +3423,7 @@ function climbRow(m, o){
     ' · <b class="km">' + T.approx + ' ' + Math.max(1, Math.round(m.gain / climbMpm())) + T.min + '</b>' + (o.extra ? ' · <span class="nw">' + o.extra + '</span>' : '');   // 11/20 보스 "10분·20분 하는 경우도": 지금 레벨로 걸리는 시간 · 덧붙는 말은 낱말 가운데서 안 끊기게
   const sibs = peakTrails(m).filter(t => t.id !== m.id), showSibs = o.sel && o.open && sibs.length;   // 11/18 A10: '다른 길' 버튼은 목록을 펼쳤을 때만
   const others = showSibs ? '<div class="sibs">' + T.otherTrails + ' ' + sibs.map(t => '<button data-jump="' + t.id + '">🥾 ' + tr(t.trailName) + ' · ' + regionName(t.cityId) + (climbTotal(t.id) >= t.gain ? ' ✅' : '') + '</button>').join('') + '</div>' : '';
-  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + (o.icon ? (m.kind === 'tower' ? '🏢 ' : '⛰ ') : '') + tr(m.name) + '</b>' + (m.trailName ? ' <span class="trl">' + tr(m.trailName) + '</span>' : '') +
+  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + (o.icon ? (m.kind === 'tower' ? '🏢 ' : '⛰ ') : '') + tr(m.name) + '</b>' + (m.lab ? ' <span class="mk">🧪</span>' : '') + (m.trailName ? ' <span class="trl">' + tr(m.trailName) + '</span>' : '') +
     '<br><span class="muted">' + info + (sibs.length && !showSibs ? ' · ' + T.trailsN.replace('{n}', sibs.length + 1) : '') + '</span>' + others + '</div>' +
     '<div class="r">' + (peakDone(m) ? '<span class="stamp">🏁 ' + T.peakStamp + '</span><br>' : '') + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (done ? '<br>✅ ' + done + T.times : '') + (real ? '<br><span class="real">⛰ ' + real + '</span>' : '') + '</div></div>';
 }
@@ -3518,7 +3524,7 @@ function refreshBrowse0(){
     rows = shownN.map(x => nrow(x)).join('') + (shownN.length < list.length ? '<button class="morebtn" id="nMore">더 보기 ▾ (' + (list.length - shownN.length) + '곳 더 · 가까운 순)</button>' : '');
   }
   const hasSel = br === 'topic' ? items.some(it => it.topics.includes(DB.topic) && bSel(it)) : /class="mrow sel"/.test(rows);
-  $('browseList').innerHTML = rows || '<div class="muted" style="padding:12px">' + T.noCourse + '</div>';
+  $('browseList').innerHTML = rows ? rows + (/class="mk"/.test(rows) ? MARK_KEY : '') : '<div class="muted" style="padding:12px">' + T.noCourse + '</div>';
   $('bChange').textContent = T.closeList; $('bChange').classList.toggle('hidden', !hasSel);
   $('bChange').onclick = () => { bOpen = false; refreshBrowse(); };
   if ($('bMore')) $('bMore').onclick = () => { MF.bMore = true; refreshBrowse(); };
@@ -5225,6 +5231,7 @@ function togglePause(){
   $('bPause').textContent = S.paused ? '▶ ' + T.resume : '⏸ ' + T.paused;
   $('pauseBadge').classList.toggle('hidden', !S.paused);
   if (isClimb() && !S.free) restSync(climbState());   // 산 코스: 일시정지 = 쉬어가기 카드
+  try { vidSyncPause(); } catch(e){}
   wkTick(true);
 }
 $('pauseBadge').innerHTML = T.paused + '<small>' + T.tapResume + '</small>';
@@ -6608,23 +6615,37 @@ async function vidOn(){
   VID.on = true; document.body.classList.add('vidOn'); document.body.classList.toggle('vidMine', v.fit === 'top'); $('vidBox').classList.remove('hidden'); vidLay(); if (v.fit === 'top') setTimeout(() => window.dispatchEvent(new Event('resize')), 60);   // 11/23 가로 영상 코스 = 자르지 않고 위에 (유튜브 규칙) $('vidTx').textContent = '🎬 ' + (v.note || '영상') + ' · 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
   if (!VID.on) return;
-  if (VID.P){ VID.ready && VID.P.playVideo(); return; }
+  if (VID.P){ if (VID.ready){ vSelf(); VID.P.playVideo(); } return; }
   VID.P = new YT.Player('vidFrame', { videoId: v.yt, playerVars: { playsinline: 1, controls: 0, rel: 0, modestbranding: 1, fs: 0, disablekb: 1, mute: 1, loop: 1, playlist: v.yt },
     events: { onReady: () => { VID.ready = true; VID.P.mute(); vidFit(); vidTick(effSpeed()); },
-              onStateChange: e => { if (e.data === 0) { VID.P.seekTo(0); VID.P.playVideo(); } },
+              onStateChange: e => { if (e.data === 0) { vSelf(); VID.P.seekTo(0); VID.P.playVideo(); } else vidUser(e.data); },
               onError: e => { $('vidTx').textContent = '영상 재생 오류 ' + e.data + ' (일부 공개인지 확인)'; } } });
+}
+/* 11/23 보스 "유튜브를 멈췄다 다시 틀면 운동은 멈춰 있음" → 영상과 운동을 한 몸으로
+   · 영상 화면에서 직접 멈춤 = 운동도 일시정지 · 영상 다시 재생 = 운동도 다시 시작 (반대로 일시정지 버튼도 영상에 그대로)
+   · 앱이 스스로 멈추고 트는 것(속도 0·창 열기)과 화면 꺼짐·다른 앱 갔다 옴은 사람 조작으로 치지 않음 */
+const vSelf = () => { VID.selfT = Date.now(); };
+document.addEventListener('visibilitychange', () => { VID.visT = Date.now(); });
+function vidUser(st){
+  if (!VID.on || !S.running || document.hidden || Date.now() - (VID.selfT || 0) < 1500 || Date.now() - (VID.visT || 0) < 2500) return;
+  if (st === 2 && !S.paused) togglePause();
+  else if (st === 1 && S.paused) togglePause();
+}
+function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재생 (코스 영상은 vidTick이 맞춤)
+  if (!VID.on || !VID.ready || !VID.mine) return;
+  try { vSelf(); S.paused ? VID.P.pauseVideo() : VID.P.playVideo(); } catch(e){}
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
 function vidOffNow(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
-  VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { VID.ready && VID.P.pauseVideo(); } catch(e){} }
+  VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
   if (!VID.on || !VID.ready || VID.mine) return;   // 내가 고른 영상은 속도에 맞추지 않음
   const v = COURSE.video, go = S.running && !S.paused && kmh > 0;
   try {
-    if (!go){ VID.P.pauseVideo(); $('vidTx').textContent = '⏸ 멈춤'; return; }
+    if (!go){ if (VID.P.getPlayerState() !== 2){ vSelf(); VID.P.pauseVideo(); } $('vidTx').textContent = '⏸ 멈춤'; return; }
     const r = Math.max(0.25, Math.min(2, Math.round(kmh / v.kmh * 20) / 20));
     if (r !== VID.rate){ VID.P.setPlaybackRate(r); VID.rate = r; }
-    if (VID.P.getPlayerState() !== 1) VID.P.playVideo();
+    if (VID.P.getPlayerState() !== 1){ vSelf(); VID.P.playVideo(); }
     $('vidTx').textContent = '🎬 ' + r.toFixed(2).replace(/0$/, '') + '배속' + (kmh / v.kmh > 2 ? ' · 영상은 최대 2배' : '');
   } catch(e){}
 }
@@ -6655,7 +6676,8 @@ async function ytPlay(id){
   if (VID.mine !== id) return;
   vidDrop();
   VID.P = new window.YT.Player('vidFrame', { videoId: id, playerVars: { playsinline: 1, autoplay: 1, rel: 0 },
-    events: { onReady: () => { VID.ready = true; vidFit(); try { VID.P.playVideo(); } catch(e){} $('vidTx').textContent = '▶ 내 영상'; },
+    events: { onReady: () => { VID.ready = true; vidFit(); try { vSelf(); S.paused ? VID.P.pauseVideo() : VID.P.playVideo(); } catch(e){} $('vidTx').textContent = '▶ 내 영상 · 멈추면 운동도 멈춤'; },
+              onStateChange: e => vidUser(e.data),
               onError: e => { $('vidTx').textContent = e.data === 101 || e.data === 150 ? '이 영상은 유튜브에서만 볼 수 있게 막혀 있어요' : '영상 재생 오류 ' + e.data; } } });
 }
 function ytTop(){ if (!VID.mine) return; const a = $('altiPill'), t = $('namePill').textContent + (a.classList.contains('hidden') ? '' : ' · ' + a.textContent); if ($('vidTop').textContent !== t) $('vidTop').textContent = t; }
