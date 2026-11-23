@@ -25,9 +25,6 @@
   body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
   body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
-  #bYt{position:fixed;right:10px;top:200px;z-index:3;min-height:44px;padding:0 14px;border-radius:22px;border:0;background:rgba(20,22,25,.78);color:#fff;font-size:15px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.18)}
-  html[data-skin=light] #bYt{background:rgba(255,255,255,.95);color:#1b1c1f}
-  #bYt b{margin-right:5px}
   body.vidOn #bYt{display:none}
   #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vidBox.mine #vidTop{display:block}
@@ -48,8 +45,15 @@
   #ytRecent{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
   #ytRecent button{padding:0;border:0;border-radius:10px;overflow:hidden;background:#000;aspect-ratio:16/9;min-height:44px}
   #ytRecent img{width:100%;height:100%;object-fit:cover;display:block}
-  @media (orientation: landscape) and (max-height: 560px){ #bYt{right:310px;top:auto;bottom:10px} }
   #hudTop{position:fixed;top:calc(10px + env(safe-area-inset-top));left:10px;right:116px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  /* 11/23 보스 "탭들이 너저분": 1줄 = 코스 이름 · 2줄 = 버튼(지도·소리·영상 바꾸기) 한 줄 · 3줄 = 알림(곧 ○○·높이) — 버튼 크기·글자 통일 */
+  #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
+  #hudTop .brk{flex-basis:100%;height:0}
+  #hudTop #namePill{order:0;max-width:100%}#hudTop .brk1{order:1}
+  #hudTop .satb{order:2;min-height:40px;padding:0 13px;font-size:14px;border-radius:20px}
+  #hudTop #bVoice{width:40px;padding:0;justify-content:center}
+  #hudTop .brk2{order:3}#hudTop #altiPill,#hudTop #notePill,#hudTop #gpsPill{order:4}
+  #hudTop #notePill{font-size:14px;padding:6px 12px}
   .pill{background:rgba(0,0,0,.45);padding:6px 11px;border-radius:999px;font-size:14px;line-height:1.2;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pill.alt{font-size:24px;font-weight:900;padding:7px 14px}
   #hudBottom{position:fixed;left:0;right:0;bottom:0;padding:44px 10px calc(10px + env(safe-area-inset-bottom));
@@ -686,7 +690,7 @@
 
 <!-- 운동 중 화면 -->
 <div id="hudTop" class="hidden">
-  <div class="pill" id="namePill"></div>
+  <div class="pill" id="namePill"></div><i class="brk brk1"></i><i class="brk brk2"></i>
   <div class="pill alt hidden" id="altiPill"></div>
   <div class="pill note hidden" id="notePill"></div>
   <div class="pill hidden" id="gpsPill"></div>
@@ -694,9 +698,9 @@
   <button class="pill satb hidden" id="b3d"></button>
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내"></button>
   <button class="pill satb hidden" id="bVid">🎬 바꾸기</button>
-  <button class="pill satb hidden" id="bVidOff">🗺 지도로</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
+  <button class="pill satb hidden" id="bVidOff">🗺 지도로</button>
+  <button class="pill satb hidden" id="bYt" aria-label="영상 보며 운동">🎬 영상</button>   <!-- 11/23 15:05 보스 "너저분": 지도 버튼과는 따로, 같은 버튼 줄에 -->   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
-<button id="bYt" class="hidden" aria-label="영상 보며 운동"><b>🎬</b>영상</button>   <!-- 11/23 14:25 보스: 영상 버튼은 지도 버튼과 따로, 오른쪽 -->
 <div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">🎬 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
 <div id="ytBox" class="modal hidden">
   <div class="sb">
@@ -1152,7 +1156,7 @@
 </div>
 
 <script>
-const BUILD = '202611231444';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231508';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6836,7 +6840,7 @@ function v3dBtn(){   // 11/23 14:25 보스: 영상은 지도 버튼과 분리 �
 }
 function vidBtnPos(){   // 오른쪽 위 전체 지도·높이 아래에 붙임
   let t = 0; ['map', 'altChip'].forEach(id => { const e = $(id); if (!e || e.classList.contains('hidden')) return; const r = e.getBoundingClientRect(); if (r.height && r.top < innerHeight * 0.4) t = Math.max(t, r.bottom); });
-  $('bYt').style.top = Math.round((t || 120) + 8) + 'px';
+  void t;   // 15:05부터 버튼 줄 안에 있음 (위치 계산 안 함)
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say('음성 안내를 켭니다.'); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? '🔇 음성 안내 끔' : '🔊 음성 안내 켬'); };
