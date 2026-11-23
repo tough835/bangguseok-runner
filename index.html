@@ -1196,7 +1196,7 @@
 </div>
 
 <script>
-const BUILD = '202611232219';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611232225';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3602,14 +3602,17 @@ function browseItems(){   // 길 + 산 + 빌딩을 한 목록으로
     pts: Array.isArray(m.peak) && m.peak.length === 2 ? [m.peak] : (cityCenter(m.cityId) ? [cityCenter(m.cityId)] : []) }));
   return roads.concat(ups);
 }
-let HERE = null; try { HERE = JSON.parse(sessionStorage.getItem('bgsj_here')); } catch(e){}
-let hereAsked = false;
+/* 11/23 보스 "위치 권한 켰는데 내 주변이 해외(루체른)": ① 앱을 켠 뒤 한 번만 묻고 실패하면 다시 안 물었음 ② 실내라 빠른 위치(9초)가 자주 실패 ③ 실패하면 마지막에 고른 지역(해외)을 기준으로 씀
+   → 브라우저 위치가 안 되면 앱의 위치 기능으로 한 번 더(lpHere) · 실패해도 30초 뒤 다시 · 받은 위치는 30일 기억(다음에 켜도 바로) · 못 받으면 한국 지역(마지막 한국 지역, 없으면 함양) 기준 + 이유 한 줄 */
+let HERE = null, HERE_OLD = false, HERE_ERR = '', hereT = 0;
+try { const h = JSON.parse(localStorage.getItem('bgsj_here2') || 'null'); if (h && h.ll && Date.now() - h.t < 30 * 864e5){ HERE = h.ll; HERE_OLD = Date.now() - h.t > 3600e3; } } catch(e){}
 function askHere(){
-  if (hereAsked || HERE || !navigator.geolocation) return; hereAsked = true;
-  $('nearNote').textContent = T.nearWait;
-  navigator.geolocation.getCurrentPosition(p => { HERE = [p.coords.latitude, p.coords.longitude]; try { sessionStorage.setItem('bgsj_here', JSON.stringify(HERE)); } catch(e){} refreshBrowse(); nearFamLine(); },
-    () => { refreshBrowse(); }, { enableHighAccuracy: false, timeout: 9000, maximumAge: 600000 });
+  if (Date.now() - hereT < (HERE && !HERE_OLD ? 600000 : 30000)) return; hereT = Date.now();
+  if (!HERE) $('nearNote').textContent = T.nearWait;
+  lpHere().then(ll => { HERE = ll; HERE_OLD = false; HERE_ERR = ''; try { localStorage.setItem('bgsj_here2', JSON.stringify({ ll, t: Date.now() })); } catch(e){} refreshBrowse(); try { nearFamLine(); } catch(e){} },
+    e => { HERE_ERR = e && (e.code === 1 || /권한|denied|NOT_AUTHORIZED/i.test(String(e.message || e.code || ''))) ? 'perm' : 'fail'; if (!HERE) refreshBrowse(); });
 }
+const nearBaseCity = () => { const c = DB.region && DB.region.city, rg = c && regionOf(c); return rg && rg.country === 'kr' ? c : 'hamyang'; };
 function browseRow(it, extra, folded){   // 주제별·내 주변의 한 줄 — 지역별과 같은 모양(roadRow·climbRow)에 지역 이름만 더함
   const attr = 'data-bt="' + it.type + '" data-bid="' + it.id + '" data-bc="' + it.cid + '"';
   if (it.type === 'road') return roadRow(it.c, { attr, sel: bSel(it), place: it.c.long ? T.longTag : it.c.place || regionName(it.cid), extra });
@@ -3646,8 +3649,10 @@ function refreshBrowse0(){
     } else rows = list.map(it => browseRow(it)).join('');
   } else {
     askHere();
-    const base = HERE || cityCenter(DB.region.city) || cityCenter('hamyang');
-    $('nearNote').textContent = HERE ? T.nearHere : T.nearFallback.replace('{s}', regionName(DB.region.city) || regionName('hamyang'));
+    const bc = nearBaseCity(), base = HERE || cityCenter(bc) || cityCenter('hamyang'), bn = regionName(bc) || '함양';
+    $('nearNote').textContent = HERE ? (HERE_OLD ? '📍 최근 위치에서 가까운 순' : T.nearHere)
+      : HERE_ERR === 'perm' ? '📍 위치 권한이 꺼져 있어 ' + bn + ' 기준 (폰 설정 → 앱 → 방구석러너 → 권한 → 위치)'
+      : HERE_ERR ? '📍 지금 위치를 못 찾아 ' + bn + ' 기준 (실내면 약할 수 있어요 · 잠시 뒤 다시 찾아요)' : T.nearWait;
     const list = items.filter(it => it.pts.length && it.cid !== 'mine').map(it => ({ it, d: Math.min(...it.pts.filter((p, i) => it.pts.length < 400 || i % 5 === 0).map(p => kmBetween(base, p))) }))
       .sort((a, b) => a.d - b.d).slice(0, 25);
     const nrow = (x, folded) => browseRow(x.it, HERE ? '📍 ' + (x.it.approx ? T.nearApprox + ' ' : '') + (x.d < 10 ? x.d.toFixed(1) : Math.round(x.d).toLocaleString()) + 'km' + (x.it.c && x.it.c.long ? ' ' + T.nearPass : '') : '', folded === true);   // 11/18 A8: 위치를 못 받았으면 거리 숫자를 안 보임(전부 0.0km라 뜻 없음)
