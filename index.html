@@ -1196,7 +1196,7 @@
 </div>
 
 <script>
-const BUILD = '202611232209';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611232219';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3212,17 +3212,30 @@ function mtnClear(){ try { doorFxHide(); } catch(e){} clearTimeout(MTC.t); clear
 const goalOn = () => S.running && isClimb() && !S.free && S.goalSec > 0;
 /* 11/20 보스 "조깅은 2km·3km 단위로": 길 코스도 '오늘은 얼마나?' = 2km / 3km / 5km / 끝까지 (DB.roadKm). 남은 길은 다음에 이어서 */
 const RGOAL = [2, 3, 5, 0], CGOAL = [10, 20, 30, 0];
+/* 11/23 보스 "코스가 3.1km인데 5km 칸이 있다": 칸을 남은 길에 맞춰 만듦
+   · 남은 길보다 짧은 거리만(걷기 2·3·5·10·15·20km / 자전거 10·20·30·40·60·80km 중 큰 쪽 최대 2~3개)
+   · 끝 칸 = '끝까지 3.1km' · 한 바퀴 코스(loop)는 '2바퀴 6.2km'도 (도는 코스라 이어 뛰어도 자연스러움) */
+function roadLeft(){ try { return L - (((walkTotal() % L) + L) % L); } catch(e){ return 0; } }
+function roadGoalOpts(){
+  const left = roadLeft() / 1000, bike = S.act === 'bike', C = bike ? [10, 20, 30, 40, 60, 80] : [2, 3, 5, 10, 15, 20];
+  let ks = C.filter(k => k < left - 0.3); ks = ks.slice(-(COURSE.loop ? 2 : 3));
+  const o = ks.map(k => ({ v: k, t: k + 'km' }));
+  o.push({ v: 0, t: (COURSE.loop && left > L / 1000 - 0.05 ? '한 바퀴 ' : '끝까지 ') + left.toFixed(1) + 'km' });
+  if (COURSE.loop && left > 0.3) { const two = Math.round((left + L / 1000) * 10) / 10; o.push({ v: two, t: '2바퀴 ' + two.toFixed(1) + 'km' }); }
+  return o;
+}
+const roadGoalNow = () => { const g = DB.roadKm || 0; return roadGoalOpts().some(o => o.v === g) ? g : 0; };   // 지금 칸에 없는 값(예전 5km)은 '끝까지'로
 function tGoalRoad(){
-  const g = DB.roadKm || 0, seg = $('tGoalSeg');
-  if (seg.dataset.mode !== 'road'){ seg.dataset.mode = 'road'; seg.innerHTML = RGOAL.map(k => '<button data-g="' + k + '">' + (k ? k + 'km' : '끝까지') + '</button>').join(''); tGoalBind(); }
+  const opts = roadGoalOpts(), g = roadGoalNow(), seg = $('tGoalSeg'), key = 'road:' + opts.map(o => o.v + o.t).join(',');
+  if (seg.dataset.mode !== key){ seg.dataset.mode = key; seg.innerHTML = opts.map(o => '<button data-g="' + o.v + '">' + o.t + '</button>').join(''); tGoalBind(); }
   seg.querySelectorAll('[data-g]').forEach(b => b.classList.toggle('on', +b.dataset.g === g));
-  let left = 0; try { left = L - (((walkTotal() % L) + L) % L); } catch(e){}
+  const left = roadLeft();
   const sp = Math.max(1, effSpeed() || 6), mm = k => Math.max(1, Math.round(k / sp * 60));
-  $('tGoalNote').textContent = !left ? '' : g ? (g * 1000 < left - 50 ? '지금 속도로 약 ' + mm(g) + '분 · 남은 길 ' + (left / 1000).toFixed(1) + 'km는 다음에 이어서' : '오늘 ' + g + 'km면 코스 끝까지 가요 (' + (left / 1000).toFixed(1) + 'km)')
-    : '끝까지 ' + (left / 1000).toFixed(1) + 'km · 지금 속도로 약 ' + mm(left / 1000) + '분';
+  $('tGoalNote').textContent = !left ? '' : g ? (g * 1000 < left - 50 ? '지금 속도로 약 ' + mm(g) + '분 · 남은 길 ' + (left / 1000).toFixed(1) + 'km는 다음에 이어서' : '지금 속도로 약 ' + mm(g) + '분 · 한 바퀴 돌고 또 돌아요')
+    : '지금 속도로 약 ' + mm(left / 1000) + '분';
 }
 function tGoalBind(){ $('tGoalSeg').querySelectorAll('[data-g]').forEach(b => b.onclick = () => { const v = +b.dataset.g;
-  if ($('tGoalSeg').dataset.mode === 'road') DB.roadKm = v; else { DB.climb = DB.climb || {}; DB.climb.goal = v; } saveDB(); tGoalUI(); }); }
+  if (String($('tGoalSeg').dataset.mode).startsWith('road')) DB.roadKm = v; else { DB.climb = DB.climb || {}; DB.climb.goal = v; } saveDB(); tGoalUI(); }); }
 function tGoalUI(){
   const box = $('tGoal'); if (!box) return;
   const road = !isFree() && !isClimb() && !S.running && typeof COURSE !== 'undefined' && COURSE && COURSE.mode === 'distance' && !COURSE.long;
@@ -4523,7 +4536,7 @@ function openSpot(lm){
 $('scClose').onclick = () => $('spotCard').classList.add('hidden');
 
 /* 운동 중 목표 체크 */
-function startGoal(){ const km = !S.gps && DB.roadKm > 0 && !COURSE.long ? DB.roadKm : 0, g = km ? { at: S.startTotal + km * 1000, name: km + 'km', dist: true } : goalFrom(S.startTotal); S.goalFin = false;
+function startGoal(){ const km = !S.gps && roadGoalNow() > 0 && !COURSE.long ? roadGoalNow() : 0, g = km ? { at: S.startTotal + km * 1000, name: km + 'km', dist: true } : goalFrom(S.startTotal); S.goalFin = false;
   if (!g.dist && DB.goal.type !== 'spot'){ const t = nextTarget(S.startTotal); g.at = S.startTotal + t.d; g.name = t.name; S.goalFin = !!t.fin; }
   S.goalPick = !g.dist && DB.goal.type === 'spot';   // 11/22: 내가 고른 거점이 최종 목표
   S.goalAt = g.at; S.goalName = g.name; S.goalStart = S.startTotal; S.goalDist = !!g.dist; }
