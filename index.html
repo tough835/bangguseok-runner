@@ -25,8 +25,9 @@
   body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
   body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
-  #bYt{display:none!important;position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
-  #bYt b{color:#ff5a4d;margin-right:4px}
+  #bYt{position:fixed;right:10px;top:200px;z-index:3;min-height:44px;padding:0 14px;border-radius:22px;border:0;background:rgba(20,22,25,.78);color:#fff;font-size:15px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  html[data-skin=light] #bYt{background:rgba(255,255,255,.95);color:#1b1c1f}
+  #bYt b{margin-right:5px}
   body.vidOn #bYt{display:none}
   #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vidBox.mine #vidTop{display:block}
@@ -692,9 +693,10 @@
   <button class="pill satb hidden" id="bSat"></button>
   <button class="pill satb hidden" id="b3d"></button>
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내"></button>
-  <button class="pill satb hidden" id="bVid">🎬 영상</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
+  <button class="pill satb hidden" id="bVid">🎬 바꾸기</button>
+  <button class="pill satb hidden" id="bVidOff">🗺 지도로</button>   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
-<button id="bYt" class="hidden" aria-hidden="true" tabindex="-1"></button>   <!-- 11/23 보스 "탭이 난잡": 위 왼쪽 🎬 영상 하나로 합침 (이 버튼은 안 씀) -->
+<button id="bYt" class="hidden" aria-label="영상 보며 운동"><b>🎬</b>영상</button>   <!-- 11/23 14:25 보스: 영상 버튼은 지도 버튼과 따로, 오른쪽 -->
 <div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">🎬 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
 <div id="ytBox" class="modal hidden">
   <div class="sb">
@@ -1150,7 +1152,7 @@
 </div>
 
 <script>
-const BUILD = '202611231413';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231428';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2402,7 +2404,7 @@ function photoHtml(src, r, small){
 }
 Object.values(ALL_ROADS).forEach(c => (c.landmarks || []).forEach(lm => { if (!lm.photo && HUB_PHOTO[lm.id]) lm.photo = HUB_PHOTO[lm.id]; }));
 TARGETS.forEach(t => { if (!t.photo && HUB_PHOTO['mtn_' + t.id]) t.photo = HUB_PHOTO['mtn_' + t.id]; });
-const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain').sort((a, b) => a.gain - b.gain);
+const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain' && (t.geo || t.geoP)).sort((a, b) => a.gain - b.gain);   // 11/23 보스: 등산로 지도가 없는 산은 목록에서 뺌 (자료는 남김)
 const TOWERS = TARGETS.filter(t => t.kind === 'tower').sort((a, b) => a.gain - b.gain);
 const TGT = id => TARGETS.find(t => t.id === id) || MOUNTAINS[MOUNTAINS.length - 1];
 /* ---- 11/16 산·빌딩 화면 개선
@@ -3316,9 +3318,11 @@ $('rProv').onchange = () => { DB.region = { country: DB.region.country, prov: $(
 $('rCity').onchange = () => { DB.region.city = $('rCity').value; saveDB(); refreshStart(); };
 
 /* ---- 2) 코스: 그 지역의 길 · 산 · 빌딩 ---- */
+/* 11/23 보스 "지도가 안 나오는 코스는 목록에서 빼": 실제 길 자료(공식 노선·길 점·지점 좌표)가 하나도 없는 코스는 숨김 (기록·자료는 그대로) */
+const mapOK = c => !!(c && (c.official || (c.path && c.path.length) || ROUTE_PTS[c.id] || c.pathReal || c.long || c.kind === '내 코스'));
 function cityLists(cid0){
   const cid = cid0 || DB.region.city, city = WORLD.cities[cid];
-  return { road: city ? Object.values(city.courses).filter(c => c.mode === 'distance').sort((a, b) => a.seg && b.seg ? a.no - b.no : a.lengthM - b.lengthM) : [],
+  return { road: city ? Object.values(city.courses).filter(c => c.mode === 'distance' && mapOK(c)).sort((a, b) => a.seg && b.seg ? a.no - b.no : a.lengthM - b.lengthM) : [],
            mountain: MOUNTAINS.filter(t => inCity(t, cid)), tower: TOWERS.filter(t => inCity(t, cid)) };
 }
 let listOpen = false, rOpenNow = true, bOpenNow = true;   // 지금 목록이 펼쳐져 있는지 (지역별 / 주제별·내 주변)
@@ -3471,7 +3475,7 @@ function cityCenter(cid){
 }
 const kmBetween = (a, b) => { const r = Math.PI / 180, x = (b[1] - a[1]) * r * Math.cos((a[0] + b[0]) / 2 * r), y = (b[0] - a[0]) * r; return Math.sqrt(x * x + y * y) * 6371; };
 function browseItems(){   // 길 + 산 + 빌딩을 한 목록으로
-  const roads = Object.values(ALL_ROADS).filter(c => c.mode === 'distance').map(c => ({ type: 'road', id: c.id, cid: c.cityId, c, topics: topicsOf(c), approx: !c.long && !(c.path && c.path.length) && !c.nearPt,
+  const roads = Object.values(ALL_ROADS).filter(c => c.mode === 'distance' && mapOK(c)).map(c => ({ type: 'road', id: c.id, cid: c.cityId, c, topics: topicsOf(c), approx: !c.long && !(c.path && c.path.length) && !c.nearPt,
     pts: c.long ? (c.path || []) : c.nearPts ? c.nearPts : (c.path && c.path.length ? [c.path[0]] : c.nearPt ? [c.nearPt] : (cityCenter(c.cityId) ? [cityCenter(c.cityId)] : [])) }));
   const ups = MOUNTAINS.concat(TOWERS).map(m => ({ type: 'climb', id: m.id, cid: m.cityId, m, topics: [m.kind === 'tower' ? 'tower' : 'mountain'], approx: !(Array.isArray(m.peak) && m.peak.length === 2),
     pts: Array.isArray(m.peak) && m.peak.length === 2 ? [m.peak] : (cityCenter(m.cityId) ? [cityCenter(m.cityId)] : []) }));
@@ -6637,7 +6641,7 @@ function vidFit(){
   const vy = COURSE.video && COURSE.video.vy != null ? COURSE.video.vy : 0;
   Object.assign(f.style, { width: fw + 'px', height: fh + 'px', left: (bw - fw) / 2 + 'px', top: -(fh - bh) * vy + 'px' });
 }
-window.addEventListener('resize', () => { if (VID.on) vidLay(); });
+window.addEventListener('resize', () => { if (VID.on) vidLay(); try { vidBtnPos(); } catch(e){} });
 async function vidOn(){
   const v = COURSE.video; if (!v) return;
   if (VID.mine){ VID.mine = null; vidDrop(); document.body.classList.remove('vidMine'); }
@@ -6666,7 +6670,7 @@ function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재�
   return;   // 11/23 보스: 내 영상(쇼츠 등)은 운동과 따로 — 서로 멈추지 않음
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
-function vidOffNow(){ VID.step = false; vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
+function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
 function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
@@ -6764,7 +6768,7 @@ $('ytChips').innerHTML = YTS.tabs.map(c => '<button type="button" data-q="' + c[
 $('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytTab(b.dataset.q));
 $('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
-function ytShut(){ $('ytBox').classList.add('hidden'); if (VID.step && !VID.on){ VID.step = false; const m = mapModes(); if (m.length > 1 && mapCur(m) !== m[0]) setMode(m[0]); else v3dBtn(); } }   // 11/23: 고르지 않고 닫으면 다음 차례(지도)로
+function ytShut(){ $('ytBox').classList.add('hidden'); }
 $('ytClose').onclick = ytShut;
 $('ytX').onclick = ytShut;
 $('ytCourse').onclick = () => { $('ytBox').classList.add('hidden'); vidOn(); };
@@ -6811,25 +6815,29 @@ $('pubYes').onclick = async () => {
     $('pubBox').classList.add('hidden'); toastMsg('🌍 신청했어요 · 확인되면 "개척: ' + nick + '"으로 올라가요');
   } catch(e){ $('pubYes').disabled = false; toastMsg('보내지 못했어요 · 인터넷을 확인해 주세요'); }
 };
-function v3dBtn(){
-  $('bVid').classList.toggle('hidden', !(S.running && !S.gps));   // 11/23: 🎬 영상 = 이 코스 영상 + 유튜브 고르기 한 창
-  $('bYt').classList.toggle('hidden', !(S.running && !S.gps)); ytTop();   // 방구석 운동 중에만
-  const vOK = S.running && !S.gps; $('bVid').classList.toggle('hidden', !(vOK && VID.on)); $('bVid').textContent = '🎬 바꾸기';   // 11/23 보스: 보기 버튼 하나로 지도·위성·3D·영상
+function v3dBtn(){   // 11/23 14:25 보스: 영상은 지도 버튼과 분리 — 지도 버튼 = 지도·위성·3D만, 🎬 영상은 오른쪽 따로
+  const vOK = S.running && !S.gps;
+  $('bYt').classList.toggle('hidden', !vOK || VID.on); ytTop(); vidBtnPos();
+  $('bVid').classList.toggle('hidden', !(vOK && VID.on)); $('bVid').textContent = '🎬 바꾸기';
+  $('bVidOff').classList.toggle('hidden', !(vOK && VID.on));
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
-  const n = Math.max(1, m.length) + (vOK ? 1 : 0); b.classList.toggle('hidden', n < 2); if (n < 2) return;
-  if (VID.on || VID.step){ b.textContent = '🎬 영상 ↻'; return; }
-  const c = mapCur(m); b.textContent = (isClimb() && (c === 'flat' || !m.length) ? '⛰ 산 그림' : m.length ? MAPL[c] : '🗺 지도') + ' ↻';   // 11/23 보스: 산 그림인데 '지도'라고 써서 헷갈림 if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
+  b.classList.toggle('hidden', m.length < 2 || VID.on); if (m.length < 2) return;
+  const c = mapCur(m); b.textContent = (isClimb() && c === 'flat' ? (climbGeoOn() ? '🗺 지도' : '⛰ 산 그림') : MAPL[c]) + ' ↻';
+  if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
+}
+function vidBtnPos(){   // 오른쪽 위 전체 지도·높이 아래에 붙임
+  let t = 0; ['map', 'altChip'].forEach(id => { const e = $(id); if (!e || e.classList.contains('hidden')) return; const r = e.getBoundingClientRect(); if (r.height && r.top < innerHeight * 0.4) t = Math.max(t, r.bottom); });
+  $('bYt').style.top = Math.round((t || 120) + 8) + 'px';
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say('음성 안내를 켭니다.'); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? '🔇 음성 안내 끔' : '🔊 음성 안내 켬'); };
-function vidEnter(){ VID.step = true; if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else { ytBoxOpen(''); v3dBtn(); } }   // 11/23 보스: 영상 고르는 창을 닫으면 다음 누를 때 지도로
-$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(), vOK = S.running && !S.gps;
-  if (VID.on || VID.step){ VID.step = false; $('ytBox').classList.add('hidden'); if (VID.on) vidOffNow(); if (m.length < 2 || mapCur(m) === m[0]){ v3dBtn(); return; } return setMode(m[0]); }
-  if (vOK && m.indexOf(mapCur(m)) >= m.length - 1){ vidEnter(); return; }
-  if (m.length < 2) return; setMode(m[(m.indexOf(mapCur(m)) + 1) % m.length] ? m[(m.indexOf(mapCur(m)) + 1) % m.length] : m[0]); };
+function vidEnter(){ if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }
+$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; setMode(m[(m.indexOf(mapCur(m)) + 1) % m.length] || m[0]); };
+$('bYt').onclick = e => { e.stopPropagation(); vidEnter(); };
+$('bVidOff').onclick = e => { e.stopPropagation(); vidOffNow(); };
 function setMode(n){
   if (n === '3d' || n === 'toon'){ V3D.hot = false; METER.hz.bad = 0; DB.v3d = true; DB.v3dSty = n === 'toon' ? 'toon' : 'sat'; if (V3D.ready) v3dStyle(n); } else { DB.v3d = false; if (n !== 'flat'){ DB.sat = true; DB.mapSty = n; } }
-  saveDB(); showViewMode(true); toastMsg(isClimb() && n === 'flat' ? '⛰ 산 그림' : MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); }
+  saveDB(); showViewMode(true); toastMsg(isClimb() && n === 'flat' ? (climbGeoOn() ? '🗺 지도' : '⛰ 산 그림') : MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); }
 const topLabel = m => tr(m.name).replace(/\(.*\)/, '') + (m.topName ? ' · ' + m.topName : '');   // 이 길의 가장 높은 봉우리 이름
 const climbGeoOn = () => S.running && isClimb() && !S.free && DB.pick.type === 'climb' && !!mtnGeo(TGT(DB.climb.sel));
 /* ---- 11/16 빌딩 창밖 = 실제 항공사진 (높이 오를수록 더 멀리·더 넓게) ----
