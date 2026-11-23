@@ -618,6 +618,20 @@
   #freePresets button{padding:0}
   /* 11/18 B묶음 (보스 승인 12:53) */
   .ctrl #bPause{flex:2}                                              /* B1 일시정지 2 : 종료 1 — 자주 누르는 쪽을 크게 */
+  /* 11/23 15:31 보스 "아래 숫자 칸 좌우 줄 맞춤 · 전체 부피가 너무 큼": 칸 높이·글자 한 단계씩 줄이고, 두 칸의 제목·큰 숫자·작은 줄 높이를 똑같이 고정 */
+  #hudBottom{padding-top:34px}
+  .stat{padding:7px 12px 8px}
+  .stat span{font-size:12.5px;line-height:18px;height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stat b{font-size:28px;line-height:34px;height:34px}
+  .stat small{font-size:14px;line-height:20px;height:20px}
+  .bar{height:6px;margin-top:7px}
+  .spdRow{margin-top:7px}
+  .spdRow button{width:66px;font-size:30px;border-radius:16px}
+  .spdBox{height:62px;border-radius:16px;padding-top:2px}
+  .spdBox span{font-size:46px;line-height:58px;letter-spacing:-1.5px}
+  .spdBox small{font-size:15px}
+  .ctrl{margin-top:7px}
+  .ctrl button{height:42px;font-size:16px}
   #recPeriod{display:none}                                           /* B2 기간 고르기 → 달력 하나로 */
   .recCap{font-size:13px;color:var(--mut);margin:14px 2px 0}
   #regionPane .rgh,#regionPane .sel3,#regionPane h2[data-t=course]{display:none}   /* B3 드롭다운 3개 → 지역 카드 */
@@ -1156,7 +1170,7 @@
 </div>
 
 <script>
-const BUILD = '202611231508';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231532';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
