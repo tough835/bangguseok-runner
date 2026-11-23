@@ -1159,12 +1159,15 @@
   <div class="card" id="endSummary"></div>
   <div id="endConq" class="hidden"></div>   <!-- 11/21 검수 A5: 새로 정복하면 창 대신 끝 화면 한 줄 -->
   <div class="muted hidden" id="endMeter" style="font-size:12px;margin:-4px 2px 8px"></div>   <!-- 11/17 측정 (측정 보기를 켠 폰만) -->
+  <button id="fixOpen" class="toggle" style="margin-top:4px">✏️ 기계 숫자와 달라요?</button>   <!-- 11/23 보스: 평소엔 접어 둠 · 실내 운동만 -->
+  <div id="fixWrap" class="hidden">
   <h2 id="fixLabel"></h2>
   <div class="outRow">
     <input id="fixIn" type="number" inputmode="decimal" step="0.1" min="0">
     <button id="bFix" data-t="fixBtn">맞추기</button>
   </div>
   <div class="muted" id="fixMsg"></div>
+  </div>
   <div id="applyBox" class="hidden">
     <b data-t="apTitle"></b>
     <div class="muted" id="apSub" style="margin-top:4px;line-height:1.5"></div>
@@ -1188,12 +1191,12 @@
   <h2 data-t="passedTitle">지나온 곳</h2>
   <div class="card" id="endLandmarks"></div>
   </div>
-  <button class="big" id="bAgain" data-t="again">▶ 이어서 운동</button>
-  <button class="big sub" id="bHome" data-t="home">처음으로</button>
+  <button class="big hidden" id="bAgain" data-t="again">▶ 이어서 운동</button>   <!-- 11/23 보스: '한 번 더' 뺌 -->
+  <button class="big" id="bHome" data-t="home">✓ 완료</button>
 </div>
 
 <script>
-const BUILD = '202611231840';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611232209';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1825,7 +1828,7 @@ const TEXT = {
     fKm: '거리 (km)', fUp: '오른 높이 (m)', fMin: '시간 (분)', save: '기록 저장', gpsNext: 'GPS 자동 기록: 다음 단계',
     records: '최근 기록', noRecord: '아직 기록 없음', cum: '누적', upTotal: '오른 높이',
     end: '종료', paused: '일시정지', resume: '다시',
-    endTitle: '오늘 운동 끝 👏', passedTitle: '지나온 길', home: '코스 화면으로',
+    endTitle: '오늘 운동 끝 👏', passedTitle: '지나온 길', home: '✓ 완료',
     fixBtn: '맞추기', fixFloors: '기계에 찍힌 층수', fixKm: '기계에 찍힌 거리 (km)', fixGps: '실제 거리로 고치기 (km)', fixOk: '맞췄습니다', badNum: '숫자를 넣어 주세요',
     today: '오늘', todayUp: '오늘 오른 높이', toSummit: '정상까지', upLeft: '남은 오르막', hNow: '⛰ 지금 높이 / 정상', toTop: '꼭대기까지', runTime: '운동 시간',
     alti: '해발', floorUnit: '층', machineFloors: '🏢 {n}층 높이', machineLv: '기계 {n}층', summit: '정상!', elevAt: '해발 {e}m',
@@ -2749,7 +2752,7 @@ function sessionRecord(){
     passed: S.passed.slice(), site: S.free ? undefined : (siteOK(sitePlace().key) || undefined), siteHubs: S.gps && !S.free && !up ? (S.siteHubs || []).slice() : undefined, meter: METER.res || undefined };
 }
 function autosave(final){
-  if (final && S.elapsed < 20 && S.sessionM < 30){ DB.records = DB.records.filter(r => r.id !== S.sessionId); saveDB(); if (S.sessionM >= 1) toastMsg('20초 미만이라 기록에 남기지 않았어요'); return; }   // 11/19 검수 #2: 몇 초짜리가 '운동 1번'으로 쌓이던 것
+  if (final && (S.elapsed < 60 || S.sessionM < (isClimb() ? 5 : 100))){ DB.records = DB.records.filter(r => r.id !== S.sessionId); saveDB(); if (S.sessionM >= 1 || S.elapsed >= 5) toastMsg('1분·' + (isClimb() ? '5m' : '100m') + ' 미만이라 기록에 남기지 않았어요'); return; }   // 11/23 보스: 시험으로 눌렀다 끈 운동은 안 남김 (전: 20초·30m 둘 다 미만일 때만)   // 11/19 검수 #2: 몇 초짜리가 '운동 1번'으로 쌓이던 것
   if (S.sessionM >= 1) upsertRecord(sessionRecord());
   else if (final){ DB.records = DB.records.filter(r => r.id !== S.sessionId); saveDB(); }   // 움직인 게 없으면 빈 기록을 남기지 않음
 }
@@ -3894,6 +3897,7 @@ function fillEnd(){
   if (S.hikeGps) return fillHike();
   setTimeout(endAlt, 0);
   $('fixLabel').classList.remove('hidden'); $('fixIn').parentElement.classList.remove('hidden');
+  $('fixWrap').classList.add('hidden'); $('fixOpen').classList.toggle('hidden', !!S.gps); $('fixOpen').textContent = isClimb() ? '✏️ 기계 층수와 달라요?' : '✏️ 기계 거리와 달라요?';   // 11/23: 바깥 GPS는 안 보임(고칠 일은 내 기록 → 수정)
   $('myBox').querySelector('.muted').textContent = T.myBoxSub; $('myYes').textContent = '⭐ 내 코스로 저장';
   ['myName'].forEach(id => $(id).classList.remove('hidden')); $('myBox').querySelector('.mbtn').classList.remove('hidden'); $('myBox').querySelector('.muted').classList.remove('hidden');
   const a = ACTS[S.act]; fillTrack(); setTimeout(checkConquest, 600); setTimeout(() => { const el = $('endSummary'); if (el && el.innerHTML.indexOf('🔥') < 0) el.innerHTML += endKcal(); }, 0);
@@ -4140,6 +4144,7 @@ function fixGuard(v){
   const sub = Math.round((v - prev) * 100) / 100;
   return { kmh: Math.round(kmh), prev: Math.round(prev * 100) / 100, sub: prev > 0 && sub > 0 && sub / h <= cap ? sub : null };
 }
+$('fixOpen').onclick = () => { $('fixOpen').classList.add('hidden'); $('fixWrap').classList.remove('hidden'); setTimeout(() => { try { $('fixIn').focus(); } catch(e){} }, 50); };
 $('fixMsg').addEventListener('click', e => { const b = e.target.closest('[data-fixv]'); if (!b) return; $('fixIn').value = b.dataset.fixv; FIXOK = true; $('bFix').click(); });
 let FIXOK = false;
 $('bFix').onclick = () => {   // 기계에 찍힌 숫자로 맞추기
@@ -6193,7 +6198,7 @@ function upGain(e){ let g = 0, ref = e[0]; for (const v of e){ if (v - ref >= 3)
 function fillHike(){
   S.act = 'hike'; S.hikeP = null;
   const t = GPS.track || [], r = DB.records.find(x => x.id === S.sessionId), sec = Math.round(S.elapsed);
-  ['applyBox', 'passedWrap', 'trackBox', 'myBox', 'fixLabel'].forEach(id => $(id).classList.add('hidden')); $('fixIn').parentElement.classList.add('hidden');
+  ['applyBox', 'passedWrap', 'trackBox', 'myBox', 'fixLabel'].forEach(id => $(id).classList.add('hidden')); $('fixIn').parentElement.classList.add('hidden'); $('fixOpen').classList.add('hidden'); $('fixWrap').classList.add('hidden');
   const head = T.hikeSum.replace('{d}', (S.sessionM / 1000).toFixed(2)).replace('{t}', fmtTime(S.elapsed));
   $('endSummary').innerHTML = head + '<br>' + T.hikeCalc;
   if (t.length < 2){ $('endSummary').innerHTML = head; return; }
