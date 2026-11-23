@@ -1196,7 +1196,7 @@
 </div>
 
 <script>
-const BUILD = '202611232234';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611232241';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1890,7 +1890,7 @@ const TEXT = {
     gpsPerm: '위치 권한이 필요해요. 설정에서 위치를 \'앱 사용 중에만 허용\'으로 바꿔 주세요.',
     gpsHelp: '달린 만큼 고른 코스에서 앞으로 갑니다. 화면을 켜 둔 채로 운동하세요 (화면이 꺼지면 기록이 멈춰요).',
     gpsNoHere: '이 화면에서는 GPS를 쓸 수 없어요. 위치 권한을 켜거나 설치한 앱에서 열면 실시간 기록이 됩니다. 지금은 다녀온 거리를 넣어 주세요.',
-    hikeHelp: '산 높이는 GPS로 정확히 재기 어려워서, 다녀온 뒤 오른 높이를 넣습니다.', hikeGpsHelp: 'GPS로 다닌 길을 기록해요. 오른 높이는 끝난 뒤 지형 자료로 계산해요.',
+    hikeHelp: '실제로 다녀온 산을 기록에 넣어요 (오른 높이·시간) · 산길을 GPS로 기록하며 오르려면 일반 → 등산', hikeGpsHelp: 'GPS로 다닌 길을 기록해요. 오른 높이는 끝난 뒤 지형 자료로 계산해요.',
     hikeSum: '🥾 등산 <b>{d} km</b> · {t}', hikeCalc: '⛰ 오른 높이 계산 중…', hikeUp: '⛰ 오른 높이 <b>{g} m</b> · 가장 높은 곳 {top} m', hikeNoEle: '⛰ 오른 높이를 못 계산했어요 (인터넷 연결 확인)',
     myMtnTitle: '⛰ 오늘 오른 길(+{g} m)을 내 산 코스로 남길까요?', myMtnSub: '출발 → 가장 높은 곳까지가 코스가 돼요. 방구석 등산·계단에서 이 길 그대로 올라요.', myMtnName: '내 산 ({md})',
     gpsWait: '📡 GPS 찾는 중…', gpsOk: '📡 GPS ±{a}m', gpsWeak: '📡 GPS 약함 ±{a}m', gpsLost: 'GPS를 쓸 수 없어 기록을 멈춥니다', srcGps: '📡 GPS',
@@ -2378,7 +2378,7 @@ function advance(dm){
    · 흐름: 지역 → 코스 → 운동 → (지금 운동 | 기록만 입력).  실내·실외 구분은 없앴습니다.
    ===================================================================== */
 const STEP_M = 0.2, FLOOR_M = 3;
-const LV_MIN_SPM = 24, LV_MAX_SPM = 162, LV_MAX = 20;   // 레벨 1~20 → 분당 24~162칸 (추정, 기계마다 다름)
+const LV_MIN_SPM = 24, LV_MAX_SPM = 162, LV_MAX = 20, LV_TOP = 15;   // 레벨 1~20 → 분당 24~162칸 (추정, 기계마다 다름) · 11/23 보스: 고를 수 있는 최고 = 15 (분당 약 126칸 · 시간당 약 1,500m)
 const levelToSpm = lv => LV_MIN_SPM + (Math.max(1, lv) - 1) * (LV_MAX_SPM - LV_MIN_SPM) / (LV_MAX - 1);
 const ACTS = {
   tread: { icon: '🏃', key: 'aFoot',  kind: 'dist' },
@@ -3239,7 +3239,7 @@ function tGoalBind(){ $('tGoalSeg').querySelectorAll('[data-g]').forEach(b => b.
 function tGoalUI(){
   const box = $('tGoal'); if (!box) return;
   const road = !isFree() && !isClimb() && !S.running && typeof COURSE !== 'undefined' && COURSE && COURSE.mode === 'distance' && !COURSE.long;
-  const on = !isFree() && isClimb() && !S.running;
+  const on = !isFree() && isClimb() && !S.running && DB.zone !== 'out';   // 11/23: 바깥 산은 다녀온 기록 넣기라 '10·20·30분'(계단 기계용) 안 보임
   box.classList.toggle('hidden', !on && !road); if (road){ tGoalRoad(); return; } if (!on) return;
   const seg0 = $('tGoalSeg'); if (seg0.dataset.mode !== 'climb'){ seg0.dataset.mode = 'climb'; seg0.innerHTML = CGOAL.map(k => '<button data-g="' + k + '">' + (k ? k + '분' : '끝까지') + '</button>').join(''); tGoalBind(); }
   const g = (DB.climb && DB.climb.goal) || 0;
@@ -3339,7 +3339,7 @@ document.addEventListener('visibilitychange', () => {
 /* 11/23 보스 "최고 속도가 선수보다 높다": 러닝머신 25 → 20km/h(마라톤 세계기록 평균 약 21km/h · 집·헬스장 러닝머신 최고 18~20) · 실내자전거 60 → 45km/h(아마추어 상한, 기록 확인 칸과 같은 기준) · 바깥 GPS는 실제 속도라 제한 없음 */
 const spdCap = () => S.act === 'bike' ? 45 : 20;
 function setSpeed(v, flash){
-  if (isClimb()){ S.level = Math.max(1, Math.min(LV_MAX, Math.round(v))); $('speedVal').textContent = S.level; }
+  if (isClimb()){ S.level = Math.max(1, Math.min(LV_TOP, Math.round(v))); $('speedVal').textContent = S.level; }
   else { S.speed = Math.max(0, Math.min(S.gps ? 99 : spdCap(), Math.round(v*10)/10)); S.spd[S.act] = S.speed; $('speedVal').textContent = S.speed.toFixed(1); }
   refreshSpeedBox(flash); hudTick = 5;
   if (!S.running){ try { tGoalUI(); } catch(e){} }   // 레벨을 바꾸면 '약 N m 오르면 끝' 안내도 고침
