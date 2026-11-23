@@ -54,6 +54,14 @@
   #hudTop #bVoice{width:40px;padding:0;justify-content:center}
   #hudTop .brk2{order:3}#hudTop #altiPill,#hudTop #notePill,#hudTop #gpsPill{order:4}
   #hudTop #notePill{font-size:14px;padding:6px 12px}
+  /* 11/23 15:37 보스 "오른쪽 고도 표시를 위로 올려 영상을 더 크게": 영상 중엔 고도 칸을 코스 이름 옆 작은 칸으로, 전체 지도도 작게 → 위 띠가 두 줄(이름·버튼)로 끝남 */
+  #hudTop #vAlt{order:0;font-weight:800;flex:none;font-size:13px;padding:6px 9px}
+  #hudTop #namePill{min-width:0;flex:0 1 auto}
+  body.vidP #altChip{display:none!important}
+  body.vidP #map{width:80px;height:80px}
+  body.vidP #hudTop{right:100px}
+  body.vidP #hudTop #namePill{max-width:calc(100% - 92px)}   /* 이름이 길면 줄임표(…) → 고도 칸과 한 줄 */
+  body.vidP #hudTop #notePill{display:none}   /* '곧 ○○'은 아래 숫자판에도 있어 영상 중엔 뺌 */
   .pill{background:rgba(0,0,0,.45);padding:6px 11px;border-radius:999px;font-size:14px;line-height:1.2;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .pill.alt{font-size:24px;font-weight:900;padding:7px 14px}
   #hudBottom{position:fixed;left:0;right:0;bottom:0;padding:44px 10px calc(10px + env(safe-area-inset-bottom));
@@ -704,7 +712,7 @@
 
 <!-- 운동 중 화면 -->
 <div id="hudTop" class="hidden">
-  <div class="pill" id="namePill"></div><i class="brk brk1"></i><i class="brk brk2"></i>
+  <div class="pill" id="namePill"></div><div class="pill hidden" id="vAlt"></div><i class="brk brk1"></i><i class="brk brk2"></i>
   <div class="pill alt hidden" id="altiPill"></div>
   <div class="pill note hidden" id="notePill"></div>
   <div class="pill hidden" id="gpsPill"></div>
@@ -712,7 +720,7 @@
   <button class="pill satb hidden" id="b3d"></button>
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내"></button>
   <button class="pill satb hidden" id="bVid">🎬 바꾸기</button>
-  <button class="pill satb hidden" id="bVidOff">🗺 지도로</button>
+  <button class="pill satb hidden" id="bVidOff">🗺 지도</button>
   <button class="pill satb hidden" id="bYt" aria-label="영상 보며 운동">🎬 영상</button>   <!-- 11/23 15:05 보스 "너저분": 지도 버튼과는 따로, 같은 버튼 줄에 -->   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
 <div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" class="hidden">🎬 바꾸기</button><button id="vidOff">🗺 지도로</button></span></div></div>
@@ -1170,7 +1178,7 @@
 </div>
 
 <script>
-const BUILD = '202611231532';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231539';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6041,7 +6049,10 @@ function altChip(){
   else if (isClimb()){ if (S.free) sub = S.sessionM; }   // 11/19 보스 폰 "좌우 정보 산만": 산 코스는 이 칸을 없앰 — 지금 해발 = 작은 그림 아래 / 오른 높이 = 오른쪽 아래 칸 / 기온 = 쉬어가기·응원 글
   else if (!S.free && ALT.rel != null && !COURSE.noElev){ top = ALT.rel; sub = ALT.gain; }
   const show = S.running && (top != null || sub != null);
-  $('altChip').classList.toggle('hidden', !show); if (!show) return;
+  $('altChip').classList.toggle('hidden', !show);
+  const va = $('vAlt'); va.classList.toggle('hidden', !(show && document.body.classList.contains('vidP')));
+  if (show) va.textContent = (top != null ? '⛰' + Math.round(top).toLocaleString() + 'm' : '') + (typeof sub === 'number' && (sub >= 1 || top == null) ? (top != null ? ' ' : '') + '↑' + Math.round(sub).toLocaleString() : '');   // 줄임: 오른 높이 0이면 뺌
+  if (!show) return;
   const mp = $('map'), mr = !mp.classList.contains('hidden') && mp.getBoundingClientRect(); $('altChip').style.top = mr && mr.height ? Math.round(mr.bottom + 8) + 'px' : '';   // 작은 지도가 있으면 바로 아래
   $('altChip').innerHTML = (top != null ? '⛰ ' + Math.round(top).toLocaleString() + 'm' : '⛰') + (sub != null ? '<small>↑ ' + (typeof sub === 'number' ? Math.round(sub).toLocaleString() + 'm' : sub) + '</small>' : '');
 }
@@ -6656,6 +6667,7 @@ function vidApi(){
 }
 function vidBand(){ let b = 0; ['hudTop', 'map', 'altChip'].forEach(id => { const e = $(id); if (!e || e.classList.contains('hidden')) return; const r = e.getBoundingClientRect(); if (r.height && r.top < innerHeight * 0.4) b = Math.max(b, r.bottom); }); return Math.round(b + 8); }
 function vidLay(){ const hb = $('hudBottom'), P = VID.on && !landUI(); document.body.classList.toggle('vidP', P); document.documentElement.style.setProperty('--vidB', (hb.offsetHeight - 36) + 'px');
+  try { altChip(); } catch(e){}
   if (P) document.documentElement.style.setProperty('--vidT', vidBand() + 'px'); vidFit(); }
 /* 11/21 보스 "세로 영상 양옆 검은 여백 → 꽉 채우기": 영상 칸을 덮도록 키우고(가로세로 비율 유지) 넘치는 위·아래만 잘라 보임 */
 function vidFit(){
@@ -6697,7 +6709,7 @@ function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재�
   return;   // 11/23 보스: 내 영상(쇼츠 등)은 운동과 따로 — 서로 멈추지 않음
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
-function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
+function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); altChip(); } catch(e){} }
 function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
