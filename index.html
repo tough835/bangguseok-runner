@@ -1014,6 +1014,7 @@
   <div id="recList"></div>
   <div class="muted" data-t="recHelp" style="margin-top:10px"></div>
   <button id="bAdd" class="toggle" data-t="addBtn" style="margin-top:18px"></button>
+  <button id="bFb" class="toggle" style="margin-top:10px">💬 의견·문제 보내기</button>
   <button id="bSet" class="toggle" style="margin-top:10px">⚙️ 설정 ▾</button>   <!-- 11/18 A13: 한 줄짜리 버튼 4개를 한 곳에 -->
   <div id="setBox" class="hidden">
   <div id="skinSeg" class="seg" style="margin-top:10px"><button data-skin="dark">🌙 어두운 화면</button><button data-skin="light">☀️ 밝은 화면</button></div>   <!-- 11/19 보스: 화면 색 고르기 -->
@@ -1031,7 +1032,7 @@
   </details>
   <button id="bTel" class="toggle" style="margin-top:10px"></button>
   </div>
-  <a href="privacy.html" target="_blank" style="display:block;text-align:center;margin-top:10px;font-size:13px;color:var(--mut)">개인정보처리방침</a>
+  <div style="text-align:center;margin-top:10px;font-size:13px"><a href="privacy.html" target="_blank" style="color:var(--mut)">개인정보처리방침</a> <span style="color:var(--mut)">·</span> <a href="terms.html" target="_blank" style="color:var(--mut)">이용약관</a></div>
   <button id="bReset" class="x2 hidden"></button>   <!-- 11/17 보스 승인: 출발 전 '이어서 할까요?' 창의 '처음부터'와 겹쳐서 숨김 -->
 </div>
 <div id="bodyBox" class="modal hidden">
@@ -1127,7 +1128,21 @@
       <label>한마디 (선택)</label><input id="pubMemo" maxlength="100" placeholder="이 길 자랑 한 줄">
     </div>
     <div class="muted pubNote">출발·도착 근처 200m는 가리고 보내요 · 확인을 거쳐 올라가요 · 차도·사유지는 빠질 수 있어요</div>
+    <label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:14px"><input type="checkbox" id="pubAgree" style="width:20px;height:20px"> <span><a href="terms.html" target="_blank">이용약관</a>(올릴 수 없는 것·신고 처리)에 동의해요</span></label>
     <div class="mbtn"><button id="pubNo">닫기</button><button id="pubYes" class="go">신청</button></div>
+  </div>
+</div>
+<div id="fbBox" class="modal hidden">   <!-- 11/23 보스 승인: 의견·문제 보내기 + 코스 신고 (구글 규칙: 사용자 콘텐츠는 신고 기능 필수) -->
+  <div class="sb">
+    <div class="st" id="fbTitle">💬 의견 보내기</div>
+    <div class="muted" id="fbSub" style="margin-top:4px"></div>
+    <div id="fbKind" class="seg" style="margin-top:10px"><button data-k="idea">💡 의견</button><button data-k="bug">🐞 문제</button><button data-k="report">🚩 신고</button></div>
+    <div class="form">
+      <label>내용</label><textarea id="fbBody" maxlength="1000" rows="4" style="width:100%;box-sizing:border-box;border-radius:10px;padding:10px;font-size:15px;background:var(--ch3);color:var(--tx);border:0" placeholder="불편한 점, 바라는 점, 이상한 코스…"></textarea>
+      <label>답장 받을 이메일 (선택)</label><input id="fbMail" inputmode="email" maxlength="120" placeholder="비워 두면 답장 없이 받기만 해요">
+    </div>
+    <div class="muted" style="font-size:12px;margin-top:6px">앱을 고치는 데만 써요 · <a href="privacy.html" target="_blank">개인정보처리방침</a></div>
+    <div class="mbtn"><button id="fbNo">닫기</button><button id="fbYes" class="go">보내기</button></div>
   </div>
 </div>
 <div id="dupBox" class="modal hidden">
@@ -1178,7 +1193,7 @@
 </div>
 
 <script>
-const BUILD = '202611231539';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231758';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3459,7 +3474,7 @@ function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
   const mk = cMarks(c);
   return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + tr(c.name) + '</b>' + (mk ? ' <span class="mk">' + mk + '</span>' : '') + '<br><span class="muted"><b class="km">' +
-    (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span></div>' +
+    (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by + ' <a class="rpt" data-rpt="' + c.id + '" style="margin-left:4px;font-size:12px;color:var(--mut);text-decoration:underline">🚩 신고</a>' : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span></div>' +
     '<div class="r">' + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (laps ? '<br>✅ ' + laps + T.times : '') + '</div></div>';
 }
 const flTx = (st, f) => st.m.eq ? Math.round(f === undefined ? st.climbed : f / st.m.floors * st.m.gain) + 'm' : (f === undefined ? st.floor : f) + 'F';   // eq 탑은 층 대신 높이
@@ -4115,6 +4130,7 @@ const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', res
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
+  if (shown('fbBox')){ $('fbBox').classList.add('hidden'); return true; }
   if (shown('ytBox')){ ytShut(); return true; }   // 11/23 영상 고르는 창 → 영상 → 운동 끝 묻기 순서
   if (VID.on){ vidOffNow(); return true; }
   if (shown('dupBox')) return true;                       // 둘 중 하나를 골라야 하는 창
@@ -6835,6 +6851,36 @@ function pubOpen(id){
   $('pubYes').disabled = false; $('pubBox').classList.remove('hidden');
 }
 const PUB = { id: null };
+/* 11/23 의견·문제·코스 신고 → Supabase bgr_feedback (넣기만, 읽기는 운영자) */
+const FB = { kind: 'idea', course: null };
+const FB_URL = TEL.url.replace('/bgr_event', '/bgr_feedback');
+function fbOpen(kind, course){
+  FB.kind = kind || 'idea'; FB.course = course || null;
+  $('fbTitle').textContent = course ? '🚩 코스 신고' : '💬 의견·문제 보내기';
+  $('fbSub').textContent = course ? '「' + course + '」 · 무엇이 문제인지 적어 주세요 (위험한 길·사유지·잘못된 내용 등)' : '테스트 중이에요 · 짧게라도 큰 도움이 돼요';
+  $('fbKind').classList.toggle('hidden', !!course);
+  $('fbKind').querySelectorAll('[data-k]').forEach(b => b.classList.toggle('on', b.dataset.k === FB.kind));
+  $('fbBody').value = ''; $('fbMail').value = DB.fbMail || ''; $('fbYes').disabled = false; $('fbBox').classList.remove('hidden');
+}
+$('fbKind').querySelectorAll('[data-k]').forEach(b => b.onclick = () => { FB.kind = b.dataset.k; $('fbKind').querySelectorAll('[data-k]').forEach(x => x.classList.toggle('on', x === b)); });
+$('bFb').onclick = () => fbOpen('idea');
+$('fbNo').onclick = () => $('fbBox').classList.add('hidden');
+$('fbYes').onclick = async () => {
+  const body = $('fbBody').value.trim(), mail = $('fbMail').value.trim();
+  if (!body){ toastMsg('내용을 적어 주세요'); $('fbBody').focus(); return; }
+  if (mail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){ toastMsg('이메일을 확인해 주세요'); $('fbMail').focus(); return; }
+  const app = (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) ? 'android' : 'web';
+  $('fbYes').disabled = true;
+  try {
+    const r = await fetch(FB_URL, { method: 'POST', headers: { apikey: TEL.key, Authorization: 'Bearer ' + TEL.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ kind: FB.kind, course: FB.course, body: body.slice(0, 1000), contact: mail || null, did: telDid(), build: BUILD, app }) });
+    if (!r.ok) throw new Error(r.status);
+    if (mail){ DB.fbMail = mail; saveDB(); }
+    $('fbBox').classList.add('hidden'); toastMsg(FB.kind === 'report' ? '🚩 신고했어요 · 7일 안에 확인할게요' : '💬 고마워요 · 잘 받았어요');
+  } catch(e){ $('fbYes').disabled = false; toastMsg('보내지 못했어요 · 인터넷을 확인해 주세요'); }
+};
+document.addEventListener('click', e => { const a = e.target.closest && e.target.closest('.rpt'); if (!a) return; e.preventDefault(); e.stopPropagation();
+  const c = ALL_ROADS[a.dataset.rpt]; fbOpen('report', c ? tr(c.name) : a.dataset.rpt); }, true);
 const ytId = s => { const m = String(s || '').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([A-Za-z0-9_-]{6,20})/) || String(s || '').trim().match(/^([A-Za-z0-9_-]{11})$/); return m ? m[1] : null; };
 $('myPub').onclick = () => pubOpen($('myPub').dataset.id);
 $('pubNo').onclick = () => $('pubBox').classList.add('hidden');
@@ -6842,6 +6888,7 @@ $('pubYes').onclick = async () => {
   const m = MINE.find(x => x.id === PUB.id); if (!m) return;
   const nick = $('pubNick').value.trim(), name = $('pubName').value.trim() || m.name, ytRaw = $('pubYt').value.trim(), yt = ytRaw ? ytId(ytRaw) : null;
   if (!nick){ toastMsg('개척자 이름을 적어 주세요'); $('pubNick').focus(); return; }
+  if (!$('pubAgree').checked){ toastMsg('이용약관에 동의해 주세요'); return; }
   if (ytRaw && !yt){ toastMsg('유튜브 링크를 확인해 주세요'); $('pubYt').focus(); return; }
   const raw = (m.type === 'mtn' ? m.p : m.path).map(q => [q[0], q[1]]), c = pubCut(raw, m.ts, 200), mid = c.p[Math.floor(c.p.length / 2)];
   const body = { did: telDid(), nick, name: name.slice(0, 40), kind: m.type === 'mtn' ? 'hike' : m.act === 'bike' ? 'bike' : 'walk', km: Math.max(0.01, Math.round(trackLen(c.p) / 10) / 100),
