@@ -20,6 +20,10 @@
   #altChip small{display:block;font-size:11px;font-weight:700;color:var(--vtx)}
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
+  /* 11/23 보스 "위 탭·목표·전체 지도는 그대로, 밑에 띠만 없애고 영상은 꽉 차게": 세로 화면 = 위 띠 아래 ~ 기록판 위 전부 영상 (영상 위에는 아무것도 안 겹침) */
+  body.vidOn.vidP #hudTop,body.vidOn.vidP #map,body.vidOn.vidP #altChip{visibility:visible}
+  body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
+  body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
   #bYt{display:none!important;position:fixed;right:10px;top:calc(196px + env(safe-area-inset-top));z-index:3;min-height:44px;padding:0 13px;border-radius:22px;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:800}
   #bYt b{color:#ff5a4d;margin-right:4px}
@@ -1145,7 +1149,7 @@
 </div>
 
 <script>
-const BUILD = '202611231241';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231250';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6611,13 +6615,15 @@ function vidApi(){
     window.onYouTubeIframeAPIReady = ok; const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; s.onerror = no; document.head.append(s); setTimeout(no, 15000); });
   return VID.api;
 }
-function vidLay(){ const hb = $('hudBottom'); document.documentElement.style.setProperty('--vidB', (hb.offsetHeight - 36) + 'px'); vidFit(); }
+function vidBand(){ let b = 0; ['hudTop', 'map', 'altChip'].forEach(id => { const e = $(id); if (!e || e.classList.contains('hidden')) return; const r = e.getBoundingClientRect(); if (r.height && r.top < innerHeight * 0.4) b = Math.max(b, r.bottom); }); return Math.round(b + 8); }
+function vidLay(){ const hb = $('hudBottom'), P = VID.on && !landUI(); document.body.classList.toggle('vidP', P); document.documentElement.style.setProperty('--vidB', (hb.offsetHeight - 36) + 'px');
+  if (P) document.documentElement.style.setProperty('--vidT', vidBand() + 'px'); vidFit(); }
 /* 11/21 보스 "세로 영상 양옆 검은 여백 → 꽉 채우기": 영상 칸을 덮도록 키우고(가로세로 비율 유지) 넘치는 위·아래만 잘라 보임 */
 function vidFit(){
   const w = $('vidWrap'), f = w.querySelector('iframe') || $('vidFrame'), ar = (COURSE.video && COURSE.video.ar) || 9 / 16;
   const bw = w.clientWidth, bh = w.clientHeight; if (!bw || !bh) return;
-  if (VID.mine || (COURSE.video && COURSE.video.fit === 'top')){ let mw = bw, mh = bw * 9 / 16; if (mh > bh){ mh = bh; mw = bh * 16 / 9; }   /* 내가 고른 영상: 자르지 않고 16:9 그대로 */
-    Object.assign(f.style, { width: mw + 'px', height: mh + 'px', left: (bw - mw) / 2 + 'px', top: (bh - mh) / 2 + 'px' }); return; }
+  if (VID.mine || (COURSE.video && COURSE.video.fit === 'top')){   /* 11/23 보스 "꽉 차게": 영상 칸 전부를 플레이어로 → 유튜브가 자르지 않고 비율대로 크게 (쇼츠 = 세로 가득) */
+    Object.assign(f.style, { width: bw + 'px', height: bh + 'px', left: '0px', top: '0px' }); return; }
   let fw = bw, fh = bw / ar; if (fh < bh){ fh = bh; fw = bh * ar; }
   /* 11/21 보스 "아래(그림자)는 자르고 위를 살려": 넘치는 높이 중 위는 vy만큼만 자르고 나머지는 아래에서 자름 (vy 0 = 위 그대로, 0.5 = 가운데) */
   const vy = COURSE.video && COURSE.video.vy != null ? COURSE.video.vy : 0;
@@ -6629,7 +6635,8 @@ async function vidOn(){
   if (VID.mine){ VID.mine = null; vidDrop(); document.body.classList.remove('vidMine'); }
   $('vidBox').classList.remove('mine'); $('vidPick').classList.remove('hidden');   // 11/23 코스 영상 중에도 다른 영상으로 바꾸기
   VID.on = true; document.body.classList.add('vidOn'); document.body.classList.toggle('vidMine', v.fit === 'top'); $('vidBox').classList.remove('hidden'); vidLay(); if (v.fit === 'top') setTimeout(() => window.dispatchEvent(new Event('resize')), 60);   // 11/23 가로 영상 코스 = 자르지 않고 위에 (유튜브 규칙) $('vidTx').textContent = '🎬 ' + (v.note || '영상') + ' · 불러오는 중…';
-  try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
+  try { v3dBtn(); vidLay(); } catch(e){}
+  try { await vidApi(); } catch(e){ toastMsg('영상을 못 불러왔어요 (인터넷 확인)'); return; }
   if (!VID.on) return;
   if (VID.P){ if (VID.ready){ vSelf(); VID.P.playVideo(); } return; }
   VID.P = new YT.Player('vidFrame', { videoId: v.yt, playerVars: { playsinline: 1, controls: 0, rel: 0, modestbranding: 1, fs: 0, disablekb: 1, mute: 1, loop: 1, playlist: v.yt },
@@ -6638,21 +6645,21 @@ async function vidOn(){
               onError: e => { $('vidTx').textContent = '영상 재생 오류 ' + e.data + ' (일부 공개인지 확인)'; } } });
 }
 /* 11/23 보스 "유튜브를 멈췄다 다시 틀면 운동은 멈춰 있음" → 영상과 운동을 한 몸으로
-   · 영상 화면에서 직접 멈춤 = 운동도 일시정지 · 영상 다시 재생 = 운동도 다시 시작 (반대로 일시정지 버튼도 영상에 그대로)
+   · (코스 길 영상만) 영상 화면에서 직접 멈춤 = 운동도 일시정지 · 쇼츠·내 영상은 운동과 따로 · 영상 다시 재생 = 운동도 다시 시작 (반대로 일시정지 버튼도 영상에 그대로)
    · 앱이 스스로 멈추고 트는 것(속도 0·창 열기)과 화면 꺼짐·다른 앱 갔다 옴은 사람 조작으로 치지 않음 */
 const vSelf = () => { VID.selfT = Date.now(); };
 document.addEventListener('visibilitychange', () => { VID.visT = Date.now(); });
 function vidUser(st){
-  if (!VID.on || !S.running || document.hidden || Date.now() - (VID.selfT || 0) < 1500 || Date.now() - (VID.visT || 0) < 2500) return;
+  if (!VID.on || VID.mine || !S.running || document.hidden || Date.now() - (VID.selfT || 0) < 1500 || Date.now() - (VID.visT || 0) < 2500) return;
   if (st === 2 && !S.paused) togglePause();
   else if (st === 1 && S.paused) togglePause();
 }
 function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재생 (코스 영상은 vidTick이 맞춤)
-  if (!VID.on || !VID.ready || !VID.mine) return;
-  try { vSelf(); S.paused ? VID.P.pauseVideo() : VID.P.playVideo(); } catch(e){}
+  return;   // 11/23 보스: 내 영상(쇼츠 등)은 운동과 따로 — 서로 멈추지 않음
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
-function vidOffNow(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
+function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
   if (!VID.on || !VID.ready || VID.mine) return;   // 내가 고른 영상은 속도에 맞추지 않음
@@ -6665,7 +6672,7 @@ function vidTick(kmh){
     $('vidTx').textContent = '🎬 ' + r.toFixed(2).replace(/0$/, '') + '배속' + (kmh / v.kmh > 2 ? ' · 영상은 최대 2배' : '');
   } catch(e){}
 }
-$('bVid').onclick = e => { e.stopPropagation(); if (VID.on) vidOffNow(); else ytBoxOpen(''); };   // 11/23 영상 창 하나로
+$('bVid').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };   // 11/23 영상 중에만 보이는 '🎬 바꾸기'
 $('vidOff').onclick = e => { e.stopPropagation(); vidOffNow(); };
 /* ---- ▶ 내가 고른 유튜브 영상 (11/22 보스) ----
    운동 화면 오른쪽 '▶ 유튜브' → 유튜브에서 고르고 '공유 → 링크 복사' → 돌아오면 지도 자리에 바로 재생
@@ -6687,14 +6694,14 @@ function ytBoxOpen(msg){
 async function ytPlay(id){
   $('ytBox').classList.add('hidden'); MYT.wait = 0; MYT.last = id; ytKeep(id);
   VID.mine = id; VID.on = true; document.body.classList.add('vidOn', 'vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); $('vidBox').classList.add('mine'); $('vidBox').classList.remove('hidden'); $('vidPick').classList.remove('hidden');
-  ytTop(); vidLay(); $('vidTx').textContent = '▶ 불러오는 중…';
+  ytTop(); try { v3dBtn(); } catch(e){} vidLay(); $('vidTx').textContent = '▶ 불러오는 중…';
   try { await vidApi(); } catch(e){ $('vidTx').textContent = '영상을 못 불러왔어요 (인터넷 확인)'; return; }
   if (VID.mine !== id) return;
   vidDrop();
   VID.P = new window.YT.Player('vidFrame', { videoId: id, playerVars: { playsinline: 1, autoplay: 1, rel: 0 },
-    events: { onReady: () => { VID.ready = true; vidFit(); try { vSelf(); S.paused ? VID.P.pauseVideo() : VID.P.playVideo(); } catch(e){} $('vidTx').textContent = '▶ 내 영상 · 멈추면 운동도 멈춤'; },
+    events: { onReady: () => { VID.ready = true; vidFit(); try { vSelf(); VID.P.playVideo(); } catch(e){} $('vidTx').textContent = '▶ 내 영상'; },
               onStateChange: e => vidUser(e.data),
-              onError: e => { $('vidTx').textContent = e.data === 101 || e.data === 150 ? '이 영상은 유튜브에서만 볼 수 있게 막혀 있어요' : '영상 재생 오류 ' + e.data; } } });
+              onError: e => { const m = e.data === 101 || e.data === 150 ? '이 영상은 유튜브에서만 볼 수 있게 막혀 있어요 · 🎬 바꾸기' : '영상 재생 오류 ' + e.data; $('vidTx').textContent = m; toastMsg(m); } } });
 }
 function ytTop(){ if (!VID.mine) return; const a = $('altiPill'), t = $('namePill').textContent + (a.classList.contains('hidden') ? '' : ' · ' + a.textContent); if ($('vidTop').textContent !== t) $('vidTop').textContent = t; }
 async function ytClip(byTap){   // 복사해 둔 링크 읽기 — 폰에 따라 막혀 있으면 직접 붙여넣기
@@ -6798,15 +6805,22 @@ $('pubYes').onclick = async () => {
 function v3dBtn(){
   $('bVid').classList.toggle('hidden', !(S.running && !S.gps));   // 11/23: 🎬 영상 = 이 코스 영상 + 유튜브 고르기 한 창
   $('bYt').classList.toggle('hidden', !(S.running && !S.gps)); ytTop();   // 방구석 운동 중에만
+  const vOK = S.running && !S.gps; $('bVid').classList.toggle('hidden', !(vOK && VID.on)); $('bVid').textContent = '🎬 바꾸기';   // 11/23 보스: 보기 버튼 하나로 지도·위성·3D·영상
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
-  b.classList.toggle('hidden', m.length < 2); if (m.length < 2) return;
-  const c = mapCur(m); b.textContent = MAPL[c] + ' ↻'; if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
+  const n = Math.max(1, m.length) + (vOK ? 1 : 0); b.classList.toggle('hidden', n < 2); if (n < 2) return;
+  if (VID.on){ b.textContent = '🎬 영상 ↻'; return; }
+  const c = mapCur(m); b.textContent = (m.length ? MAPL[c] : '🗺 지도') + ' ↻'; if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say('음성 안내를 켭니다.'); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? '🔇 음성 안내 끔' : '🔊 음성 안내 켬'); };
-$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; const n = m[(m.indexOf(mapCur(m)) + 1) % m.length];
+function vidEnter(){ if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }
+$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(), vOK = S.running && !S.gps;
+  if (VID.on){ vidOffNow(); if (m.length < 2 || mapCur(m) === m[0]){ v3dBtn(); return; } return setMode(m[0]); }
+  if (vOK && m.indexOf(mapCur(m)) >= m.length - 1){ vidEnter(); return; }
+  if (m.length < 2) return; setMode(m[(m.indexOf(mapCur(m)) + 1) % m.length] ? m[(m.indexOf(mapCur(m)) + 1) % m.length] : m[0]); };
+function setMode(n){
   if (n === '3d' || n === 'toon'){ V3D.hot = false; METER.hz.bad = 0; DB.v3d = true; DB.v3dSty = n === 'toon' ? 'toon' : 'sat'; if (V3D.ready) v3dStyle(n); } else { DB.v3d = false; if (n !== 'flat'){ DB.sat = true; DB.mapSty = n; } }
-  saveDB(); showViewMode(true); toastMsg(MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); };
+  saveDB(); showViewMode(true); toastMsg(MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); }
 const topLabel = m => tr(m.name).replace(/\(.*\)/, '') + (m.topName ? ' · ' + m.topName : '');   // 이 길의 가장 높은 봉우리 이름
 const climbGeoOn = () => S.running && isClimb() && !S.free && DB.pick.type === 'climb' && !!mtnGeo(TGT(DB.climb.sel));
 /* ---- 11/16 빌딩 창밖 = 실제 항공사진 (높이 오를수록 더 멀리·더 넓게) ----
