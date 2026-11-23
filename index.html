@@ -583,6 +583,7 @@
   .zchips button{flex:none;height:36px;border:0;border-radius:999px;background:var(--ch2);color:var(--tx2);font-size:13px;font-weight:700;padding:0 13px;position:relative}
   .zchips button::after{content:'';position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
   .zchips button.on{background:var(--vt);color:var(--onv)}
+  #distChips{overflow:visible;gap:5px}#distChips button{flex:1 1 auto;min-width:0;padding:0 6px;font-size:12.5px;white-space:nowrap;letter-spacing:-.3px}   /* 11/23 보스: 거리 칸이 화면 밖으로 넘치거나 두 줄 되지 않게 */
   .morebtn{display:block;width:100%;height:46px;border:0;background:none;color:var(--vtx);font-size:14px;font-weight:800}
   /* 11/17 보스 승인분 */
   #homeScreen .homeTop{gap:8px}
@@ -1149,7 +1150,7 @@
 </div>
 
 <script>
-const BUILD = '202611231250';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231352';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3333,7 +3334,7 @@ let rView = 'city';
 function fitCount(cid){
   const l = cityLists(cid);
   if (isFree()) return l.road.length + l.mountain.length + l.tower.length;
-  const g = actGrp(S.act); return g === 'up' ? l.mountain.length + l.tower.length : l.road.filter(g === 'bike' ? bikeList : distOK).length;
+  const g = actGrp(S.act); return g === 'up' ? l.mountain.filter(upOK).length + l.tower.filter(upOK).length : l.road.filter(g === 'bike' ? c => bikeList(c) && bikeDistOK(c) : distOK).length;
 }
 function renderRegionCards(){
   $('rCityView').classList.add('hidden'); $('rCards').classList.remove('hidden');
@@ -3361,12 +3362,12 @@ $('rBack').onclick = () => { rView = rView === 'cards' ? 'city' : 'cards'; refre
 function refreshCourses0(){
   rOpenNow = true;
   const lists = cityLists();
-  if (!isFree()){ const g = actGrp(S.act); if (g === 'up') lists.road = []; else { lists.mountain = []; lists.tower = []; lists.road = lists.road.filter(g === 'bike' ? bikeList : distOK); } }
+  if (!isFree()){ const g = actGrp(S.act); if (g === 'up'){ lists.road = []; lists.mountain = lists.mountain.filter(upOK); lists.tower = lists.tower.filter(upOK); } else { lists.mountain = []; lists.tower = []; lists.road = lists.road.filter(g === 'bike' ? c => bikeList(c) && bikeDistOK(c) : distOK); } }
   const tabs = ['road', 'mountain', 'tower'].filter(k => lists[k].length);
   if (!tabs.includes(DB.tab)) DB.tab = tabs[0];
   if (!tabs.length){   // 이 지역에 그 운동 코스가 없음 → 내 주변(지역 구분 없이)으로 안내
     $('tabSeg').classList.add('hidden'); $('courseToggle').classList.add('hidden'); $('bStart').classList.toggle('need', !isFree());
-    $('courseList').innerHTML = '<div class="muted" style="padding:12px;line-height:1.6">이 지역엔 ' + (actGrp(S.act) === 'foot' && (DB.dist || 'all') !== 'all' ? DIST.find(x => x[0] === DB.dist)[1] + ' ' : '') + GRP_NAME[actGrp(S.act)] + ' 코스가 없어요.<br><a href="#" id="goNear" style="color:var(--vtx)">📍 내 주변 ' + GRP_NAME[actGrp(S.act)] + ' 코스 보기</a></div>';
+    $('courseList').innerHTML = '<div class="muted" style="padding:12px;line-height:1.6">이 지역엔 ' + (actGrp(S.act) === 'foot' && (DB.dist || 'all') !== 'all' ? DIST.find(x => x[0] === DB.dist)[1] + ' ' : actGrp(S.act) === 'bike' && (DB.distB || 'all') !== 'all' ? DIST_BIKE.find(x => x[0] === DB.distB)[1] + ' ' : actGrp(S.act) === 'up' && (DB.distU || 'all') !== 'all' ? '오를 높이 ' + DIST_UP.find(x => x[0] === DB.distU)[1] + ' ' : '') + GRP_NAME[actGrp(S.act)] + ' 코스가 없어요.<br><a href="#" id="goNear" style="color:var(--vtx)">📍 내 주변 ' + GRP_NAME[actGrp(S.act)] + ' 코스 보기</a></div>';
     $('goNear').onclick = e => { e.preventDefault(); DB.browse = 'near'; saveDB(); refreshBrowse(); };
     return; }
   setTimeout(geoNote, 0);
@@ -3576,15 +3577,22 @@ const actGrp = a => a === 'bike' ? 'bike' : (ACTS[a] && ACTS[a].kind === 'up') ?
 const GRP_NAME = { foot: '걷기·조깅', bike: '자전거', up: '등산·계단' };
 const DIST = [['all', '전체'], ['xs', '3km 이하'], ['s', '3~5km'], ['m', '5~10km'], ['l', '10km 이상']];   // 11/20 보스 "조깅은 2~3km 단위로": 짧은 것부터 고르기 쉽게 한 칸 더
 const distOK = c => { const d = DB.dist || 'all', L0 = c.lengthM; return d === 'all' || (d === 'xs' ? L0 <= 3000 : d === 's' ? L0 > 3000 && L0 <= 5000 : d === 'm' ? L0 > 5000 && L0 <= 10000 : L0 > 10000); };
+/* 11/23 보스 "자전거·산도 고를 수 있게": 자전거 = 거리, 등산·계단 = 오를 높이 (빌딩도 높이로) */
+const DIST_BIKE = [['all', '전체'], ['s', '10km 이하'], ['m', '10~20km'], ['l', '20~40km'], ['xl', '40km 이상']];
+const DIST_UP = [['all', '전체'], ['s', '300m 이하'], ['m', '300~600m'], ['l', '600~1000m'], ['xl', '1000m 이상']];
+const bandOK = (k, v, a, b, c) => k === 'all' || (k === 's' ? v <= a : k === 'm' ? v > a && v <= b : k === 'l' ? v > b && v <= c : v > c);
+const bikeDistOK = c => bandOK(DB.distB || 'all', c.lengthM, 10000, 20000, 40000);
+const upOK = m => bandOK(DB.distU || 'all', m.gain || (m.summit - (m.base || 0)) || 0, 300, 600, 1000);
 const bikeOnly = c => bikeOK(c) && !/조깅|도보|걷기/.test(c.kind || '');   // 차와 함께 쓰는 고갯길 등
 const kindIcon = c => mineC(c) ? '⭐ ' : bikeOK(c) ? (bikeOnly(c) ? '🚲 ' : '🏃🚲 ') : '🚶 ';
 function distChips(){
-  const box = $('distChips'), on = !isFree() && actGrp(S.act) === 'foot' && (DB.browse === 'region' ? rOpenNow : bOpenNow);   // 11/18 A4: 목록을 펼쳤을 때만
+  const g = actGrp(S.act), box = $('distChips'), on = !isFree() && (DB.browse === 'region' ? rOpenNow : bOpenNow);   // 11/18 A4: 목록을 펼쳤을 때만 · 11/23 자전거·산도
   box.classList.toggle('hidden', !on); if (!on) return;
-  box.innerHTML = DIST.map(([k, nm]) => '<button data-d="' + k + '" class="' + (k === (DB.dist || 'all') ? 'on' : '') + '">' + nm + '</button>').join('');
-  box.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { DB.dist = b.dataset.d; saveDB(); distChips(); listOpen = true; bOpen = true; refreshCourses(); refreshBrowse(); });
+  const L = g === 'up' ? DIST_UP : g === 'bike' ? DIST_BIKE : DIST, key = g === 'up' ? 'distU' : g === 'bike' ? 'distB' : 'dist';
+  box.innerHTML = L.map(([k, nm]) => '<button data-d="' + k + '" class="' + (k === (DB[key] || 'all') ? 'on' : '') + '">' + nm + '</button>').join('');
+  box.querySelectorAll('[data-d]').forEach(b => b.onclick = () => { DB[key] = b.dataset.d; saveDB(); distChips(); listOpen = true; bOpen = true; refreshCourses(); refreshBrowse(); });
 }
-function grpOK(it){ const g = actGrp(S.act); return g === 'up' ? it.type !== 'road' : it.type === 'road' && (g !== 'bike' || bikeList(it.c)) && (g !== 'foot' || distOK(it.c)); }
+function grpOK(it){ const g = actGrp(S.act); return g === 'up' ? it.type !== 'road' && upOK(it.m) : it.type === 'road' && (g !== 'bike' || (bikeList(it.c) && bikeDistOK(it.c))) && (g !== 'foot' || distOK(it.c)); }
 function pickOK(){ const g = actGrp(S.act); return g === 'up' ? DB.pick.type === 'climb' : DB.pick.type === 'road' && (g !== 'bike' || bikeList(ALL_ROADS[DB.pick.id])); }
 function actNote(){   // 11/17 보스 "자전거 코스인데 산길을 알려 줌 — 걷기가 맞는 길": 길 종류와 운동이 안 맞으면 알려 주고 맞는 코스 추천
   $('actNote').classList.add('hidden');   // 11/18 A9: 출발 버튼의 "↑ 코스를 먼저 골라 주세요"와 같은 말이라 뺌
@@ -4068,7 +4076,7 @@ const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', res
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
-  if (shown('ytBox')){ $('ytBox').classList.add('hidden'); return true; }   // 11/23 영상 고르는 창 → 영상 → 운동 끝 묻기 순서
+  if (shown('ytBox')){ ytShut(); return true; }   // 11/23 영상 고르는 창 → 영상 → 운동 끝 묻기 순서
   if (VID.on){ vidOffNow(); return true; }
   if (shown('dupBox')) return true;                       // 둘 중 하나를 골라야 하는 창
   if (S.running){ openConfirm(); return true; }
@@ -6658,7 +6666,7 @@ function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재�
   return;   // 11/23 보스: 내 영상(쇼츠 등)은 운동과 따로 — 서로 멈추지 않음
 }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
-function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
+function vidOffNow(){ VID.step = false; vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); } catch(e){} }
 function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
@@ -6756,8 +6764,9 @@ $('ytChips').innerHTML = YTS.tabs.map(c => '<button type="button" data-q="' + c[
 $('ytChips').querySelectorAll('[data-q]').forEach(b => b.onclick = () => ytTab(b.dataset.q));
 $('bYt').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
 $('vidPick').onclick = e => { e.stopPropagation(); ytBoxOpen(''); };
-$('ytClose').onclick = () => $('ytBox').classList.add('hidden');
-$('ytX').onclick = () => $('ytBox').classList.add('hidden');
+function ytShut(){ $('ytBox').classList.add('hidden'); if (VID.step && !VID.on){ VID.step = false; const m = mapModes(); if (m.length > 1 && mapCur(m) !== m[0]) setMode(m[0]); else v3dBtn(); } }   // 11/23: 고르지 않고 닫으면 다음 차례(지도)로
+$('ytClose').onclick = ytShut;
+$('ytX').onclick = ytShut;
 $('ytCourse').onclick = () => { $('ytBox').classList.add('hidden'); vidOn(); };
 $('ytOpen').onclick = () => { MYT.wait = Date.now(); try { window.open('https://m.youtube.com/', '_blank'); } catch(e){} };
 $('ytGo').onclick = () => { const id = ytVid($('ytIn').value); if (id) ytPlay(id); else ytClip(true); };
@@ -6808,19 +6817,19 @@ function v3dBtn(){
   const vOK = S.running && !S.gps; $('bVid').classList.toggle('hidden', !(vOK && VID.on)); $('bVid').textContent = '🎬 바꾸기';   // 11/23 보스: 보기 버튼 하나로 지도·위성·3D·영상
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
   const n = Math.max(1, m.length) + (vOK ? 1 : 0); b.classList.toggle('hidden', n < 2); if (n < 2) return;
-  if (VID.on){ b.textContent = '🎬 영상 ↻'; return; }
-  const c = mapCur(m); b.textContent = (m.length ? MAPL[c] : '🗺 지도') + ' ↻'; if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
+  if (VID.on || VID.step){ b.textContent = '🎬 영상 ↻'; return; }
+  const c = mapCur(m); b.textContent = (isClimb() && (c === 'flat' || !m.length) ? '⛰ 산 그림' : m.length ? MAPL[c] : '🗺 지도') + ' ↻';   // 11/23 보스: 산 그림인데 '지도'라고 써서 헷갈림 if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say('음성 안내를 켭니다.'); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? '🔇 음성 안내 끔' : '🔊 음성 안내 켬'); };
-function vidEnter(){ if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }
+function vidEnter(){ VID.step = true; if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else { ytBoxOpen(''); v3dBtn(); } }   // 11/23 보스: 영상 고르는 창을 닫으면 다음 누를 때 지도로
 $('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(), vOK = S.running && !S.gps;
-  if (VID.on){ vidOffNow(); if (m.length < 2 || mapCur(m) === m[0]){ v3dBtn(); return; } return setMode(m[0]); }
+  if (VID.on || VID.step){ VID.step = false; $('ytBox').classList.add('hidden'); if (VID.on) vidOffNow(); if (m.length < 2 || mapCur(m) === m[0]){ v3dBtn(); return; } return setMode(m[0]); }
   if (vOK && m.indexOf(mapCur(m)) >= m.length - 1){ vidEnter(); return; }
   if (m.length < 2) return; setMode(m[(m.indexOf(mapCur(m)) + 1) % m.length] ? m[(m.indexOf(mapCur(m)) + 1) % m.length] : m[0]); };
 function setMode(n){
   if (n === '3d' || n === 'toon'){ V3D.hot = false; METER.hz.bad = 0; DB.v3d = true; DB.v3dSty = n === 'toon' ? 'toon' : 'sat'; if (V3D.ready) v3dStyle(n); } else { DB.v3d = false; if (n !== 'flat'){ DB.sat = true; DB.mapSty = n; } }
-  saveDB(); showViewMode(true); toastMsg(MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); }
+  saveDB(); showViewMode(true); toastMsg(isClimb() && n === 'flat' ? '⛰ 산 그림' : MAPL[n].includes('지도') ? MAPL[n] : MAPL[n] + ' 지도'); }
 const topLabel = m => tr(m.name).replace(/\(.*\)/, '') + (m.topName ? ' · ' + m.topName : '');   // 이 길의 가장 높은 봉우리 이름
 const climbGeoOn = () => S.running && isClimb() && !S.free && DB.pick.type === 'climb' && !!mtnGeo(TGT(DB.climb.sel));
 /* ---- 11/16 빌딩 창밖 = 실제 항공사진 (높이 오를수록 더 멀리·더 넓게) ----
