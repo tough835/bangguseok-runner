@@ -1193,7 +1193,7 @@
 </div>
 
 <script>
-const BUILD = '202611231758';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231809';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2557,7 +2557,15 @@ if (!DB.pick || !DB.pick.type) DB.pick = { type: 'road', id: COURSE.id };
 if (DB.pick.type === 'road') DB.pick.id = COURSE.id;            // 길 코스는 화면을 불러올 때 정해짐
 else DB.climb.sel = TGT(DB.pick.id).id;
 if (!ACTS[DB.act]) DB.act = 'tread';
-function saveDB(){ try { localStorage.setItem(STORE_KEY2, JSON.stringify(DB)); } catch(e){} }
+function saveDB(){ try { localStorage.setItem(STORE_KEY2, JSON.stringify(DB)); } catch(e){} keepSoon(); }
+/* 11/23 기록 지키기 (보스 폰 시험: 앱을 지우고 다시 깔면 기록이 비어 '기록 옮기기'로만 되살아남)
+   → 안드로이드 앱이면 기록 옮기기 코드와 같은 내용을 앱 파일에 거울로 둠 → 안드로이드 자동 백업이 구글 계정에 올림
+   → 다시 깔거나 폰을 바꾸면 그 파일이 돌아오고, 앱이 처음 켜질 때 기록이 비어 있으면 저절로 채움 (사용자 손 안 감) */
+const KEEP = { t: 0, tm: 0 };
+const keepP = () => { try { return window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() && window.Capacitor.Plugins && window.Capacitor.Plugins.Keep; } catch(e){ return null; } };
+function keepNow(){ const K = keepP(); if (!K || !KEEP.ready) return; try { if (!DB.records || !DB.records.length) return; K.set({ v: backupCode() }); KEEP.t = Date.now(); } catch(e){} }
+function keepSoon(){ if (!keepP() || KEEP.tm) return; KEEP.tm = setTimeout(() => { KEEP.tm = 0; keepNow(); }, Math.max(3000, 20000 - (Date.now() - KEEP.t))); }
+document.addEventListener('visibilitychange', () => { if (document.hidden && KEEP.tm){ clearTimeout(KEEP.tm); KEEP.tm = 0; keepNow(); } });
 const creditOf = (r, c) => r.credit && ((r.credit.course === 'walk' && r.credit.target === c.id) || (r.credit.course === 'sangnim' && c.id === 'sangnim-3k')) ? r.credit.m : 0;
 const courseTotal = c => DB.records.reduce((a, r) => a + creditOf(r, c), 0);
 if (!DB.base) DB.base = {};   // '처음부터'를 누른 지점 (코스별). 기록은 그대로 두고 진행 위치만 0으로
@@ -5687,6 +5695,20 @@ function importBackup(){
   try { refreshRec(); refreshSteps(); refreshStart(); } catch(e){}
   if (fresh) setTimeout(() => { try { sessionStorage.setItem('bgsj_inapp', '1'); } catch(e){} location.reload(); }, 1600);
 }
+
+(async function keepRestore(){   // 처음 켜질 때: 기록이 비어 있고 거울 파일이 있으면 되살림 → 그 뒤부터 거울 저장 시작
+  const K = keepP(); if (!K) return;
+  try {
+    if (!DB.records.some(r => r.src !== 'legacy')){
+      const g = await K.get(), v = g && g.v || '';
+      if (v.startsWith('BGSJ1:')){
+        let n = 0; try { n = (JSON.parse(dec64(v.slice(6))).db.records || []).length; } catch(e){}
+        if (n){ $('bkIn').value = v; importBackup(); $('bkIn').value = ''; toastMsg('📦 예전 기록 ' + n + '개를 되살렸어요'); }
+      }
+    }
+  } catch(e){}
+  KEEP.ready = true; keepSoon();
+})();
 
 /* =====================================================================
    하루 걸음: 앱을 켜 둔 동안 폰 센서로 늘 셈 (DB.steps[날짜] = { n 센 걸음, run 운동 중 걸음, used 코스에 반영한 걸음 })

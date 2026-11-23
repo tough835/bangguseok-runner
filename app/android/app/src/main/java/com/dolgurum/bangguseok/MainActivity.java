@@ -17,6 +17,7 @@ public class MainActivity extends BridgeActivity {
         registerPlugin(MeterPlugin.class);   // 운동 1회 데이터·배터리 측정
         registerPlugin(BaroPlugin.class);    // 기압계 → 운동 중 고도 (11/18)
         registerPlugin(WorkoutPlugin.class); // 워치에 운동 숫자 알림 · 이어폰 톡 일시정지 (11/18)
+        registerPlugin(KeepPlugin.class);    // 기록 지키기: 기록 거울 파일 → 안드로이드 자동 백업으로 재설치·폰 교체 때 되살림 (11/23)
         super.onCreate(savedInstanceState);
         // 안드로이드 13+: 알림 권한이 있어야 '기록 중' 알림이 떠서 잠금 중 GPS가 유지됨
         if (Build.VERSION.SDK_INT >= 33 &&
