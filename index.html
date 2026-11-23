@@ -1071,6 +1071,7 @@
     </div>
     <button class="big" id="stApply"></button>
     <div class="muted" id="stMsg" style="margin-top:8px;line-height:1.6"></div>
+    <button id="stHc" class="toggle hidden" style="margin-top:10px;width:100%">🔗 삼성 헬스 걸음 연결</button>
     <button id="stClose" class="x2" data-t="close">닫기</button>
   </div>
 </div>
@@ -1130,6 +1131,14 @@
     <div class="muted pubNote">출발·도착 근처 200m는 가리고 보내요 · 확인을 거쳐 올라가요 · 차도·사유지는 빠질 수 있어요</div>
     <label style="display:flex;gap:8px;align-items:center;margin-top:8px;font-size:14px"><input type="checkbox" id="pubAgree" style="width:20px;height:20px"> <span><a href="terms.html" target="_blank">이용약관</a>(올릴 수 없는 것·신고 처리)에 동의해요</span></label>
     <div class="mbtn"><button id="pubNo">닫기</button><button id="pubYes" class="go">신청</button></div>
+  </div>
+</div>
+<div id="hcBox" class="modal hidden">   <!-- 11/24 헬스 커넥트 연결 안내 -->
+  <div class="sb" style="text-align:center">
+    <div class="st">👟 삼성 헬스 걸음과 똑같이</div>
+    <div class="muted" style="line-height:1.7;margin:10px 0 14px">헬스 커넥트에 연결하면<br>삼성 헬스가 센 걸음 수를 그대로 가져와요.<br><br>걸음 수만 읽고, 다른 건 보지 않아요.</div>
+    <button class="big" id="hcYes">연결하기</button>
+    <button class="x2" id="hcNo">나중에</button>
   </div>
 </div>
 <div id="fbBox" class="modal hidden">   <!-- 11/23 보스 승인: 의견·문제 보내기 + 코스 신고 (구글 규칙: 사용자 콘텐츠는 신고 기능 필수) -->
@@ -1196,7 +1205,7 @@
 </div>
 
 <script>
-const BUILD = '202611232319';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611240818';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4212,6 +4221,7 @@ const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', res
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
+  if (shown('hcBox')){ $('hcBox').classList.add('hidden'); return true; }
   if (shown('fbBox')){ $('fbBox').classList.add('hidden'); return true; }
   if (shown('ytBox')){ ytShut(); return true; }   // 11/23 영상 고르는 창 → 영상 → 운동 끝 묻기 순서
   if (VID.on){ vidOffNow(); return true; }
@@ -5832,18 +5842,20 @@ function stepsListen(){ try { window.removeEventListener('devicemotion', onBgMot
 async function stepsPermission(){   // 아이폰은 한 번 눌러서 허용해야 함
   try { if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function'){ if (await DeviceMotionEvent.requestPermission() === 'granted') stepsListen(); } } catch(e){}
 }
-var NSTEP = { ok: false, perm: false };   // 앱(APK) 걸음 칩 상태
+var NSTEP = { ok: false, perm: false };
+var HC = { ok: false, granted: false, empty: false, can: false };   // 11/24 헬스 커넥트(삼성 헬스 걸음) 상태   // 앱(APK) 걸음 칩 상태
 function refreshSteps(){
   const d = stepDay(), si = stepInfo();
   document.querySelectorAll('[data-steps]').forEach(b => b.textContent = T.stBtn.replace('{n}', si.total.toLocaleString()));
   if ($('stepBox').classList.contains('hidden')) return;
   $('stNum').textContent = si.total.toLocaleString(); try { $('stKcal').innerHTML = kcalDayHtml(); } catch(e){}
-  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
+  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (HC.ok ? '삼성 헬스(헬스 커넥트) 걸음 그대로 · 매일 0시에 새로' : HC.empty ? '헬스 커넥트에 걸음이 없어요 → 아래 버튼에서 삼성 헬스 연결을 켜 주세요 (지금은 폰 센서로 셈)' : NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
   $('stSub').style.whiteSpace = 'pre-line';
   const free = si.free, km = free * (DB.stride.walk || 0.7) / 1000, road = DB.pick.type !== 'climb';
   $('stApply').textContent = T.stApply.replace('{n}', free.toLocaleString()).replace('{d}', km.toFixed(2));
   $('stApply').disabled = !road || free < 10; $('stApply').style.opacity = $('stApply').disabled ? .45 : 1;
   $('stMsg').textContent = !road ? T.stClimb : (free < 10 ? T.stNone : T.stHelp.replace('{c}', tr(COURSE.name))) + (d.used ? '\n' + T.stApplied.replace('{n}', d.used.toLocaleString()) : '');
+  $('stHc').classList.toggle('hidden', !HC.can || HC.ok); $('stHc').textContent = HC.granted ? '⚙ 헬스 커넥트 설정 열기' : '🔗 삼성 헬스 걸음 연결';
 }
 document.querySelectorAll('[data-steps]').forEach(b => b.onclick = () => { stepsPermission(); $('stInput').value = ''; $('stepBox').classList.remove('hidden'); refreshSteps(); });
 $('stClose').onclick = () => $('stepBox').classList.add('hidden');
@@ -5860,16 +5872,57 @@ $('stApply').onclick = () => {
 stepsListen(); refreshSteps();
 /* 앱(APK): 폰 걸음 칩에서 오늘 걸음(24시간)을 가져옴 — 처음엔 '신체 활동' 권한을 물음 */
 function nativeSteps(first){
-  const P = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() && window.Capacitor.Plugins && window.Capacitor.Plugins.Steps;
-  if (!P) return;
-  (first ? P.start() : P.today()).then(r => {
+  const PL = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() && window.Capacitor.Plugins;
+  const P = PL && PL.Steps, H = PL && PL.Health && typeof PL.Health.steps === 'function' ? PL.Health : null;
+  if (!P && !H) return;
+  const sensor = () => { if (!P) return; (first ? P.start() : P.today()).then(r => {
     if (!r || !r.available){ NSTEP.ok = false; NSTEP.perm = r && r.reason === 'permission'; refreshSteps(); return; }
     NSTEP.ok = true; NSTEP.perm = false;
+    if (HC.ok) return;   // 헬스 커넥트가 있으면 그 숫자가 우선
     stepDay().native = r.steps;
     Object.entries(r.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = Math.max(t.native || 0, v); });
     saveDB(); refreshSteps();
+  }).catch(() => {}); };
+  if (!H){ sensor(); return; }
+  /* 11/24: 헬스 커넥트 먼저 — 삼성 헬스가 센 걸음을 그대로 (앱이 0시 경계를 추측하지 않음) */
+  H.steps().then(h => {
+    HC.can = true; HC.granted = !!(h && h.ok);
+    const any = h && h.ok && (h.steps > 0 || Object.values(h.history || {}).some(v => v > 0));
+    HC.empty = !!(h && h.ok && !any);
+    if (any){
+      HC.ok = true; NSTEP.ok = true; NSTEP.perm = false;
+      stepDay().native = h.steps;
+      Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
+      saveDB(); refreshSteps();
+      if (first && P) P.start().catch(() => {});   // 센서 예약은 예비로 유지
+      return;
+    }
+    HC.ok = false;
+    if (first && !HC.granted) hcOffer(false);
+    sensor();
+  }).catch(() => sensor());
+}
+function hcOffer(force){   // 연결 안내: 저절로는 한 번만, 걸음 창 버튼으로는 언제든
+  const H = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Health; if (!H) return;
+  if (!force && DB.hcAsk) return;
+  H.status().then(st => {
+    if (!st || (!st.available && !st.update)) { if (force) toastMsg('이 폰에서는 헬스 커넥트를 쓸 수 없어요'); return; }
+    if (st.granted) { if (force) H.openSettings(); return; }
+    DB.hcAsk = Date.now(); saveDB();
+    $('hcBox').classList.remove('hidden');
   }).catch(() => {});
 }
+$('hcNo').onclick = () => $('hcBox').classList.add('hidden');
+$('hcYes').onclick = () => {
+  $('hcBox').classList.add('hidden');
+  const H = window.Capacitor.Plugins.Health;
+  H.request().then(r => {
+    if (r && r.granted){ toastMsg('🔗 연결됐어요 · 이제 삼성 헬스 걸음 그대로'); nativeSteps(false); }
+    else if (r && r.reason === 'update') toastMsg('헬스 커넥트를 설치한 뒤 다시 눌러 주세요');
+    else toastMsg('연결 안 됨 · 걸음 창에서 언제든 다시 연결할 수 있어요');
+  }).catch(() => {});
+};
+$('stHc').onclick = () => { const H = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Health; if (!H) return; if (HC.granted) H.openSettings(); else hcOffer(true); };
 nativeSteps(true);
 setInterval(() => { if (!document.hidden) nativeSteps(false); }, 60000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) nativeSteps(false); });

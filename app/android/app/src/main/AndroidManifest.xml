@@ -33,11 +33,22 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+        <!-- 11/24 헬스 커넥트: 권한 화면의 '이 앱이 왜 쓰나' 링크 → 개인정보처리방침 -->
+        <activity android:name=".HealthRationale" android:exported="true" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter><action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" /></intent-filter>
+        </activity>
+        <activity-alias android:name="ViewPermissionUsageActivity" android:exported="true" android:targetActivity=".HealthRationale" android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
         <receiver android:name="com.dolgurum.bangguseok.StepMidnight" android:exported="false" />   <!-- 11/23 걸음 하루 경계 23:45 읽기 -->
     </application>
 
     <!-- 음성 안내: 안드로이드 11+는 폰 음성 엔진을 찾으려면 이 선언이 필요 -->
     <queries>
+        <package android:name="com.google.android.apps.healthdata" />   <!-- 헬스 커넥트 앱 -->
         <intent>
             <action android:name="android.intent.action.TTS_SERVICE" />
         </intent>
@@ -51,5 +62,6 @@
     <!-- 24시간 걸음 칩 -->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />   <!-- 11/18 운동 중 알림(워치에도 보임) -->
+    <uses-permission android:name="android.permission.health.READ_STEPS" />   <!-- 11/24 헬스 커넥트 걸음 수 읽기만 -->
     <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="false" />
 </manifest>
