@@ -1193,7 +1193,7 @@
 </div>
 
 <script>
-const BUILD = '202611231809';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231819';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2445,7 +2445,7 @@ function photoHtml(src, r, small){
 }
 Object.values(ALL_ROADS).forEach(c => (c.landmarks || []).forEach(lm => { if (!lm.photo && HUB_PHOTO[lm.id]) lm.photo = HUB_PHOTO[lm.id]; }));
 TARGETS.forEach(t => { if (!t.photo && HUB_PHOTO['mtn_' + t.id]) t.photo = HUB_PHOTO['mtn_' + t.id]; });
-const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain' && (t.geo || t.geoP)).sort((a, b) => a.gain - b.gain);   // 11/23 보스: 등산로 지도가 없는 산은 목록에서 뺌 (자료는 남김)
+const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain').sort((a, b) => a.gain - b.gain);   // 11/23: 지도 없는 산은 목록 그릴 때 거름 (실험실 폰에서만 보임 — LAB)
 const TOWERS = TARGETS.filter(t => t.kind === 'tower').sort((a, b) => a.gain - b.gain);
 const TGT = id => TARGETS.find(t => t.id === id) || MOUNTAINS[MOUNTAINS.length - 1];
 /* ---- 11/16 산·빌딩 화면 개선
@@ -3294,8 +3294,9 @@ function makePresets(list){
 
 /* ---- 1) 지역: 나라 → 시·도 → 시·군 ---- */
 function regionNodes(){
-  const c = WORLD.regions.find(x => x.id === DB.region.country) || WORLD.regions[0];
-  const p = c.children.find(x => x.id === DB.region.prov) || c.children[0];
+  const pubR = x => LAB_ON() || ['mine', 'kr', 'long', 'm100'].includes(x.id), pubP = x => LAB_ON() || x.id !== 'longworld';   // 11/23 해외 = 실험실 폰에서만
+  const c = WORLD.regions.find(x => x.id === DB.region.country && pubR(x)) || WORLD.regions.find(x => x.id === 'kr') || WORLD.regions[0];
+  const kids = c.children.filter(pubP), p = kids.find(x => x.id === DB.region.prov) || kids[0];
   const ci = p.children.find(x => x.id === DB.region.city) || p.children[0];
   DB.region = { country: c.id, prov: p.id, city: ci.id };
   return { c, p, ci };
@@ -3366,8 +3367,8 @@ function refreshRegion(){
   const opt = (list, sel) => list.map(x => '<option value="' + x.id + '"' + (x.id === sel ? ' selected' : '') + '>' + tr(x.name) + '</option>').join('');
   /* 11/16 보스: 섞여 보임 → 순서 기준 = ① 나의 코스 ② 대한민국 ③ 해외 나라(가나다) ④ 테마 여정, 묶음 제목 표시 */
   const R = WORLD.regions, ko = x => tr(x.name).replace(/^[^가-힣A-Za-z]+/, ''), grp = (lbl, list) => list.length ? '<optgroup label="' + lbl + '">' + opt(list, c.id) + '</optgroup>' : '';
-  const other = R.filter(x => !['mine', 'kr', 'long', 'm100'].includes(x.id)).sort((a, b) => ko(a).localeCompare(ko(b), 'ko'));
-  $('rCountry').innerHTML = grp('나의 코스', R.filter(x => x.id === 'mine')) + grp('나라 · 지역', R.filter(x => x.id === 'kr').concat(other)) + grp('테마 여정', R.filter(x => x.id === 'long' || x.id === 'm100')); $('rProv').innerHTML = opt(c.children, p.id); $('rCity').innerHTML = opt(p.children, ci.id);
+  const other = LAB_ON() ? R.filter(x => !['mine', 'kr', 'long', 'm100'].includes(x.id)).sort((a, b) => ko(a).localeCompare(ko(b), 'ko')) : [];   // 11/23 해외 = 실험실 폰에서만
+  $('rCountry').innerHTML = grp('나의 코스', R.filter(x => x.id === 'mine')) + grp('나라 · 지역', R.filter(x => x.id === 'kr').concat(other)) + grp('테마 여정', R.filter(x => x.id === 'long' || x.id === 'm100')); $('rProv').innerHTML = opt(c.children.filter(x => LAB_ON() || x.id !== 'longworld'), p.id); $('rCity').innerHTML = opt(p.children, ci.id);
   $('rProv').classList.toggle('hidden', c.children.length < 2); $('rCity').classList.toggle('hidden', p.children.length < 2 && c.children.length > 1);
   ['rCountry', 'rProv', 'rCity'].forEach(id => { const el = $(id), t = el.selectedOptions[0] ? el.selectedOptions[0].textContent : ''; let n = 2.6; for (const ch of t) n += /[가-힣ㄱ-ㅎ]/.test(ch) ? 1 : ch.charCodeAt(0) > 0x2000 ? 1.6 : 0.5; el.style.flexGrow = n.toFixed(1); });
 }
@@ -3377,7 +3378,13 @@ $('rCity').onchange = () => { DB.region.city = $('rCity').value; saveDB(); refre
 
 /* ---- 2) 코스: 그 지역의 길 · 산 · 빌딩 ---- */
 /* 11/23 보스 "지도가 안 나오는 코스는 목록에서 빼": 실제 길 자료(공식 노선·길 점·지점 좌표)가 하나도 없는 코스는 숨김 (기록·자료는 그대로) */
-const mapOK = c => !!(c && (c.official || (c.path && c.path.length) || ROUTE_PTS[c.id] || c.pathReal || c.long || c.kind === '내 코스'));
+const mapOK0 = c => !!(c && (c.official || (c.path && c.path.length) || ROUTE_PTS[c.id] || c.pathReal || c.long || c.kind === '내 코스'));
+/* 11/23 18:17 보스 "해외·실험 중인 건 내 폰에서만, 다른 사람은 완성된 것만": 실험실(LAB) = 보스 폰('내 기록' 제목 5번 톡 · 측정 보기와 같은 스위치)
+   실험실 것 = 해외 코스·해외 장거리·지도 없는 길·등산로 없는 산·시험 영상 코스 → 일반 사용자 목록·지역 고르기에서 안 보임 (자료는 그대로) */
+const LAB_ON = () => !!(typeof DB !== 'undefined' && DB.meterShow);
+const roadLab = c => !!(c && (c.lab || c.cityId === 'longworld' || !mapOK0(c)));
+const mtnLab = m => { if (!m) return false; if (m.lab || (m.kind === 'mountain' && !(m.geo || m.geoP))) return true; const rg = regionOf(m.cityId); return !!(rg && !['kr', 'long', 'm100', 'mine'].includes(rg.country)); };   // 해외 빌딩·산도
+const mapOK = c => LAB_ON() || !roadLab(c);
 function cityLists(cid0){
   const cid = cid0 || DB.region.city, city = WORLD.cities[cid];
   return { road: city ? Object.values(city.courses).filter(c => c.mode === 'distance' && mapOK(c)).sort((a, b) => a.seg && b.seg ? a.no - b.no : a.lengthM - b.lengthM) : [],
@@ -3476,7 +3483,7 @@ function renderCourseRows(lists, onlySel){
 /* 11/23 보스: 코스 목록에 간단한 마크 — 🎬 영상 코스 · ⭐ 내 코스 · 🧪 시험 중(해외 시험 코스·시험 영상) */
 const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
 Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
-const cMarks = c => (c.video ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (c.lab ? '🧪' : '');
+const cMarks = c => (c.video ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (LAB_ON() && roadLab(c) ? '🧪' : '');
 const MARK_KEY = rows => { const k = [['🎬', '코스 영상'], ['⭐', '내 코스'], ['🧪', '시험 중']].filter(([e]) => rows.includes('class="mk">' + e) || new RegExp('class="mk">[^<]*' + e).test(rows)).map(x => x.join(' ')).join(' · '); return k ? '<div class="muted" style="font-size:13px;padding:10px 0 2px">' + k + '</div>' : ''; };
 function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
@@ -3493,7 +3500,7 @@ function climbRow(m, o){
     ' · <b class="km">' + T.approx + ' ' + Math.max(1, Math.round(m.gain / climbMpm())) + T.min + '</b>' + (o.extra ? ' · <span class="nw">' + o.extra + '</span>' : '');   // 11/20 보스 "10분·20분 하는 경우도": 지금 레벨로 걸리는 시간 · 덧붙는 말은 낱말 가운데서 안 끊기게
   const sibs = peakTrails(m).filter(t => t.id !== m.id), showSibs = o.sel && o.open && sibs.length;   // 11/18 A10: '다른 길' 버튼은 목록을 펼쳤을 때만
   const others = showSibs ? '<div class="sibs">' + T.otherTrails + ' ' + sibs.map(t => '<button data-jump="' + t.id + '">🥾 ' + tr(t.trailName) + ' · ' + regionName(t.cityId) + (climbTotal(t.id) >= t.gain ? ' ✅' : '') + '</button>').join('') + '</div>' : '';
-  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + (o.icon ? (m.kind === 'tower' ? '🏢 ' : '⛰ ') : '') + tr(m.name) + '</b>' + (m.lab ? ' <span class="mk">🧪</span>' : '') + (m.trailName ? ' <span class="trl">' + tr(m.trailName) + '</span>' : '') +
+  return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + (o.icon ? (m.kind === 'tower' ? '🏢 ' : '⛰ ') : '') + tr(m.name) + '</b>' + (LAB_ON() && mtnLab(m) ? ' <span class="mk">🧪</span>' : '') + (m.trailName ? ' <span class="trl">' + tr(m.trailName) + '</span>' : '') +
     '<br><span class="muted">' + info + (sibs.length && !showSibs ? ' · ' + T.trailsN.replace('{n}', sibs.length + 1) : '') + '</span>' + others + '</div>' +
     '<div class="r">' + (peakDone(m) ? '<span class="stamp">🏁 ' + T.peakStamp + '</span><br>' : '') + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (done ? '<br>✅ ' + done + T.times : '') + (real ? '<br><span class="real">⛰ ' + real + '</span>' : '') + '</div></div>';
 }
@@ -3644,7 +3651,7 @@ const DIST_BIKE = [['all', '전체'], ['s', '10km 이하'], ['m', '10~20km'], ['
 const DIST_UP = [['all', '전체'], ['s', '300m 이하'], ['m', '300~600m'], ['l', '600~1000m'], ['xl', '1000m 이상']];
 const bandOK = (k, v, a, b, c) => k === 'all' || (k === 's' ? v <= a : k === 'm' ? v > a && v <= b : k === 'l' ? v > b && v <= c : v > c);
 const bikeDistOK = c => bandOK(DB.distB || 'all', c.lengthM, 10000, 20000, 40000);
-const upOK = m => bandOK(DB.distU || 'all', m.gain || (m.summit - (m.base || 0)) || 0, 300, 600, 1000);
+const upOK = m => (LAB_ON() || !mtnLab(m)) && bandOK(DB.distU || 'all', m.gain || (m.summit - (m.base || 0)) || 0, 300, 600, 1000);
 const bikeOnly = c => bikeOK(c) && !/조깅|도보|걷기/.test(c.kind || '');   // 차와 함께 쓰는 고갯길 등
 const kindIcon = c => mineC(c) ? '⭐ ' : bikeOK(c) ? (bikeOnly(c) ? '🚲 ' : '🏃🚲 ') : '🚶 ';
 function distChips(){
@@ -3962,7 +3969,7 @@ function meterBoxFill(){
 }
 (() => { let n = 0, t = 0; const h = document.querySelector('#recScreen h1'); if (!h) return;
   h.addEventListener('click', () => { const now = Date.now(); n = now - t < 1500 ? n + 1 : 1; t = now;
-    if (n >= 5){ n = 0; DB.meterShow = !DB.meterShow; saveDB(); meterBoxFill(); toastMsg(DB.meterShow ? '🔧 측정 보기 켬 (이 폰만 · 이 폰은 통계에서 빠짐)' : '🔧 측정 보기 끔'); } }); })();
+    if (n >= 5){ n = 0; DB.meterShow = !DB.meterShow; saveDB(); meterBoxFill(); toastMsg(DB.meterShow ? '🧪 실험실 켬 — 해외·실험 코스와 측정이 이 폰에만 보여요 (통계에서 빠짐)' : '🧪 실험실 끔 — 일반 사용자 화면'); try { refreshStart(); } catch(e){} } }); })();
 /* 11/19 보스: 화면 색 고르기 (어두운 / 밝은) — 폰이 기억(bgsj_skin). 처음 그릴 때는 <head>의 한 줄이 먼저 맞춰 둠 */
 function isLight(){ return document.documentElement.dataset.skin === 'light'; }
 function skinBtn(){ document.querySelectorAll('#skinSeg button').forEach(b => b.classList.toggle('on', (b.dataset.skin === 'light') === isLight())); }
