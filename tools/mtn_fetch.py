@@ -6,7 +6,7 @@ UA = {'User-Agent': 'bangguseok-runner/1.0 (github.com/tough835/bangguseok-runne
 def get(u, data=None, ct=None):
     h = dict(UA)
     if ct: h['Content-Type'] = ct
-    with urllib.request.urlopen(urllib.request.Request(u, data=data, headers=h), timeout=120) as r: return json.load(r)
+    with urllib.request.urlopen(urllib.request.Request(u, data=data, headers=h), timeout=45) as r: return json.load(r)
 def hav(a, b):
     p = math.pi / 180; x = (b[1] - a[1]) * p * math.cos((a[0] + b[0]) / 2 * p); y = (b[0] - a[0]) * p
     return 6371000 * math.hypot(x, y)
@@ -46,13 +46,14 @@ M = [  # id, 산 이름(정상), 지점들(출발→…→정상), 상자, 공�
 ]
 OVP = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']
 def ovp(q):
+    last = None
     for u in OVP:
         try: return get(u, urllib.parse.urlencode({'data': q}).encode(), 'application/x-www-form-urlencoded')
-        except Exception as e: last = e; time.sleep(5)
+        except Exception as e: last = e; print('  ovp fail', u, str(e)[:80], flush=True); time.sleep(3)
     raise last
 def find(name, box, peak=False):
     s, w, n, e = box
-    q = '[out:json][timeout:60];(node["name"~"^%s"](%f,%f,%f,%f);way["name"~"^%s"](%f,%f,%f,%f););out center 20;' % (name, s, w, n, e, name, s, w, n, e)
+    q = '[out:json][timeout:25];(node["name"~"^%s"](%f,%f,%f,%f);way["name"~"^%s"](%f,%f,%f,%f););out center 20;' % (name, s, w, n, e, name, s, w, n, e)
     try:
         els = ovp(q).get('elements', [])
         def sc(x):
@@ -93,8 +94,10 @@ def elev(co):
     return es
 
 os.makedirs('data/mtn', exist_ok=True)
-log = {}
+try: log = json.load(open('data/mtn_fetch_log.json', encoding='utf-8'))
+except Exception: log = {}
 for mid, peak, via, box, km in M:
+    if mid in log and 'km' in log[mid]: continue
     rec = {'via': []}
     try:
         pts = []
@@ -111,5 +114,6 @@ for mid, peak, via, box, km in M:
         rec.update({'km': round(L / 1000, 2), 'ratio': round(L / 1000 / km, 2), 'n': len(co), 'end_to_peak_m': round(hav(co[-1], pts[-1])), 'e0': es[0], 'e1': es[-1], 'emax': max(es)})
         json.dump({'src': '오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성', 'p': [[round(c[0], 5), round(c[1], 5), round(e)] for c, e in zip(co, es)]}, open('data/mtn/%s.json' % mid, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     except Exception as ex: rec['err'] = str(ex)[:200]
-    log[mid] = rec; print(mid, rec); time.sleep(2)
+    log[mid] = rec; print(mid, rec, flush=True); time.sleep(2)
+    json.dump(log, open('data/mtn_fetch_log.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 json.dump(log, open('data/mtn_fetch_log.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
