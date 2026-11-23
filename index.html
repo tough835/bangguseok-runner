@@ -1152,7 +1152,7 @@
 </div>
 
 <script>
-const BUILD = '202611231438';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231444';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2997,10 +2997,19 @@ const DOOR_DL = {
 };
 const DOOR_PROV = { 'busan-si': 'gs', 'daegu-si': 'gs', 'ulsan-si': 'gs', gyeongbuk: 'gs', gyeongnam: 'gs', 'daejeon-si': 'cc', 'sejong-si': 'cc', chungbuk: 'cc', chungnam: 'cc',
   'gwangju-si': 'jl', jeonbuk: 'jl', jeonnam: 'jl', 'seoul-si': 'std', 'incheon-si': 'std', 'gyeonggi-do': 'std', gangwon: 'gw', 'jeju-do': 'jj' };   // 11/22 20:10 보스 "검수 없이 아미 판단으로 반영" → 강원·제주 추가
+/* 11/23 보스 "삼악산은 강원도인데 경상도 말": 100대명산·코리아둘레길처럼 묶음 지역에 든 코스는 산의 '지역'(강원·전남…)·길의 '장소'(포항~경북…)로 말투를 고름 */
+const DL_AREA = [['gw', /강원|삼척|동해|강릉|양양|속초|정선|평창|춘천|원주|홍천|인제|태백|영월/], ['jj', /제주|서귀포/],
+  ['jl', /전남|전북|전라|광주|여수|순천|고흥|보성|장흥|강진|완도|해남|목포|무안|신안|영광|함평|고창|부안|군산|김제|광양|진도|구례|남원|전주|정읍|익산|무주|진안|장수|임실|순창|담양|곡성|화순|나주|영암/],
+  ['cc', /충남|충북|충청|대전|세종|서천|보령|홍성|태안|서산|당진|아산|천안|공주|논산|부여|청양|예산|금산|청주|충주|제천|단양|괴산|보은|옥천|영동|음성|진천|증평/],
+  ['std', /서울|경기|인천|평택|화성|안산|시흥|김포|강화|파주|고양|수원|용인|성남|가평|양평|포천|연천|옹진/],
+  ['gs', /부산|울산|대구|경북|경남|경상|경주|포항|창원|거제|통영|사천|남해|영덕|울진|진주|하동|김해|밀양|양산|함양|산청|거창|합천|안동|문경|상주|영주|봉화|청송|구미|김천|칠곡|성주|고령|의성|군위|예천|영천|경산|청도|창녕|의령|함안|고성군/]];
+function areaDialect(t){ const s = String(t || '').split('~')[0]; for (const [d, re] of DL_AREA) if (re.test(s)) return d; return null; }
 function doorDialect(){   // 지금 코스가 있는 지역 → 말투 (일반 운동·해외·장거리·내 코스 = 경상, 앱 얼굴)
   try { if (S.free) return 'gs';
     const t = isClimb() ? TGT(DB.climb.sel) : null, ids = t ? [t.cityId].concat(t.also || []) : [CITY.id];
-    for (const id of ids){ const rg = regionOf(id); if (rg && DOOR_PROV[rg.prov]) return DOOR_PROV[rg.prov]; } } catch(e){}
+    for (const id of ids){ const rg = regionOf(id); if (rg && DOOR_PROV[rg.prov]) return DOOR_PROV[rg.prov]; }
+    const a = areaDialect(t ? t.area : COURSE.place); if (a) return a;
+    if (!t && /제주/.test(tr(COURSE.name))) return 'jj'; } catch(e){}   // 제주 환상 자전거길·제주올레길 (여러 지역을 지나는 장거리·해외는 경상 = 앱 얼굴)
   return 'gs';
 }
 const DOOR_LAST = {};
