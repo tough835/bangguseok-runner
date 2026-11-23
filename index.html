@@ -1196,7 +1196,7 @@
 </div>
 
 <script>
-const BUILD = '202611232225';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611232234';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3336,9 +3336,11 @@ document.addEventListener('visibilitychange', () => {
 });
 
 /* ===================== 시작 화면 ===================== */
+/* 11/23 보스 "최고 속도가 선수보다 높다": 러닝머신 25 → 20km/h(마라톤 세계기록 평균 약 21km/h · 집·헬스장 러닝머신 최고 18~20) · 실내자전거 60 → 45km/h(아마추어 상한, 기록 확인 칸과 같은 기준) · 바깥 GPS는 실제 속도라 제한 없음 */
+const spdCap = () => S.act === 'bike' ? 45 : 20;
 function setSpeed(v, flash){
   if (isClimb()){ S.level = Math.max(1, Math.min(LV_MAX, Math.round(v))); $('speedVal').textContent = S.level; }
-  else { S.speed = Math.max(0, Math.min(S.act === 'bike' ? 60 : 25, Math.round(v*10)/10)); S.spd[S.act] = S.speed; $('speedVal').textContent = S.speed.toFixed(1); }
+  else { S.speed = Math.max(0, Math.min(S.gps ? 99 : spdCap(), Math.round(v*10)/10)); S.spd[S.act] = S.speed; $('speedVal').textContent = S.speed.toFixed(1); }
   refreshSpeedBox(flash); hudTick = 5;
   if (!S.running){ try { tGoalUI(); } catch(e){} }   // 레벨을 바꾸면 '약 N m 오르면 끝' 안내도 고침
 }
