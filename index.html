@@ -1152,7 +1152,7 @@
 </div>
 
 <script>
-const BUILD = '202611231428';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231438';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6612,7 +6612,7 @@ const MAPL = { '3d': '🏔 3D', toon: '🎨 그림 3D', sat: '🛰 위성', map:
 function mapModes(){
   const hot = V3D.hot; V3D.hot = false; const c3 = v3dAble() && !NAV.full; V3D.hot = hot;   // 과열로 평면이 됐어도 3D를 다시 고를 수 있게
   const m = c3 ? (V3D_TOON ? ['3d', 'toon'] : ['3d']) : [];   // 11/18 23:38 보스: 그림 3D가 폰에서 끊기면 할 이유 없음 → 종전 3개(3D·위성·지도)
-  if (!isClimb() && (S.gps || SAT_OK) && !NAV.full) m.push('sat', 'map'); else if (c3) m.push('flat');
+  if (!NAV.full && (isClimb() ? climbGeoOn() : (S.gps || SAT_OK))) m.push('sat', 'map'); else if (c3) m.push('flat');   // 11/23 보스: 등산로 지도가 있는 산도 위성·지도·3D 셋 다
   return m;
 }
 const V3D_TOON = false;   // 그림 3D 보류 (코드는 남김)
