@@ -57,6 +57,7 @@ dependencies {
     implementation "androidx.work:work-runtime:2.10.0"   // 15분마다 걸음 칩 읽기
     implementation "androidx.health.connect:connect-client:1.1.0"   // 11/24 삼성 헬스 걸음을 헬스 커넥트로 그대로 받기
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
+    implementation "com.google.guava:guava:33.3.1-android"   // 헬스 커넥트가 빈 ListenableFuture를 끌고 와 15분 걸음 읽기(StepWorker)가 깨짐 → 진짜 것 넣기
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
