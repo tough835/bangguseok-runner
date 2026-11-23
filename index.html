@@ -1145,7 +1145,7 @@
 </div>
 
 <script>
-const BUILD = '202611231225';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611231238';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1699,6 +1699,9 @@ const KT_SEG = [["kt-hp",1,16378,"부산",[[35.0997,129.1237],[35.1148,129.128],
   });
 })();
 
+/* 11/23 보스 "길 영상은 우리가 찍었거나 확실한 것만, 아니면 아예 내놓지 말 것"
+   · video.ok:true(코스와 실제로 맞는 영상, 색인 확인 끝)만 운동 화면에 씀 · 나머지는 videoHold로 보관만 (확인되면 ok:true 붙여 살림) */
+Object.values(WORLD.cities).forEach(ct => Object.values(ct.courses || {}).forEach(c => { if (c && c.video && !c.video.ok){ c.videoHold = c.video; delete c.video; } }));
 /* ---- 내 코스 (11/16): 내 주변 순환 코스 추천에서 고른 길 · localStorage 'bgsj_mine' ---- */
 let MINE = []; try { MINE = JSON.parse(localStorage.getItem('bgsj_mine')) || []; } catch(e){}
 if (MINE.length){
@@ -3406,8 +3409,8 @@ function renderCourseRows(lists, onlySel){
 /* 11/23 보스: 코스 목록에 간단한 마크 — 🎬 영상 코스 · ⭐ 내 코스 · 🧪 시험 중(해외 시험 코스·시험 영상) */
 const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
 Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
-const cMarks = c => (c.video && !/^시험/.test(c.video.note || '') ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (c.lab ? '🧪' : '');
-const MARK_KEY = '<div class="muted" style="font-size:13px;padding:10px 0 2px">🎬 영상으로 달리기 · ⭐ 내 코스 · 🧪 시험 중</div>';
+const cMarks = c => (c.video ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (c.lab ? '🧪' : '');
+const MARK_KEY = rows => { const k = [['🎬', '코스 영상'], ['⭐', '내 코스'], ['🧪', '시험 중']].filter(([e]) => rows.includes('class="mk">' + e) || new RegExp('class="mk">[^<]*' + e).test(rows)).map(x => x.join(' ')).join(' · '); return k ? '<div class="muted" style="font-size:13px;padding:10px 0 2px">' + k + '</div>' : ''; };
 function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
   const mk = cMarks(c);
@@ -3524,7 +3527,7 @@ function refreshBrowse0(){
     rows = shownN.map(x => nrow(x)).join('') + (shownN.length < list.length ? '<button class="morebtn" id="nMore">더 보기 ▾ (' + (list.length - shownN.length) + '곳 더 · 가까운 순)</button>' : '');
   }
   const hasSel = br === 'topic' ? items.some(it => it.topics.includes(DB.topic) && bSel(it)) : /class="mrow sel"/.test(rows);
-  $('browseList').innerHTML = rows ? rows + (/class="mk"/.test(rows) ? MARK_KEY : '') : '<div class="muted" style="padding:12px">' + T.noCourse + '</div>';
+  $('browseList').innerHTML = rows ? rows + MARK_KEY(rows) : '<div class="muted" style="padding:12px">' + T.noCourse + '</div>';
   $('bChange').textContent = T.closeList; $('bChange').classList.toggle('hidden', !hasSel);
   $('bChange').onclick = () => { bOpen = false; refreshBrowse(); };
   if ($('bMore')) $('bMore').onclick = () => { MF.bMore = true; refreshBrowse(); };
@@ -6693,12 +6696,14 @@ async function ytClip(byTap){   // 복사해 둔 링크 읽기 — 폰에 따라
    유튜브 검색은 하루 호출 수가 적어(기본 100번) 같은 검색어는 이 폰에 하루 저장 · 함수도 6시간 저장 */
 /* 11/22 보스 "검색 안 해도 기본으로 보기": 아미가 고른 재생목록을 칸으로 — 창을 열면 운동 종류에 맞는 칸이 바로 깔림 (검색 한도와 별개) */
 const YTS = { url: TEL.url.replace('/rest/v1/bgr_event', '/functions/v1/bgr-yt-search'), tab: '',
-  tabs: [['러닝 음악', 'PLx1uUaAhAnmvPQYN48PWINQ7RKewq7cjJ'], ['케이팝 운동', 'PL4fQaQrmnpKD8IEhkVNU3L6t6-a5NaV01'], ['서울 걷기', 'PLnAxu-ique9fiejvmVYCVeEYTPI6deaJd'], ['세계 걷기', 'PL0eFt2-5YwurCWrdyEnzV6U1vSXP5T4BI'],
-         ['국내 라이딩', 'PLmJZvsihZooOmkCLlSZsBW3d9bKy89ite'], ['자전거 풍경', 'PLYKRCrVXG2QCR6GmX4yMQW0sh1nyb5gOc'], ['산길 걷기', 'PLbWPytS1GWJKR7K-l8WRXtdhksrGzGz0m']] };
-const ytTabFor = () => isClimb() ? '산길 걷기' : S.act === 'bike' ? '국내 라이딩' : S.act === 'walk' ? '서울 걷기' : '러닝 음악';
+  /* 11/23 보스: 길 영상 추천(걷기·라이딩·산길)은 속도·거리와 안 맞아 헷갈림 → 전부 뺌. 사람들이 즐겨 보는 것 위주
+     · [이름, 재생목록] 또는 [이름, null, 검색어] — 검색어 칸은 서버가 6시간 기억해서 하루 검색 한도를 거의 안 씀 */
+  tabs: [['러닝 음악', 'PLx1uUaAhAnmvPQYN48PWINQ7RKewq7cjJ'], ['케이팝 운동', 'PL4fQaQrmnpKD8IEhkVNU3L6t6-a5NaV01'], ['웃긴 쇼츠', null, '웃긴 쇼츠'], ['예능 레전드', null, '예능 레전드 모음'],
+         ['귀여운 동물', null, '귀여운 동물 쇼츠'], ['운동 자극', null, '운동 동기부여 영상']] };
+const ytTabFor = () => '러닝 음악';
 function ytChipOn(name){ $('ytChips').querySelectorAll('[data-q]').forEach(b => b.classList.toggle('on', b.dataset.q === name)); }
 async function ytTab(name){
-  const t = YTS.tabs.find(x => x[0] === name); if (!t) return; YTS.tab = name; ytChipOn(name); $('ytQ').value = '';
+  const t = YTS.tabs.find(x => x[0] === name); if (!t) return; if (t[2]) return ytSearch(t[2], name); YTS.tab = name; ytChipOn(name); $('ytQ').value = '';
   const ck = 'bgsj_ytp:' + t[1], msg = m => { $('ytQMsg').textContent = m; $('ytQMsg').classList.toggle('hidden', !m); };
   try { const c = JSON.parse(localStorage.getItem(ck) || 'null'); if (c && Date.now() - c.t < 432e5 && c.items.length){ msg(''); ytResShow(c.items); return; } } catch(e){}
   msg('불러오는 중…'); $('ytRes').innerHTML = '';
@@ -6714,8 +6719,8 @@ function ytResShow(items){
   $('ytRes').innerHTML = items.map(x => '<button data-yt="' + esc(x.id) + '"><img src="https://i.ytimg.com/vi/' + esc(x.id) + '/mqdefault.jpg" alt="" loading="lazy"><span><b>' + esc(ytDec(x.t)) + '</b><small>' + esc(ytDec(x.ch)) + (x.live ? ' · 🔴 라이브' : '') + '</small></span></button>').join('');
   $('ytRes').querySelectorAll('[data-yt]').forEach(b => b.onclick = () => ytPlay(b.dataset.yt));
 }
-async function ytSearch(q){
-  q = String(q || '').trim(); if (!q) return; $('ytQ').value = q; try { $('ytQ').blur(); } catch(e){} YTS.tab = ''; ytChipOn('');
+async function ytSearch(q, tab){
+  q = String(q || '').trim(); if (!q) return; $('ytQ').value = tab ? '' : q; try { $('ytQ').blur(); } catch(e){} YTS.tab = tab || ''; ytChipOn(tab || '');
   const ck = 'bgsj_yts:' + q.toLowerCase(), msg = t => { $('ytQMsg').textContent = t; $('ytQMsg').classList.toggle('hidden', !t); };
   try { const c = JSON.parse(localStorage.getItem(ck) || 'null'); if (c && Date.now() - c.t < 864e5){ msg(''); ytResShow(c.items); return; } } catch(e){}
   msg('찾는 중…'); $('ytRes').innerHTML = '';
