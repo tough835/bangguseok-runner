@@ -1065,7 +1065,7 @@
     <div class="bignum" id="stNum"></div>
     <div class="muted" id="stSub" style="text-align:center"></div>
     <div class="kcday" id="stKcal"></div>
-    <div class="form">
+    <div class="form" id="stForm">
       <label data-t="stInputL"></label>
       <div class="row2"><div><input id="stInput" type="number" inputmode="numeric" min="0"></div><div><button id="stSet" class="toggle" data-t="stSet" style="margin:0;height:48px"></button></div></div>
     </div>
@@ -1205,7 +1205,7 @@
 </div>
 
 <script>
-const BUILD = '202611240818';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611240833';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -5849,13 +5849,15 @@ function refreshSteps(){
   document.querySelectorAll('[data-steps]').forEach(b => b.textContent = T.stBtn.replace('{n}', si.total.toLocaleString()));
   if ($('stepBox').classList.contains('hidden')) return;
   $('stNum').textContent = si.total.toLocaleString(); try { $('stKcal').innerHTML = kcalDayHtml(); } catch(e){}
-  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (HC.ok ? '삼성 헬스(헬스 커넥트) 걸음 그대로 · 매일 0시에 새로' : HC.empty ? '헬스 커넥트에 걸음이 없어요 → 아래 버튼에서 삼성 헬스 연결을 켜 주세요 (지금은 폰 센서로 셈)' : NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
+  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (HC.ok ? '✓ 삼성 헬스 숫자 그대로' : HC.empty ? '삼성 헬스 → 헬스 커넥트 보내기가 꺼져 있어요 (지금은 폰 센서로 셈)' : NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
   $('stSub').style.whiteSpace = 'pre-line';
   const free = si.free, km = free * (DB.stride.walk || 0.7) / 1000, road = DB.pick.type !== 'climb';
   $('stApply').textContent = T.stApply.replace('{n}', free.toLocaleString()).replace('{d}', km.toFixed(2));
   $('stApply').disabled = !road || free < 10; $('stApply').style.opacity = $('stApply').disabled ? .45 : 1;
   $('stMsg').textContent = !road ? T.stClimb : (free < 10 ? T.stNone : T.stHelp.replace('{c}', tr(COURSE.name))) + (d.used ? '\n' + T.stApplied.replace('{n}', d.used.toLocaleString()) : '');
-  $('stHc').classList.toggle('hidden', !HC.can || HC.ok); $('stHc').textContent = HC.granted ? '⚙ 헬스 커넥트 설정 열기' : '🔗 삼성 헬스 걸음 연결';
+  $('stHc').classList.toggle('hidden', !HC.can || HC.ok); $('stHc').textContent = HC.granted ? '⚙ 켜기: 앱 권한 → Samsung Health → 걸음' : '🔗 삼성 헬스 걸음 연결';
+  $('stForm').classList.toggle('hidden', HC.ok);   // 11/24 보스: 삼성 숫자를 그대로 받으면 손으로 맞추기는 필요 없음
+  if (HC.ok) $('stMsg').textContent = !road ? T.stClimb : free < 10 ? '' : T.stHelp.replace('{c}', tr(COURSE.name));
 }
 document.querySelectorAll('[data-steps]').forEach(b => b.onclick = () => { stepsPermission(); $('stInput').value = ''; $('stepBox').classList.remove('hidden'); refreshSteps(); });
 $('stClose').onclick = () => $('stepBox').classList.add('hidden');
