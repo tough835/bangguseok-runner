@@ -145,3 +145,5 @@ copenhagen-lakes OSRM 6.24km / 공식 6.40km (x0.98) 317점 거점 0
 djurgarden-loop OSRM 9.89km / 공식 9.00km (x1.10) 514점 거점 3
 akerselva OSRM 9.41km / 공식 8.00km (x1.18) 957점 거점 3
 atlantic-road OSRM 9.06km / 공식 8.30km (x1.09) 407점 거점 3
+dongbaek-1k OSRM 1.76km / 공식 1.00km (x1.76) 84점 거점 3
+haeundae-dongbaek OSRM 5.78km / 공식 4.20km (x1.38) 194점 거점 5
