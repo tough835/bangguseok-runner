@@ -376,22 +376,22 @@
 "grade": "통과"
 },
 {
-"km": 8.25,
-"rev": 96.1,
-"same": 3.9,
-"cross": 2,
-"uturn": 5,
-"gap_m": 0,
+"km": 8.11,
+"rev": 1.2,
+"same": 0.0,
+"cross": 0,
+"uturn": 0,
+"gap_m": 3,
 "type": "road",
 "id": "namsan-7k",
 "city": "seoul",
-"name": "남산 북측순환로 (국립극장↔회현 왕복)",
+"name": "남산 한 바퀴 (북측순환로 → 남산공원길)",
 "kind": "도보·조깅",
 "loop": true,
-"lab": true,
+"lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
-"L": 6500,
-"grade": "불량"
+"L": 8110,
+"grade": "통과"
 },
 {
 "km": 5.03,
@@ -466,11 +466,11 @@
 "grade": "통과"
 },
 {
-"km": 6.3,
-"rev": 13.0,
+"km": 5.28,
+"rev": 0.0,
 "same": 0.0,
 "cross": 0,
-"uturn": 4,
+"uturn": 0,
 "gap_m": 0,
 "type": "road",
 "id": "jongmyo-5k",
@@ -478,15 +478,15 @@
 "name": "광화문→종묘→청계천 한 바퀴",
 "kind": "도보·조깅",
 "loop": true,
-"lab": true,
+"lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
 "L": 5100,
-"grade": "불량"
+"grade": "통과"
 },
 {
 "km": 3.07,
 "rev": 0.3,
-"same": 0.3,
+"same": 0.0,
 "cross": 0,
 "uturn": 0,
 "gap_m": 0,
@@ -610,22 +610,22 @@
 "grade": "통과"
 },
 {
-"km": 5.52,
-"rev": 45.9,
-"same": 2.4,
+"km": 3.5,
+"rev": 2.0,
+"same": 0.9,
 "cross": 0,
 "uturn": 2,
-"gap_m": 0,
+"gap_m": 1695,
 "type": "road",
 "id": "haeundae-dongbaek",
 "city": "busan",
-"name": "해운대 해변 · 동백섬 한 바퀴",
+"name": "해운대 해변 → 동백섬 한 바퀴",
 "kind": "도보·조깅",
-"loop": true,
+"loop": false,
 "lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
-"L": 5520,
-"grade": "불량"
+"L": 3500,
+"grade": "경계"
 },
 {
 "km": 4.88,
@@ -790,22 +790,22 @@
 "grade": "통과"
 },
 {
-"km": 3.87,
-"rev": 18.2,
+"km": 2.78,
+"rev": 0.0,
 "same": 0.0,
-"cross": 2,
-"uturn": 4,
-"gap_m": 0,
+"cross": 0,
+"uturn": 0,
+"gap_m": 10,
 "type": "road",
 "id": "jeonjuhanok-gil",
 "city": "jeonju",
 "name": "전주 한옥마을 한 바퀴",
 "kind": "도보",
 "loop": true,
-"lab": true,
+"lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
-"L": 3870,
-"grade": "불량"
+"L": 2780,
+"grade": "통과"
 },
 {
 "km": 5.74,
@@ -880,22 +880,22 @@
 "grade": "통과"
 },
 {
-"km": 5.52,
-"rev": 21.2,
+"km": 4.14,
+"rev": 0.0,
 "same": 0.0,
 "cross": 0,
-"uturn": 2,
-"gap_m": 0,
+"uturn": 0,
+"gap_m": 10,
 "type": "road",
 "id": "expo-gil",
 "city": "daejeon",
 "name": "대전 한밭수목원·엑스포 한 바퀴",
 "kind": "도보·조깅",
 "loop": true,
-"lab": true,
+"lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
-"L": 5520,
-"grade": "불량"
+"L": 4140,
+"grade": "통과"
 },
 {
 "km": 6.95,
@@ -1024,11 +1024,11 @@
 "grade": "불량"
 },
 {
-"km": 4.4,
-"rev": 17.0,
+"km": 3.54,
+"rev": 0.0,
 "same": 0.0,
 "cross": 0,
-"uturn": 2,
+"uturn": 0,
 "gap_m": 2524,
 "type": "road",
 "id": "buyeo-gil",
@@ -1036,10 +1036,10 @@
 "name": "부여 궁남지→정림사지→낙화암",
 "kind": "도보",
 "loop": false,
-"lab": true,
+"lab": false,
 "src": "오픈스트리트맵 길 찾기(OSRM)",
-"L": 4400,
-"grade": "불량"
+"L": 3540,
+"grade": "통과"
 },
 {
 "km": 4.05,
