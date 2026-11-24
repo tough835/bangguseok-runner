@@ -215,6 +215,20 @@
   .tag{font-size:11px;padding:1px 7px;border-radius:99px;background:rgba(var(--ink),.14);margin-left:4px;vertical-align:2px}
   .gline{font-size:17px;line-height:1.6}
   .gline small{display:block;font-size:13px;opacity:.7}
+  #hubSheet{z-index:31;position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center}
+  #hubSheet .hs{width:min(100vw,480px);background:var(--ch2);color:var(--tx);border-radius:22px 22px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));animation:hsUp .22s ease-out;touch-action:pan-y}
+  @keyframes hsUp{from{transform:translateY(40%);opacity:.3}to{transform:none;opacity:1}}
+  #hubSheet .grab{width:44px;height:5px;border-radius:3px;background:var(--ch3);margin:0 auto 10px}
+  #hubSheet .ph img{display:block;width:100%;height:190px;object-fit:cover;border-radius:14px}
+  #hubSheet .nm{font-size:22px;font-weight:900;margin:12px 0 4px;word-break:keep-all}
+  #hubSheet .ds{font-size:15.5px;line-height:1.65;color:var(--tx2);word-break:keep-all;min-height:48px}
+  #hubSheet .mt{font-size:13px;color:var(--mut);margin-top:8px}
+  #hubSheet .nv{display:flex;align-items:center;gap:10px;margin-top:14px}
+  #hubSheet .nv button{height:48px;border-radius:14px;border:0;background:var(--ch3);color:var(--tx);font-size:18px;font-weight:800;flex:0 0 56px}
+  #hubSheet .nv button:disabled{opacity:.3}
+  #hubSheet .nv .ct{flex:1;text-align:center;color:var(--mut);font-size:14px}
+  #hubSheet .nv .cl{flex:0 0 auto;padding:0 18px;font-size:15px}
+  #hubSheet .dots{display:flex;justify-content:center;gap:6px;margin-top:10px}#hubSheet .dots i{width:7px;height:7px;border-radius:50%;background:var(--ch3)}#hubSheet .dots i.on{background:var(--vt)}
   #spotCard{z-index:30;position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center}
   #spotCard .sc{width:min(88vw,360px);background:#fffdf6;color:#24332a;border-radius:20px;padding:16px}
   #spotCard .t{font-size:22px;font-weight:900}
@@ -976,6 +990,17 @@
 
 </div>
 
+<div id="hubSheet" class="hidden">   <!-- 11/24 보스: 지나온 거점 설명 팝업 (좌우로 넘김) -->
+  <div class="hs" id="hsCard">
+    <div class="grab"></div>
+    <div class="ph" id="hsPh"></div>
+    <div class="nm" id="hsNm"></div>
+    <div class="ds" id="hsDs"></div>
+    <div class="mt" id="hsMt"></div>
+    <div class="dots" id="hsDots"></div>
+    <div class="nv"><button id="hsPrev">‹</button><span class="ct" id="hsCt"></span><button id="hsNext">›</button><button class="cl" id="hsClose">닫기</button></div>
+  </div>
+</div>
 <div id="spotCard" class="hidden">
   <div class="sc">
     <div class="t" id="scTitle"></div>
@@ -1221,7 +1246,7 @@
 </div>
 
 <script>
-const BUILD = '202611241155';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611241243';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4237,6 +4262,7 @@ const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', res
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
+  if (shown('hubSheet')){ $('hubSheet').classList.add('hidden'); return true; }
   if (shown('hcFixBox')){ $('hcFixBox').classList.add('hidden'); return true; }
   if (shown('hcBox')){ $('hcBox').classList.add('hidden'); return true; }
   if (shown('fbBox')){ $('fbBox').classList.add('hidden'); return true; }
@@ -5268,16 +5294,42 @@ function recHubs(r){
     return names.map(n => {
       if (n === tr(m.short || m.name) || n === tr(m.name)) return { name: tr(m.name) + ' ' + T.summit, desc: T.elevAt.replace('{e}', m.summit.toLocaleString()) + (m.desc || m.trail ? ' · ' + tr(m.desc || m.trail) : ''), photo: typeof m.photo === 'string' ? m.photo : HUB_PHOTO['mtn_' + m.id] };
       const w = (m.waypoints || []).find(x => tr(x.name) === n);
-      return w ? { name: n, desc: (w.elev ? T.elevAt.replace('{e}', w.elev.toLocaleString()) : '') + (w.desc ? ' · ' + tr(w.desc) : ''), photo: typeof w.photo === 'string' ? w.photo : undefined } : { name: n };
+      if (!w) return { name: n, meta: tr(m.name) };
+      const km = m.distKm && w.at != null ? (m.distKm * w.at).toFixed(1) : '', left = m.summit && w.elev ? m.summit - w.elev : 0;   // 11/24: 설명이 없는 지점은 아는 사실(높이·위치)로 한 줄
+      return { name: n, desc: w.desc ? tr(w.desc) : '', meta: [tr(m.trailName || m.name), w.elev ? '해발 ' + w.elev.toLocaleString() + 'm' : '', km ? '출발 ' + km + 'km' : '', left > 0 ? '정상까지 ↑' + left + 'm' : ''].filter(Boolean).join(' · '), photo: typeof w.photo === 'string' ? w.photo : undefined };
     });
   }
   const co = ALL_ROADS[c.course === 'sangnim' ? 'sangnim-3k' : c.target], lms = (co && co.landmarks) || [];
   return names.map(n => { const l = lms.find(x => tr(x.name) === n);
-    return l ? { name: n, desc: tr(l.desc), photo: typeof l.photo === 'string' ? l.photo : HUB_PHOTO[l.id] } : { name: n }; });
+    return l ? { name: n, desc: tr(l.desc), meta: tr((co && (co.short || co.name)) || '') + (l.at != null ? ' · ' + (l.at / 1000).toFixed(1) + 'km 지점' : ''), photo: typeof l.photo === 'string' ? l.photo : HUB_PHOTO[l.id] } : { name: n, meta: co ? tr(co.short || co.name) : '' }; });
 }
 function recHubCard(h){   // 광고·행사 자리는 내용이 생기면 이 카드 아래에 (지금은 비움 — 다른 것으로 채우지 말 것)
   return '<div class="rhub">' + (h.photo ? '<img src="' + esc(h.photo) + '" alt="" loading="lazy">' : '') + '<b>' + esc(h.name) + '</b>' + (h.desc ? '<p>' + esc(h.desc) + '</p>' : '<p class="muted">아직 설명이 없어요</p>') + '</div>';
 }
+/* 11/24 보스: 지나온 거점 → 아래에서 올라오는 설명 팝업 · 좌우로 밀거나 ‹ › 로 다음 거점 · 바깥·닫기·뒤로로 닫음 */
+const HS = { list: [], i: 0 };
+function hubSheet(list, i){ if (!list || !list.length) return; HS.list = list; HS.i = Math.max(0, Math.min(list.length - 1, i || 0)); hsDraw(); $('hubSheet').classList.remove('hidden'); }
+function hsDraw(){
+  const h = HS.list[HS.i], n = HS.list.length;
+  $('hsPh').innerHTML = h.photo ? '<img src="' + esc(h.photo) + '" alt="" loading="lazy">' : '';
+  $('hsNm').textContent = '📍 ' + h.name;
+  $('hsDs').textContent = h.desc || (h.meta ? '' : '아직 설명이 없어요');
+  $('hsDs').style.display = $('hsDs').textContent ? '' : 'none';
+  $('hsMt').textContent = h.meta || '';
+  $('hsCt').textContent = (HS.i + 1) + ' / ' + n;
+  $('hsDots').innerHTML = n > 1 && n <= 12 ? HS.list.map((_, k) => '<i' + (k === HS.i ? ' class="on"' : '') + '></i>').join('') : '';
+  $('hsPrev').disabled = HS.i === 0; $('hsNext').disabled = HS.i === n - 1;
+  $('hsPrev').style.visibility = $('hsNext').style.visibility = n > 1 ? '' : 'hidden';
+}
+function hsGo(d){ const j = HS.i + d; if (j < 0 || j >= HS.list.length) return; HS.i = j; hsDraw(); }
+$('hsPrev').onclick = () => hsGo(-1); $('hsNext').onclick = () => hsGo(1);
+$('hsClose').onclick = () => $('hubSheet').classList.add('hidden');
+$('hubSheet').onclick = e => { if (e.target.id === 'hubSheet') $('hubSheet').classList.add('hidden'); };
+(() => { let x0 = null, y0 = 0; const c = $('hsCard');
+  c.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  c.addEventListener('touchend', e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) hsGo(dx < 0 ? 1 : -1);
+    else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) $('hubSheet').classList.add('hidden'); }, { passive: true }); })();
 function refreshRec(){
   try { refreshSteps(); } catch(e){}
   refreshStamps(); $('stampBox').classList.toggle('hidden', DB.pick.type === 'climb');
@@ -5323,7 +5375,6 @@ function refreshRec(){
         (r.sec >= 30 ? ' · ' + Math.round(r.sec / 60) + T.min : '') + (kcalOf(r) ? ' · 🔥' + Math.round(kcalOf(r)).toLocaleString() : '') + ((r.passed || []).length || isMine ? ' · <span class="rhint">📍' + ((r.passed || []).length || '') + (sel ? '▴' : '▾') + '</span>' : '') + (r.fixed ? ' · ' + T.fixedTag : '') + '</span></div>' +
         '<div class="rb">' + (r.free && !r.credit ? '<button data-ap="' + r.id + '" class="ap">' + (REC.apId === r.id ? T.apSure.replace('{c}', themeName((ACTS[r.act] || ACTS.tread).kind === 'up')) : T.apBtn) + '</button>' : '') + '<button data-ed="' + r.id + '">' + T.edit + '</button><button data-del="' + r.id + '" class="' + (REC.delId === r.id ? 'arm' : '') + '">' + (REC.delId === r.id ? T.delSure : T.del) + '</button></div></div>';
       if (sel && (hubs.length || isMine)) html += '<div class="rdet">' + (hubs.length ? '<div class="rhubs">' + hubs.map((h, i) => '<button data-rh="' + i + '" class="' + (REC.hub === i ? 'on' : '') + '">📍 ' + esc(h.name) + '</button>').join('') + '</div>' : '') +
-        (hubs[REC.hub] ? recHubCard(hubs[REC.hub]) : '') +
         (isMine ? '<button class="toggle rpub" data-pub="' + r.credit.target + '">🌍 이 길 모두에게 공개 신청' + (MINE.find(x => x.id === r.credit.target).pub === 'wait' ? ' (신청함)' : '') + '</button>' : '') + '</div>';
     });
   });
@@ -5331,7 +5382,7 @@ function refreshRec(){
   document.querySelector('[data-t="recHelp"]').classList.toggle('hidden', !html);   // 11/18 A15
   $('recList').querySelectorAll('[data-rx]').forEach(el => el.onclick = () => { const id = +el.dataset.rx; REC.open = REC.open === id ? null : id; REC.hub = null; REC.delId = REC.apId = null; refreshRec(); });
   $('recList').querySelectorAll('[data-dk]').forEach(el => el.onclick = () => { const k = el.dataset.dk, on = el.classList.contains('on'); REC.days[k] = !on; refreshRec(); });
-  $('recList').querySelectorAll('[data-rh]').forEach(el => el.onclick = () => { const i = +el.dataset.rh; REC.hub = REC.hub === i ? null : i; refreshRec(); });
+  $('recList').querySelectorAll('[data-rh]').forEach(el => el.onclick = () => { const r = DB.records.find(x => x.id === REC.open); if (r) hubSheet(recHubs(r), +el.dataset.rh); });
   $('recList').querySelectorAll('[data-pub]').forEach(el => el.onclick = () => pubOpen(el.dataset.pub));
   $('recList').querySelectorAll('[data-ed]').forEach(el => el.onclick = () => openEdit(+el.dataset.ed));
   $('recList').querySelectorAll('[data-ap]').forEach(el => el.onclick = () => {
