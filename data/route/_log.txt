@@ -147,3 +147,5 @@ akerselva OSRM 9.41km / 공식 8.00km (x1.18) 957점 거점 3
 atlantic-road OSRM 9.06km / 공식 8.30km (x1.09) 407점 거점 3
 dongbaek-1k OSRM 1.76km / 공식 1.00km (x1.76) 84점 거점 3
 haeundae-dongbaek OSRM 5.78km / 공식 4.20km (x1.38) 194점 거점 5
+dongbaek-1k OSRM 1.39km / 공식 1.30km (x1.07) 74점 거점 3
+haeundae-dongbaek OSRM 5.52km / 공식 4.30km (x1.28) 190점 거점 5

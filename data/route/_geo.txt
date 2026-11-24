@@ -514,3 +514,19 @@
   누리마루 → [35.152354, 129.151369, 'N 누리마루 APEC 하우스, Dongbaekseom Island Suspension Bridge, 우1동, 해운대구, 부산광역시']
   더베이101 → 못 찾음
   더 베이 101 → [35.156594, 129.152087, 'N 더 베이 101, 동백로, 우동, 우1동, 해운대구, 부산광역시, 48093, 대한민국']
+[dongbaek-1k]
+  황옥공주인어상 → 못 찾음
+  인어상 동백섬 → 못 찾음
+  Mermaid Statue → [35.154875, 129.154596, 'N Mermaid (Princess Hwangok) statue, Dongbaekseom Island Suspension Brid']
+  동백섬 전망대 → 못 찾음
+  동백섬등대전망대 → 못 찾음
+  등대 전망대 → 못 찾음
+  Dongbaekseom Lighthouse → 못 찾음
+[haeundae-dongbaek]
+  황옥공주인어상 → 못 찾음
+  인어상 동백섬 → 못 찾음
+  Mermaid Statue → [35.154875, 129.154596, 'N Mermaid (Princess Hwangok) statue, Dongbaekseom Island Suspension Brid']
+  동백섬 전망대 → 못 찾음
+  동백섬등대전망대 → 못 찾음
+  등대 전망대 → 못 찾음
+  Dongbaekseom Lighthouse → 못 찾음
