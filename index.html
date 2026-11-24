@@ -1246,7 +1246,7 @@
 </div>
 
 <script>
-const BUILD = '202611241243';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611241248';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2540,6 +2540,34 @@ Object.values(ALL_ROADS).forEach(c => (c.landmarks || []).forEach(lm => { if (!l
 TARGETS.forEach(t => { if (!t.photo && HUB_PHOTO['mtn_' + t.id]) t.photo = HUB_PHOTO['mtn_' + t.id]; });
 const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain').sort((a, b) => a.gain - b.gain);   // 11/23: 지도 없는 산은 목록 그릴 때 거름 (실험실 폰에서만 보임 — LAB)
 const TOWERS = TARGETS.filter(t => t.kind === 'tower').sort((a, b) => a.gain - b.gain);
+/* 11/24 보스: 지나온 거점·정상 설명 — 함양 15산부터. 근거: 한국관광공사 관광정보(함양군 제공), 경남신문·서울신문 산행기사, 국립공원공단 자료.
+   글은 요약해 새로 씀. 근거가 없는 지점(망월대·소지봉 등)은 지어내지 않고 비워 둠 → 높이·위치 사실만 보임 */
+const MTN_DESC = {
+  gamtu: '함양 서하·백전·병곡면에 걸친 산. 빼빼재에서 1km만 오르면 닿고, 대봉산으로 이어지는 능선의 첫 봉우리예요.',
+  sambong: '투구봉·촛대봉·정상, 세 봉우리가 모인 산. 지리산 주능선을 정면으로 마주 봐 \'지리산 전망대\'로 불려요. 들머리 오도재는 청매 인오조사가 오가며 깨달음을 얻었다는 고개예요.',
+  daebong: '큰 봉황이 알을 품은 모양이라 붙은 이름. 오래 괘관산으로 불리다 2009년 대봉산 이름을 되찾았어요. 정상 가까이 모노레일과 긴 짚라인이 있어요.',
+  baegun: '\'흰 구름 산\'. 함양과 전북 장수에 걸친 백두대간 봉우리로, 정상에서 노고단~천왕봉 지리산 능선과 덕유산이 한눈에 들어와요.',
+  yeongchwi: '백두대간 위의 산. 오르는 길의 극락바위가 가장 좋은 전망대로 꼽혀요.',
+  wolbong: '함양 서상면과 거창 북상면 경계. 남덕유산에서 갈라진 줄기가 월봉산을 지나 거망산·황석산으로 이어져요. 바위 능선과 억새가 어우러진 산이에요.',
+  wabul: '지리산국립공원 자락, 칠선계곡 들머리의 산. 출발점 벽송사는 보물 삼층석탑과 목장승으로 알려진 절이에요.',
+  geomang: '황석산과 한 능선으로 이어진 산. 용추계곡을 사이에 두고 금원산~기백산 능선과 마주 봐요.',
+  namdeogyu: '덕유산국립공원의 남쪽 봉우리로, 북쪽 향적봉과 덕유산 쌍봉을 이뤄요. 조선 시대엔 봉황산·황봉으로 불렸어요.',
+  samjeong: '지리산국립공원 북쪽 자락의 산. 기슭에 영원사·상무주암·삼불사 같은 암자가 이어지고, 정상은 지리산 주능선을 바라보는 전망대예요.',
+  geumwon: '금빛 원숭이를 바위에 가뒀다는 전설에서 이름이 왔다고 전해요. 유안청·자운폭포 계곡과 자연휴양림, 1,500여 종의 식물이 자라는 숲이 있어요.',
+  gibaek: '함양과 거창의 경계, \'지우산\'이라고도 불려요. 정상에서 금원산까지 약 3km 억새 능선이 장관이에요.',
+  hwangseok: '안의의 진산. 비수처럼 솟은 남봉이 피라미드를 닮았고, 정상 일대에 황석산성 자취가 남아 있어요.',
+  cheonwang: '지리산 최고봉(1,915m). 우리나라 육상 국립공원 중 가장 넓은 지리산국립공원의 정상이에요.',
+  'm100-016': '섬 전체가 천연보호구역인 홍도의 가장 높은 봉우리예요.'
+};
+const WP_DESC = {
+  '남덕유산 전위봉': '정상 바로 앞 바위 봉우리. 철계단이 이어지는 가장 가파른 구간이에요.',
+  '유안청폭포': '조선 선비들이 과거 공부를 하던 \'유안청\'이 있던 골짜기의 폭포예요.',
+  '용추사 일주문': '6·25 때 불탄 장수사에서 홀로 남은 일주문. 기백산 대표 들머리예요.',
+  '황석산성': '영·호남 관문 육십령을 지키던 산성. 정상 능선을 따라 성벽이 이어져요.',
+  '장터목대피소': '천왕봉에서 1.7km. 천왕봉을 오르는 사람 대부분이 묵는, 가장 큰 대피소예요.',
+  '제석봉': '천왕봉·중봉 다음 지리산 세 번째 고봉. 넓은 고원의 고사목은 늙어 죽은 게 아니라 사람 탓에 죽은 나무들의 흔적이에요.',
+  '통천문': '\'하늘로 통하는 문\'. 바위 틈을 사다리로 빠져나가면 곧 천왕봉이에요.'
+};
 const TGT = id => TARGETS.find(t => t.id === id) || MOUNTAINS[MOUNTAINS.length - 1];
 /* ---- 11/16 산·빌딩 화면 개선
    빌딩: 실제 외형(높이 비율 → 폭 비율, 같은 높이 두 점 = 계단식으로 좁아짐) · 유명 층 이정표 · 도시 현지 시각으로 낮/밤 · 창밖 도시가 점점 발아래로
@@ -2714,10 +2742,10 @@ function walkPassed(before, after){
 function climbPassed(m, before, after){
   const out = [];
   for (let k = Math.floor(before / m.gain); k <= Math.floor(after / m.gain); k++){
-    (m.waypoints || []).forEach(w => { const at = k * m.gain + wpAt(m, w); if (at > before && at <= after){ const wk = WIKI[w.wiki || ('ko:' + tr(w.name).replace(/^\d+층 /, ''))]; out.push({ name: tr(w.name), tw: m.kind === 'tower', desc: (m.kind === 'tower' ? '지상 ' + w.elev.toLocaleString() + 'm' : T.elevAt.replace('{e}', w.elev.toLocaleString())) + (m.kind !== 'tower' ? ' · 🌡 ' + T.tempLow.replace('{t}', Math.round((w.elev - m.base) * 0.006)) : ''), photo: wk && wk.u ? (PHOTO_CREDIT[wk.u] = wk.c, PHOTO_LINK[wk.u] = wk.l, wk.u) : undefined }); } });
+    (m.waypoints || []).forEach(w => { const at = k * m.gain + wpAt(m, w); if (at > before && at <= after){ const wk = WIKI[w.wiki || ('ko:' + tr(w.name).replace(/^\d+층 /, ''))]; out.push({ name: tr(w.name), tw: m.kind === 'tower', desc: (WP_DESC[tr(w.name)] ? WP_DESC[tr(w.name)] + ' · ' : '') + (m.kind === 'tower' ? '지상 ' + w.elev.toLocaleString() + 'm' : T.elevAt.replace('{e}', w.elev.toLocaleString())) + (m.kind !== 'tower' ? ' · 🌡 ' + T.tempLow.replace('{t}', Math.round((w.elev - m.base) * 0.006)) : ''), photo: wk && wk.u ? (PHOTO_CREDIT[wk.u] = wk.c, PHOTO_LINK[wk.u] = wk.l, wk.u) : undefined }); } });
     const top = (k + 1) * m.gain;
     if (top > before && top <= after) out.push({ name: tr(m.name) + ' ' + T.summit, short: tr(m.name), photo: m.photo || true,
-      desc: (m.kind === 'tower' ? towerSize(m) : T.elevAt.replace('{e}', m.summit.toLocaleString())) + ' · ' + tr(m.desc || m.trail) });
+      desc: (m.kind === 'tower' ? towerSize(m) : T.elevAt.replace('{e}', m.summit.toLocaleString())) + ' · ' + (MTN_DESC[m.id] || tr(m.desc || m.trail)) });
   }
   return out;
 }
@@ -5292,11 +5320,11 @@ function recHubs(r){
   if (c.course === 'climb'){
     const m = TGT(c.target); if (!m) return names.map(n => ({ name: n }));
     return names.map(n => {
-      if (n === tr(m.short || m.name) || n === tr(m.name)) return { name: tr(m.name) + ' ' + T.summit, desc: T.elevAt.replace('{e}', m.summit.toLocaleString()) + (m.desc || m.trail ? ' · ' + tr(m.desc || m.trail) : ''), photo: typeof m.photo === 'string' ? m.photo : HUB_PHOTO['mtn_' + m.id] };
+      if (n === tr(m.short || m.name) || n === tr(m.name)) return { name: tr(m.name) + ' ' + T.summit, desc: MTN_DESC[m.id] || (m.desc ? tr(m.desc) : ''), meta: T.elevAt.replace('{e}', m.summit.toLocaleString()) + (m.trail ? ' · ' + tr(m.trail) : ''), photo: typeof m.photo === 'string' ? m.photo : HUB_PHOTO['mtn_' + m.id] };
       const w = (m.waypoints || []).find(x => tr(x.name) === n);
       if (!w) return { name: n, meta: tr(m.name) };
       const km = m.distKm && w.at != null ? (m.distKm * w.at).toFixed(1) : '', left = m.summit && w.elev ? m.summit - w.elev : 0;   // 11/24: 설명이 없는 지점은 아는 사실(높이·위치)로 한 줄
-      return { name: n, desc: w.desc ? tr(w.desc) : '', meta: [tr(m.trailName || m.name), w.elev ? '해발 ' + w.elev.toLocaleString() + 'm' : '', km ? '출발 ' + km + 'km' : '', left > 0 ? '정상까지 ↑' + left + 'm' : ''].filter(Boolean).join(' · '), photo: typeof w.photo === 'string' ? w.photo : undefined };
+      return { name: n, desc: w.desc ? tr(w.desc) : (WP_DESC[n] || ''), meta: [tr(m.trailName || m.name), w.elev ? '해발 ' + w.elev.toLocaleString() + 'm' : '', km ? '출발 ' + km + 'km' : '', left > 0 ? '정상까지 ↑' + left + 'm' : ''].filter(Boolean).join(' · '), photo: typeof w.photo === 'string' ? w.photo : undefined };
     });
   }
   const co = ALL_ROADS[c.course === 'sangnim' ? 'sangnim-3k' : c.target], lms = (co && co.landmarks) || [];
