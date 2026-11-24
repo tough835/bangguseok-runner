@@ -1065,6 +1065,7 @@
     <div class="bignum" id="stNum"></div>
     <div class="muted" id="stSub" style="text-align:center"></div>
     <div class="kcday" id="stKcal"></div>
+    <a id="stFixLink" class="muted hidden" style="display:block;text-align:center;margin:6px 0;font-size:13px;text-decoration:underline">숫자가 삼성 헬스와 다르면 ›</a>
     <div class="form" id="stForm">
       <label data-t="stInputL"></label>
       <div class="row2"><div><input id="stInput" type="number" inputmode="numeric" min="0"></div><div><button id="stSet" class="toggle" data-t="stSet" style="margin:0;height:48px"></button></div></div>
@@ -1220,7 +1221,7 @@
 </div>
 
 <script>
-const BUILD = '202611241149';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611241155';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1881,8 +1882,8 @@ const TEXT = {
     nFlat: '➡ 평지 · 페이스 유지', nIncline: '트레드밀 경사 {g}%', nTop: '🔥 정상까지 {d}m!', nHalf: '반 넘었다', nKeep: '꾸준히',
     changeCourse: '코스 바꾸기 ▾', closeList: '닫기 ▴',
     stBtn: '걸음수 {n}', stTitle: '👣 오늘 걸음', stSplit: '운동 {w}보 · 그 밖 {o}보', stSubApp: '폰 걸음 센서로 24시간 셉니다 (설치한 때부터) · 매일 0시에 새로', stSubPerm: '걸음을 세려면 \'신체 활동\' 권한이 필요해요. 설정 → 애플리케이션 → 방구석러너 → 권한에서 허용해 주세요.', stSub: '등산·조깅·계단 기록도 합산 (기록은 추정) · 매일 0시에 새로',  stSubNo: '평소 걸음은 이 화면에서 못 셉니다 → 삼성 헬스 숫자로 맞춰 주세요 (운동 기록은 합산됨)',
-    stInputL: '삼성 헬스 걸음수로 맞추기', stSet: '맞추기', stApply: '🛣 코스에 반영 · +{n}보 ≈ {d}km', stNone: '새로 반영할 걸음이 없어요',
-    stClimb: '걸음은 길 코스에만 반영할 수 있어요. 코스를 길로 바꿔 주세요.', stHelp: '운동 밖 걸음만 {c}에 반영됩니다 (운동 걸음은 이미 기록에 들어 있음). 반영한 걸음은 다시 반영되지 않아요.',
+    stInputL: '삼성 헬스 숫자 넣기', stSet: '맞추기', stApply: '🛣 코스에 반영 · +{n}보 ≈ {d}km', stNone: '새로 반영할 걸음이 없어요',
+    stClimb: '산 코스엔 못 넣어요 · 길 코스에서 눌러 주세요', stHelp: '평소 걸음만 {c}에 더해요',
     stDone: '✅ 걸음 {n}보 → {c} +{d}km', srcSteps: '👣 걸음 반영', stApplied: '오늘 반영함: {n}보',
     bkBtn: '💾 기록 옮기기 · 백업', bkTitle: '💾 기록 옮기기 · 백업', bkHelp: '새 폰이나 다른 기기로 기록을 옮길 때 씁니다. ① 여기서 코드를 복사 → ② 카톡 나에게 보내기 → ③ 옮길 곳의 "가져오기"에 붙여 넣기.',
     bkOutT: '① 내보내기 (기록 {n}건)', bkCopy: '📋 코드 복사', bkFile: '💾 파일로 저장', bkInT: '② 가져오기 (합치기)', bkImport: '가져오기', bkLoad: '📂 파일 불러오기',
@@ -5827,6 +5828,7 @@ function recSteps(r){
   const kmh = r.sec > 60 ? (r.distM || 0) / r.sec * 3.6 : 6;
   return Math.round((r.distM || 0) / (kmh >= 8 ? (DB.stride.run || 1) : (DB.stride.walk || 0.72)));
 }
+var STFIX = false;   // 걸음 창: 손으로 맞추기 펼침
 var HC = { ok: false, granted: false, empty: false, can: false };   // 11/24 헬스 커넥트(삼성 헬스 걸음) 상태
 function stepInfo(){   // { total 하루 합계, work 운동 걸음, other 운동 밖 걸음, free 코스에 반영할 수 있는 걸음 }
   const d = stepDay(), today = new Date().toDateString();
@@ -5866,19 +5868,21 @@ function refreshSteps(){
   document.querySelectorAll('[data-steps]').forEach(b => b.textContent = T.stBtn.replace('{n}', si.total.toLocaleString()));
   if ($('stepBox').classList.contains('hidden')) return;
   $('stNum').textContent = si.total.toLocaleString(); try { $('stKcal').innerHTML = kcalDayHtml(); } catch(e){}
-  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (HC.ok ? '✓ 삼성 헬스 숫자 그대로 · ' + new Date(HC.t || Date.now()).toTimeString().slice(0, 5) + ' 받음' : HC.empty ? '삼성 헬스 → 헬스 커넥트 보내기가 꺼져 있어요 (지금은 폰 센서로 셈)' : NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
+  const appSteps = HC.ok || NSTEP.ok;   // 11/24 보스: 설명 줄이기 — 문제 있을 때만 한 줄
+  $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + (appSteps ? '' : '\n' + (STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo));
   if (LAB_ON() && HC.dbg) $('stSub').textContent += '\n🧪 ' + HC.dbg;
   $('stSub').style.whiteSpace = 'pre-line';
   const free = si.free, km = free * (DB.stride.walk || 0.7) / 1000, road = DB.pick.type !== 'climb';
   $('stApply').textContent = T.stApply.replace('{n}', free.toLocaleString()).replace('{d}', km.toFixed(2));
   $('stApply').disabled = !road || free < 10; $('stApply').style.opacity = $('stApply').disabled ? .45 : 1;
   $('stMsg').textContent = !road ? T.stClimb : (free < 10 ? T.stNone : T.stHelp.replace('{c}', tr(COURSE.name))) + (d.used ? '\n' + T.stApplied.replace('{n}', d.used.toLocaleString()) : '');
-  $('stHc').classList.toggle('hidden', !HC.can || HC.ok); $('stHc').textContent = HC.granted ? '⚙ 삼성 헬스 쪽 켜는 법' : '🔗 삼성 헬스 걸음 연결';
-  $('stForm').classList.toggle('hidden', HC.ok);   // 11/24 보스: 삼성 숫자를 그대로 받으면 손으로 맞추기는 필요 없음
-  if (HC.ok) $('stMsg').textContent = !road ? T.stClimb : free < 10 ? '' : T.stHelp.replace('{c}', tr(COURSE.name));
+  $('stHc').classList.add('hidden');   // 연결 버튼은 감춤 (숫자가 맞으면 필요 없음 · 첫 실행 안내 1회만)
+  $('stForm').classList.toggle('hidden', appSteps && !STFIX); $('stFixLink').classList.toggle('hidden', !appSteps || STFIX);   // 앱이 걸음을 세면 '숫자 다를 때'만 펼침
+  $('stMsg').textContent = !road ? T.stClimb : free < 10 ? (d.used ? T.stApplied.replace('{n}', d.used.toLocaleString()) : '') : T.stHelp.replace('{c}', tr(COURSE.short || COURSE.name));
 }
 document.querySelectorAll('[data-steps]').forEach(b => b.onclick = () => { stepsPermission(); $('stInput').value = ''; $('stepBox').classList.remove('hidden'); refreshSteps(); });
-$('stClose').onclick = () => $('stepBox').classList.add('hidden');
+$('stFixLink').onclick = () => { STFIX = true; refreshSteps(); };
+$('stClose').onclick = () => { STFIX = false; $('stepBox').classList.add('hidden'); };
 $('stSet').onclick = () => { const v = parseInt($('stInput').value, 10); if (!(v >= 0)) return; const sd = stepDay(); sd.setBase = sd.native != null ? sd.native : Math.max(0, sd.n - sd.run) + Math.max(sd.run, DB.records.filter(r => new Date(r.date).toDateString() === new Date().toDateString()).reduce((a, r) => a + recSteps(r), 0)); sd.set = v; sd.setT = Date.now(); saveDB(); $('stInput').value = ''; refreshSteps(); };
 $('stApply').onclick = () => {
   const free = stepFree(); if (free < 10 || DB.pick.type === 'climb') return;
@@ -5921,7 +5925,7 @@ function nativeSteps(first){
     }
     HC.ok = false;
     if (first && !HC.granted) hcOffer(false);
-    if (HC.empty && DB.hcFixDay !== dayKey()) { DB.hcFixDay = dayKey(); saveDB(); hcFix(); }   // 11/24: 삼성 쪽이 꺼져 있으면 알아채서 하루 한 번 안내
+    // 11/24 보스: 폰 센서가 삼성과 같으면 조르지 않음 (삼성 쪽 안내 창 자동 표시 끔)
     sensor();
   }).catch(() => sensor());
 }
