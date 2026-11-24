@@ -54,6 +54,7 @@
   #hudTop #bVoice{width:40px;padding:0;justify-content:center}
   #hudTop .brk2{order:3}#hudTop #altiPill,#hudTop #notePill,#hudTop #gpsPill{order:4}
   #hudTop #notePill{font-size:14px;padding:6px 12px}
+  #conqLine{display:none!important}   /* 11/25 A안 1단계: 시작 화면 정복 줄 = 지역 카드 🏴 숫자와 중복 → 숨김 (코드는 남김) */
   /* 11/23 15:37 보스 "오른쪽 고도 표시를 위로 올려 영상을 더 크게": 영상 중엔 고도 칸을 코스 이름 옆 작은 칸으로, 전체 지도도 작게 → 위 띠가 두 줄(이름·버튼)로 끝남 */
   #hudTop #vAlt{order:0;font-weight:800;flex:none;font-size:13px;padding:6px 9px}
   #hudTop #namePill{min-width:0;flex:0 1 auto}
@@ -360,7 +361,7 @@
   #courseList{max-height:none!important}
   #homeScreen{display:flex;flex-direction:column}
   #homeScreen h1{text-align:center;font-size:30px;margin:26px 0 4px}
-  .homeSub{text-align:center;opacity:.65;font-size:14px}
+  .homeSub{text-align:center;opacity:.65;font-size:14px}.homeSub:empty,.zones small:empty{display:none}   /* 11/25 A안 1단계: 보조 글 뺌 */
   .zones{flex:1;display:flex;gap:12px;margin:26px 0 10px;min-height:340px}
   .zones button{flex:1;border:0;border-radius:24px;color:var(--tx);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px 8px}
   .zones .zin{background:#2a2c31}
@@ -372,7 +373,7 @@
   .homeToday{text-align:center;font-size:14px;opacity:.7;margin-bottom:14px}
   .zoneBtn{height:42px;padding:0 12px;border-radius:12px;border:0;background:rgba(var(--ink),.14);color:var(--tx);font-size:15px;font-weight:800}
   #startScreen h1{font-size:22px}
-  .gpsNote{margin-top:10px;font-size:13px;opacity:.7;line-height:1.6}
+  .gpsNote{margin-top:10px;font-size:13px;opacity:.7;line-height:1.6}.gpsNote:empty{display:none}
   .modeSeg{display:flex;gap:8px;margin:14px 0 4px}
   .modeSeg button{flex:1;height:64px;border-radius:16px;border:2px solid rgba(var(--ink),.18);background:rgba(var(--ink),.06);color:var(--tx);font-size:17px;font-weight:900;line-height:1.2}
   .modeSeg button small{display:block;font-size:12px;font-weight:600;opacity:.7;margin-top:2px}
@@ -927,7 +928,7 @@
     <div class="zchips" id="topicChips"></div>
     <div class="zchips hidden" id="bZones"></div>
     <input id="bFind" class="find hidden" type="search" placeholder="🔍 산 이름으로 찾기" autocomplete="off">
-    <div class="muted" id="nearNote" style="margin:10px 0;line-height:1.5"></div>
+    <div class="muted" id="nearNote" style="margin:10px 0;line-height:1.5"></div><style>#nearNote:empty{display:none}</style>
     <div class="card" id="browseList"></div>
     <button id="bChange" class="toggle hidden"></button>
   </div>
@@ -1247,7 +1248,7 @@
 </div>
 
 <script>
-const BUILD = '202611250050';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611250820';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1937,21 +1938,21 @@ const TEXT = {
     trTitle: '🗺 오늘 GPS로 다닌 길 {a}km를 「{c}」 지도로 쓸까요?', trSub: '실제로 이 코스를 걸었을 때만 눌러 주세요. 다음부터 위성 사진 위에 이 길이 그대로 그려져요. 기록·거리는 바뀌지 않아요.',
     trShort: '코스 길이의 절반이 안 돼요. 쓰면 이 길을 늘려서 코스 전체로 그려요.', trReplace: '전에 저장한 GPS 길을 바꿔요.', trYes: '지도로 쓰기', trDone: '✅ 저장했어요 · 다음에 열 때부터 반영',
     otherTrails: '다른 길:', trailsN: '길 {n}개', peakStamp: '정상 도장',
-    homeSub: '오늘은 어디서 운동하세요?', zIn: '방구석', zInSub: '실내 운동', zInEx: '트레드밀 · 천국의 계단<br>실내 자전거', zOut: '바깥', zOutSub: '실외 운동', zOutEx: '걷기·조깅 · 자전거<br>등산 · GPS 기록',
+    homeSub: '', zIn: '방구석', zInSub: '실내 운동', zInEx: '', zOut: '바깥', zOutSub: '실외 운동', zOutEx: '',
     zInTitle: '‹ 🏠 방구석', zOutTitle: '‹ 🌳 바깥', homeToday: '오늘 {d}',
     aWalkOut: '걷기·조깅', gpsStart: '▶ GPS로 기록 시작', manualOut: '✍ 다녀온 기록 넣기', hikeOut: '✍ 다녀온 등산 기록 넣기',
-    gpsHelpApp: '달린 만큼 고른 코스에서 앞으로 갑니다. 폰을 잠가도 기록돼요 (알림창에 \'기록 중\' 표시).', bgTitle: '방구석러너 기록 중', bgMsg: '잠금 중에도 거리를 기록하고 있어요',
+    gpsHelpApp: '', bgTitle: '방구석러너 기록 중', bgMsg: '잠금 중에도 거리를 기록하고 있어요',
     gpsPerm: '위치 권한이 필요해요. 설정에서 위치를 \'앱 사용 중에만 허용\'으로 바꿔 주세요.',
-    gpsHelp: '달린 만큼 고른 코스에서 앞으로 갑니다. 화면을 켜 둔 채로 운동하세요 (화면이 꺼지면 기록이 멈춰요).',
+    gpsHelp: '화면을 켜 둔 채로 운동하세요 (꺼지면 기록이 멈춰요)',
     gpsNoHere: '이 화면에서는 GPS를 쓸 수 없어요. 위치 권한을 켜거나 설치한 앱에서 열면 실시간 기록이 됩니다. 지금은 다녀온 거리를 넣어 주세요.',
-    hikeHelp: '실제로 다녀온 산을 기록에 넣어요 (오른 높이·시간) · 산길을 GPS로 기록하며 오르려면 일반 → 등산', hikeGpsHelp: 'GPS로 다닌 길을 기록해요. 오른 높이는 끝난 뒤 지형 자료로 계산해요.',
+    hikeHelp: '다녀온 산을 기록에 넣어요 · GPS로 오르려면 일반 → 등산', hikeGpsHelp: '',
     hikeSum: '🥾 등산 <b>{d} km</b> · {t}', hikeCalc: '⛰ 오른 높이 계산 중…', hikeUp: '⛰ 오른 높이 <b>{g} m</b> · 가장 높은 곳 {top} m', hikeNoEle: '⛰ 오른 높이를 못 계산했어요 (인터넷 연결 확인)',
     myMtnTitle: '⛰ 오늘 오른 길(+{g} m)을 내 산 코스로 남길까요?', myMtnSub: '출발 → 가장 높은 곳까지가 코스가 돼요. 방구석 등산·계단에서 이 길 그대로 올라요.', myMtnName: '내 산 ({md})',
     gpsWait: '📡 GPS 찾는 중…', gpsOk: '📡 GPS ±{a}m', gpsWeak: '📡 GPS 약함 ±{a}m', gpsLost: 'GPS를 쓸 수 없어 기록을 멈춥니다', srcGps: '📡 GPS',
-    cancel: '취소', edit: '수정', delSure: '지울까요?', addBtn: '＋ 빠진 기록 넣기 (앱 없이 한 운동)', addTitle: '✍ 빠진 기록 넣기',
+    cancel: '취소', edit: '수정', delSure: '지울까요?', addBtn: '＋ 기록 넣기', addTitle: '✍ 빠진 기록 넣기',
     resetBtn: '↺ {s} 처음부터 다시', resetSure: '한 번 더 누르면 진행 위치가 0으로 (기록은 남음)', resetDone: '처음부터 다시 시작합니다',
     tagAll: '전체 ⤢', tagHere: '현위치 ⤢', tagTheme: '테마 ⤢', tagPic: '그림 ⤢', allOn: '🗺 전체 코스', allBack: '↩ 돌아가기', tagReal: '실제 ⤢', realBack: '실제 지도로', legUp: '오르막', legDown: '내리막', hubsOf: '거점 {a}/{b}', nWp: '곧 {s}',
-    siteBtn: '📍 현장 인증 · {s}에 와 있을 때', siteOk: '✅ 오늘 현장 확인 · {s}', siteWait: '위치 확인 중…', siteYes: '✅ 현장 확인! 거점 도장 📍는 운동 중 그 거점에 실제로 가면 찍혀요',
+    siteBtn: '📍 {s} 현장 인증', siteOk: '✅ 오늘 현장 확인 · {s}', siteWait: '위치 확인 중…', siteYes: '✅ 현장 확인! 거점 도장 📍는 운동 중 그 거점에 실제로 가면 찍혀요',
     siteFar: '여기는 {s}에서 {d}km 떨어져 있어요', siteNo: '이 화면에서는 위치를 읽을 수 없어요', siteTag: '📍 현장', siteHub: '현장 도장 인증!',
     walk: '걷기', run: '달리기', gain: '오를 높이', realDone: '실제 완등'
   }
@@ -3418,8 +3419,8 @@ function tGoalRoad(){
   seg.querySelectorAll('[data-g]').forEach(b => b.classList.toggle('on', +b.dataset.g === g));
   const left = roadLeft();
   const sp = Math.max(1, effSpeed() || 6), mm = k => Math.max(1, Math.round(k / sp * 60));
-  $('tGoalNote').textContent = !left ? '' : g ? (g * 1000 < left - 50 ? '지금 속도로 약 ' + mm(g) + '분 · 남은 길 ' + (left / 1000).toFixed(1) + 'km는 다음에 이어서' : '지금 속도로 약 ' + mm(g) + '분 · 한 바퀴 돌고 또 돌아요')
-    : '지금 속도로 약 ' + mm(left / 1000) + '분';
+  $('tGoalNote').textContent = !left ? '' : g ? (g * 1000 < left - 50 ? '약 ' + mm(g) + '분 · 나머지 ' + (left / 1000).toFixed(1) + 'km는 다음에' : '약 ' + mm(g) + '분')
+    : '약 ' + mm(left / 1000) + '분';
 }
 function tGoalBind(){ $('tGoalSeg').querySelectorAll('[data-g]').forEach(b => b.onclick = () => { const v = +b.dataset.g;
   if (String($('tGoalSeg').dataset.mode).startsWith('road')) DB.roadKm = v; else { DB.climb = DB.climb || {}; DB.climb.goal = v; } saveDB(); tGoalUI(); }); }
@@ -3433,7 +3434,7 @@ function tGoalUI(){
   $('tGoalSeg').querySelectorAll('[data-g]').forEach(b => b.classList.toggle('on', +b.dataset.g === g));
   let m = null; try { m = TGT(DB.climb.sel); } catch(e){}
   const all = m ? Math.max(1, Math.round(Math.max(1, m.gain - (climbTotal(m.id) % m.gain)) / climbMpm())) : 0, up = Math.round(g * climbMpm());
-  $('tGoalNote').textContent = !m ? '' : g ? '약 ' + up + 'm 오르면 끝' + (m.kind !== 'tower' && all > g ? ' · 남은 길은 다음에 이어서 (끝까지는 약 ' + all + '분)' : '') : '끝까지 약 ' + all + '분' + (all >= 45 ? ' · 길면 10~30분만 골라 나눠 오르세요' : '');
+  $('tGoalNote').textContent = !m ? '' : g ? '약 ' + up + 'm 오르면 끝' + (m.kind !== 'tower' && all > g ? ' · 끝까지는 약 ' + all + '분' : '') : '끝까지 약 ' + all + '분';
 }
 tGoalBind();
 function goalTick(st){
@@ -3666,7 +3667,7 @@ function renderRegionCards(){
     html += '<div class="rcgrp">' + lbl + '</div>' + list.map(x => {
       const sub = (x.c.id === 'kr' ? tr(x.p.name) : (x.c.children.length > 1 ? tr(x.p.name) : tr(x.c.name))).replace(/^[^가-힣A-Za-z]+/, '').replace(/(특별자치도|특별자치시|광역시|특별시)$/, '');   // 짧게: 제주특별자치도 → 제주
       return '<button class="rcard' + (x.ci.id === DB.region.city ? ' on' : '') + '" data-rc="' + x.c.id + '|' + x.p.id + '|' + x.ci.id + '">' + (x.promo ? '<span class="dot">📣</span>' : '') +
-        '<b>' + tr(x.ci.name) + '</b><small>' + x.n + '코스' + (sub && sub.indexOf(tr(x.ci.name)) !== 0 ? ' · ' + sub : '') + (x.all ? '<span style="float:right">🏴 ' + x.d + '/' + x.all + '</span>' : '') + '</small>' +
+        '<b>' + (x.c.id === 'm100' ? '100대명산 ' + tr(x.p.name).replace(/\s*\d+$/, '') : tr(x.ci.name)) + '</b><small>' + x.n + '코스' + (x.c.id !== 'm100' && sub && sub.indexOf(tr(x.ci.name)) !== 0 ? ' · ' + sub : '') + (x.all ? '<span style="float:right">🏴 ' + x.d + '/' + x.all + '</span>' : '') + '</small>' +
         (x.all ? '<div class="bar"><i style="width:' + Math.round(x.d / x.all * 100) + '%"></i></div>' : '') + '</button>';
     }).join(''); });
   $('rCards').innerHTML = html || '<div class="muted" style="padding:12px;grid-column:1/-1">' + T.noCourse + '</div>';
@@ -3848,7 +3849,7 @@ function refreshBrowse0(){
   } else {
     askHere();
     const bc = nearBaseCity(), base = HERE || cityCenter(bc) || cityCenter('hamyang'), bn = regionName(bc) || '함양';
-    $('nearNote').textContent = HERE ? (HERE_OLD ? '📍 최근 위치에서 가까운 순' : T.nearHere)
+    $('nearNote').textContent = HERE ? (HERE_OLD ? '📍 최근 위치 기준' : '')
       : HERE_ERR === 'perm' ? '📍 위치 권한이 꺼져 있어 ' + bn + ' 기준 (폰 설정 → 앱 → 방구석러너 → 권한 → 위치)'
       : HERE_ERR ? '📍 지금 위치를 못 찾아 ' + bn + ' 기준 (실내면 약할 수 있어요 · 잠시 뒤 다시 찾아요)' : T.nearWait;
     const list = items.filter(it => it.pts.length && it.cid !== 'mine').map(it => ({ it, d: Math.min(...it.pts.filter((p, i) => it.pts.length < 400 || i % 5 === 0).map(p => kmBetween(base, p))) }))
@@ -3990,7 +3991,7 @@ function setAct(a){
   $('bStart').dataset.lbl = !out ? T.start : up && !hg ? T.hikeOut : th ? '▶ GPS로 등산 시작' : gpsOK ? T.gpsStart : T.manualOut; startLabel();
   refreshFree();
   $('gpsNote').classList.toggle('hidden', !out);
-  $('gpsNote').textContent = th ? '실제 등산로를 따라 GPS로 올라요 · 정상 60m 안에 들어가면 🏔 정상 인증 도장 · 이미 다녀온 산은 내 기록 → 빠진 기록 넣기' : hg ? T.hikeGpsHelp : up ? T.hikeHelp : gpsOK ? (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() ? T.gpsHelpApp : T.gpsHelp) : T.gpsNoHere;
+  $('gpsNote').textContent = th ? '정상 60m 안에 들어가면 🏔 정상 인증 도장' : hg ? T.hikeGpsHelp : up ? T.hikeHelp : gpsOK ? (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() ? T.gpsHelpApp : T.gpsHelp) : T.gpsNoHere;
   $('bZone').textContent = out ? T.zOutTitle : T.zInTitle;
   saveDB(); refreshStart(); drawIdle();
 }
@@ -4116,7 +4117,7 @@ function fillEnd(){
   if (S.hikeGps) return fillHike();
   setTimeout(endAlt, 0);
   $('fixLabel').classList.remove('hidden'); $('fixIn').parentElement.classList.remove('hidden');
-  $('fixWrap').classList.add('hidden'); $('fixOpen').classList.toggle('hidden', !!S.gps); $('fixOpen').textContent = isClimb() ? '✏️ 기계 층수와 달라요?' : '✏️ 기계 거리와 달라요?';   // 11/23: 바깥 GPS는 안 보임(고칠 일은 내 기록 → 수정)
+  $('fixWrap').classList.add('hidden'); $('fixOpen').classList.toggle('hidden', !!S.gps); $('fixOpen').textContent = isClimb() ? '✏️ 층수 고치기' : '✏️ 거리 고치기';   // 11/23: 바깥 GPS는 안 보임(고칠 일은 내 기록 → 수정)
   $('myBox').querySelector('.muted').textContent = T.myBoxSub; $('myYes').textContent = '⭐ 내 코스로 저장';
   ['myName'].forEach(id => $(id).classList.remove('hidden')); $('myBox').querySelector('.mbtn').classList.remove('hidden'); $('myBox').querySelector('.muted').classList.remove('hidden');
   const a = ACTS[S.act]; fillTrack(); setTimeout(checkConquest, 600); setTimeout(() => { const el = $('endSummary'); if (el && el.innerHTML.indexOf('🔥') < 0) el.innerHTML += endKcal(); }, 0);
@@ -4960,8 +4961,7 @@ function updateInfoPanel(pos){
 }
 function walkNote(pos){   // [문구, 평온한 상태인지]
   const nh = nextTarget(totalNow()), gr = gradeAt(pos); let note = '', ok = false;   // 11/21 검수 A2: 마지막 거점 뒤 '곧 함화루'(다음 바퀴) → '곧 완주 지점'
-  if (nh.d <= 300) note = (nh.fin ? '🏁 ' : '🚩 ') + T.nSoon.replace('{s}', nh.name);
-  else if (gr > 6) note = T.nSteepUp;
+  if (gr > 6)   /* 11/25 A안 1단계: '곧 ○○'(300m 안)은 아래 숫자판 '🚩 32m ○○'와 같아서 뺌 */ note = T.nSteepUp;
   else if (gr < -6) note = T.nSteepDown;
   else if (gr > 2.5) note = T.nUp;
   else if (gr < -2.5) note = T.nDown;
@@ -5785,7 +5785,7 @@ function refreshFree(){
   $('sumPickName').parentElement.classList.toggle('hidden', free);
   freeRouteNote();
   $('modeHelp').textContent = free ? T.freeHelp : T.themeHelp;
-  $('modeHelp').classList.toggle('hidden', DB.records.filter(r => r.src !== 'legacy').length >= 3);   // 11/18 A2: 익숙해지면(운동 3번) 숨김
+  $('modeHelp').classList.add('hidden');   // 11/25 A안 1단계(보스 "설명이 많다"): 늘 숨김 · 되돌리려면 예전 줄: toggle('hidden', 운동 3번 이상)   // 11/18 A2: 익숙해지면(운동 3번) 숨김
   if (!free) return;
   const hg = DB.zone === 'out' && S.act === 'hike';   // 바깥 등산(일반) = 목표 칸 없음 (GPS 기록)
   ['freeTitle', 'freePresets'].forEach(id => $(id).classList.toggle('hidden', hg));
