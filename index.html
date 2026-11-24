@@ -1247,7 +1247,7 @@
 </div>
 
 <script>
-const BUILD = '202611241825';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611241826';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -5388,7 +5388,10 @@ function kcalDayHtml(){ const dk = dayKcal();
   return '<div class="kt"><span>🔥 ' + T.kcToday + '</span><span>' + kcalTxt(dk.total) + '</span></div>' +
     (dk.lines.length ? dk.lines.map(l => '<div class="kl"><span>' + l[0] + ' ' + l[1] + ' <span class="muted">' + l[2] + '</span></span><b>' + kcalTxt(l[3]) + '</b></div>').join('') : '<div class="kl muted">' + T.kcNone + '</div>') +
     '<div class="kl muted" style="font-size:12px">' + T['kcalLv' + bodyFix()[2]] + '</div>'; }
-const recWhere = r => { const c = r.credit || {}; if (r.free && !r.credit) return T.freeTag + (r.free.goal ? ' ' + freeGoalText(r.free.goal, r.free.unit === 'floor') : ''); return (r.free ? T.freeTag + ' ' : '') + (c.course === 'climb' ? tr(TGT(c.target).short || TGT(c.target).name).replace('지리산 ', '') : roadName(c.course === 'sangnim' ? 'sangnim-3k' : c.target)); };
+/* 11/24 보스: 동백섬처럼 짧은 순환 코스는 '몇 바퀴'가 자랑 → 기록에 🔁 N바퀴 */
+const lapsOf = r => { const c = r.credit; if (!c || c.course !== 'walk') return 0; const co = ALL_ROADS[c.target]; if (!co || !co.loop || co.lengthM > 3000) return 0; return Math.floor((c.m || 0) / co.lengthM + 0.05); };
+const recWhere0 = r => { const c = r.credit || {}; if (r.free && !r.credit) return T.freeTag + (r.free.goal ? ' ' + freeGoalText(r.free.goal, r.free.unit === 'floor') : ''); return (r.free ? T.freeTag + ' ' : '') + (c.course === 'climb' ? tr(TGT(c.target).short || TGT(c.target).name).replace('지리산 ', '') : roadName(c.course === 'sangnim' ? 'sangnim-3k' : c.target)); };
+const recWhere = r => recWhere0(r) + (lapsOf(r) >= 1 ? ' · 🔁 ' + lapsOf(r) + '바퀴' : '');
 const recAmt = r => (ACTS[r.act] || ACTS.tread).kind === 'up' ? (r.upM || 0).toLocaleString() + 'm' : ((r.distM || 0) / 1000).toFixed(2) + 'km';
 function recLine(r){ const d = new Date(r.date), a = ACTS[r.act] || ACTS.tread;
   return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') + ' · ' + a.icon + ' ' + recAmt(r) + ' ' + recWhere(r) + (r.sec >= 30 ? ' · ' + Math.round(r.sec / 60) + T.min : ''); }
