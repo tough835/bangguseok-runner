@@ -1141,7 +1141,8 @@
       ① 아래 버튼으로 <b>헬스 커넥트</b> 열기<br>
       ② <b>앱 권한</b> 누르기<br>
       ③ <b>Samsung Health</b> 누르기<br>
-      ④ <b>걸음</b> 켜기 → 앱으로 돌아오기
+      ④ <b>걸음</b> 켜기<br>
+      ⑤ <b>삼성 헬스 앱</b>을 한 번 열었다가 → 이 앱으로 (그때 보내요)
     </div>
     <button class="big" id="hcFixGo" style="margin-top:14px">헬스 커넥트 열기</button>
     <button class="x2" id="hcFixNo">나중에</button>
@@ -1219,7 +1220,7 @@
 </div>
 
 <script>
-const BUILD = '202611240845';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611240907';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -5866,6 +5867,7 @@ function refreshSteps(){
   if ($('stepBox').classList.contains('hidden')) return;
   $('stNum').textContent = si.total.toLocaleString(); try { $('stKcal').innerHTML = kcalDayHtml(); } catch(e){}
   $('stSub').textContent = T.stSplit.replace('{w}', si.work.toLocaleString()).replace('{o}', si.other.toLocaleString()) + '\n' + (HC.ok ? '✓ 삼성 헬스 숫자 그대로 · ' + new Date(HC.t || Date.now()).toTimeString().slice(0, 5) + ' 받음' : HC.empty ? '삼성 헬스 → 헬스 커넥트 보내기가 꺼져 있어요 (지금은 폰 센서로 셈)' : NSTEP.ok ? T.stSubApp : STEP.ok ? T.stSub : NSTEP.perm ? T.stSubPerm : T.stSubNo);
+  if (LAB_ON() && HC.dbg) $('stSub').textContent += '\n🧪 ' + HC.dbg;
   $('stSub').style.whiteSpace = 'pre-line';
   const free = si.free, km = free * (DB.stride.walk || 0.7) / 1000, road = DB.pick.type !== 'climb';
   $('stApply').textContent = T.stApply.replace('{n}', free.toLocaleString()).replace('{d}', km.toFixed(2));
@@ -5905,13 +5907,14 @@ function nativeSteps(first){
   /* 11/24: 헬스 커넥트 먼저 — 삼성 헬스가 센 걸음을 그대로 (앱이 0시 경계를 추측하지 않음) */
   H.steps().then(h => {
     HC.can = true; HC.granted = !!(h && h.ok);
+    HC.dbg = h ? (h.ok ? 'HC 합계 ' + ((h.debug || {}).agg || 0) + ' · 기록 ' + ((h.debug || {}).records || 0) + '개 · ' + Object.entries((h.debug || {}).origins || {}).map(([k, v]) => k.split('.').pop() + ' ' + v).join(', ') : 'HC ' + (h.reason || '') + ' ' + (h.msg || '')) : '';   // 실험실: 헬스 커넥트 속사정
     const any = h && h.ok && (h.steps > 0 || Object.values(h.history || {}).some(v => v > 0));
     HC.empty = !!(h && h.ok && !any);
     if (any){
       HC.ok = true; NSTEP.ok = true; NSTEP.perm = false;
       HC.t = Date.now(); Object.values(DB.steps || {}).forEach(t => { delete t.set; delete t.setBase; delete t.setT; });   // 손으로 맞춘 값 지움 → 화면 숫자 = 삼성 숫자
       stepDay().native = h.steps;
-      Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
+      Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; if (!(v > 0)) return; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
       saveDB(); refreshSteps();
       if (first && P) P.start().catch(() => {});   // 센서 예약은 예비로 유지
       return;

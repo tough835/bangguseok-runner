@@ -8,6 +8,8 @@ import androidx.health.connect.client.PermissionController
 import androidx.health.connect.client.permission.HealthPermission
 import androidx.health.connect.client.records.StepsRecord
 import androidx.health.connect.client.request.AggregateGroupByPeriodRequest
+import androidx.health.connect.client.request.ReadRecordsRequest
+import java.time.ZoneId
 import androidx.health.connect.client.time.TimeRangeFilter
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
@@ -86,13 +88,38 @@ class HealthPlugin : Plugin() {
                 val end = today.plusDays(1).atStartOfDay()
                 val rows = client().aggregateGroupByPeriod(
                     AggregateGroupByPeriodRequest(setOf(StepsRecord.COUNT_TOTAL), TimeRangeFilter.between(start, end), Period.ofDays(1)))
-                val hist = JSObject()
-                var now = 0L
-                for (g in rows) {
-                    val d = g.startTime.toLocalDate()
-                    val n = g.result[StepsRecord.COUNT_TOTAL] ?: 0L
-                    if (d == today) now = n else hist.put(key(d), n)
+                /* 11/24 보스 폰: 삼성 헬스 '걸음' 켰는데도 0 → 합계(aggregate)는 '데이터 우선순위' 목록에 든 앱만 셈.
+                   그래서 걸음 기록을 직접 읽어 앱별로 더해 둠 → 합계가 0이면 삼성 헬스 것(없으면 가장 많은 앱) 사용 */
+                val zone = ZoneId.systemDefault()
+                val byDay = HashMap<LocalDate, HashMap<String, Long>>()
+                var recN = 0
+                var token: String? = null
+                do {
+                    val res = client().readRecords(ReadRecordsRequest(StepsRecord::class, TimeRangeFilter.between(start, end), pageSize = 5000, pageToken = token))
+                    for (rec in res.records) {
+                        recN++
+                        val d = rec.startTime.atZone(zone).toLocalDate()
+                        val m = byDay.getOrPut(d) { HashMap() }
+                        val o = rec.metadata.dataOrigin.packageName
+                        m[o] = (m[o] ?: 0L) + rec.count
+                    }
+                    token = res.pageToken
+                } while (token != null && recN < 60000)
+                val agg = HashMap<LocalDate, Long>()
+                for (g in rows) agg[g.startTime.toLocalDate()] = g.result[StepsRecord.COUNT_TOTAL] ?: 0L
+                fun pick(d: LocalDate): Long {
+                    val a = agg[d] ?: 0L
+                    if (a > 0) return a
+                    val m = byDay[d] ?: return 0L
+                    return m["com.sec.android.app.shealth"] ?: (m.values.maxOrNull() ?: 0L)
                 }
+                val hist = JSObject()
+                for (i in 1..7) { val d = today.minusDays(i.toLong()); hist.put(key(d), pick(d)) }
+                val now = pick(today)
+                val dbg = JSObject()   // 실험실 화면용: 오늘 합계 · 기록 수 · 앱별 걸음
+                dbg.put("agg", agg[today] ?: 0L); dbg.put("records", recN)
+                val og = JSObject(); (byDay[today] ?: HashMap()).forEach { (k, v) -> og.put(k, v) }; dbg.put("origins", og)
+                r.put("debug", dbg)
                 r.put("ok", true); r.put("day", key(today)); r.put("steps", now); r.put("history", hist)
             } catch (e: Exception) {
                 r.put("ok", false); r.put("reason", "error"); r.put("msg", e.javaClass.simpleName + ": " + (e.message ?: ""))
