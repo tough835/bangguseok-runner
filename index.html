@@ -1247,7 +1247,7 @@
 </div>
 
 <script>
-const BUILD = '202611242302';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611250050';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3637,7 +3637,7 @@ function cityLists(cid0){
 }
 let listOpen = false, rOpenNow = true, bOpenNow = true;   // 지금 목록이 펼쳐져 있는지 (지역별 / 주제별·내 주변)
 function refreshCourses(){
-  if (rView === 'cards'){ rOpenNow = false; renderRegionCards(); $('regionPane').classList.add('shut'); distChips(); return; }
+  if (rView === 'cards'){ rOpenNow = false; renderRegionCards(); $('regionPane').classList.add('shut'); distChips(); startLabel(); return; }
   $('rCards').classList.add('hidden'); $('rCityView').classList.remove('hidden'); $('rBack').textContent = '‹ 지역';
   $('rName').textContent = regionName(DB.region.city);
   refreshCourses0(); $('regionPane').classList.toggle('shut', !rOpenNow); distChips();
@@ -3672,7 +3672,7 @@ function renderRegionCards(){
   $('rCards').innerHTML = html || '<div class="muted" style="padding:12px;grid-column:1/-1">' + T.noCourse + '</div>';
   $('rCards').querySelectorAll('[data-rc]').forEach(b => b.onclick = () => { const [c, p, ci] = b.dataset.rc.split('|'); DB.region = { country: c, prov: p, city: ci }; rView = 'city'; listOpen = true; saveDB(); refreshStart(); $('rHead').scrollIntoView({ block: 'start', behavior: 'smooth' }); });
 }
-$('rBack').onclick = () => { rView = rView === 'cards' ? 'city' : 'cards'; refreshCourses(); };
+$('rBack').onclick = () => { rView = rView === 'cards' ? 'city' : 'cards'; refreshCourses(); startLabel(); };
 function refreshCourses0(){
   rOpenNow = true;
   const lists = cityLists();
@@ -4079,6 +4079,7 @@ function showRun(on){
 }
 function clearPopups(){ $('popup').classList.add('hidden'); popupQueue = []; clearTimeout(popupTimer); popupTimer = null; }
 $('bStart').onclick = () => {
+  if (rView === 'cards' && !isFree()){ rView = 'city'; refreshCourses(); startLabel(); $('rHead').scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }   // 11/25: 지역 고르기가 열린 채 출발 → 먼저 닫고 고른 코스를 보여 줌 (안 보이는 코스로 바로 출발하지 않게)
   if ($('bStart').classList.contains('need') && !isFree()){ toastMsg('목록에서 코스를 먼저 골라 주세요'); $('startScreen').scrollTop = 0; return; }
   if (!rsPass && askResume()) return;   // 완주 안 한 코스 → 이어서 / 처음부터 먼저 고르기
   rsPass = false;
@@ -4440,7 +4441,7 @@ $('bHome').onclick = () => {
 
 /* ---- 시작 화면 채우기 ---- */
 function startLabel(){   // 11/16: 위쪽 '고른 코스' 칸을 없애고 출발 버튼에 코스 이름·진행을 함께 표시
-  const b = $('bStart'); if (!b) return; const lbl = (b.dataset.lbl || T.start).replace(/▶/g, '').trim(), free = isFree(), nm = ($('sumPickName').textContent || '').replace(/^\S+\s/, ''), pr = $('sumPick').textContent || '';
+  const b = $('bStart'); if (!b) return; const lbl = (b.dataset.lbl || T.start).replace(/▶/g, '').trim(), free = isFree(), nm = rView === 'cards' && !free ? '' : ($('sumPickName').textContent || '').replace(/^\S+\s/, ''), pr = $('sumPick').textContent || '';
   b.innerHTML = (free || !nm ? '' : '<span class="bsN">' + nm.split(' · ')[0] + ' · ' + pr + '</span>') + '<span class="bsG">' + lbl + ' ▶</span>';
   b.style.justifyContent = free || !nm ? 'center' : '';
 }
