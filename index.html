@@ -997,6 +997,7 @@
     <div class="nm" id="hsNm"></div>
     <div class="ds" id="hsDs"></div>
     <div class="mt" id="hsMt"></div>
+    <a id="hsOrugo" class="hidden" target="_blank" rel="noopener" style="display:block;margin-top:12px;padding:12px;border-radius:12px;background:var(--ch3);color:var(--tx);text-align:center;font-weight:800;text-decoration:none">⛰ 실제로 오르면 '오르GO 함양' 앱에서 완등 인증 ›</a>
     <div class="dots" id="hsDots"></div>
     <div class="nv"><button id="hsPrev">‹</button><span class="ct" id="hsCt"></span><button id="hsNext">›</button><button class="cl" id="hsClose">닫기</button></div>
   </div>
@@ -1246,7 +1247,7 @@
 </div>
 
 <script>
-const BUILD = '202611241254';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611241302';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2542,6 +2543,7 @@ const MOUNTAINS = TARGETS.filter(t => t.kind === 'mountain').sort((a, b) => a.ga
 const TOWERS = TARGETS.filter(t => t.kind === 'tower').sort((a, b) => a.gain - b.gain);
 /* 11/24 보스: 지나온 거점·정상 설명 — 함양 15산 + 100대명산(산림청 『꼭 한번 가 볼 우리 100대 명산』 개요 요약). 근거: 한국관광공사 관광정보(함양군 제공), 경남신문·서울신문 산행기사, 국립공원공단 자료.
    글은 요약해 새로 씀. 근거가 없는 지점(망월대·소지봉 등)은 지어내지 않고 비워 둠 → 높이·위치 사실만 보임 */
+const ORUGO = ['gamtu','sambong','daebong','baegun','yeongchwi','dosung','wolbong','wabul','geomang','namdeogyu','samjeong','geumwon','gibaek','hwangseok','cheonwang'];   // 오르GO 함양 15산 (함양군 완등 인증 사업)
 const MTN_DESC = {
   gamtu: '함양 서하·백전·병곡면에 걸친 산. 빼빼재에서 1km만 오르면 닿고, 대봉산으로 이어지는 능선의 첫 봉우리예요.',
   sambong: '투구봉·촛대봉·정상, 세 봉우리가 모인 산. 지리산 주능선을 정면으로 마주 봐 \'지리산 전망대\'로 불려요. 들머리 오도재는 청매 인오조사가 오가며 깨달음을 얻었다는 고개예요.',
@@ -5418,7 +5420,7 @@ function recHubs(r){
   if (c.course === 'climb'){
     const m = TGT(c.target); if (!m) return names.map(n => ({ name: n }));
     return names.map(n => {
-      if (n === tr(m.short || m.name) || n === tr(m.name)) return { name: tr(m.name) + ' ' + T.summit, desc: MTN_DESC[m.id] || (m.desc ? tr(m.desc) : ''), meta: T.elevAt.replace('{e}', m.summit.toLocaleString()) + (m.trail ? ' · ' + tr(m.trail) : ''), photo: typeof m.photo === 'string' ? m.photo : HUB_PHOTO['mtn_' + m.id] };
+      if (n === tr(m.short || m.name) || n === tr(m.name)) return { name: tr(m.name) + ' ' + T.summit, orugo: ORUGO.includes(m.id), desc: MTN_DESC[m.id] || (m.desc ? tr(m.desc) : ''), meta: T.elevAt.replace('{e}', m.summit.toLocaleString()) + (m.trail ? ' · ' + tr(m.trail) : ''), photo: typeof m.photo === 'string' ? m.photo : HUB_PHOTO['mtn_' + m.id] };
       const w = (m.waypoints || []).find(x => tr(x.name) === n);
       if (!w) return { name: n, meta: tr(m.name) };
       const km = m.distKm && w.at != null ? (m.distKm * w.at).toFixed(1) : '', left = m.summit && w.elev ? m.summit - w.elev : 0;   // 11/24: 설명이 없는 지점은 아는 사실(높이·위치)로 한 줄
@@ -5442,6 +5444,7 @@ function hsDraw(){
   $('hsDs').textContent = h.desc || (h.meta ? '' : '아직 설명이 없어요');
   $('hsDs').style.display = $('hsDs').textContent ? '' : 'none';
   $('hsMt').textContent = h.meta || '';
+  $('hsOrugo').classList.toggle('hidden', !h.orugo); $('hsOrugo').href = 'https://play.google.com/store/search?q=' + encodeURIComponent('오르GO 함양') + '&c=apps';   // 11/24: 군청 공식 인증은 군청 앱에서 — 우리는 실제 방문으로 이어 줌
   $('hsCt').textContent = (HS.i + 1) + ' / ' + n;
   $('hsDots').innerHTML = n > 1 && n <= 12 ? HS.list.map((_, k) => '<i' + (k === HS.i ? ' class="on"' : '') + '></i>').join('') : '';
   $('hsPrev').disabled = HS.i === 0; $('hsNext').disabled = HS.i === n - 1;
