@@ -112,6 +112,11 @@ if inside:
         ax = ax[::4] + [ax[-1]]   # 수영강 쪽 → 교대 쪽, 20m 간격
         LOG['down_axis_m'] = round(cum(ax)[-1])
         if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500: river = ax + river
+        if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500:   # 하류 둘레 길(걷는 길·찻길·다리)도 받기
+            try:
+                jd = ovp('[out:json][timeout:120];way(around:140,%s)["highway"];out geom;' % ','.join('%.6f,%.6f' % (q[0], q[1]) for q in (ax[::4] + [ax[-1]])))
+                seen = set(e['id'] for e in hw); add = [e for e in jd['elements'] if e['id'] not in seen]; hw += add; LOG['down_highways'] = len(add)
+            except SystemExit: LOG['down_highways'] = '지도 서버 안 됨'
     else: LOG['down_axis_m'] = '물 면이 이어지지 않음'
 print('하류 물 면', LOG.get('water_areas'), LOG.get('down_axis_m'))
 rc = cum(river); RL = rc[-1]
@@ -225,7 +230,7 @@ def loop(name, s1, s2, start_name):
 sy, gd, yn, bu = 0, LOG['stations']['교대역'][0], LOG['stations']['연산역'][0], LOG['stations']['부산대역'][0]
 top = min(bu, both[-1]) if both else bu
 loop('full', (both[0] if both else 0), top, '교대역')          # 수영강 쪽 ~ 부산대 쪽 (양쪽 산책로 있는 끝까지)
-loop('short', min(yn, gd) - 150, max(yn, gd) + 150, '교대역')   # 연산동 ~ 교대
+loop('short', gd - 1600, gd + 150, '교대역')                     # 교대 ~ 연산동 쪽 하류 1.6km (연산역은 물길에서 1km 떨어져 기준으로 안 씀)
 loop('mid', (both[0] if both else 0), gd + 150, '교대역')         # 수영강 쪽 ~ 교대
 loop('upper', gd - 150, top, '교대역')                            # 교대 ~ 부산대 쪽
 json.dump(LOG, open('data/oncheon_loop_log.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
