@@ -1184,6 +1184,14 @@
     <button class="x2" id="hcNo">나중에</button>
   </div>
 </div>
+<div id="arBox" class="modal hidden">   <!-- 11/25 구글 건강 앱 정책: '신체 활동' 권한을 묻기 전에 먼저 알림 (처음 한 번) -->
+  <div class="sb" style="text-align:center">
+    <div class="st">👟 오늘 걸음 세기</div>
+    <div class="muted" style="line-height:1.7;margin:10px 0 14px">걸음 수를 세려고 '신체 활동' 권한을 써요.<br><br>걸음 수는 폰에만 저장하고<br>보내거나 광고에 쓰지 않아요.</div>
+    <button class="big" id="arYes">허용하기</button>
+    <button class="x2" id="arNo">나중에</button>
+  </div>
+</div>
 <div id="fbBox" class="modal hidden">   <!-- 11/23 보스 승인: 의견·문제 보내기 + 코스 신고 (구글 규칙: 사용자 콘텐츠는 신고 기능 필수) -->
   <div class="sb">
     <div class="st" id="fbTitle">💬 의견 보내기</div>
@@ -1248,7 +1256,7 @@
 </div>
 
 <script>
-const BUILD = '202611250820';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611251110';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6101,14 +6109,18 @@ function nativeSteps(first){
   const PL = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() && window.Capacitor.Plugins;
   const P = PL && PL.Steps, H = PL && PL.Health && typeof PL.Health.steps === 'function' ? PL.Health : null;
   if (!P && !H) return;
-  const sensor = () => { if (!P) return; (first ? P.start() : P.today()).then(r => {
+  const sensor = () => { if (!P) return;
+    /* 11/25 구글 건강 앱 정책: 권한 창을 바로 띄우지 않고, 처음 한 번 '왜 쓰는지' 안내 뒤 '허용하기'를 누를 때만 묻는다 */
+    if (first && !DB.arAsk){ P.today().then(r => { if (r && r.reason === 'permission') arOffer(got); else { DB.arAsk = DB.arOk = 1; saveDB(); P.start().then(got).catch(() => got(r)); } }).catch(() => {}); return; }
+    (first && DB.arOk ? P.start() : P.today()).then(got).catch(() => {}); };
+  const got = r => {
     if (!r || !r.available){ NSTEP.ok = false; NSTEP.perm = r && r.reason === 'permission'; refreshSteps(); return; }
     NSTEP.ok = true; NSTEP.perm = false;
     if (HC.ok) return;   // 헬스 커넥트가 있으면 그 숫자가 우선
     stepDay().native = r.steps;
     Object.entries(r.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = Math.max(t.native || 0, v); });
     saveDB(); refreshSteps();
-  }).catch(() => {}); };
+  };
   if (!H){ sensor(); return; }
   /* 11/24: 헬스 커넥트 먼저 — 삼성 헬스가 센 걸음을 그대로 (앱이 0시 경계를 추측하지 않음) */
   H.steps().then(h => {
@@ -6130,6 +6142,13 @@ function nativeSteps(first){
     // 11/24 보스: 폰 센서가 삼성과 같으면 조르지 않음 (삼성 쪽 안내 창 자동 표시 끔)
     sensor();
   }).catch(() => sensor());
+}
+function arOffer(done){   // 11/25 '신체 활동' 권한 안내 (처음 한 번)
+  if (!$('hcBox').classList.contains('hidden')) return setTimeout(() => arOffer(done), 800);   // 헬스 커넥트 안내와 겹치지 않게
+  DB.arAsk = Date.now(); saveDB();
+  $('arBox').classList.remove('hidden');
+  $('arNo').onclick = () => { $('arBox').classList.add('hidden'); refreshSteps(); };
+  $('arYes').onclick = () => { $('arBox').classList.add('hidden'); DB.arOk = 1; saveDB(); const P = window.Capacitor.Plugins.Steps; P.start().then(done).catch(() => {}); };
 }
 function hcOffer(force){   // 연결 안내: 저절로는 한 번만, 걸음 창 버튼으로는 언제든
   const H = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Health; if (!H) return;
