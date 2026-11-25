@@ -648,7 +648,25 @@
   #topicChips{margin:10px 0}                                         /* A6 주제 알약 한 줄 */
   #regionPane.shut #passLine{display:none}                           /* A7 장거리 여정 줄: 목록을 펼쳤을 때만, 목록 아래 */
   #passLine{margin:10px 0 0!important}
-  #bStart{box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}   /* A12 출발 버튼 밑으로 목록 글자가 비치지 않게 */
+  #bStart{box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}
+  /* 11/25 보스 '출발 바는 항상 제일 하단': 내용이 짧은 화면(일반·계단)에서도 출발 버튼을 화면 맨 아래 같은 자리에 (엄지 자리) */
+  #bStart{position:fixed;left:18px;right:18px;width:auto;margin:0}
+  #startScreen{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  /* 11/25: 끝 화면이 길어도 '✓ 완료'는 늘 보이게 */
+  #bHome{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}
+  /* 11/25 보스 '코스를 선택하면 전체 경로 미리 확인': 고른 코스 카드 오른쪽 작은 길 그림(산은 높이 그래프) · 누르면 크게 */
+  .rthumb{flex:none;width:64px;height:64px;border-radius:10px;background:rgba(var(--ink),.06);position:relative;overflow:hidden;cursor:pointer}
+  .rthumb svg{position:absolute;inset:0;width:100%;height:100%}
+  .rthumb i{position:absolute;right:3px;bottom:1px;font-size:10px;font-style:normal}
+  .rthumb em{position:absolute;left:3px;top:2px;font-size:9px;font-style:normal;font-weight:800;color:var(--mut)}
+  .mrow.sel:has(.rthumb) .r{display:none}
+  #routeBox{align-items:flex-end}
+  #routeBox .sb{width:100%;max-width:480px;border-radius:22px 22px 0 0;background:var(--ch2);color:var(--tx);padding:14px 16px calc(18px + env(safe-area-inset-bottom))}
+  #rtSub{margin-top:2px;font-size:13px}
+  #rtMap{margin-top:10px;border-radius:14px;background:rgba(var(--ink),.06);position:relative}
+  #rtMap svg{display:block;width:100%;height:auto}
+  #rtLeg{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  #rtLeg span{font-size:12px;font-weight:700;padding:4px 8px;border-radius:10px;background:var(--ch3)}   /* A12 출발 버튼 밑으로 목록 글자가 비치지 않게 */
   #bStart.need{box-shadow:0 26px 0 18px var(--ch)}
   #freePresets button{padding:0}
   /* 11/18 B묶음 (보스 승인 12:53) */
@@ -830,6 +848,15 @@
     <div id="lpMsg" class="muted" style="margin-top:12px;min-height:20px"></div>
     <div id="lpList"></div>
     <div class="mbtn"><button id="lpClose">닫기</button><button id="lpGo" class="go">코스 찾기</button></div>
+  </div>
+</div>
+<div id="routeBox" class="modal hidden">   <!-- 11/25 보스: 출발 전 전체 경로 미리보기 -->
+  <div class="sb">
+    <div class="st" id="rtTitle"></div>
+    <div class="muted" id="rtSub"></div>
+    <div id="rtMap"></div>
+    <div id="rtLeg"></div>
+    <div class="mbtn"><button id="rtClose">닫기</button></div>
   </div>
 </div>
 <div id="promoBox" class="modal hidden">
@@ -1269,7 +1296,7 @@
 </div>
 
 <script>
-const BUILD = '202611251645';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611251715';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2738,7 +2765,7 @@ function mtnGeo(m){
   if (!m || !m.geo || m.kind !== 'mountain') return null;
   if (MTN_GEO[m.id]) return MTN_GEO[m.id];
   if (!MTN_LOADING[m.id]){ MTN_LOADING[m.id] = 1;
-    fetch(m.geo).then(r => r.json()).then(j => { MTN_GEO[m.id] = mtnPrep(m, j); hudTick = 5; })
+    fetch(m.geo).then(r => r.json()).then(j => { MTN_GEO[m.id] = mtnPrep(m, j); hudTick = 5; try { if (!S.running && DB.pick && DB.pick.id === m.id) refreshCourses(); } catch(e){} })   /* 11/25: 받으면 고른 산 카드에 높이 그래프 */
       .catch(() => setTimeout(() => { MTN_LOADING[m.id] = 0; }, 30000)); }
   return null;
 }
@@ -3799,9 +3826,74 @@ function roadRow(c, o){
   const mk = cMarks(c);
   return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + tr(c.name) + '</b>' + (mk ? ' <span class="mk">' + mk + '</span>' : '') + '<br><span class="muted"><b class="km">' +
     (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by + ' <a class="rpt" data-rpt="' + c.id + '" style="margin-left:4px;font-size:12px;color:var(--mut);text-decoration:underline">🚩 신고</a>' : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span>' +
-    (o.sel ? promoLine(c) : '') + '</div>' +
+    (o.sel ? promoLine(c) : '') + '</div>' + (o.sel && c.id === COURSE.id ? routeThumb() : '') +
     '<div class="r">' + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (laps ? '<br>✅ ' + laps + T.times : '') + '</div></div>';
 }
+/* 11/25 보스 '코스를 고르면 전체 경로 미리 보기': 길 = 위에서 본 모양 + 거점 🚩 + km 표시 / 산 = 높이 그래프 + 이정표
+   · 실제 좌표가 없는 코스(임시 모양)는 그림을 안 보임 · 대충 찍은 점만 있고 실제 길을 아직 못 받은 코스는 '추정' 표시 */
+const routeEst = () => !(GEO_NOW || COURSE.official || COURSE.pathReal);
+function routeSvg(W, H, pad, big){
+  const xs = P.map(q => q.x), ys = P.map(q => -q.y), mnx = Math.min(...xs), mxx = Math.max(...xs), mny = Math.min(...ys), mxy = Math.max(...ys);
+  const sc = Math.min((W - 2 * pad) / ((mxx - mnx) || 1), (H - 2 * pad) / ((mxy - mny) || 1)), ox = (W - (mxx - mnx) * sc) / 2, oy = (H - (mxy - mny) * sc) / 2;
+  const xy = q => [ox + (q.x - mnx) * sc, oy + (-q.y - mny) * sc], f = v => v.toFixed(1);
+  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + P.map(q => xy(q).map(f).join(' ')).join(' L') + '" stroke="#7fae3a" stroke-width="' + (big ? 6 : 3) + '" fill="none" stroke-linejoin="round" stroke-linecap="round"/>';
+  const s0 = xy(pointAt(0));
+  if (big){
+    const step = L <= 6000 ? 1000 : L <= 25000 ? 5000 : 10000;
+    for (let d = step; d < L - step * 0.3; d += step){ const q = xy(pointAt(d)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="3" fill="var(--tx)"/><text x="' + f(q[0] + 6) + '" y="' + f(q[1] - 5) + '" font-size="11" font-weight="800" fill="var(--mut)">' + d / 1000 + 'km</text>'; }
+    LMS.filter(l => !isHub(l)).forEach(l => { const q = xy(pointAt(l.at)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="4" fill="var(--ch2)" stroke="#7fae3a" stroke-width="2.5"/>'; });
+    HUBS.forEach(l => { const q = xy(pointAt(l.at)), nm = esc(tr(l.name)), right = q[0] < W * 0.6;
+      g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="7" fill="#e8574a" stroke="#fff" stroke-width="2.5"/><text x="' + f(q[0] + (right ? 11 : -11)) + '" y="' + f(q[1] + 4) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="12" font-weight="900" fill="var(--tx)" paint-order="stroke" stroke="var(--ch2)" stroke-width="4">' + nm + '</text>'; });
+    if (!COURSE.loop){ const e = xy(pointAt(L - 0.01)); g += '<text x="' + f(e[0]) + '" y="' + f(e[1] + 18) + '" text-anchor="middle" font-size="11" font-weight="900" fill="#e8574a">도착</text>'; }
+    g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="5" fill="var(--vt)" stroke="#1b1c1f" stroke-width="2"/><text x="' + f(s0[0]) + '" y="' + f(s0[1] + 20) + '" text-anchor="middle" font-size="11" font-weight="900" fill="var(--vtx)">' + (COURSE.loop ? '출발·끝' : '출발') + '</text>';
+  } else g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="3.5" fill="#e8574a"/>';
+  return g + '</svg>';
+}
+function routeThumb(){
+  if (!REAL_PATH || COURSE.long || P.length < 2) return '';
+  return '<div class="rthumb" onclick="event.stopPropagation();openRoute()">' + routeSvg(64, 64, 6) + (routeEst() ? '<em>추정</em>' : '') + '<i>🔍</i></div>';
+}
+function openRoute(){
+  const min = Math.max(1, Math.round(L / 1000 / (S.speed > 0 ? S.speed : 6) * 60));
+  $('rtTitle').textContent = tr(COURSE.name) + (routeEst() ? ' (추정 길)' : '');
+  $('rtSub').textContent = (L / 1000).toFixed(1) + 'km · ' + T.hubsN.replace('{n}', HUBS.length) + ' · 약 ' + min + '분';
+  $('rtMap').innerHTML = routeSvg(328, 300, 26, true);
+  const minor = LMS.filter(l => !isHub(l)).length;
+  $('rtLeg').innerHTML = '<span>🚩 거점 ' + HUBS.length + '</span>' + (minor ? '<span>○ 지나는 곳 ' + minor + '</span>' : '') + '<span>' + (COURSE.loop ? '🔁 출발 = 끝' : '➡ 한 방향') + '</span>';
+  $('routeBox').classList.remove('hidden');
+}
+/* 산: 등산로 자료(받아 둔 것)가 있으면 높이 그래프 · 계단 탑은 그래프가 직선이라 안 보임 */
+function mtnSvg(m, G, W, H, pad, big){
+  const n = G.e.length, k = Math.max(1, Math.floor(n / (big ? 240 : 60))), lo = Math.min(...G.e), hi = Math.max(...G.e), f = v => v.toFixed(1);
+  const X = i => pad + G.d[i] / G.D * (W - 2 * pad), Y = e => H - pad - (e - lo) / ((hi - lo) || 1) * (H - 2 * pad - (big ? 14 : 0));
+  let pts = []; for (let i = 0; i < n; i += k) pts.push(f(X(i)) + ' ' + f(Y(G.e[i]))); pts.push(f(X(n - 1)) + ' ' + f(Y(G.e[n - 1])));
+  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + f(X(0)) + ' ' + (H - pad) + ' L' + pts.join(' L') + ' L' + f(X(n - 1)) + ' ' + (H - pad) + 'Z" fill="rgba(127,174,58,.28)"/><path d="M' + pts.join(' L') + '" stroke="#7fae3a" stroke-width="' + (big ? 3 : 2) + '" fill="none" stroke-linejoin="round"/>';
+  if (big){
+    (m.waypoints || []).filter(w => w.gi != null).forEach(w => { const x = X(w.gi), y = Y(G.e[w.gi]);
+      g += '<circle cx="' + f(x) + '" cy="' + f(y) + '" r="4" fill="#e8574a" stroke="#fff" stroke-width="1.5"/><text x="' + f(x) + '" y="' + f(y - 8) + '" text-anchor="middle" font-size="10" font-weight="800" fill="var(--tx)" paint-order="stroke" stroke="var(--ch2)" stroke-width="3">' + esc(tr(w.name)) + '</text>'; });
+    const im = G.e.indexOf(hi);
+    const nr = X(im) > W - 50; g += '<text x="' + f(nr ? W - pad : X(im)) + '" y="' + f(Y(hi) - 6) + '" text-anchor="' + (nr ? 'end' : 'middle') + '" font-size="12" font-weight="900" fill="var(--vtx)">⛰ ' + Math.round(hi).toLocaleString() + 'm</text>' +
+      '<text x="' + pad + '" y="' + (H - 6) + '" font-size="11" font-weight="800" fill="var(--mut)">출발 ' + Math.round(G.e[0]) + 'm</text>' +
+      '<text x="' + (W - pad) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" font-weight="800" fill="var(--mut)">' + (m.distKm || (G.D / 1000).toFixed(1)) + 'km</text>';
+  }
+  return g + '</svg>';
+}
+function mtnThumb(m){
+  if (!m || m.kind !== 'mountain') return '';
+  const G = mtnGeo(m); if (!G || !G.e || G.e.length < 2) return '';
+  return '<div class="rthumb" onclick="event.stopPropagation();openMtnRoute(\'' + m.id + '\')">' + mtnSvg(m, G, 64, 64, 5) + '<i>🔍</i></div>';
+}
+function openMtnRoute(id){
+  const m = TGT(id), G = m && MTN_GEO[m.id]; if (!G) return;
+  $('rtTitle').textContent = tr(m.name) + (m.trailName ? ' · ' + tr(m.trailName) : '');
+  $('rtSub').textContent = (m.distKm || (G.D / 1000).toFixed(1)) + 'km · ' + T.gain + ' ' + m.gain + 'm · 정상 ' + m.summit.toLocaleString() + 'm';
+  $('rtMap').innerHTML = mtnSvg(m, G, 328, 220, 18, true);
+  const wn = (m.waypoints || []).filter(w => w.gi != null).length;
+  $('rtLeg').innerHTML = '<span>⛰ 높이 그래프</span>' + (wn ? '<span>🔴 이정표 ' + wn + '</span>' : '') + (G.src ? '<span>' + esc(G.src) + '</span>' : '');
+  $('routeBox').classList.remove('hidden');
+}
+$('rtClose').onclick = () => $('routeBox').classList.add('hidden');
+$('routeBox').onclick = e => { if (e.target.id === 'routeBox') $('routeBox').classList.add('hidden'); };
 /* 11/25 보스 승인 ①: 고른 코스 카드 안 행사 한 줄 (그 지역에 진행 중인 행사가 있을 때만) · 누르면 📣 행사 창 */
 function promoLine(c){ const pr = promoNow(c.cityId)[0]; if (!pr) return '';
   return '<div class="pline" onclick="event.stopPropagation();$(\'bPromo\').click()">📣 ' + esc(pr.title) + '<span>' + (promoDate(pr) ? promoDate(pr) + ' ' : '') + '›</span></div>'; }
@@ -3814,7 +3906,7 @@ function climbRow(m, o){
   const sibs = peakTrails(m).filter(t => t.id !== m.id), showSibs = o.sel && o.open && sibs.length;   // 11/18 A10: '다른 길' 버튼은 목록을 펼쳤을 때만
   const others = showSibs ? '<div class="sibs">' + T.otherTrails + ' ' + sibs.map(t => '<button data-jump="' + t.id + '">🥾 ' + tr(t.trailName) + ' · ' + regionName(t.cityId) + (climbTotal(t.id) >= t.gain ? ' ✅' : '') + '</button>').join('') + '</div>' : '';
   return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + (o.icon ? (m.kind === 'tower' ? '🏢 ' : '⛰ ') : '') + tr(m.name) + '</b>' + (LAB_ON() && mtnLab(m) ? ' <span class="mk">🧪</span>' : '') + (m.trailName ? ' <span class="trl">' + tr(m.trailName) + '</span>' : '') +
-    '<br><span class="muted">' + info + (sibs.length && !showSibs ? ' · ' + T.trailsN.replace('{n}', sibs.length + 1) : '') + '</span>' + others + '</div>' +
+    '<br><span class="muted">' + info + (sibs.length && !showSibs ? ' · ' + T.trailsN.replace('{n}', sibs.length + 1) : '') + '</span>' + others + '</div>' + (o.sel ? mtnThumb(m) : '') +
     '<div class="r">' + (peakDone(m) ? '<span class="stamp">🏁 ' + T.peakStamp + '</span><br>' : '') + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (done ? '<br>✅ ' + done + T.times : '') + (real ? '<br><span class="real">⛰ ' + real + '</span>' : '') + '</div></div>';
 }
 /* ---- 코스 찾기 3탭 (11/16 보스 결정): 📍 내 주변 / 🗂 주제별 / 🗺 지역별 ----
@@ -4484,7 +4576,7 @@ $('cfYes').onclick = () => { $('confirmBox').classList.add('hidden'); doEnd(); }
    · 웹: 닫을 것이 있을 때만 방문 기록 한 칸을 쌓아 두고, '뒤로'가 오면 backStep()
    · 설치 앱: MainActivity가 '뒤로' 때 window.bgrBack()을 부름. 닫을 것이 없으면 앱을 끄지 않고 뒤로 보냄 (APK v0.1.9부터) */
 const shown = id => { const e = $(id); return !!e && !e.classList.contains('hidden'); };
-const BACK_BOX = { lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', resumeBox: 'rsCancel', conqBox: 'cqOk', loopBox: 'lpClose', promoBox: 'prClose', bodyBox: 'bdClose', stepBox: 'stClose', bkBox: 'bkClose', addBox: 'addClose', editBox: 'edClose', spotCard: 'scClose', syncBox: 'bSyncX' };
+const BACK_BOX = { routeBox: 'rtClose', lapBox: 'lapMore', confirmBox: 'cfNo', restBox: 'restGo', resumeBox: 'rsCancel', conqBox: 'cqOk', loopBox: 'lpClose', promoBox: 'prClose', bodyBox: 'bdClose', stepBox: 'stClose', bkBox: 'bkClose', addBox: 'addClose', editBox: 'edClose', spotCard: 'scClose', syncBox: 'bSyncX' };
 function backStep(){   // 닫은 것이 있으면 true
   if (shown('gallery')){ $('gallery').classList.add('hidden'); return true; }
   for (const k in BACK_BOX) if (shown(k)){ $(BACK_BOX[k]).click(); return true; }
@@ -6449,7 +6541,7 @@ function snapRoads(){
 let GEO_ST = GEO_NOW ? 'ok' : (RGEO[GEO_ID] && RGEO[GEO_ID].bad ? 'bad' : ''), GEO_ERR = '';
 function geoNote(){
   const el = $('geoNote'); if (!el) return;
-  const show = (!!RAW_PATH || !!COURSE.official) && !isFree() && DB.pick.type !== 'climb' && DB.pick.id === COURSE.id && DB.tab === 'road';
+  const show = (!!RAW_PATH || !!COURSE.official) && !isFree() && DB.pick.type !== 'climb' && DB.pick.id === COURSE.id && DB.tab === 'road' && GEO_ST !== 'ok';   // 11/25: 길이 잘 있으면 글 대신 코스 카드 길 그림 (문제 있을 때만 글)
   el.classList.toggle('hidden', !show); if (!show) return;
   const g = RGEO[GEO_ID] || {};
   el.textContent = GEO_ST === 'ok' ? T.gOk.replace('{s}', g.src === 'gps' ? T.gGps : g.src === 'official' ? T.gOfficial : T.gOsm)
