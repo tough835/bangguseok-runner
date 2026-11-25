@@ -695,14 +695,15 @@
   .ctrl{margin-top:7px}
   .ctrl button{height:42px;font-size:16px}
   /* 11/25 보스 실제 폰 "뛰다가 속도 ± · 멈춤 누르기 어려움": 엄지 자리 버튼을 크게 · 누르는 칸 넓게 · 버튼 사이 간격(옆 버튼 잘못 눌림 방지) · 두 번 눌러 확대 막기 */
+  /* 11/25 보스 "박스 같은 크기로 하고 조금만 줄여": ±·일시정지·종료 모두 높이 72 · 일시정지 = 종료 같은 폭 */
   .spdRow{gap:10px}
-  .spdRow button{width:92px;height:84px;font-size:44px;border-radius:20px;touch-action:manipulation}
-  .spdRow button:active{transform:scale(.94);background:#d7f548}
-  .spdBox{height:84px}
-  .spdBox span{font-size:54px;line-height:78px}
-  .ctrl{gap:12px;margin-top:10px}
-  .ctrl button{height:62px;font-size:20px;border-radius:16px;touch-action:manipulation}
-  .ctrl #bPause{font-size:28px}
+  .spdRow button{width:80px;height:72px;font-size:40px;border-radius:18px;touch-action:manipulation}
+  .spdRow button:active,.ctrl button:active{transform:scale(.95)}
+  .spdBox{height:72px}
+  .spdBox span{font-size:50px;line-height:68px}
+  .ctrl{gap:10px;margin-top:10px}
+  .ctrl button{height:72px;font-size:20px;border-radius:18px;touch-action:manipulation}
+  .ctrl #bPause{flex:1}
   #recPeriod{display:none}                                           /* B2 기간 고르기 → 달력 하나로 */
   .recCap{font-size:13px;color:var(--mut);margin:14px 2px 0}
   #regionPane .rgh,#regionPane .sel3,#regionPane h2[data-t=course]{display:none}   /* B3 드롭다운 3개 → 지역 카드 */
@@ -1316,7 +1317,7 @@
 </div>
 
 <script>
-const BUILD = '202611252000';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611252010';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
