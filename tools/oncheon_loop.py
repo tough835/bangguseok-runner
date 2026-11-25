@@ -62,6 +62,68 @@ best = r
 river = best
 SUYEONG = [35.1925, 129.1055]   # 수영강 쪽(하류)을 앞으로
 if hav(river[-1], SUYEONG) < hav(river[0], SUYEONG): river = river[::-1]
+# 하류(교대~수영강)는 오픈스트리트맵에 물길 '선'이 없음 → 물 '면'(natural=water·riverbank)을 5m 격자로 채워 한가운데 길을 찾아 이어 붙임
+WB = '(35.183,129.078,35.200,129.110)'
+jw = ovp('[out:json][timeout:120];(way["natural"="water"]%s;rel["natural"="water"]%s;way["waterway"="riverbank"]%s;rel["waterway"="riverbank"]%s;);out geom;' % (WB, WB, WB, WB))
+polys = []; LOG['water_areas'] = []
+for e in jw['elements']:
+    t = e.get('tags', {}); nm = t.get('name', '')
+    rings = [[[g['lat'], g['lon']] for g in e['geometry']]] if e['type'] == 'way' and e.get('geometry') else [[[g['lat'], g['lon']] for g in m.get('geometry') or []] for m in e.get('members', []) if m.get('type') == 'way']
+    segs_ = [(r_[i], r_[i + 1]) for r_ in rings for i in range(len(r_) - 1)]
+    if not segs_: continue
+    la = [q[0] for r_ in rings for q in r_]; lo = [q[1] for r_ in rings for q in r_]
+    LOG['water_areas'].append([e['type'], e['id'], nm, t.get('water', ''), len(segs_), [round(min(la), 4), round(min(lo), 4), round(max(la), 4), round(max(lo), 4)]])
+    if '수영강' in nm or t.get('water') in ('pond', 'reservoir', 'basin', 'lake'): continue
+    polys.append(segs_)
+DLAT = 5 / 110540.0; DLON = 5 / (111320.0 * K)
+la0, lo0, la1, lo1 = 35.183, 129.078, 35.200, 129.110
+NY = int((la1 - la0) / DLAT) + 1; NX = int((lo1 - lo0) / DLON) + 1
+inside = set()
+for sg in polys:
+    for yi in range(NY):
+        y = la0 + (yi + 0.5) * DLAT; xs = []
+        for a, b in sg:
+            if (a[0] > y) != (b[0] > y): xs.append(a[1] + (y - a[0]) * (b[1] - a[1]) / (b[0] - a[0]))
+        xs.sort()
+        for k in range(0, len(xs) - 1, 2):
+            for xi in range(max(0, int((xs[k] - lo0) / DLON)), min(NX, int((xs[k + 1] - lo0) / DLON) + 1)): inside.add((yi, xi))
+LOG['water_cells'] = len(inside)
+def cell(q): return (int((q[0] - la0) / DLAT), int((q[1] - lo0) / DLON))
+def cpt(c): return [round(la0 + (c[0] + 0.5) * DLAT, 6), round(lo0 + (c[1] + 0.5) * DLON, 6)]
+if inside:
+    import heapq
+    from collections import deque
+    dist = {}; dq = deque()
+    for c in inside:
+        if any((c[0] + dy, c[1] + dx) not in inside for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1))): dist[c] = 0; dq.append(c)
+    while dq:
+        c = dq.popleft()
+        for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            n_ = (c[0] + dy, c[1] + dx)
+            if n_ in inside and n_ not in dist: dist[n_] = dist[c] + 1; dq.append(n_)
+    def near(q):
+        t0 = cell(q); return min(inside, key=lambda c: (c[0] - t0[0]) ** 2 + (c[1] - t0[1]) ** 2)
+    A = near(river[0]); B = near(SUYEONG)
+    LOG['water_ends'] = [cpt(A), round(hav(cpt(A), river[0])), cpt(B), round(hav(cpt(B), SUYEONG))]
+    pq = [(0, A)]; prev = {A: None}; g_ = {A: 0}
+    while pq:
+        d, c = heapq.heappop(pq)
+        if c == B: break
+        if d > g_[c]: continue
+        for dy in (-1, 0, 1):
+            for dx in (-1, 0, 1):
+                n_ = (c[0] + dy, c[1] + dx)
+                if n_ == c or n_ not in inside: continue
+                nd = d + math.hypot(dy, dx) * (1 + 8.0 / (dist.get(n_, 0) + 1))
+                if nd < g_.get(n_, 1e18): g_[n_] = nd; prev[n_] = c; heapq.heappush(pq, (nd, n_))
+    if B in prev:
+        ax = []; c = B
+        while c: ax.append(cpt(c)); c = prev[c]
+        ax = ax[::4] + [ax[-1]]   # 수영강 쪽 → 교대 쪽, 20m 간격
+        LOG['down_axis_m'] = round(cum(ax)[-1])
+        if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500: river = ax + river
+    else: LOG['down_axis_m'] = '물 면이 이어지지 않음'
+print('하류 물 면', LOG.get('water_areas'), LOG.get('down_axis_m'))
 rc = cum(river); RL = rc[-1]
 print('물길 길이 %.1fkm  하류 %s  상류 %s' % (RL / 1000, river[0], river[-1]))
 def proj(q):   # 물길 위 거리(m)와 그 점까지 떨어진 거리
