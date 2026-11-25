@@ -29,6 +29,18 @@ CAR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'trunk_link', 'p
 BB = '(35.15,129.03,35.32,129.13)'   # 부산 온천천만 (아산 온천천 제외)
 j = ovp('[out:json][timeout:150];(way["waterway"~"^(river|stream|canal)$"]["name"="온천천"]%s;rel["waterway"]["name"="온천천"]%s;)->.a;(way.a;way(r.a)["waterway"~"^(river|stream|canal)$"];)->.r;(way(around.r:130)["highway"];)->.h;(.r;.h;);out geom;' % (BB, BB))
 riv = [e for e in j['elements'] if e.get('tags', {}).get('waterway') in ('river', 'stream', 'canal')]
+# 하류(교대~수영강): 이름 '온천천' 물길 조각이 없음 → 그 상자 안 물길(이름 없거나 '온천' 들어간 것)을 함께 이어 붙임 · 기록
+DB_ = '(35.180,129.078,35.200,129.110)'
+j2 = ovp('[out:json][timeout:120];(way["waterway"]%s;way["name"~"온천"]%s;)->.d;(.d;way(around.d:130)["highway"];);out geom;' % (DB_, DB_))
+LOG['down_ways'] = []
+for e in j2['elements']:
+    t = e.get('tags', {}); g = e.get('geometry') or []
+    if 'highway' in t or not g: continue
+    LOG['down_ways'].append([t.get('name', ''), t.get('waterway', ''), t.get('natural', ''), t.get('tunnel', ''), len(g), [round(g[0]['lat'], 5), round(g[0]['lon'], 5)], [round(g[-1]['lat'], 5), round(g[-1]['lon'], 5)]])
+    nm = t.get('name', '')
+    if t.get('waterway') in ('river', 'stream', 'canal') and (nm == '' or '온천' in nm) and e['id'] not in [r_['id'] for r_ in riv]: riv.append(e)
+ids = set(e['id'] for e in j['elements'])
+j['elements'] += [e for e in j2['elements'] if 'highway' in e.get('tags', {}) and e['id'] not in ids]
 hw = [e for e in j['elements'] if 'highway' in e.get('tags', {})]
 print('물길 조각', len(riv), '길', len(hw))
 # 물길 잇기 (끝점끼리)
@@ -163,4 +175,5 @@ top = min(bu, both[-1]) if both else bu
 loop('full', (both[0] if both else 0), top, '교대역')          # 수영강 쪽 ~ 부산대 쪽 (양쪽 산책로 있는 끝까지)
 loop('short', min(yn, gd) - 150, max(yn, gd) + 150, '교대역')   # 연산동 ~ 교대
 loop('mid', (both[0] if both else 0), gd + 150, '교대역')         # 수영강 쪽 ~ 교대
+loop('upper', gd - 150, top, '교대역')                            # 교대 ~ 부산대 쪽
 json.dump(LOG, open('data/oncheon_loop_log.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
