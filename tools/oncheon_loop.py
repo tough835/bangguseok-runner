@@ -111,8 +111,8 @@ if inside:
         while c: ax.append(cpt(c)); c = prev[c]
         ax = ax[::4] + [ax[-1]]   # 수영강 쪽 → 교대 쪽, 20m 간격
         LOG['down_axis_m'] = round(cum(ax)[-1])
-        if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500: river = ax + river
-        if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500:   # 하류 둘레 길(걷는 길·찻길·다리)도 받기
+        if hav(ax[-1], river[0]) < 400 and cum(ax)[-1] > 500:
+            river = ax + river   # 하류 둘레 길(걷는 길·찻길·다리)도 받기
             try:
                 jd = ovp('[out:json][timeout:120];way(around:140,%s)["highway"];out geom;' % ','.join('%.6f,%.6f' % (q[0], q[1]) for q in (ax[::4] + [ax[-1]])))
                 seen = set(e['id'] for e in hw); add = [e for e in jd['elements'] if e['id'] not in seen]; hw += add; LOG['down_highways'] = len(add)
