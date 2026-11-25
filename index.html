@@ -1256,7 +1256,7 @@
 </div>
 
 <script>
-const BUILD = '202611251110';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611251250';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1358,7 +1358,7 @@ const WORLD = {
       courses: {
         'sangnim-3k': {
           id: 'sangnim-3k', official: 'data/route/sangnim-gps2.json',
-          video: { yt: '1ozmFi2Omgc', ok: true, mine: true, ar: 9 / 16, vy: 0, kmh: 3.6, fit: 'top', note: '보스 촬영 · 상림 숲길 1분 41초 (끝나면 처음부터)' }, name: { ko: '상림 숲길 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/21 보스 촬영 10:51 (걸은 속도 약 3.6km/h) · 11/21 검수 A1: 이름이 주석 뒤로 밀려 사라졌던 것
+          video: { yt: '1ozmFi2Omgc', ok: true, lab: true, mine: true, ar: 9 / 16, vy: 0, kmh: 3.6, fit: 'top', note: '보스 촬영 · 상림 숲길 1분 41초 (끝나면 처음부터)' }, name: { ko: '상림 숲길 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/21 보스 촬영 10:51 (걸은 속도 약 3.6km/h) · 11/21 검수 A1: 이름이 주석 뒤로 밀려 사라졌던 것
           mode: 'distance', lengthM: 2380, loop: true,
           elev: [[0,170],[2380,170]],   // 상림 숲길은 거의 평지
           note: '11/21 보스가 직접 걸은 GPS 길 (곁가지 정리 · 2.38km)', source: '보스 GPS 걷기 기록 2026-11-21 · 거점 위치는 사진 찍은 시각으로 맞춤',
@@ -2792,6 +2792,8 @@ try { const o = 'haeundae-5k', n = 'haeundae-dongbaek';   // 11/24 보스: 옛 �
   if (DB.conq && DB.conq['r:' + o]){ DB.conq['r:' + n] = DB.conq['r:' + o]; delete DB.conq['r:' + o]; }
   const sc = localStorage.getItem('bgsj_course'); if (sc && sc.endsWith('/' + o)) localStorage.setItem('bgsj_course', sc.replace(o, n));
 } catch(e){}
+/* 11/25 보스 "상림 영상처럼 시험 중인 영상은 실험실에서만": video.lab 인 영상은 실험실 폰(LAB_ON)이 아니면 숨김 (자료는 videoHold로 보관) */
+if (!DB.meterShow) Object.values(ALL_ROADS).forEach(c => { if (c.video && c.video.lab){ c.videoHold = c.video; delete c.video; } });
 if (!DB.pick || !DB.pick.type) DB.pick = { type: 'road', id: COURSE.id };
 if (DB.pick.type === 'road') DB.pick.id = COURSE.id;            // 길 코스는 화면을 불러올 때 정해짐
 else DB.climb.sel = TGT(DB.pick.id).id;
@@ -3742,7 +3744,23 @@ function renderCourseRows(lists, onlySel){
    · 손으로 찍은 점(위치 추정): banpo-6k saryeoni-10k kukto-633k jeju-ring-234k jeju-olle-437k
    · 지도 노선이 공식 올레길과 다름: olle1-15k olle6-11k olle7-18k
    공식 GPX·보스 GPS를 받으면 노선 파일을 새 이름으로 바꾸고 여기서 뺄 것 */
-const ROUTE_LAB = new Set(["gwangalli-3k", "woryeong-gil", "gwanghallu-gil", "dumulmeori-gil", "gongsanseong-gil", "yeouido-10k", "gyeongjuhist-gil", "giheung-gil", "banpo-6k", "saryeoni-10k", "kukto-633k", "jeju-ring-234k", "jeju-olle-437k", "olle1-15k", "olle6-11k", "olle7-18k"]);
+/* 11/25 보스 "엉뚱한 좌표·자전거길에 산길·아미가 임의로 찍은 코스": 오픈스트리트맵 길과 대조(tools/route_osm_probe.py → data/route_osm_probe.json) → 실험실로
+   · greenrail-5k: 해안 데크 대신 달맞이 골목길로 그려짐
+   · moontan-3k: 문탠로드 숲길 대신 골목 찻길로 그려짐
+   · namsan-7k: 순환 중 계단 600m·산길 27% (남산공원길 대신 산길로 감)
+   · oncheon-bike-8k: 온천천 자전거길 대신 찻길 74%
+   · musimcheon-gil: 하천 길 대신 찻길 38%
+   · sorigil-gil: 소리길 대신 가야산로 찻길 51%
+   · sinjeong-gil: 호숫가 길 대신 찻길 34%·길 밖 5%
+   · daecheong-bike: 자전거 코스 중간에 산길 8%
+   · tangeum-bike: 자전거길 대신 찻길 66%
+   · seomjin-bike: 찻길 48%·길 밖 7%
+   · upo-gil: 길 밖 좌표 6%
+   · jinjuseong-gil: 길 밖 좌표 5%·찻길 51%
+   · expo-gil: 길 밖 좌표 6%
+   · cheonhoji-gil: 길 밖 좌표 11%
+   */
+const ROUTE_LAB = new Set(["gwangalli-3k", "woryeong-gil", "gwanghallu-gil", "dumulmeori-gil", "gongsanseong-gil", "yeouido-10k", "gyeongjuhist-gil", "giheung-gil", "banpo-6k", "saryeoni-10k", "kukto-633k", "jeju-ring-234k", "jeju-olle-437k", "olle1-15k", "olle6-11k", "olle7-18k", "greenrail-5k", "moontan-3k", "namsan-7k", "oncheon-bike-8k", "musimcheon-gil", "sorigil-gil", "sinjeong-gil", "daecheong-bike", "tangeum-bike", "seomjin-bike", "upo-gil", "jinjuseong-gil", "expo-gil", "cheonhoji-gil"]);
 Object.values(ALL_ROADS).forEach(c => { if (ROUTE_LAB.has(c.id)) c.lab = true; });
 const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
 Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
