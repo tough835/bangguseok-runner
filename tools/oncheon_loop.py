@@ -26,8 +26,9 @@ K = math.cos(35.2 * math.pi / 180)
 def xy(q): return (q[1] * K * 111320, q[0] * 110540)
 WALK = 'footway|path|cycleway|pedestrian|living_street|track'
 CAR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link'}
-j = ovp('[out:json][timeout:120];way["waterway"]["name"="온천천"]->.r;(way(around.r:130)["highway"];)->.h;(.r;.h;);out geom;')
-riv = [e for e in j['elements'] if 'waterway' in e.get('tags', {})]
+BB = '(35.15,129.03,35.32,129.13)'   # 부산 온천천만 (아산 온천천 제외)
+j = ovp('[out:json][timeout:150];(way["waterway"~"^(river|stream|canal)$"]["name"="온천천"]%s;rel["waterway"]["name"="온천천"]%s;)->.a;(way.a;way(r.a)["waterway"~"^(river|stream|canal)$"];)->.r;(way(around.r:130)["highway"];)->.h;(.r;.h;);out geom;' % (BB, BB))
+riv = [e for e in j['elements'] if e.get('tags', {}).get('waterway') in ('river', 'stream', 'canal')]
 hw = [e for e in j['elements'] if 'highway' in e.get('tags', {})]
 print('물길 조각', len(riv), '길', len(hw))
 # 물길 잇기 (끝점끼리)
