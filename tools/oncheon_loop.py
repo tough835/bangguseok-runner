@@ -32,18 +32,19 @@ hw = [e for e in j['elements'] if 'highway' in e.get('tags', {})]
 print('물길 조각', len(riv), '길', len(hw))
 # 물길 잇기 (끝점끼리)
 segs = [[[g['lat'], g['lon']] for g in w['geometry']] for w in riv if w.get('geometry')]
-# 끝점이 정확히 안 맞는 조각(보·복개 구간)도 이어지게: 가장 가까운 끝점끼리 200m 안이면 이음
-pool = [w for w in segs if len(w) > 1]; best = []
-r = max(pool, key=lambda w: cum(w)[-1]); pool.remove(r)
+# 하류(수영강 쪽) 끝에서 출발해, 꼬리에 가장 가까운 조각을 차례로 붙임 (보·복개로 끊긴 틈 800m까지)
+SUYEONG = [35.1925, 129.1055]
+pool = [w for w in segs if len(w) > 1]
+LOG['pieces'] = [[round(cum(w)[-1]), [round(x, 5) for x in w[0]], [round(x, 5) for x in w[-1]]] for w in pool]
+st = min(pool, key=lambda w: min(hav(w[0], SUYEONG), hav(w[-1], SUYEONG))); pool.remove(st)
+r = st if hav(st[0], SUYEONG) <= hav(st[-1], SUYEONG) else st[::-1]
 while pool:
-    cands = []
-    for i, w in enumerate(pool):
-        for flip in (False, True):
-            ww = w[::-1] if flip else w
-            cands.append((hav(ww[0], r[-1]), i, ww, 'tail')); cands.append((hav(ww[-1], r[0]), i, ww, 'head'))
-    d, i, ww, where = min(cands, key=lambda x: x[0])
-    if d > 200: break
-    pool.pop(i); r = r + ww[1:] if where == 'tail' else ww[:-1] + r
+    cands = [(min(hav(w[0], r[-1]), hav(w[-1], r[-1])), i) for i, w in enumerate(pool)]
+    d, i = min(cands)
+    if d > 800: break
+    w = pool.pop(i); w = w if hav(w[0], r[-1]) <= hav(w[-1], r[-1]) else w[::-1]
+    if hav(w[-1], SUYEONG) < hav(r[-1], SUYEONG) - 50: continue   # 거꾸로(하류 쪽으로) 가는 조각은 버림
+    r = r + w
 best = r
 river = best
 SUYEONG = [35.1925, 129.1055]   # 수영강 쪽(하류)을 앞으로
