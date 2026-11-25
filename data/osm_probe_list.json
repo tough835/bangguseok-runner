@@ -1,0 +1,541 @@
+[
+{
+"id": "namsan-7k",
+"name": "남산 한 바퀴 (북측순환로 → 남산공원길)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/namsan-7k-v2.json"
+},
+{
+"id": "hangang-bike-11k",
+"name": "한강 자전거길 남쪽 (반포 → 잠실)",
+"kind": "자전거·조깅",
+"lab": false,
+"file": "data/route/hangang-bike-11k.json"
+},
+{
+"id": "yeouido-10k",
+"name": "여의도 한강 다리 한 바퀴 (원효대교·마포대교)",
+"kind": "도보·조깅·자전거",
+"lab": true,
+"file": "data/route/yeouido-10k.json"
+},
+{
+"id": "gyeongbok-3k",
+"name": "경복궁 돌담길 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/gyeongbok-3k-v2.json"
+},
+{
+"id": "jongmyo-5k",
+"name": "광화문→종묘→청계천 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/jongmyo-5k-v3.json"
+},
+{
+"id": "seokchon-3k",
+"name": "석촌호수 한 바퀴 (롯데타워 옆)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/seokchon-3k-v3.json"
+},
+{
+"id": "greenrail-5k",
+"name": "해운대 그린레일웨이 (미포→청사포→송정)",
+"kind": "해안길",
+"lab": false,
+"file": "data/route/greenrail-5k-v2.json"
+},
+{
+"id": "moontan-3k",
+"name": "달맞이 문탠로드 (한 바퀴)",
+"kind": "도보",
+"lab": false,
+"file": "data/route/moontan-3k-v3.json"
+},
+{
+"id": "nakdong-bike-18k",
+"name": "낙동강 자전거길 (하굿둑 → 화명생태공원)",
+"kind": "자전거·조깅",
+"lab": false,
+"file": "data/route/nakdong-bike-18k.json"
+},
+{
+"id": "suyeong-bike-7k",
+"name": "수영강 자전거길 (민락 → 원동)",
+"kind": "자전거·조깅",
+"lab": false,
+"file": "data/route/suyeong-bike-7k.json"
+},
+{
+"id": "oncheon-bike-8k",
+"name": "온천천 자전거길 (수영강 합류 → 온천장)",
+"kind": "자전거·조깅",
+"lab": false,
+"file": "data/route/oncheon-bike-8k.json"
+},
+{
+"id": "dongbaek-1k",
+"name": "동백섬 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/dongbaek-1k-v2.json"
+},
+{
+"id": "haeundae-dongbaek",
+"name": "해운대 해변 → 동백섬 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/haeundae-dongbaek-v2.json"
+},
+{
+"id": "igidae-5k",
+"name": "이기대 해안산책로 (동생말→오륙도)",
+"kind": "해안길",
+"lab": false,
+"file": "data/route/igidae-5k-v2.json"
+},
+{
+"id": "gwangalli-3k",
+"name": "광안리 해변 왕복",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/gwangalli-3k.json"
+},
+{
+"id": "hwaseong-gil",
+"name": "수원 화성 성곽길 한 바퀴",
+"kind": "도보",
+"lab": false,
+"file": "data/route/hwaseong-gil-v2.json"
+},
+{
+"id": "woncheon-gil",
+"name": "광교호수공원 원천호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/woncheon-gil.json"
+},
+{
+"id": "baegun-gil",
+"name": "백운호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/baegun-gil.json"
+},
+{
+"id": "giheung-gil",
+"name": "기흥호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/giheung-gil.json"
+},
+{
+"id": "sanjeong-gil",
+"name": "산정호수 둘레길",
+"kind": "도보",
+"lab": false,
+"file": "data/route/sanjeong-gil.json"
+},
+{
+"id": "sinjeong-gil",
+"name": "신정호 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/sinjeong-gil-v2.json"
+},
+{
+"id": "upo-gil",
+"name": "우포늪 생명길",
+"kind": "도보",
+"lab": false,
+"file": "data/route/upo-gil.json"
+},
+{
+"id": "jeonjuhanok-gil",
+"name": "전주 한옥마을 한 바퀴",
+"kind": "도보",
+"lab": false,
+"file": "data/route/jeonjuhanok-gil-v3.json"
+},
+{
+"id": "woryeong-gil",
+"name": "안동 월영교·낙동강변 왕복",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/woryeong-gil.json"
+},
+{
+"id": "gwanghallu-gil",
+"name": "남원 광한루원↔춘향테마파크 왕복",
+"kind": "도보",
+"lab": true,
+"file": "data/route/gwanghallu-gil.json"
+},
+{
+"id": "jinjuseong-gil",
+"name": "진주성·남강 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/jinjuseong-gil-v2.json"
+},
+{
+"id": "daecheong-bike",
+"name": "대전 갑천·금강 자전거길 (엑스포다리→대청댐)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/daecheong-bike.json"
+},
+{
+"id": "expo-gil",
+"name": "대전 한밭수목원·엑스포 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/expo-gil-v2.json"
+},
+{
+"id": "musimcheon-gil",
+"name": "청주 무심천 (꽃다리→송천교)",
+"kind": "조깅·자전거",
+"lab": false,
+"file": "data/route/musimcheon-gil-v2.json"
+},
+{
+"id": "gongjicheon-gil",
+"name": "춘천 소양강 스카이워크→공지천→의암공원",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/gongjicheon-gil.json"
+},
+{
+"id": "juknokwon-gil",
+"name": "담양 죽녹원→관방제림→메타프로방스",
+"kind": "도보",
+"lab": false,
+"file": "data/route/juknokwon-gil.json"
+},
+{
+"id": "woljeongsa-gil",
+"name": "오대산 월정사→상원사",
+"kind": "도보",
+"lab": false,
+"file": "data/route/woljeongsa-gil.json"
+},
+{
+"id": "sorigil-gil",
+"name": "가야산 소리길 (대장경테마파크→해인사)",
+"kind": "도보",
+"lab": false,
+"file": "data/route/sorigil-gil.json"
+},
+{
+"id": "jando-gil",
+"name": "단양 구경시장→단양강 잔도→만천하스카이워크",
+"kind": "도보",
+"lab": false,
+"file": "data/route/jando-gil.json"
+},
+{
+"id": "gongsanseong-gil",
+"name": "공주 공산성→무령왕릉→한옥마을 다녀오기",
+"kind": "도보",
+"lab": true,
+"file": "data/route/gongsanseong-gil.json"
+},
+{
+"id": "buyeo-gil",
+"name": "부여 궁남지→정림사지→낙화암",
+"kind": "도보",
+"lab": false,
+"file": "data/route/buyeo-gil-v2.json"
+},
+{
+"id": "sejonglake-gil",
+"name": "세종호수공원 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/sejonglake-gil.json"
+},
+{
+"id": "geumgang-bike",
+"name": "금강 자전거길 (세종보→공주보)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/geumgang-bike-v2.json"
+},
+{
+"id": "dumulmeori-gil",
+"name": "양평 양수역↔세미원↔두물머리 왕복",
+"kind": "도보",
+"lab": true,
+"file": "data/route/dumulmeori-gil.json"
+},
+{
+"id": "namhangang-bike",
+"name": "남한강 자전거길 (팔당역→양평역)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/namhangang-bike.json"
+},
+{
+"id": "seomjin-bike",
+"name": "섬진강 자전거길 (섬진강댐→장군목→향가유원지)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/seomjin-bike.json"
+},
+{
+"id": "ilsanlake-gil",
+"name": "일산호수공원 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/ilsanlake-gil.json"
+},
+{
+"id": "pungam-gil",
+"name": "풍암호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/pungam-gil.json"
+},
+{
+"id": "pureungil-gil",
+"name": "광주 푸른길 (광주역→남광주역→백운광장)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/pureungil-gil.json"
+},
+{
+"id": "hoamji-gil",
+"name": "호암지 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/hoamji-gil.json"
+},
+{
+"id": "tangeum-bike",
+"name": "충주 탄금호 자전거길 (충주댐→탄금대→중앙탑)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/tangeum-bike.json"
+},
+{
+"id": "geumoji-gil",
+"name": "금오산 올레길 (금오지 한 바퀴)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/geumoji-gil.json"
+},
+{
+"id": "cheonhoji-gil",
+"name": "천호지 한 바퀴 (단대호수)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/cheonhoji-gil.json"
+},
+{
+"id": "tapjeong-gil",
+"name": "탑정호 한 바퀴",
+"kind": "도보",
+"lab": false,
+"file": "data/route/tapjeong-gil.json"
+},
+{
+"id": "tapjeong-road",
+"name": "탑정호 찻길 한 바퀴",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/tapjeong-road.json"
+},
+{
+"id": "saejae-gil",
+"name": "문경새재 과거길 (1관문→2관문→3관문)",
+"kind": "도보",
+"lab": false,
+"file": "data/route/saejae-gil.json"
+},
+{
+"id": "naejang-gil",
+"name": "내장산 단풍길 (터미널→우화정→내장사)",
+"kind": "도보",
+"lab": false,
+"file": "data/route/naejang-gil.json"
+},
+{
+"id": "yeongsan-bike",
+"name": "영산강 자전거길 (승촌보→죽산보)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/yeongsan-bike.json"
+},
+{
+"id": "suseongmot-gil",
+"name": "수성못 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/suseongmot-gil.json"
+},
+{
+"id": "sincheon-gil",
+"name": "대구 신천 (상동교→침산교)",
+"kind": "조깅·자전거",
+"lab": false,
+"file": "data/route/sincheon-gil-v2.json"
+},
+{
+"id": "dalseong-bike",
+"name": "낙동강 자전거길 (강정고령보→달성보)",
+"kind": "자전거",
+"lab": false,
+"file": "data/route/dalseong-bike.json"
+},
+{
+"id": "bomun-gil",
+"name": "보문호 한 바퀴 (보문호반길)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/bomun-gil-v2.json"
+},
+{
+"id": "gyeongjuhist-gil",
+"name": "경주 대릉원→첨성대→월정교→동궁과 월지 돌아오기",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/gyeongjuhist-gil.json"
+},
+{
+"id": "gyeongchun-bike-24k",
+"name": "경춘선 자전거길 (마석 → 대성리 → 청평 → 가평)",
+"kind": "자전거·조깅",
+"lab": false,
+"file": "data/route/gyeongchun-bike-24k.json"
+},
+{
+"id": "olle7-18k",
+"name": "제주올레 7코스 (여행자센터→외돌개→월평)",
+"kind": "해안길",
+"lab": true,
+"file": "data/route/olle7-18k.json"
+},
+{
+"id": "olle1-15k",
+"name": "제주올레 1코스 (시흥→말미오름→성산→광치기)",
+"kind": "도보",
+"lab": true,
+"file": "data/route/olle1-15k.json"
+},
+{
+"id": "olle6-11k",
+"name": "제주올레 6코스 (쇠소깍→정방폭포→서귀포)",
+"kind": "해안길",
+"lab": true,
+"file": "data/route/olle6-11k.json"
+},
+{
+"id": "zurich-lake",
+"name": "취리히 호숫가 (뷔르클리 광장 → 티펜브루넨)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/zurich-lake.json"
+},
+{
+"id": "luzern-lake",
+"name": "루체른 호숫가 (카펠교 → 교통박물관)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/luzern-lake.json"
+},
+{
+"id": "geneva-lake",
+"name": "제네바 호숫가 (파키 → 라 그랑주 공원)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/geneva-lake.json"
+},
+{
+"id": "lavaux-bike",
+"name": "라보 포도밭 호숫길 (로잔 우시 → 브베)",
+"kind": "자전거",
+"lab": true,
+"file": "data/route/lavaux-bike.json"
+},
+{
+"id": "retiro-loop",
+"name": "마드리드 레티로 공원 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/retiro-loop.json"
+},
+{
+"id": "madrid-rio",
+"name": "마드리드 리오 강변 (레이 다리 → 마타데로)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/madrid-rio.json"
+},
+{
+"id": "barcelona-beach",
+"name": "바르셀로나 해변 (바르셀로네타 → 마르 베야)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/barcelona-beach.json"
+},
+{
+"id": "formentor-bike",
+"name": "마요르카 포르멘토르 곶 (폴렌사 항 → 등대)",
+"kind": "자전거",
+"lab": true,
+"file": "data/route/formentor-bike.json"
+},
+{
+"id": "copenhagen-lakes",
+"name": "코펜하겐 호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/copenhagen-lakes.json"
+},
+{
+"id": "djurgarden-loop",
+"name": "스톡홀름 유르고르덴 섬 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/djurgarden-loop.json"
+},
+{
+"id": "akerselva",
+"name": "오슬로 아케르 강 산책로 (마리달 호수 → 바테를란)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/akerselva.json"
+},
+{
+"id": "atlantic-road",
+"name": "노르웨이 대서양 도로 (베방 → 코르보그)",
+"kind": "자전거",
+"lab": true,
+"file": "data/route/atlantic-road.json"
+},
+{
+"id": "centralpark-10k",
+"name": "뉴욕 센트럴파크 한 바퀴 (Park Drive)",
+"kind": "도보·조깅·자전거",
+"lab": true,
+"file": "data/route/centralpark-10k.json"
+},
+{
+"id": "kokyo-5k",
+"name": "도쿄 황거 한 바퀴 (고쿄 런)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/kokyo-5k.json"
+},
+{
+"id": "dragonsback-9k",
+"name": "홍콩 드래곤스 백 (토테이완→빅웨이브베이)",
+"kind": "트레킹",
+"lab": true,
+"file": "data/route/dragonsback-9k.json"
+}
+]
