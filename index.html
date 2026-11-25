@@ -694,6 +694,15 @@
   .spdBox small{font-size:15px}
   .ctrl{margin-top:7px}
   .ctrl button{height:42px;font-size:16px}
+  /* 11/25 보스 실제 폰 "뛰다가 속도 ± · 멈춤 누르기 어려움": 엄지 자리 버튼을 크게 · 누르는 칸 넓게 · 버튼 사이 간격(옆 버튼 잘못 눌림 방지) · 두 번 눌러 확대 막기 */
+  .spdRow{gap:10px}
+  .spdRow button{width:92px;height:84px;font-size:44px;border-radius:20px;touch-action:manipulation}
+  .spdRow button:active{transform:scale(.94);background:#d7f548}
+  .spdBox{height:84px}
+  .spdBox span{font-size:54px;line-height:78px}
+  .ctrl{gap:12px;margin-top:10px}
+  .ctrl button{height:62px;font-size:20px;border-radius:16px;touch-action:manipulation}
+  .ctrl #bPause{font-size:28px}
   #recPeriod{display:none}                                           /* B2 기간 고르기 → 달력 하나로 */
   .recCap{font-size:13px;color:var(--mut);margin:14px 2px 0}
   #regionPane .rgh,#regionPane .sel3,#regionPane h2[data-t=course]{display:none}   /* B3 드롭다운 3개 → 지역 카드 */
@@ -1307,7 +1316,7 @@
 </div>
 
 <script>
-const BUILD = '202611251930';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611252000';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1930,9 +1939,10 @@ if (MINE.length){
 const ACTIVE = { city: 'hamyang', course: 'sangnim-3k', lang: 'ko' };
 /* 11/25 다국어: 내가 고른 언어(설정) → 없으면 폰 언어 → 그 밖의 언어는 영어 */
 const LANGS = [['ko', '한국어'], ['en', 'English'], ['zh', '中文(简体)'], ['ja', '日本語'], ['vi', 'Tiếng Việt'], ['fr', 'Français'], ['es', 'Español']];
-ACTIVE.lang = (() => { let s = null; try { s = localStorage.getItem('bgsj_lang'); } catch(e){} if (s && LANGS.some(l => l[0] === s)) return s;
+function pickLang(){ let s = null; try { s = localStorage.getItem('bgsj_lang'); } catch(e){} if (s && LANGS.some(l => l[0] === s)) return s;
   const ns = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'ko']).map(x => String(x).toLowerCase().slice(0, 2));
-  return ns.find(c => LANGS.some(l => l[0] === c)) || 'en'; })();
+  return ns.find(c => LANGS.some(l => l[0] === c)) || 'en'; }
+ACTIVE.lang = pickLang();
 try {
   const c = localStorage.getItem('bgsj_course');
   if (c){ const [a, b] = c.includes('/') ? c.split('/') : ['hamyang', c], cc = WORLD.cities[a] && WORLD.cities[a].courses[b];
@@ -2073,6 +2083,13 @@ Object.assign(TEXT.ja, {"w_nCourse":"{n}コース"});
 Object.assign(TEXT.vi, {"w_nCourse":"{n} tuyến"});
 Object.assign(TEXT.fr, {"w_nCourse":"{n} parcours"});
 Object.assign(TEXT.es, {"w_nCourse":"{n} rutas"});
+Object.assign(TEXT.ko, {"w_langLater":"운동을 마치면 새 언어로 바뀌어요"});
+Object.assign(TEXT.en, {"w_langLater":"The new language will apply when this workout ends"});
+Object.assign(TEXT.zh, {"w_langLater":"运动结束后将切换到新语言"});
+Object.assign(TEXT.ja, {"w_langLater":"運動が終わると新しい言語に切り替わります"});
+Object.assign(TEXT.vi, {"w_langLater":"Ngôn ngữ mới sẽ áp dụng khi kết thúc buổi tập"});
+Object.assign(TEXT.fr, {"w_langLater":"La nouvelle langue s'appliquera à la fin de la séance"});
+Object.assign(TEXT.es, {"w_langLater":"El nuevo idioma se aplicará al terminar el entreno"});
 /* 11/25 짧은 버튼 말 */
 const SHORT_I18N = {"en": {"fUpAct": "Stairs·Hike", "aBike": "Bike", "myRec": "📒 Records", "gpsStart": "▶ Start GPS", "bodyBtn": "⚖️ Body info (calories)", "j_telOn": "📊 Anonymous stats · On", "j_telOff": "📊 Anonymous stats · Off", "h_mtnHowTitle": "⛰ Mountain numbers", "j_moreLow": "More ▾ (+{n})"}, "zh": {"gpsStart": "▶ GPS记录", "bodyBtn": "⚖️ 身体信息（热量）", "j_telOn": "📊 匿名统计 · 开", "j_telOff": "📊 匿名统计 · 关", "j_moreLow": "更多 ▾（+{n}）"}, "ja": {"aFoot": "歩く·走る", "aWalkOut": "歩く·走る", "gpsStart": "▶ GPS記録", "bodyBtn": "⚖️ 体の情報（カロリー）", "j_telOn": "📊 匿名統計 · オン", "j_telOff": "📊 匿名統計 · オフ", "h_mtnHowTitle": "⛰ 山の数字の見方", "j_moreLow": "もっと ▾（+{n}）"}, "vi": {"aFoot": "Đi·Chạy", "aWalkOut": "Đi·Chạy", "fUpAct": "Leo núi", "zOutTitle": "‹ 🌳 Ngoài", "zInTitle": "‹ 🏠 Nhà", "myRec": "📒 Nhật ký", "h_segNear": "📍 Gần tôi", "h_segTopic": "🗂 Chủ đề", "h_segRegion": "🗺 Khu vực", "gpsStart": "▶ Ghi GPS", "bodyBtn": "⚖️ Cơ thể (calo)", "j_telOn": "📊 Thống kê ẩn danh · Bật", "j_telOff": "📊 Thống kê ẩn danh · Tắt", "h_mtnHowTitle": "⛰ Số liệu núi", "j_moreLow": "Thêm ▾ (+{n})"}, "fr": {"aFoot": "Marche", "aWalkOut": "Marche", "fUpAct": "Montée", "zInTitle": "‹ 🏠 Maison", "myRec": "📒 Journal", "h_segNear": "📍 Proche", "h_segTopic": "🗂 Thèmes", "h_segRegion": "🗺 Régions", "gpsStart": "▶ Lancer le GPS", "bodyBtn": "⚖️ Profil (calories)", "j_telOn": "📊 Stats anonymes · Oui", "j_telOff": "📊 Stats anonymes · Non", "h_mtnHowTitle": "⛰ Chiffres montagne", "j_moreLow": "Plus ▾ (+{n})"}, "es": {"aFoot": "Caminar", "aWalkOut": "Caminar", "fUpAct": "Subir", "aBike": "Bici", "myRec": "📒 Registro", "h_segNear": "📍 Cerca", "h_segTopic": "🗂 Temas", "h_segRegion": "🗺 Regiones", "gpsStart": "▶ Iniciar GPS", "bodyBtn": "⚖️ Perfil (calorías)", "j_telOn": "📊 Estadísticas · Sí", "j_telOff": "📊 Estadísticas · No", "h_mtnHowTitle": "⛰ Cifras de montaña", "j_moreLow": "Más ▾ (+{n})"}};   // 360폭에서 두 줄·잘림 나던 버튼만 짧은 말로 (11/25 검사)
 /* 11/25 다국어: 경상도 응원 대사 → 언어별 표준 말투 한 벌 (문 응원 door · 산 응원 mtc) */
@@ -7945,6 +7962,15 @@ document.querySelectorAll('[data-ta]').forEach(el => { if (T[el.dataset.ta]) el.
 (() => { const s = $('langSel'); if (!s) return; let saved = ''; try { saved = localStorage.getItem('bgsj_lang') || ''; } catch(e){}
   s.innerHTML = '<option value="">' + T.j_langAuto + '</option>' + LANGS.map(l => '<option value="' + l[0] + '">' + l[1] + '</option>').join(''); s.value = saved;
   s.onchange = () => { try { if (s.value) localStorage.setItem('bgsj_lang', s.value); else localStorage.removeItem('bgsj_lang'); } catch(e){} location.reload(); }; })();
+/* 11/25 보스 "코스 주행 중 언어를 바꿔도 한국어 그대로": 폰 언어를 바꾸면(언어 = 폰 언어 따라가기일 때) 바로 새 언어로 다시 불러옴
+   · 운동 중이면 지금 운동 기록이 둘로 나뉘지 않게 끝난 뒤 바꿈 (알림 한 번) */
+const LANG_PEND = { on: false };
+const langReload = () => { try { if ($('homeScreen').classList.contains('hidden')) sessionStorage.setItem('bgsj_inapp', '1'); } catch(e){} location.reload(); };   // 첫 화면이 아니면 다시 열어도 시작 화면으로
+addEventListener('languagechange', () => { let saved = ''; try { saved = localStorage.getItem('bgsj_lang') || ''; } catch(e){} if (saved) return;
+  const want = pickLang(); if (want === ACTIVE.lang) return;
+  if (!S.running) return langReload();
+  if (!LANG_PEND.on){ LANG_PEND.on = true; toastMsg('🌐 ' + ((TEXT[want] && TEXT[want].w_langLater) || TEXT.ko.w_langLater), 6000); } });
+setInterval(() => { if (LANG_PEND.on && !S.running && $('endScreen') && $('endScreen').classList.contains('hidden')) langReload(); }, 2000);
 document.title = T.appName;
 applyPick();
 /* 처음 열면 첫 화면(방구석 | 바깥). 코스를 바꿔서 화면을 새로 불러온 경우엔 바로 시작 화면 */
