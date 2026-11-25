@@ -568,6 +568,18 @@
   .gold,.real,.stamp,.cqmc{color:var(--vtx)}
   .promobtn{background:var(--ch2);color:var(--vtx)}
   .hubrow.site{outline-color:var(--vtx)}
+  /* 11/25 보스 승인 '앱 안 홍보 자리': ③ 끝 화면 '진짜로 걸어 보기' 카드 · ① 고른 코스 카드 안 행사 한 줄 */
+  #visitCard{display:block;margin:10px 0 6px;background:var(--ch2);border:1px solid rgba(var(--ink),.08);border-radius:16px;overflow:hidden;color:var(--tx);text-decoration:none}
+  #visitCard .vph{height:118px;position:relative}
+  #visitCard .vov{position:absolute;left:10px;bottom:8px;background:rgba(0,0,0,.62);color:#fff;font-size:12px;font-weight:800;padding:3px 8px;border-radius:8px}
+  #visitCard .vbd{padding:10px 14px 12px}
+  #visitCard .vt1{font-size:16px;font-weight:900}
+  #visitCard .vr{margin-top:5px;font-size:13px;color:var(--mut)}
+  #visitCard .vr b{color:var(--tx)}
+  #visitCard .vcp{margin-top:8px;padding:7px 10px;border-radius:10px;background:var(--ch3);color:var(--vtx);font-size:13px;font-weight:700;display:flex;gap:6px}
+  #visitCard .vcp span{margin-left:auto;color:var(--mut);font-weight:500;white-space:nowrap}
+  .mrow .pline{display:flex;gap:6px;align-items:center;margin-top:7px;padding-top:7px;border-top:1px solid rgba(var(--ink),.1);font-size:13px;font-weight:700;color:var(--vtx)}
+  .mrow .pline span{margin-left:auto;color:var(--mut);font-weight:500;font-size:12px;white-space:nowrap}
   .conq .bar b{background:var(--vtx)}
   #popup,#infoPanel{background:rgba(var(--pop),.97);color:var(--tx);border:1px solid rgba(var(--ink),.1)}
   #popup .ph,#spotCard .ph,.ip-ph{border:0;background:var(--ch3);color:var(--mut)}
@@ -1217,7 +1229,8 @@
 <div id="endScreen" class="screen hidden">
   <h1 data-t="endTitle">오늘 운동 끝 👏</h1>
   <div class="card" id="endSummary"></div>
-  <div id="endConq" class="hidden"></div>   <!-- 11/21 검수 A5: 새로 정복하면 창 대신 끝 화면 한 줄 -->
+  <div id="endConq" class="hidden"></div>
+  <a id="visitCard" class="hidden" target="_blank" rel="noopener"></a>   <!-- 11/25 보스 승인: 방구석 운동 끝 → 진짜 그곳 가 보기 (현장 도장 · 방문 혜택) -->   <!-- 11/21 검수 A5: 새로 정복하면 창 대신 끝 화면 한 줄 -->
   <div class="muted hidden" id="endMeter" style="font-size:12px;margin:-4px 2px 8px"></div>   <!-- 11/17 측정 (측정 보기를 켠 폰만) -->
   <button id="fixOpen" class="toggle" style="margin-top:4px">✏️ 기계 숫자와 달라요?</button>   <!-- 11/23 보스: 평소엔 접어 둠 · 실내 운동만 -->
   <div id="fixWrap" class="hidden">
@@ -1256,7 +1269,7 @@
 </div>
 
 <script>
-const BUILD = '202611251605';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611251645';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2898,8 +2911,8 @@ function lapVisit(){
   const el = $('lapVisit'); el.classList.add('hidden'); if (S.gps || COURSE.long || CITY.id === 'mine') return;
   const rg = regionOf(CITY.id); if (!rg || rg.country !== 'kr') return;
   const pr = promoNow(CITY.id)[0], nm = tr(COURSE.short || COURSE.name), rn = regionName(CITY.id);
-  el.innerHTML = pr ? '📣 <b>' + esc(pr.title) + '</b>' + (pr.link ? ' · <a href="' + esc(pr.link) + '" target="_blank">자세히</a>' : '')
-    : '📍 진짜 ' + esc(nm) + josa(nm, '은', '는') + ' ' + esc(rn) + '에 있어요 · 가서 걸으면 <b>현장 도장</b>까지';
+  if (!pr) return;   // 11/25: '진짜 ○○은 △△에 있어요' 한 줄은 끝 화면 '진짜로 걸어 보기' 카드로 옮김 (같은 말 두 번 X)
+  el.innerHTML = '📣 <b>' + esc(pr.title) + '</b>' + (pr.link ? ' · <a href="' + esc(pr.link) + '" target="_blank">자세히</a>' : '');
   el.classList.remove('hidden');
 }
 /* 완주: 창을 띄워 끝낼지·한 바퀴 더 할지 고름. 25초 안에 안 누르면 한 바퀴 더(기계는 계속 돌고 있으니) */
@@ -3610,7 +3623,17 @@ const PROMO = {
 };
 /* 11/20: 날짜를 세계 표준시로 계산해 오전 9시 전에는 하루 전 날짜로 찍히던 것 → 폰의 날짜(한국시간) */
 function localYmd(d){ d = d || new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
-function promoNow(cid){ const t = localYmd(); return (PROMO[cid] || []).filter(p => (!p.from || p.from <= t) && (!p.to || p.to >= t)); }
+/* 11/25 보스 승인 '앱 안 홍보 자리': perk: true = 현장 방문 혜택(쿠폰 등) → 끝 화면 '진짜로 걸어 보기' 카드에만 · 나머지 = 행사 → 📣·고른 코스 카드 한 줄
+   · 실제 행사·혜택이 하나도 없을 때, 실험실(보스 폰)에서만 함양에 예시를 띄움 (시연용 · 일반 사용자에겐 안 보임) */
+const PROMO_EX = { hamyang: [
+  { title: '(예시) 상림 가을 꽃길 행사', from: '', to: '', text: '시연용 예시예요. 실제 행사가 정해지면 바뀝니다.', by: '함양군', ex: true },
+  { title: '(예시) 현장 도장 찍으면 ○○식당 10%', perk: true, to: '', text: '시연용 예시', by: '함양군', ex: true }
+] };
+function promoAll(cid){ const t = localYmd(), real = (PROMO[cid] || []).filter(p => (!p.from || p.from <= t) && (!p.to || p.to >= t));
+  return real.length || !LAB_ON() ? real : (PROMO_EX[cid] || []); }
+function promoNow(cid){ return promoAll(cid).filter(p => !p.perk); }
+function perkNow(cid){ return promoAll(cid).filter(p => p.perk); }
+const promoDate = p => p.from || p.to ? (p.from ? p.from.slice(5).replace('-', '.') : '') + '~' + (p.to ? p.to.slice(5).replace('-', '.') : '') : '';
 function promoDot(){ const n = promoNow(DB.region.city).length; $('promoDot').classList.toggle('hidden', !n); }
 $('bPromo').onclick = () => {
   const cid = DB.region.city, nm = WORLD.cities[cid] ? tr(WORLD.cities[cid].name) : '', list = promoNow(cid);
@@ -3775,9 +3798,13 @@ function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
   const mk = cMarks(c);
   return '<div class="mrow' + (o.sel ? ' sel' : '') + '" ' + o.attr + '><div><b>' + tr(c.name) + '</b>' + (mk ? ' <span class="mk">' + mk + '</span>' : '') + '<br><span class="muted"><b class="km">' +
-    (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by + ' <a class="rpt" data-rpt="' + c.id + '" style="margin-left:4px;font-size:12px;color:var(--mut);text-decoration:underline">🚩 신고</a>' : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span></div>' +
+    (c.lengthM / 1000).toFixed(c.lengthM % 1000 ? 1 : 0) + 'km</b> · ' + (o.place ? o.place + ' · ' : '') + (o.extra ? o.extra : T.hubsN.replace('{n}', hubs)) + (c.by ? ' · 🌍 개척 ' + c.by + ' <a class="rpt" data-rpt="' + c.id + '" style="margin-left:4px;font-size:12px;color:var(--mut);text-decoration:underline">🚩 신고</a>' : '') + '</span><span class="tag">' + kindIcon(c) + c.kind + '</span>' +
+    (o.sel ? promoLine(c) : '') + '</div>' +
     '<div class="r">' + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (laps ? '<br>✅ ' + laps + T.times : '') + '</div></div>';
 }
+/* 11/25 보스 승인 ①: 고른 코스 카드 안 행사 한 줄 (그 지역에 진행 중인 행사가 있을 때만) · 누르면 📣 행사 창 */
+function promoLine(c){ const pr = promoNow(c.cityId)[0]; if (!pr) return '';
+  return '<div class="pline" onclick="event.stopPropagation();$(\'bPromo\').click()">📣 ' + esc(pr.title) + '<span>' + (promoDate(pr) ? promoDate(pr) + ' ' : '') + '›</span></div>'; }
 const flTx = (st, f) => st.m.eq ? Math.round(f === undefined ? st.climbed : f / st.m.floors * st.m.gain) + 'm' : (f === undefined ? st.floor : f) + 'F';   // eq 탑은 층 대신 높이
 const towerSize = m => m.eq ? m.summit + 'm' + (m.steps ? ' · 계단 ' + m.steps.toLocaleString() + '개' : '') : m.floors + T.floorUnit + ' · ' + m.summit + 'm';   // eq = 층이 없는 탑(층수는 3m 환산)
 function climbRow(m, o){
@@ -4381,7 +4408,27 @@ function doEnd(){
   zoomTag(); cancelAnimationFrame(raf); sensorStop(); gpsStop(); altStop(); wkStop(); autosave(true);
   try { wakeLock && wakeLock.release(); } catch(e){}
   showRun(false); clearPopups(); mtnClear(); $('fixMsg').textContent = ''; $('fixIn').value = ''; $('endConq').classList.add('hidden');
-  fillEnd(); $('endScreen').classList.remove('hidden');
+  fillEnd(); try { visitCard(); } catch(e){ $('visitCard').classList.add('hidden'); } $('endScreen').classList.remove('hidden');
+}
+/* 11/25 보스 승인 ③ '앱 안 홍보 자리': 방구석(실내)에서 국내 테마 길을 걸은 뒤 끝 화면에 '진짜 그곳' 카드 한 장
+   · 사진(거점 사진) · 완주 횟수 · 현장 도장(GPS로 거점 80m 안에 실제로 간 곳) · 방문 혜택(PROMO perk, 있을 때만) · 누르면 지도에서 출발점 */
+function visitCard(){
+  const el = $('visitCard'); el.classList.add('hidden');
+  if (S.free || S.gps || S.hikeGps || isClimb() || COURSE.long || CITY.id === 'mine' || !(S.sessionM > 0)) return;
+  const rg = regionOf(CITY.id); if (!rg || rg.country !== 'kr') return;
+  const nm = tr(COURSE.short || COURSE.name), rn = regionName(CITY.id), laps = Math.floor(walkTotal() / L);
+  const siteNames = new Set(DB.records.filter(r => creditOf(r, COURSE)).flatMap(r => r.siteHubs ? r.siteHubs : (r.site && new Date(r.date) < SITE_STRICT ? (r.passed || []) : [])));
+  const got = HUBS.filter(h => siteNames.has(tr(h.name))).length;
+  const ph = (HUBS.find(h => typeof h.photo === 'string' && S.passed.includes(tr(h.name))) || HUBS.find(h => typeof h.photo === 'string') || {}).photo;
+  const pt = COURSE.nearPt || (COURSE.path && COURSE.path[0]) || (COURSE.nearPts && COURSE.nearPts[0]);
+  const pk = perkNow(CITY.id)[0];
+  el.innerHTML = (ph ? '<div class="vph">' + photoHtml(ph, 0) + '<span class="vov">📍 진짜 ' + esc(nm) + ' · ' + esc(rn) + '</span></div>' : '') +
+    '<div class="vbd"><div class="vt1">' + (ph ? '' : '📍 ') + '오늘 걸은 길, 진짜로 걸어 보기 ›</div>' +
+    '<div class="vr">' + (ph ? '' : esc(rn) + ' · ') + (laps ? '완주 <b>' + laps + '번</b> · ' : '') + '현장 도장 <b>' + got + ' / ' + HUBS.length + '</b></div>' +
+    (pk ? '<div class="vcp">🎟 ' + esc(pk.title) + (pk.to ? '<span>~' + pk.to.slice(5).replace('-', '.') + '</span>' : '') + '</div>' : '') + '</div>';
+  if (pt) el.href = 'https://map.kakao.com/link/map/' + encodeURIComponent(nm) + ',' + pt[0] + ',' + pt[1]; else el.removeAttribute('href');
+  el.onclick = () => { try { tel('visit_card', { course: telCourse() }); } catch(e){} };
+  el.classList.remove('hidden');
 }
 /* 11/22 보스 폰(탑정호 3번 나눠 탐: 5.00 + 6.86 + 17.18km > 코스 17.4km): 실내자전거 계기판이 '오늘 누적'이라 마지막에 넣은 숫자가 앞 기록까지 더해진 값
    → 넣은 숫자가 운동 시간에 비해 말이 안 되게 빠르면(자전거 시속 45km·걷기/달리기 22km 넘음) 바로 넣지 않고,
