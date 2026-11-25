@@ -6,14 +6,14 @@
 # 결과 data/route/oncheon-loop-<이름>.json + data/oncheon_loop_log.json
 import json, math, time, urllib.request, urllib.parse
 UA = {'User-Agent': 'bangguseok-runner/1.0 (github.com/tough835/bangguseok-runner)'}
-OVP = ['https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']
+OVP = ['https://maps.mail.ru/osm/tools/overpass/api/interpreter', 'https://overpass-api.de/api/interpreter', 'https://overpass.private.coffee/api/interpreter', 'https://overpass.kumi.systems/api/interpreter']
 LOG = {}
 def get(u, data=None):
     with urllib.request.urlopen(urllib.request.Request(u, data, UA), timeout=150) as r: return json.load(r)
 def ovp(ql):
     for k in range(9):
-        try: time.sleep(2 + 2 * k); return get(OVP[k % 3], ('data=' + urllib.parse.quote(ql)).encode())
-        except Exception as e: print('overpass 실패', OVP[k % 3][8:30], str(e)[:80])
+        try: time.sleep(2 + 2 * k); return get(OVP[k % len(OVP)], ('data=' + urllib.parse.quote(ql)).encode())
+        except Exception as e: print('overpass 실패', OVP[k % len(OVP)][8:30], str(e)[:80])
     raise SystemExit('overpass 안 됨')
 def hav(a, b):
     p = math.pi / 180; x = (b[1] - a[1]) * p * math.cos((a[0] + b[0]) / 2 * p); y = (b[0] - a[0]) * p
