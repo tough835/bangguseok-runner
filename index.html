@@ -667,7 +667,12 @@
   #routeBox .sb{width:100%;max-width:480px;border-radius:22px 22px 0 0;background:var(--ch2);color:var(--tx);padding:14px 16px calc(18px + env(safe-area-inset-bottom))}
   #rtSub{margin-top:2px;font-size:13px}
   #rtMap{margin-top:10px;border-radius:14px;background:rgba(var(--ink),.06);position:relative}
-  #rtMap svg{display:block;width:100%;height:auto}
+  #rtMap{overflow:hidden;height:300px}
+  #rtMap svg,.rthumb svg{position:absolute;left:0;top:0}
+  .mapbg{position:absolute;inset:0;overflow:hidden;background:#e8e6df}
+  .mapbg img{max-width:none;user-select:none;pointer-events:none}
+  .mcr{position:absolute;right:6px;bottom:4px;font-size:10px;color:#333;background:rgba(255,255,255,.8);padding:1px 5px;border-radius:5px}
+  #rtElev{margin-top:8px}#rtElev:empty{display:none}#rtElev svg{display:block}
   #rtLeg{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
   #rtLeg span{font-size:12px;font-weight:700;padding:4px 8px;border-radius:10px;background:var(--ch3)}   /* A12 출발 버튼 밑으로 목록 글자가 비치지 않게 */
   #bStart.need{box-shadow:0 26px 0 18px var(--ch)}
@@ -858,6 +863,7 @@
     <div class="st" id="rtTitle"></div>
     <div class="muted" id="rtSub"></div>
     <div id="rtMap"></div>
+    <div id="rtElev"></div>
     <div id="rtLeg"></div>
     <div class="mbtn"><button id="rtClose" data-t="close">닫기</button></div>
   </div>
@@ -1300,7 +1306,7 @@
 </div>
 
 <script>
-const BUILD = '202611251800';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611251810';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2029,6 +2035,14 @@ TEXT.es = {"j_lap1":"1 vuelta {k} km","j_lap2":"2 vueltas {k} km","j_toEndKm":"H
 /* 장소 이름 (한국어 → 영문 등). 정부 로마자 표기법 + 문화재 영문 표기 방식(이름 로마자 + Pavilion 등). 코리아둘레길 이름은 두루누비(한국관광공사) 영문 표기 그대로
    · 중국어·일본어 표기가 없으면 영문, 베트남어·프랑스어·스페인어는 영문을 씀 */
 const NAMES_I18N = {"도보":{"en":"Walk","zh":"步行","ja":"徒歩","vi":"Đi bộ","fr":"Marche","es":"A pie"},"걷기":{"en":"Walk","zh":"步行","ja":"ウォーキング","vi":"Đi bộ","fr":"Marche","es":"Caminar"},"도보·조깅":{"en":"Walk·Jog","zh":"步行·慢跑","ja":"徒歩·ジョギング","vi":"Đi bộ·Chạy bộ","fr":"Marche·Jogging","es":"A pie·Trote"},"도보·자전거":{"en":"Walk·Bike","zh":"步行·骑行","ja":"徒歩·自転車","vi":"Đi bộ·Xe đạp","fr":"Marche·Vélo","es":"A pie·Bici"},"도보·조깅·자전거":{"en":"Walk·Jog·Bike","zh":"步行·慢跑·骑行","ja":"徒歩·ジョギング·自転車","vi":"Đi bộ·Chạy·Xe đạp","fr":"Marche·Jogging·Vélo","es":"A pie·Trote·Bici"},"자전거":{"en":"Bike","zh":"骑行","ja":"自転車","vi":"Xe đạp","fr":"Vélo","es":"Bici"},"자전거·조깅":{"en":"Bike·Jog","zh":"骑行·慢跑","ja":"自転車·ジョギング","vi":"Xe đạp·Chạy bộ","fr":"Vélo·Jogging","es":"Bici·Trote"},"조깅·자전거":{"en":"Jog·Bike","zh":"慢跑·骑行","ja":"ジョギング·自転車","vi":"Chạy bộ·Xe đạp","fr":"Jogging·Vélo","es":"Trote·Bici"},"해안길":{"en":"Coastal path","zh":"海岸步道","ja":"海岸の道","vi":"Đường ven biển","fr":"Sentier côtier","es":"Senda costera"},"트레킹":{"en":"Trekking","zh":"徒步","ja":"トレッキング","vi":"Trekking","fr":"Trekking","es":"Trekking"},"내 코스":{"en":"My course","zh":"我的路线","ja":"マイコース","vi":"Cung đường của tôi","fr":"Mon parcours","es":"Mi ruta"},"대한민국":{"en":"South Korea","zh":"韩国","ja":"韓国"},"서울특별시":{"en":"Seoul","zh":"首尔特别市","ja":"ソウル特別市"},"서울":{"en":"Seoul","zh":"首尔","ja":"ソウル"},"부산광역시":{"en":"Busan","zh":"釜山广域市","ja":"釜山広域市"},"부산":{"en":"Busan","zh":"釜山","ja":"釜山"},"대구광역시":{"en":"Daegu","zh":"大邱广域市","ja":"大邱広域市"},"대구":{"en":"Daegu","zh":"大邱","ja":"大邱"},"대전광역시":{"en":"Daejeon","zh":"大田广域市","ja":"大田広域市"},"대전":{"en":"Daejeon","zh":"大田","ja":"大田"},"세종특별자치시":{"en":"Sejong","zh":"世宗特别自治市","ja":"世宗特別自治市"},"세종":{"en":"Sejong","zh":"世宗","ja":"世宗"},"경기도":{"en":"Gyeonggi-do","zh":"京畿道","ja":"京畿道"},"가평·남양주":{"en":"Gapyeong·Namyangju"},"수원시":{"en":"Suwon-si","zh":"水原市","ja":"水原市"},"의왕시":{"en":"Uiwang-si"},"용인시":{"en":"Yongin-si","zh":"龙仁市","ja":"龍仁市"},"포천시":{"en":"Pocheon-si"},"양평군":{"en":"Yangpyeong-gun"},"고양시":{"en":"Goyang-si"},"강원특별자치도":{"en":"Gangwon-do","zh":"江原特别自治道","ja":"江原特別自治道"},"춘천시":{"en":"Chuncheon-si","zh":"春川市","ja":"春川市"},"평창군":{"en":"Pyeongchang-gun","zh":"平昌郡","ja":"平昌郡"},"충청북도":{"en":"Chungcheongbuk-do","zh":"忠清北道","ja":"忠清北道"},"청주시":{"en":"Cheongju-si","zh":"清州市","ja":"清州市"},"단양군":{"en":"Danyang-gun"},"충주시":{"en":"Chungju-si"},"충청남도":{"en":"Chungcheongnam-do","zh":"忠清南道","ja":"忠清南道"},"아산시":{"en":"Asan-si"},"공주시":{"en":"Gongju-si","zh":"公州市","ja":"公州市"},"부여군":{"en":"Buyeo-gun","zh":"扶余郡","ja":"扶余郡"},"천안시":{"en":"Cheonan-si"},"논산시":{"en":"Nonsan-si"},"전북특별자치도":{"en":"Jeonbuk-do","zh":"全北特别自治道","ja":"全北特別自治道"},"전주시":{"en":"Jeonju-si","zh":"全州市","ja":"全州市"},"남원시":{"en":"Namwon-si","zh":"南原市","ja":"南原市"},"임실·순창":{"en":"Imsil·Sunchang"},"정읍시":{"en":"Jeongeup-si"},"전남광주통합특별시":{"en":"Jeonnam·Gwangju"},"구례군":{"en":"Gurye-gun"},"담양군":{"en":"Damyang-gun","zh":"潭阳郡","ja":"潭陽郡"},"광주":{"en":"Gwangju","zh":"光州","ja":"光州"},"나주시":{"en":"Naju-si"},"경상북도":{"en":"Gyeongsangbuk-do","zh":"庆尚北道","ja":"慶尚北道"},"경주시":{"en":"Gyeongju-si","zh":"庆州市","ja":"慶州市"},"경주":{"en":"Gyeongju","zh":"庆州","ja":"慶州"},"안동시":{"en":"Andong-si","zh":"安东市","ja":"安東市"},"구미시":{"en":"Gumi-si"},"문경시":{"en":"Mungyeong-si"},"경상남도":{"en":"Gyeongsangnam-do","zh":"庆尚南道","ja":"慶尚南道"},"산청군":{"en":"Sancheong-gun"},"함양군":{"en":"Hamyang-gun","zh":"咸阳郡","ja":"咸陽郡"},"창녕군":{"en":"Changnyeong-gun"},"진주시":{"en":"Jinju-si","zh":"晋州市","ja":"晋州市"},"합천군":{"en":"Hapcheon-gun"},"제주특별자치도":{"en":"Jeju-do","zh":"济州特别自治道","ja":"済州特別自治道"},"제주":{"en":"Jeju","zh":"济州","ja":"済州"},"🧭 장거리 여정":{"en":"🧭 Long-distance journeys","zh":"🧭 长距离旅程","ja":"🧭 長距離の旅"},"국내":{"en":"Korea","zh":"韩国国内","ja":"韓国国内"},"🚶 걷기 · 둘레길":{"en":"🚶 Walking · Dulle trails","zh":"🚶 步行 · 环线步道","ja":"🚶 ウォーキング · トゥルレギル"},"🚲 자전거 종주":{"en":"🚲 Cross-country cycling","zh":"🚲 自行车纵走","ja":"🚲 自転車縦走"},"코리아둘레길 구간":{"en":"Korea Dulle Trail sections"},"해파랑길 구간":{"en":"Haeparang Trail sections"},"남파랑길 구간":{"en":"Namparang Trail sections"},"서해랑길 구간":{"en":"Seohaerang Trail sections"},"해외":{"en":"Overseas","zh":"海外","ja":"海外"},"순례길·트레일":{"en":"Pilgrim routes·Trails","zh":"朝圣路·步道","ja":"巡礼路·トレイル"},"⛰ 산림청 100대명산":{"en":"⛰ Korea Forest Service Top 100 Mountains","zh":"⛰ 韩国山林厅100大名山","ja":"⛰ 韓国山林庁100大名山"},"국내 자전거 종주":{"en":"Korea cross-country cycling","zh":"韩国自行车纵走","ja":"韓国自転車縦走"},"국내 걷기 · 둘레길":{"en":"Korea walking · Dulle trails","zh":"韩国步行 · 环线步道","ja":"韓国ウォーキング · トゥルレギル"},"해외 순례·트레일":{"en":"Overseas pilgrim routes·trails","zh":"海外朝圣路·步道","ja":"海外巡礼路·トレイル"},"미국":{"en":"United States","zh":"美国","ja":"アメリカ"},"뉴욕주":{"en":"New York State","zh":"纽约州","ja":"ニューヨーク州"},"뉴욕":{"en":"New York","zh":"纽约","ja":"ニューヨーク"},"일본":{"en":"Japan","zh":"日本","ja":"日本"},"도쿄도":{"en":"Tokyo","zh":"东京都","ja":"東京都"},"도쿄":{"en":"Tokyo","zh":"东京","ja":"東京"},"야마나시현":{"en":"Yamanashi","zh":"山梨县","ja":"山梨県"},"후지산":{"en":"Mount Fuji","zh":"富士山","ja":"富士山"},"홍콩":{"en":"Hong Kong","zh":"香港","ja":"香港"},"홍콩섬":{"en":"Hong Kong Island","zh":"香港岛","ja":"香港島"},"아랍에미리트":{"en":"United Arab Emirates","zh":"阿联酋","ja":"アラブ首長国連邦"},"두바이":{"en":"Dubai","zh":"迪拜","ja":"ドバイ"},"스위스":{"en":"Switzerland","zh":"瑞士","ja":"スイス"},"취리히":{"en":"Zurich","zh":"苏黎世","ja":"チューリッヒ"},"루체른":{"en":"Lucerne","zh":"卢塞恩","ja":"ルツェルン"},"제네바":{"en":"Geneva","zh":"日内瓦","ja":"ジュネーブ"},"보 (로잔)":{"en":"Vaud (Lausanne)","zh":"沃州（洛桑）","ja":"ヴォー州（ローザンヌ）"},"로잔":{"en":"Lausanne","zh":"洛桑","ja":"ローザンヌ"},"스페인":{"en":"Spain","zh":"西班牙","ja":"スペイン"},"마드리드":{"en":"Madrid","zh":"马德里","ja":"マドリード"},"카탈루냐":{"en":"Catalonia","zh":"加泰罗尼亚","ja":"カタルーニャ"},"바르셀로나":{"en":"Barcelona","zh":"巴塞罗那","ja":"バルセロナ"},"발레아레스":{"en":"Balearic Islands","zh":"巴利阿里群岛","ja":"バレアレス諸島"},"마요르카":{"en":"Mallorca","zh":"马略卡岛","ja":"マヨルカ島"},"덴마크":{"en":"Denmark","zh":"丹麦","ja":"デンマーク"},"코펜하겐":{"en":"Copenhagen","zh":"哥本哈根","ja":"コペンハーゲン"},"스웨덴":{"en":"Sweden","zh":"瑞典","ja":"スウェーデン"},"스톡홀름":{"en":"Stockholm","zh":"斯德哥尔摩","ja":"ストックホルム"},"노르웨이":{"en":"Norway","zh":"挪威","ja":"ノルウェー"},"오슬로":{"en":"Oslo","zh":"奥斯陆","ja":"オスロ"},"뫼레오그롬스달":{"en":"Møre og Romsdal","zh":"默勒－鲁姆斯达尔","ja":"ムーレ・オ・ロムスダール"},"대서양 도로":{"en":"Atlantic Ocean Road","zh":"大西洋之路","ja":"アトランティック・オーシャン・ロード"},"프랑스":{"en":"France","zh":"法国","ja":"フランス"},"일드프랑스":{"en":"Île-de-France","zh":"法兰西岛","ja":"イル＝ド＝フランス"},"파리":{"en":"Paris","zh":"巴黎","ja":"パリ"},"이탈리아":{"en":"Italy","zh":"意大利","ja":"イタリア"},"토스카나":{"en":"Tuscany","zh":"托斯卡纳","ja":"トスカーナ"},"피사":{"en":"Pisa","zh":"比萨","ja":"ピサ"},"상림 숲길 한 바퀴":{"en":"Sangnim Park forest loop"},"상림":{"en":"Sangnim"},"상림·위천 둑방길":{"en":"Sangnim·Wicheon embankment trail"},"상림·둑방":{"en":"Sangnim·Embankment"},"함화루":{"en":"Hamhwaru Pavilion"},"사운정":{"en":"Saunjeong Pavilion"},"역사인물공원":{"en":"Historical Figures Park"},"물레방앗간":{"en":"Water mill"},"물레방아":{"en":"Water mill"},"억새 정원":{"en":"Silver grass garden"},"파평윤씨 화수정":{"en":"Hwasujeong Pavilion (Papyeong Yun clan)"},"최치원 신도비":{"en":"Choi Chi-won Memorial Stele"},"이은리 석불":{"en":"Stone Buddha of Ieun-ri"},"연꽃단지":{"en":"Lotus field"},"천년교":{"en":"Cheonnyeongyo Bridge"},"위천 둑방":{"en":"Wicheon embankment"},"상림 입구":{"en":"Sangnim entrance"},"선비문화탐방로 1구간 (거연정→농월정)":{"en":"Seonbi Culture Trail section 1 (Geoyeonjeong→Nongwoljeong)"},"선비길 1구간":{"en":"Seonbi Trail sec. 1"},"선비문화탐방로 전 구간 (거연정→광풍루)":{"en":"Seonbi Culture Trail, full (Geoyeonjeong→Gwangpungnu)"},"선비길 전 구간":{"en":"Seonbi Trail, full"},"거연정":{"en":"Geoyeonjeong Pavilion"},"군자정":{"en":"Gunjajeong Pavilion"},"영귀정":{"en":"Yeonggwijeong Pavilion"},"동호정":{"en":"Donghojeong Pavilion"},"람천정":{"en":"Ramcheonjeong Pavilion"},"황암사":{"en":"Hwangamsa Shrine"},"농월정":{"en":"Nongwoljeong Pavilion"},"월림마을":{"en":"Wollim Village"},"구로정":{"en":"Gurojeong Pavilion"},"광풍루":{"en":"Gwangpungnu Pavilion"},"칠선계곡 (추성↔비선담 왕복)":{"en":"Chilseon Valley (Chuseong↔Biseondam round trip)"},"칠선계곡":{"en":"Chilseon Valley"},"추성마을":{"en":"Chuseong Village"},"두지동마을":{"en":"Dujidong Village"},"칠선교":{"en":"Chilseongyo Bridge"},"선녀탕":{"en":"Seonnyeotang Pool"},"옥녀탕":{"en":"Oknyeotang Pool"},"비선담":{"en":"Biseondam Pool"},"두지동마을 (귀로)":{"en":"Dujidong Village (return)"},"추성 주차장":{"en":"Chuseong parking lot"},"지리산둘레길 금계→동강":{"en":"Jirisan Dulle-gil Geumgye→Donggang"},"둘레길 금계-동강":{"en":"Dulle-gil Geumgye-Donggang"},"지리산둘레길 동강→수철":{"en":"Jirisan Dulle-gil Donggang→Sucheol"},"둘레길 동강-수철":{"en":"Dulle-gil Donggang-Sucheol"},"지리산둘레길 인월→금계":{"en":"Jirisan Dulle-gil Inwol→Geumgye"},"둘레길 인월-금계":{"en":"Dulle-gil Inwol-Geumgye"},"지리산둘레길 금계→동강 (벽송사 경유)":{"en":"Jirisan Dulle-gil Geumgye→Donggang (via Byeoksongsa)"},"둘레길 벽송사":{"en":"Dulle-gil Byeoksongsa"},"지리산둘레길 함양 전 구간 (인월→금계→동강→수철)":{"en":"Jirisan Dulle-gil, all Hamyang sections (Inwol→Geumgye→Donggang→Sucheol)"},"둘레길 함양 전 구간":{"en":"Dulle-gil, all Hamyang"},"금계마을":{"en":"Geumgye Village"},"의중마을":{"en":"Uijung Village"},"모전마을·용유담":{"en":"Mojeon Village·Yongyudam Pool"},"모전마을 (용유담)":{"en":"Mojeon Village (Yongyudam Pool)"},"세동마을":{"en":"Sedong Village"},"운서마을":{"en":"Unseo Village"},"구시락재":{"en":"Gusirakjae Pass"},"동강마을":{"en":"Donggang Village"},"자혜교":{"en":"Jahyegyo Bridge"},"상사폭포":{"en":"Sangsa Falls"},"쌍재":{"en":"Ssangjae Pass"},"고동재":{"en":"Godongjae Pass"},"수철마을":{"en":"Sucheol Village"},"구인월교":{"en":"Guinwolgyo Bridge"},"중군마을":{"en":"Junggun Village"},"수성대":{"en":"Suseongdae"},"배너미재":{"en":"Baeneomijae Pass"},"장항마을":{"en":"Janghang Village"},"서진암":{"en":"Seojinam Hermitage"},"상황마을":{"en":"Sanghwang Village"},"등구재":{"en":"Deunggujae Pass"},"창원마을":{"en":"Changwon Village"},"벽송사":{"en":"Byeoksongsa Temple"},"와룡대":{"en":"Waryongdae"},"지리산 가는 길 (상림→오도재→마천)":{"en":"Road to Jirisan (Sangnim→Odojae→Macheon)"},"오도재":{"en":"Odojae Pass"},"지안재":{"en":"Jianjae Pass"},"오도재 (해발 773m)":{"en":"Odojae Pass (773 m)"},"지리산 조망공원":{"en":"Jirisan Viewpoint Park"},"백전 오십리 벚꽃길 (함양읍→백운마을)":{"en":"Baekjeon 50-ri Cherry Blossom Road (Hamyang-eup→Baegun Village)"},"오십리 벚꽃길":{"en":"50-ri Cherry Blossom Road"},"백운마을":{"en":"Baegun Village"},"용추계곡 (심원정→용추폭포→휴양림)":{"en":"Yongchu Valley (Simwonjeong→Yongchu Falls→Forest)"},"용추계곡":{"en":"Yongchu Valley"},"심원정":{"en":"Simwonjeong Pavilion"},"용추폭포":{"en":"Yongchu Falls"},"용추사":{"en":"Yongchusa Temple"},"용추사 일주문 (보물)":{"en":"Yongchusa Iljumun Gate (Treasure)"},"용추자연휴양림":{"en":"Yongchu Natural Recreation Forest"},"함양 15산":{"en":"Hamyang 15 Mountains"},"감투산":{"en":"Gamtusan"},"삼봉산":{"en":"Sambongsan"},"대봉산(계관봉)":{"en":"Daebongsan (Gyegwanbong)"},"백운산":{"en":"Baegunsan"},"영취산":{"en":"Yeongchwisan"},"도숭산":{"en":"Dosungsan"},"월봉산":{"en":"Wolbongsan"},"와불산(상내봉)":{"en":"Wabulsan (Sangnaebong)"},"거망산":{"en":"Geomangsan"},"남덕유산":{"en":"Namdeogyusan"},"삼정산":{"en":"Samjeongsan"},"금원산":{"en":"Geumwonsan"},"기백산":{"en":"Gibaeksan"},"황석산":{"en":"Hwangseoksan"},"지리산 천왕봉":{"en":"Jirisan Cheonwangbong"},"해파랑길":{"en":"Haeparang Trail"},"남파랑길":{"en":"Namparang Trail"},"서해랑길":{"en":"Seohaerang Trail"}};
+/* 11/25 지도 위 경로 미리보기 · 끝 화면 '진짜로 걸어 보기' 글자 (다국어 표) */
+Object.assign(TEXT.ko, {"rt_min":"약 {m}분","rt_est":" (추정 길)","rt_estTag":"추정","rt_start":"출발","rt_startEnd":"출발·끝","rt_arrive":"도착","rt_hubs":"🚩 거점 {n}","rt_minor":"○ 지나는 곳 {n}","rt_loop":"🔁 출발 = 끝","rt_oneway":"➡ 한 방향","rt_wp":"🔴 이정표 {n}","rt_summit":"정상 {h}m","rt_from":"출발 {h}m","rt_creditVw":"지도 © 브이월드(국토교통부)","rt_creditOsm":"지도 © OpenStreetMap 기여자","vc_title":"오늘 걸은 길, 진짜로 걸어 보기 ›","vc_real":"📍 진짜 {c} · {r}","vc_laps":"완주 <b>{n}번</b>","vc_stamps":"현장 도장 <b>{a} / {b}</b>"});
+Object.assign(TEXT.en, {"rt_min":"approx. {m} min","rt_est":" (estimated route)","rt_estTag":"est.","rt_start":"Start","rt_startEnd":"Start·Finish","rt_arrive":"Finish","rt_hubs":"🚩 {n} checkpoints","rt_minor":"○ {n} sights","rt_loop":"🔁 Loop","rt_oneway":"➡ One way","rt_wp":"🔴 {n} signposts","rt_summit":"Summit {h}m","rt_from":"Start {h}m","rt_creditVw":"Map © VWorld (MOLIT)","rt_creditOsm":"Map © OpenStreetMap contributors","vc_title":"Walk today's route for real ›","vc_real":"📍 The real {c} · {r}","vc_laps":"Completed <b>{n}×</b>","vc_stamps":"On-site stamps <b>{a} / {b}</b>"});
+Object.assign(TEXT.zh, {"rt_min":"约{m}分钟","rt_est":"（估算路线）","rt_estTag":"估算","rt_start":"起点","rt_startEnd":"起点·终点","rt_arrive":"终点","rt_hubs":"🚩 打卡点 {n}","rt_minor":"○ 途经 {n}","rt_loop":"🔁 环线","rt_oneway":"➡ 单程","rt_wp":"🔴 路标 {n}","rt_summit":"山顶 {h}m","rt_from":"起点 {h}m","rt_creditVw":"地图 © VWorld（韩国国土交通部）","rt_creditOsm":"地图 © OpenStreetMap 贡献者","vc_title":"去实地走一走今天的路线 ›","vc_real":"📍 真实的{c} · {r}","vc_laps":"完成 <b>{n}次</b>","vc_stamps":"实地印章 <b>{a} / {b}</b>"});
+Object.assign(TEXT.ja, {"rt_min":"約{m}分","rt_est":"（推定ルート）","rt_estTag":"推定","rt_start":"スタート","rt_startEnd":"スタート·ゴール","rt_arrive":"ゴール","rt_hubs":"🚩 拠点 {n}","rt_minor":"○ 通過地点 {n}","rt_loop":"🔁 周回","rt_oneway":"➡ 片道","rt_wp":"🔴 道標 {n}","rt_summit":"山頂 {h}m","rt_from":"スタート {h}m","rt_creditVw":"地図 © VWorld（韓国国土交通部）","rt_creditOsm":"地図 © OpenStreetMap 寄稿者","vc_title":"今日歩いた道を本当に歩いてみよう ›","vc_real":"📍 本物の{c} · {r}","vc_laps":"完走 <b>{n}回</b>","vc_stamps":"現地スタンプ <b>{a} / {b}</b>"});
+Object.assign(TEXT.vi, {"rt_min":"khoảng {m} phút","rt_est":" (tuyến ước tính)","rt_estTag":"ước tính","rt_start":"Xuất phát","rt_startEnd":"Xuất phát·Đích","rt_arrive":"Đích","rt_hubs":"🚩 {n} điểm mốc","rt_minor":"○ {n} điểm đi qua","rt_loop":"🔁 Vòng tròn","rt_oneway":"➡ Một chiều","rt_wp":"🔴 {n} biển chỉ dẫn","rt_summit":"Đỉnh {h}m","rt_from":"Xuất phát {h}m","rt_creditVw":"Bản đồ © VWorld (Bộ Đất đai Hàn Quốc)","rt_creditOsm":"Bản đồ © cộng tác viên OpenStreetMap","vc_title":"Đi thật tuyến đường hôm nay ›","vc_real":"📍 {c} thật · {r}","vc_laps":"Hoàn thành <b>{n} lần</b>","vc_stamps":"Dấu tại chỗ <b>{a} / {b}</b>"});
+Object.assign(TEXT.fr, {"rt_min":"env. {m} min","rt_est":" (parcours estimé)","rt_estTag":"estimé","rt_start":"Départ","rt_startEnd":"Départ·Arrivée","rt_arrive":"Arrivée","rt_hubs":"🚩 {n} étapes","rt_minor":"○ {n} lieux","rt_loop":"🔁 Boucle","rt_oneway":"➡ Aller simple","rt_wp":"🔴 {n} panneaux","rt_summit":"Sommet {h}m","rt_from":"Départ {h}m","rt_creditVw":"Carte © VWorld (MOLIT)","rt_creditOsm":"Carte © contributeurs OpenStreetMap","vc_title":"Parcourir ce chemin pour de vrai ›","vc_real":"📍 Le vrai {c} · {r}","vc_laps":"Terminé <b>{n}×</b>","vc_stamps":"Tampons sur place <b>{a} / {b}</b>"});
+Object.assign(TEXT.es, {"rt_min":"aprox. {m} min","rt_est":" (ruta estimada)","rt_estTag":"estim.","rt_start":"Salida","rt_startEnd":"Salida·Llegada","rt_arrive":"Llegada","rt_hubs":"🚩 {n} puntos","rt_minor":"○ {n} lugares","rt_loop":"🔁 Circular","rt_oneway":"➡ Solo ida","rt_wp":"🔴 {n} señales","rt_summit":"Cumbre {h}m","rt_from":"Salida {h}m","rt_creditVw":"Mapa © VWorld (MOLIT)","rt_creditOsm":"Mapa © colaboradores de OpenStreetMap","vc_title":"Recorre esta ruta de verdad ›","vc_real":"📍 El auténtico {c} · {r}","vc_laps":"Completado <b>{n}×</b>","vc_stamps":"Sellos en el lugar <b>{a} / {b}</b>"});
 const T = Object.assign({}, TEXT.ko, ACTIVE.lang === 'ko' ? {} : TEXT[ACTIVE.lang]);   // 빠진 글자는 한국어
 const tr = v => { if (!v || typeof v !== 'object') return v ?? ''; const L = ACTIVE.lang; if (L === 'ko') return v.ko ?? '';
   const n = NAMES_I18N[v.ko]; return v[L] ?? (n && (n[L] ?? n.en)) ?? v.en ?? v.ko ?? ''; };
@@ -3854,68 +3868,100 @@ function roadRow(c, o){
     (o.sel ? promoLine(c) : '') + '</div>' + (o.sel && c.id === COURSE.id ? routeThumb() : '') +
     '<div class="r">' + (pct ? '<span class="cont">' + T.cont + ' ' + pct + '%</span>' : '') + (laps ? '<br>✅ ' + laps + T.times : '') + '</div></div>';
 }
-/* 11/25 보스 '코스를 고르면 전체 경로 미리 보기': 길 = 위에서 본 모양 + 거점 🚩 + km 표시 / 산 = 높이 그래프 + 이정표
-   · 실제 좌표가 없는 코스(임시 모양)는 그림을 안 보임 · 대충 찍은 점만 있고 실제 길을 아직 못 받은 코스는 '추정' 표시 */
+/* 11/25 보스 '코스를 고르면 전체 경로 미리 보기' → '그림 지도 위 코스로': 실제 지도 조각 위에 길 선 + 거점 🚩 + km 표시
+   · 지도 = 운동 화면과 같은 조각: 국내 브이월드 기본 지도(무료·공공누리, 키는 기존 것) / 해외·실패 시 오픈스트리트맵 (돈·새 키 없음)
+   · 실제 좌표가 없는 코스(임시 모양)는 그림을 안 보임 · 대충 찍은 점만 있고 실제 길을 아직 못 받은 코스는 '추정' 표시
+   · 데이터 절약(모바일 데이터)일 때 작은 카드는 지도 없이 선만 */
 const routeEst = () => !(GEO_NOW || COURSE.official || COURSE.pathReal);
-function routeSvg(W, H, pad, big){
-  const xs = P.map(q => q.x), ys = P.map(q => -q.y), mnx = Math.min(...xs), mxx = Math.max(...xs), mny = Math.min(...ys), mxy = Math.max(...ys);
-  const sc = Math.min((W - 2 * pad) / ((mxx - mnx) || 1), (H - 2 * pad) / ((mxy - mny) || 1)), ox = (W - (mxx - mnx) * sc) / 2, oy = (H - (mxy - mny) * sc) / 2;
-  const xy = q => [ox + (q.x - mnx) * sc, oy + (-q.y - mny) * sc], f = v => v.toFixed(1);
-  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + P.map(q => xy(q).map(f).join(' ')).join(' L') + '" stroke="#7fae3a" stroke-width="' + (big ? 6 : 3) + '" fill="none" stroke-linejoin="round" stroke-linecap="round"/>';
-  const s0 = xy(pointAt(0));
+const fmtT = (k, o) => Object.keys(o).reduce((s, x) => s.split('{' + x + '}').join(o[x]), T[k] || '');
+function mapFit(pts, W, H, pad){   // pts = [[위도, 경도]…] → 그 크기 상자에 꼭 맞는 지도 조각 + 좌표 바꾸기
+  const gx = (lo, z) => (lo + 180) / 360 * 256 * 2 ** z, gy = (la, z) => { const r = la * Math.PI / 180; return (1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * 256 * 2 ** z; };
+  const las = pts.map(p => p[0]), los = pts.map(p => p[1]), a = Math.min(...las), b = Math.max(...las), c = Math.min(...los), d = Math.max(...los);
+  let z = 17; while (z > 3 && (gx(d, z) - gx(c, z) > W - 2 * pad || gy(a, z) - gy(b, z) > H - 2 * pad)) z--;
+  const ox = (gx(c, z) + gx(d, z)) / 2 - W / 2, oy = (gy(a, z) + gy(b, z)) / 2 - H / 2, n = 2 ** z;
+  const kr = tileKR(z, Math.floor((ox + W / 2) / 256), Math.floor((oy + H / 2) / 256));
+  let tiles = '';
+  for (let tx = Math.floor(ox / 256); tx <= Math.floor((ox + W) / 256); tx++) for (let ty = Math.floor(oy / 256); ty <= Math.floor((oy + H) / 256); ty++){
+    if (ty < 0 || ty >= n) continue; const x = ((tx % n) + n) % n, osm = 'https://tile.openstreetmap.org/' + z + '/' + x + '/' + ty + '.png';
+    const src = tileKR(z, x, ty) ? 'https://api.vworld.kr/req/wmts/1.0.0/' + VW_KEY + '/Base/' + z + '/' + ty + '/' + x + '.png' : osm;
+    tiles += '<img src="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'' + osm + '\'" style="position:absolute;left:' + Math.round(tx * 256 - ox) + 'px;top:' + Math.round(ty * 256 - oy) + 'px;width:256px;height:256px">';
+  }
+  return { tiles: '<div class="mapbg">' + tiles + '</div>', xy: (la, lo) => [gx(lo, z) - ox, gy(la, z) - oy], kr };
+}
+const mapCreditT = kr => kr ? T.rt_creditVw : T.rt_creditOsm;
+function routeSvg(W, H, pad, big, noMap){
+  const ll = COURSE.path.filter(p => p && p.length > 1), M = mapFit(ll, W, H, pad), f = v => v.toFixed(1), xy = q => { const g = geoOf(q); return M.xy(g[0], g[1]); };
+  let g = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + ll.map(p => M.xy(p[0], p[1]).map(f).join(' ')).join(' L') + '" stroke="#fff" stroke-width="' + (big ? 9 : 5) + '" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity=".85"/>' +
+    '<path d="M' + ll.map(p => M.xy(p[0], p[1]).map(f).join(' ')).join(' L') + '" stroke="#5d9a1f" stroke-width="' + (big ? 5 : 3) + '" fill="none" stroke-linejoin="round" stroke-linecap="round"/>';
+  const s0 = xy(pointAt(0)), halo = ' paint-order="stroke" stroke="#fff" stroke-width="4"';
   if (big){
     const step = L <= 6000 ? 1000 : L <= 25000 ? 5000 : 10000;
-    for (let d = step; d < L - step * 0.3; d += step){ const q = xy(pointAt(d)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="3" fill="var(--tx)"/><text x="' + f(q[0] + 6) + '" y="' + f(q[1] - 5) + '" font-size="11" font-weight="800" fill="var(--mut)">' + d / 1000 + 'km</text>'; }
-    LMS.filter(l => !isHub(l)).forEach(l => { const q = xy(pointAt(l.at)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="4" fill="var(--ch2)" stroke="#7fae3a" stroke-width="2.5"/>'; });
-    HUBS.forEach(l => { const q = xy(pointAt(l.at)), nm = esc(tr(l.name)), right = q[0] < W * 0.6;
-      g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="7" fill="#e8574a" stroke="#fff" stroke-width="2.5"/><text x="' + f(q[0] + (right ? 11 : -11)) + '" y="' + f(q[1] + 4) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="12" font-weight="900" fill="var(--tx)" paint-order="stroke" stroke="var(--ch2)" stroke-width="4">' + nm + '</text>'; });
-    if (!COURSE.loop){ const e = xy(pointAt(L - 0.01)); g += '<text x="' + f(e[0]) + '" y="' + f(e[1] + 18) + '" text-anchor="middle" font-size="11" font-weight="900" fill="#e8574a">도착</text>'; }
-    g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="5" fill="var(--vt)" stroke="#1b1c1f" stroke-width="2"/><text x="' + f(s0[0]) + '" y="' + f(s0[1] + 20) + '" text-anchor="middle" font-size="11" font-weight="900" fill="var(--vtx)">' + (COURSE.loop ? '출발·끝' : '출발') + '</text>';
-  } else g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="3.5" fill="#e8574a"/>';
-  return g + '</svg>';
+    for (let d = step; d < L - step * 0.3; d += step){ const q = xy(pointAt(d)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="3" fill="#1b1c1f"/><text x="' + f(q[0] + 6) + '" y="' + f(q[1] - 5) + '" font-size="11" font-weight="800" fill="#1b1c1f"' + halo + '>' + d / 1000 + 'km</text>'; }
+    LMS.filter(l => !isHub(l)).forEach(l => { const q = xy(pointAt(l.at)); g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="4" fill="#fff" stroke="#5d9a1f" stroke-width="2.5"/>'; });
+    const lw = t => [...t].reduce((a, ch) => a + (ch.charCodeAt(0) > 0x2E80 ? 12 : 6.8), 0);   // 글자 폭 어림 (한중일 12px · 영문 7px)
+    HUBS.forEach(l => { const q = xy(pointAt(l.at)), t = tr(l.name), nm = esc(t), w = lw(t), right = q[0] + 11 + w <= W - 4 || q[0] - 11 - w < 4 && q[0] < W / 2;
+      g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="7" fill="#e8574a" stroke="#fff" stroke-width="2.5"/><text x="' + f(right ? Math.min(q[0] + 11, W - 4 - w) : Math.max(q[0] - 11, 4 + w)) + '" y="' + f(Math.min(H - 6, Math.max(14, q[1] + 4))) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="12" font-weight="900" fill="#1b1c1f"' + halo + '>' + nm + '</text>'; });
+    if (!COURSE.loop){ const e = xy(pointAt(L - 0.01)); g += '<text x="' + f(e[0]) + '" y="' + f(e[1] + 18) + '" text-anchor="middle" font-size="11" font-weight="900" fill="#e8574a"' + halo + '>' + T.rt_arrive + '</text>'; }
+    g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="5" fill="#d7f548" stroke="#1b1c1f" stroke-width="2"/><text x="' + f(s0[0]) + '" y="' + f(s0[1] + 20 > H - 18 ? s0[1] - 10 : s0[1] + 20) + '" text-anchor="middle" font-size="11" font-weight="900" fill="#1b1c1f"' + halo + '>' + (COURSE.loop ? T.rt_startEnd : T.rt_start) + '</text>';
+  } else g += '<circle cx="' + f(s0[0]) + '" cy="' + f(s0[1]) + '" r="3.5" fill="#e8574a" stroke="#fff" stroke-width="1.5"/>';
+  return { html: (noMap ? '' : M.tiles) + g + '</svg>', kr: M.kr };
 }
 function routeThumb(){
   if (!REAL_PATH || COURSE.long || P.length < 2) return '';
-  return '<div class="rthumb" onclick="event.stopPropagation();openRoute()">' + routeSvg(64, 64, 6) + (routeEst() ? '<em>' + T.j_est + '</em>' : '') + '<i>🔍</i></div>';
+  return '<div class="rthumb" onclick="event.stopPropagation();openRoute()">' + routeSvg(64, 64, 6, false, saverZ() > 0).html + (routeEst() ? '<em>' + T.rt_estTag + '</em>' : '') + '<i>🔍</i></div>';
 }
 function openRoute(){
   const min = Math.max(1, Math.round(L / 1000 / (S.speed > 0 ? S.speed : 6) * 60));
-  $('rtTitle').textContent = tr(COURSE.name) + (routeEst() ? T.j_estRoute : '');
-  $('rtSub').textContent = (L / 1000).toFixed(1) + 'km · ' + T.hubsN.replace('{n}', HUBS.length) + ' · ' + T.j_rtMin.replace('{m}', min);
-  $('rtMap').innerHTML = routeSvg(328, 300, 26, true);
+  $('rtTitle').textContent = tr(COURSE.name) + (routeEst() ? T.rt_est : '');
+  $('rtSub').textContent = (L / 1000).toFixed(1) + 'km · ' + T.hubsN.replace('{n}', HUBS.length) + ' · ' + fmtT('rt_min', { m: min });
   const minor = LMS.filter(l => !isHub(l)).length;
-  $('rtLeg').innerHTML = '<span>' + T.j_rtHubs.replace('{n}', HUBS.length) + '</span>' + (minor ? '<span>' + T.j_rtMinor.replace('{n}', minor) + '</span>' : '') + '<span>' + (COURSE.loop ? T.j_rtLoop : T.j_rtOneWay) + '</span>';
+  $('rtLeg').innerHTML = '<span>' + fmtT('rt_hubs', { n: HUBS.length }) + '</span>' + (minor ? '<span>' + fmtT('rt_minor', { n: minor }) + '</span>' : '') + '<span>' + (COURSE.loop ? T.rt_loop : T.rt_oneway) + '</span>';
   $('routeBox').classList.remove('hidden');
+  const W = $('rtMap').clientWidth || 328, r = routeSvg(W, 300, 30, true);
+  $('rtElev').innerHTML = ''; $('rtMap').style.height = '300px'; $('rtMap').innerHTML = r.html + '<span class="mcr">' + mapCreditT(r.kr) + '</span>';
 }
-/* 산: 등산로 자료(받아 둔 것)가 있으면 높이 그래프 · 계단 탑은 그래프가 직선이라 안 보임 */
+/* 산: 지도 위 등산로(받아 둔 등산로 자료) + 큰 창은 아래에 높이 그래프 · 계단 탑은 안 보임 */
 function mtnSvg(m, G, W, H, pad, big){
   const n = G.e.length, k = Math.max(1, Math.floor(n / (big ? 240 : 60))), lo = Math.min(...G.e), hi = Math.max(...G.e), f = v => v.toFixed(1);
   const X = i => pad + G.d[i] / G.D * (W - 2 * pad), Y = e => H - pad - (e - lo) / ((hi - lo) || 1) * (H - 2 * pad - (big ? 14 : 0));
   let pts = []; for (let i = 0; i < n; i += k) pts.push(f(X(i)) + ' ' + f(Y(G.e[i]))); pts.push(f(X(n - 1)) + ' ' + f(Y(G.e[n - 1])));
-  let g = '<svg viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + f(X(0)) + ' ' + (H - pad) + ' L' + pts.join(' L') + ' L' + f(X(n - 1)) + ' ' + (H - pad) + 'Z" fill="rgba(127,174,58,.28)"/><path d="M' + pts.join(' L') + '" stroke="#7fae3a" stroke-width="' + (big ? 3 : 2) + '" fill="none" stroke-linejoin="round"/>';
+  let g = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><path d="M' + f(X(0)) + ' ' + (H - pad) + ' L' + pts.join(' L') + ' L' + f(X(n - 1)) + ' ' + (H - pad) + 'Z" fill="rgba(127,174,58,.28)"/><path d="M' + pts.join(' L') + '" stroke="#7fae3a" stroke-width="' + (big ? 3 : 2) + '" fill="none" stroke-linejoin="round"/>';
   if (big){
     (m.waypoints || []).filter(w => w.gi != null).forEach(w => { const x = X(w.gi), y = Y(G.e[w.gi]);
       g += '<circle cx="' + f(x) + '" cy="' + f(y) + '" r="4" fill="#e8574a" stroke="#fff" stroke-width="1.5"/><text x="' + f(x) + '" y="' + f(y - 8) + '" text-anchor="middle" font-size="10" font-weight="800" fill="var(--tx)" paint-order="stroke" stroke="var(--ch2)" stroke-width="3">' + esc(tr(w.name)) + '</text>'; });
-    const im = G.e.indexOf(hi);
-    const nr = X(im) > W - 50; g += '<text x="' + f(nr ? W - pad : X(im)) + '" y="' + f(Y(hi) - 6) + '" text-anchor="' + (nr ? 'end' : 'middle') + '" font-size="12" font-weight="900" fill="var(--vtx)">⛰ ' + Math.round(hi).toLocaleString() + 'm</text>' +
-      '<text x="' + pad + '" y="' + (H - 6) + '" font-size="11" font-weight="800" fill="var(--mut)">출발 ' + Math.round(G.e[0]) + 'm</text>' +
+    const im = G.e.indexOf(hi), nr = X(im) > W - 50;
+    g += '<text x="' + f(nr ? W - pad : X(im)) + '" y="' + f(Y(hi) - 6) + '" text-anchor="' + (nr ? 'end' : 'middle') + '" font-size="12" font-weight="900" fill="var(--vtx)">⛰ ' + Math.round(hi).toLocaleString() + 'm</text>' +
+      '<text x="' + pad + '" y="' + (H - 6) + '" font-size="11" font-weight="800" fill="var(--mut)">' + fmtT('rt_from', { h: Math.round(G.e[0]) }) + '</text>' +
       '<text x="' + (W - pad) + '" y="' + (H - 6) + '" text-anchor="end" font-size="11" font-weight="800" fill="var(--mut)">' + (m.distKm || (G.D / 1000).toFixed(1)) + 'km</text>';
   }
   return g + '</svg>';
 }
+function mtnMap(m, G, W, H, pad, big, noMap){
+  const ll = G.p.filter((p, i) => i % Math.max(1, Math.floor(G.p.length / 400)) === 0 || i === G.p.length - 1), M = mapFit(ll, W, H, pad), f = v => v.toFixed(1);
+  const d = 'M' + ll.map(p => M.xy(p[0], p[1]).map(f).join(' ')).join(' L'), a = M.xy(ll[0][0], ll[0][1]), b = M.xy(ll[ll.length - 1][0], ll[ll.length - 1][1]), halo = ' paint-order="stroke" stroke="#fff" stroke-width="4"';
+  let g = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '"><path d="' + d + '" stroke="#fff" stroke-width="' + (big ? 9 : 5) + '" fill="none" stroke-linejoin="round" stroke-linecap="round" opacity=".85"/><path d="' + d + '" stroke="#5d9a1f" stroke-width="' + (big ? 5 : 3) + '" fill="none" stroke-linejoin="round" stroke-linecap="round"/>';
+  if (big){
+    (m.waypoints || []).filter(w => w.gi != null && G.p[w.gi]).forEach(w => { const q = M.xy(G.p[w.gi][0], G.p[w.gi][1]), tw = [...tr(w.name)].reduce((a, ch) => a + (ch.charCodeAt(0) > 0x2E80 ? 11 : 6.2), 0), right = q[0] + 9 + tw <= W - 4 || q[0] - 9 - tw < 4 && q[0] < W / 2;
+      g += '<circle cx="' + f(q[0]) + '" cy="' + f(q[1]) + '" r="5" fill="#e8574a" stroke="#fff" stroke-width="2"/><text x="' + f(right ? Math.min(q[0] + 9, W - 4 - tw) : Math.max(q[0] - 9, 4 + tw)) + '" y="' + f(q[1] + 4) + '" text-anchor="' + (right ? 'start' : 'end') + '" font-size="11" font-weight="800" fill="#1b1c1f"' + halo + '>' + esc(tr(w.name)) + '</text>'; });
+    g += '<circle cx="' + f(a[0]) + '" cy="' + f(a[1]) + '" r="5" fill="#d7f548" stroke="#1b1c1f" stroke-width="2"/><text x="' + f(a[0]) + '" y="' + f(a[1] + 18) + '" text-anchor="middle" font-size="11" font-weight="900" fill="#1b1c1f"' + halo + '>' + T.rt_start + '</text>' +
+      '<text x="' + f(b[0]) + '" y="' + f(b[1] - 10) + '" text-anchor="middle" font-size="12" font-weight="900" fill="#1b1c1f"' + halo + '>⛰ ' + m.summit.toLocaleString() + 'm</text>';
+  } else g += '<circle cx="' + f(b[0]) + '" cy="' + f(b[1]) + '" r="3.5" fill="#e8574a" stroke="#fff" stroke-width="1.5"/>';
+  return { html: (noMap ? '' : M.tiles) + g + '</svg>', kr: M.kr };
+}
 function mtnThumb(m){
   if (!m || m.kind !== 'mountain') return '';
-  const G = mtnGeo(m); if (!G || !G.e || G.e.length < 2) return '';
-  return '<div class="rthumb" onclick="event.stopPropagation();openMtnRoute(\'' + m.id + '\')">' + mtnSvg(m, G, 64, 64, 5) + '<i>🔍</i></div>';
+  const G = mtnGeo(m); if (!G || !G.e || G.e.length < 2 || !G.p) return '';
+  return '<div class="rthumb" onclick="event.stopPropagation();openMtnRoute(\'' + m.id + '\')">' + mtnMap(m, G, 64, 64, 6, false, saverZ() > 0).html + '<i>🔍</i></div>';
 }
 function openMtnRoute(id){
   const m = TGT(id), G = m && MTN_GEO[m.id]; if (!G) return;
   $('rtTitle').textContent = tr(m.name) + (m.trailName ? ' · ' + tr(m.trailName) : '');
-  $('rtSub').textContent = (m.distKm || (G.D / 1000).toFixed(1)) + 'km · ' + T.gain + ' ' + m.gain + 'm · 정상 ' + m.summit.toLocaleString() + 'm';
-  $('rtMap').innerHTML = mtnSvg(m, G, 328, 220, 18, true);
+  $('rtSub').textContent = (m.distKm || (G.D / 1000).toFixed(1)) + 'km · ' + T.gain + ' ' + m.gain + 'm · ' + fmtT('rt_summit', { h: m.summit.toLocaleString() });
   const wn = (m.waypoints || []).filter(w => w.gi != null).length;
-  $('rtLeg').innerHTML = '<span>⛰ 높이 그래프</span>' + (wn ? '<span>🔴 이정표 ' + wn + '</span>' : '') + (G.src ? '<span>' + esc(G.src) + '</span>' : '');
+  $('rtLeg').innerHTML = (wn ? '<span>' + fmtT('rt_wp', { n: wn }) + '</span>' : '') + (G.src ? '<span>' + esc(G.src) + '</span>' : '');
   $('routeBox').classList.remove('hidden');
+  const W = $('rtMap').clientWidth || 328, r = mtnMap(m, G, W, 240, 26, true);
+  $('rtMap').style.height = '240px'; $('rtMap').innerHTML = r.html + '<span class="mcr">' + mapCreditT(r.kr) + '</span>'; $('rtElev').innerHTML = mtnSvg(m, G, W, 110, 12, true);
 }
 $('rtClose').onclick = () => $('routeBox').classList.add('hidden');
 $('routeBox').onclick = e => { if (e.target.id === 'routeBox') $('routeBox').classList.add('hidden'); };
@@ -4540,9 +4586,9 @@ function visitCard(){
   const ph = (HUBS.find(h => typeof h.photo === 'string' && S.passed.includes(tr(h.name))) || HUBS.find(h => typeof h.photo === 'string') || {}).photo;
   const pt = COURSE.nearPt || (COURSE.path && COURSE.path[0]) || (COURSE.nearPts && COURSE.nearPts[0]);
   const pk = perkNow(CITY.id)[0];
-  el.innerHTML = (ph ? '<div class="vph">' + photoHtml(ph, 0) + '<span class="vov">📍 진짜 ' + esc(nm) + ' · ' + esc(rn) + '</span></div>' : '') +
-    '<div class="vbd"><div class="vt1">' + (ph ? '' : '📍 ') + '오늘 걸은 길, 진짜로 걸어 보기 ›</div>' +
-    '<div class="vr">' + (ph ? '' : esc(rn) + ' · ') + (laps ? '완주 <b>' + laps + '번</b> · ' : '') + '현장 도장 <b>' + got + ' / ' + HUBS.length + '</b></div>' +
+  el.innerHTML = (ph ? '<div class="vph">' + photoHtml(ph, 0) + '<span class="vov">' + fmtT('vc_real', { c: esc(nm), r: esc(rn) }) + '</span></div>' : '') +
+    '<div class="vbd"><div class="vt1">' + (ph ? '' : '📍 ') + T.vc_title + '</div>' +
+    '<div class="vr">' + (ph ? '' : esc(rn) + ' · ') + (laps ? fmtT('vc_laps', { n: laps }) + ' · ' : '') + fmtT('vc_stamps', { a: got, b: HUBS.length }) + '</div>' +
     (pk ? '<div class="vcp">🎟 ' + esc(pk.title) + (pk.to ? '<span>~' + pk.to.slice(5).replace('-', '.') + '</span>' : '') + '</div>' : '') + '</div>';
   if (pt) el.href = 'https://map.kakao.com/link/map/' + encodeURIComponent(nm) + ',' + pt[0] + ',' + pt[1]; else el.removeAttribute('href');
   el.onclick = () => { try { tel('visit_card', { course: telCourse() }); } catch(e){} };
