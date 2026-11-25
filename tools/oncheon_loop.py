@@ -32,18 +32,19 @@ hw = [e for e in j['elements'] if 'highway' in e.get('tags', {})]
 print('물길 조각', len(riv), '길', len(hw))
 # 물길 잇기 (끝점끼리)
 segs = [[[g['lat'], g['lon']] for g in w['geometry']] for w in riv if w.get('geometry')]
-best = []
-pool = segs[:]
+# 끝점이 정확히 안 맞는 조각(보·복개 구간)도 이어지게: 가장 가까운 끝점끼리 200m 안이면 이음
+pool = [w for w in segs if len(w) > 1]; best = []
+r = max(pool, key=lambda w: cum(w)[-1]); pool.remove(r)
 while pool:
-    r = pool.pop(0); grew = True
-    while grew:
-        grew = False
-        for i, w in enumerate(pool):
-            if hav(w[0], r[-1]) < 5: r += w[1:]; pool.pop(i); grew = True; break
-            if hav(w[-1], r[-1]) < 5: r += w[::-1][1:]; pool.pop(i); grew = True; break
-            if hav(w[-1], r[0]) < 5: r = w[:-1] + r; pool.pop(i); grew = True; break
-            if hav(w[0], r[0]) < 5: r = w[::-1][:-1] + r; pool.pop(i); grew = True; break
-    if cum(r)[-1] > cum(best)[-1] if best else True: best = r
+    cands = []
+    for i, w in enumerate(pool):
+        for flip in (False, True):
+            ww = w[::-1] if flip else w
+            cands.append((hav(ww[0], r[-1]), i, ww, 'tail')); cands.append((hav(ww[-1], r[0]), i, ww, 'head'))
+    d, i, ww, where = min(cands, key=lambda x: x[0])
+    if d > 200: break
+    pool.pop(i); r = r + ww[1:] if where == 'tail' else ww[:-1] + r
+best = r
 river = best
 SUYEONG = [35.1925, 129.1055]   # 수영강 쪽(하류)을 앞으로
 if hav(river[-1], SUYEONG) < hav(river[0], SUYEONG): river = river[::-1]
@@ -101,7 +102,7 @@ def segd(q, a, b):
     ax, ay = xy(a); bx, by = xy(b); px, py = xy(q); dd = (bx - ax) ** 2 + (by - ay) ** 2
     t = 0 if dd == 0 else max(0, min(1, ((px - ax) * (bx - ax) + (py - ay) * (by - ay)) / dd))
     return math.hypot(px - (ax + (bx - ax) * t), py - (ay + (by - ay) * t))
-def share(p, sg):
+def share_old(p, sg):
     grid = {}
     for a, b in sg:
         for q in (a, b): grid.setdefault((int(q[0] / 0.0004), int(q[1] / 0.0005)), []).append((a, b))
@@ -111,6 +112,22 @@ def share(p, sg):
         g = (int(q[0] / 0.0004), int(q[1] / 0.0005)); ok = any(segd(q, a, b) < 12 for dx in (-1, 0, 1) for dy in (-1, 0, 1) for a, b in grid.get((g[0] + dx, g[1] + dy), ()))
         n += ok; tot += 1; s += 20
     return round(100 * n / max(1, tot), 1)
+def kinds(p):   # 노선 20m마다 가장 가까운 길 종류 → (걷는 길 %, 찻길 %)
+    allseg = [(a, b, 'w') for a, b in walksegs] + [(a, b, 'c') for a, b in carsegs]
+    grid = {}
+    for a, b, k in allseg:
+        for q in (a, b): grid.setdefault((int(q[0] / 0.0004), int(q[1] / 0.0005)), []).append((a, b, k))
+    c = cum(p); n = {'w': 0, 'c': 0, 'x': 0}; s = 0.0; i = 0
+    while s < c[-1]:
+        while i < len(c) - 2 and c[i + 1] < s: i += 1
+        q = p[i]; g = (int(q[0] / 0.0004), int(q[1] / 0.0005)); best = (1e9, 'x')
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for a, b, k in grid.get((g[0] + dx, g[1] + dy), ()):
+                    d = segd(q, a, b)
+                    if d < best[0]: best = (d, k)
+        n[best[1] if best[0] < 15 else 'x'] += 1; s += 20
+    t = max(1, sum(n.values())); return round(100 * n['w'] / t, 1), round(100 * n['c'] / t, 1)
 def area(p): return sum(xy(p[i])[0] * xy(p[(i + 1) % len(p)])[1] - xy(p[(i + 1) % len(p)])[0] * xy(p[i])[1] for i in range(len(p))) / 2
 def bridge_near(s, walk_first=True):
     bs = sorted(bridges, key=lambda b: (abs(b['s'] - s) + (0 if b['hw'] in WALK.split('|') else 150)))
@@ -122,6 +139,7 @@ def loop(name, s1, s2, start_name):
     b1 = bridge_near(s1); b2 = bridge_near(s2)
     if not b1 or not b2: LOG[name] = '다리 못 찾음'; return
     s1, s2 = min(b1['s'], b2['s']), max(b1['s'], b2['s'])
+    if s2 - s1 < 400: LOG[name] = '다리 사이가 너무 짧음 %d~%d' % (s1, s2); return
     lb = [q for s, q in bank[1] if s1 + 80 < s < s2 - 80]; rb = [q for s, q in bank[-1] if s1 + 80 < s < s2 - 80][::-1]
     step = max(1, len(lb) // 20)
     vias = [b1['p']] + lb[::step] + [b2['p']] + rb[::step] + [b1['p']]
@@ -135,7 +153,7 @@ def loop(name, s1, s2, start_name):
         i = min(range(len(p)), key=lambda i: hav(p[i], q)); off = hav(p[i], q)
         if off < 250: marks.append([nm.strip(), round(c[i]), round(q[0], 6), round(q[1], 6), round(off)])
     out = {'p': p, 'km': round(c[-1] / 1000, 2), 'how': 'OSRM', 'src': '오픈스트리트맵 걷기 길 찾기(OSRM) · 온천천 양쪽 기슭 산책로 점(Overpass)', 'marks': sorted(marks, key=lambda m: m[1]),
-           'walk_pct': share(p, walksegs), 'car_pct': share(p, carsegs), 'bridges': [b1['name'], b2['name']], 'span': [round(s1), round(s2)]}
+           'walk_pct': kinds(p)[0], 'car_pct': kinds(p)[1], 'bridges': [b1['name'], b2['name']], 'span': [round(s1), round(s2)]}
     json.dump(out, open('data/route/oncheon-loop-%s.json' % name, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     LOG[name] = {k: v for k, v in out.items() if k != 'p'}; print(name, LOG[name])
 sy, gd, yn, bu = 0, LOG['stations']['교대역'][0], LOG['stations']['연산역'][0], LOG['stations']['부산대역'][0]
