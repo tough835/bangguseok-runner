@@ -2495,5 +2495,1680 @@
 ],
 "rel": [],
 "offpts": []
+},
+"yeongsan-bike": {
+"name": "영산강 자전거길 (승촌보→죽산보)",
+"kind": "자전거",
+"lab": false,
+"km": 20.05,
+"off": 6.1,
+"trail": 0.0,
+"steps_m": 0,
+"car": 31.9,
+"cycle": 31.8,
+"foot": 0.0,
+"names": [
+[
+"영산강자전거길",
+104
+],
+[
+"나주로",
+86
+],
+[
+"구진포로",
+82
+],
+[
+"승촌보길",
+80
+],
+[
+"나주시자전거길",
+76
+],
+[
+"청동길",
+56
+]
+],
+"rel": [
+"영산강 자전거길",
+"한국 트레킹 노선"
+],
+"offpts": [
+[
+35.06532,
+126.76636,
+-1
+],
+[
+35.0655,
+126.76619,
+-1
+],
+[
+35.06568,
+126.76603,
+-1
+],
+[
+35.06586,
+126.76587,
+-1
+],
+[
+35.06604,
+126.7657,
+-1
+],
+[
+35.06622,
+126.76554,
+-1
+],
+[
+35.0664,
+126.76538,
+-1
+],
+[
+35.04643,
+126.73384,
+-1
+],
+[
+35.04623,
+126.73372,
+-1
+],
+[
+35.04603,
+126.73359,
+-1
+],
+[
+35.04443,
+126.73261,
+-1
+],
+[
+35.04423,
+126.73248,
+-1
+]
+]
+},
+"suseongmot-gil": {
+"name": "수성못 한 바퀴",
+"kind": "도보·조깅",
+"lab": false,
+"km": 1.93,
+"off": 6.5,
+"trail": 0.0,
+"steps_m": 0,
+"car": 0.0,
+"cycle": 0.0,
+"foot": 93.5,
+"names": [
+[
+"(footway)",
+72
+]
+],
+"rel": [],
+"offpts": [
+[
+35.82856,
+128.61837,
+59
+],
+[
+35.82858,
+128.6181,
+47
+],
+[
+35.82859,
+128.61782,
+44
+],
+[
+35.82868,
+128.61588,
+94
+],
+[
+35.82869,
+128.61561,
+109
+]
+]
+},
+"sincheon-gil": {
+"name": "대구 신천 (상동교→침산교)",
+"kind": "조깅·자전거",
+"lab": false,
+"km": 9.6,
+"off": 0.8,
+"trail": 0.3,
+"steps_m": 25,
+"car": 43.5,
+"cycle": 0.0,
+"foot": 13.5,
+"names": [
+[
+"대봉로",
+50
+],
+[
+"신천동로",
+50
+],
+[
+"(footway)",
+32
+],
+[
+"(secondary_link)",
+32
+],
+[
+"명덕로68길",
+17
+],
+[
+"대현남로2길",
+16
+]
+],
+"rel": [],
+"offpts": [
+[
+35.88151,
+128.6042,
+-1
+],
+[
+35.88172,
+128.6041,
+-1
+],
+[
+35.88193,
+128.604,
+113
+]
+]
+},
+"dalseong-bike": {
+"name": "낙동강 자전거길 (강정고령보→달성보)",
+"kind": "자전거",
+"lab": false,
+"km": 19.9,
+"off": 7.2,
+"trail": 1.8,
+"steps_m": 0,
+"car": 63.9,
+"cycle": 13.8,
+"foot": 0.4,
+"names": [
+[
+"비슬로",
+349
+],
+[
+"낙동강자전거길",
+71
+],
+[
+"돌미로",
+53
+],
+[
+"(secondary)",
+39
+],
+[
+"(unclassified)",
+36
+],
+[
+"(residential)",
+35
+]
+],
+"rel": [
+"낙동강 자전거길"
+],
+"offpts": [
+[
+35.83614,
+128.45769,
+81
+],
+[
+35.83604,
+128.45794,
+103
+],
+[
+35.83593,
+128.45818,
+86
+],
+[
+35.83582,
+128.45843,
+67
+],
+[
+35.83572,
+128.45867,
+48
+],
+[
+35.83519,
+128.4599,
+31
+],
+[
+35.83428,
+128.4618,
+-1
+],
+[
+35.83415,
+128.46203,
+-1
+],
+[
+35.83402,
+128.46226,
+-1
+],
+[
+35.83243,
+128.46415,
+70
+],
+[
+35.83224,
+128.4643,
+55
+],
+[
+35.83205,
+128.46445,
+49
+]
+]
+},
+"bomun-gil": {
+"name": "보문호 한 바퀴 (보문호반길)",
+"kind": "도보·조깅",
+"lab": false,
+"km": 6.72,
+"off": 0.4,
+"trail": 0.0,
+"steps_m": 0,
+"car": 0.0,
+"cycle": 0.0,
+"foot": 88.5,
+"names": [
+[
+"(footway)",
+238
+],
+[
+"(service)",
+20
+],
+[
+"보문로",
+10
+]
+],
+"rel": [],
+"offpts": [
+[
+35.84404,
+129.28334,
+-1
+]
+]
+},
+"gyeongchun-bike-24k": {
+"name": "경춘선 자전거길 (마석 → 대성리 → 청평 → 가평)",
+"kind": "자전거·조깅",
+"lab": false,
+"km": 29.77,
+"off": 0.2,
+"trail": 0.0,
+"steps_m": 0,
+"car": 95.5,
+"cycle": 0.5,
+"foot": 0.6,
+"names": [
+[
+"경춘로",
+1047
+],
+[
+"청평역로",
+58
+],
+[
+"구청평로",
+29
+],
+[
+"강변로",
+19
+],
+[
+"(secondary)",
+16
+],
+[
+"(unclassified)",
+5
+]
+],
+"rel": [
+"경춘선 자전거길",
+"북한강 자전거길",
+"북한강 자전거도로9"
+],
+"offpts": [
+[
+37.73959,
+127.42621,
+33
+],
+[
+37.73998,
+127.42594,
+40
+]
+]
+},
+"gwangalli-3k": {
+"name": "광안리 해변 왕복",
+"kind": "도보·조깅",
+"lab": true,
+"km": 3.35,
+"off": 0.0,
+"trail": 1.5,
+"steps_m": 0,
+"car": 8.2,
+"cycle": 0.0,
+"foot": 91.8,
+"names": [
+[
+"(footway)",
+97
+],
+[
+"축제의 광장",
+21
+],
+[
+"광안해변로",
+11
+],
+[
+"갈맷길",
+3
+],
+[
+"(path)",
+2
+]
+],
+"rel": [],
+"offpts": []
+},
+"giheung-gil": {
+"name": "기흥호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"km": 10.57,
+"off": 0.0,
+"trail": 32.6,
+"steps_m": 100,
+"car": 0.0,
+"cycle": 27.2,
+"foot": 61.9,
+"names": [
+[
+"기흥호수공원 순환산책로",
+206
+],
+[
+"(footway)",
+108
+],
+[
+"기흥호수공원순환산책로",
+32
+],
+[
+"(cycleway)",
+28
+],
+[
+"(unclassified)",
+16
+],
+[
+"(service)",
+10
+]
+],
+"rel": [
+"경기 광역 자전거도로 남북축(①평택~서울)"
+],
+"offpts": []
+},
+"woryeong-gil": {
+"name": "안동 월영교·낙동강변 왕복",
+"kind": "도보·조깅",
+"lab": true,
+"km": 5.75,
+"off": 0.0,
+"trail": 0.0,
+"steps_m": 0,
+"car": 43.5,
+"cycle": 49.1,
+"foot": 18.7,
+"names": [
+[
+"석주로",
+94
+],
+[
+"(footway)",
+39
+],
+[
+"임청각길",
+36
+],
+[
+"(unclassified)",
+16
+],
+[
+"(track)",
+14
+],
+[
+"낙동강 자전거길",
+13
+]
+],
+"rel": [
+"낙동강 자전거길"
+],
+"offpts": []
+},
+"gwanghallu-gil": {
+"name": "남원 광한루원↔춘향테마파크 왕복",
+"kind": "도보",
+"lab": true,
+"km": 2.4,
+"off": 0.0,
+"trail": 0.0,
+"steps_m": 0,
+"car": 30.2,
+"cycle": 0.0,
+"foot": 15.6,
+"names": [
+[
+"요천로",
+36
+],
+[
+"양림길",
+27
+],
+[
+"(residential)",
+16
+],
+[
+"(footway)",
+15
+],
+[
+"관광단지사거리",
+2
+]
+],
+"rel": [],
+"offpts": []
+},
+"gongsanseong-gil": {
+"name": "공주 공산성→무령왕릉→한옥마을 다녀오기",
+"kind": "도보",
+"lab": true,
+"km": 5.58,
+"off": 0.0,
+"trail": 2.7,
+"steps_m": 25,
+"car": 6.3,
+"cycle": 55.2,
+"foot": 21.1,
+"names": [
+[
+"금강 자전거길",
+123
+],
+[
+"(pedestrian)",
+42
+],
+[
+"(service)",
+38
+],
+[
+"관광단지길",
+13
+],
+[
+"(path)",
+5
+],
+[
+"(primary)",
+1
+]
+],
+"rel": [
+"금강 자전거길"
+],
+"offpts": []
+},
+"dumulmeori-gil": {
+"name": "양평 양수역↔세미원↔두물머리 왕복",
+"kind": "도보",
+"lab": true,
+"km": 4.2,
+"off": 0.0,
+"trail": 0.0,
+"steps_m": 0,
+"car": 29.8,
+"cycle": 0.0,
+"foot": 54.8,
+"names": [
+[
+"(footway)",
+74
+],
+[
+"목왕로",
+46
+],
+[
+"세미원 배다리",
+14
+],
+[
+"용담2길",
+8
+],
+[
+"두물머리길",
+8
+],
+[
+"(service)",
+6
+]
+],
+"rel": [
+"남한강 자전거길"
+],
+"offpts": []
+},
+"gyeongjuhist-gil": {
+"name": "경주 대릉원→첨성대→월정교→동궁과 월지 돌아오기",
+"kind": "도보·조깅",
+"lab": true,
+"km": 6.28,
+"off": 0.0,
+"trail": 21.9,
+"steps_m": 0,
+"car": 19.5,
+"cycle": 18.7,
+"foot": 55.4,
+"names": [
+[
+"(footway)",
+81
+],
+[
+"(path)",
+55
+],
+[
+"경주 역사탐방 자전거길",
+47
+],
+[
+"일정로",
+28
+],
+[
+"첨성로",
+11
+],
+[
+"(service)",
+9
+]
+],
+"rel": [
+"경주 역사탐방 자전거길"
+],
+"offpts": []
+},
+"olle7-18k": {
+"name": "제주올레 7코스 (여행자센터→외돌개→월평)",
+"kind": "해안길",
+"lab": true,
+"km": 16.57,
+"off": 2.6,
+"trail": 8.7,
+"steps_m": 100,
+"car": 35.6,
+"cycle": 0.9,
+"foot": 29.9,
+"names": [
+[
+"이어도로",
+193
+],
+[
+"(footway)",
+65
+],
+[
+"Jeju Olle 7",
+65
+],
+[
+"(service)",
+46
+],
+[
+"(track)",
+45
+],
+[
+"(unclassified)",
+32
+]
+],
+"rel": [
+"Jeju Olle trail 7",
+"Olle trail 6(B)",
+"Ollegil 8",
+"올레길6 (Ollegil 6)",
+"제주환상자전거길"
+],
+"offpts": [
+[
+33.23967,
+126.53086,
+67
+],
+[
+33.23967,
+126.53059,
+90
+],
+[
+33.23564,
+126.49494,
+-1
+],
+[
+33.23561,
+126.49468,
+-1
+],
+[
+33.23558,
+126.49441,
+-1
+],
+[
+33.23405,
+126.48424,
+37
+],
+[
+33.23014,
+126.48862,
+85
+],
+[
+33.2302,
+126.48888,
+93
+],
+[
+33.23026,
+126.48914,
+-1
+],
+[
+33.23031,
+126.4894,
+-1
+],
+[
+33.23035,
+126.48955,
+-1
+],
+[
+33.23029,
+126.48929,
+-1
+]
+]
+},
+"olle1-15k": {
+"name": "제주올레 1코스 (시흥→말미오름→성산→광치기)",
+"kind": "도보",
+"lab": true,
+"km": 15.68,
+"off": 0.8,
+"trail": 2.2,
+"steps_m": 350,
+"car": 36.2,
+"cycle": 16.4,
+"foot": 23.3,
+"names": [
+[
+"해맞이해안로",
+147
+],
+[
+"(footway)",
+62
+],
+[
+"일주동로",
+58
+],
+[
+"올레길1",
+57
+],
+[
+"(residential)",
+41
+],
+[
+"(service)",
+37
+]
+],
+"rel": [
+"올레길1",
+"제주환상자전거길"
+],
+"offpts": [
+[
+33.47875,
+126.90606,
+-1
+],
+[
+33.4787,
+126.90632,
+-1
+],
+[
+33.47864,
+126.90658,
+-1
+],
+[
+33.47858,
+126.90684,
+-1
+],
+[
+33.47852,
+126.9071,
+-1
+]
+]
+},
+"olle6-11k": {
+"name": "제주올레 6코스 (쇠소깍→정방폭포→서귀포)",
+"kind": "해안길",
+"lab": true,
+"km": 8.07,
+"off": 0.3,
+"trail": 6.5,
+"steps_m": 200,
+"car": 33.7,
+"cycle": 5.0,
+"foot": 10.8,
+"names": [
+[
+"칠십리로",
+83
+],
+[
+"검은여로",
+40
+],
+[
+"문필로35번길",
+20
+],
+[
+"쇠소깍로",
+19
+],
+[
+"(footway)",
+19
+],
+[
+"(track)",
+18
+]
+],
+"rel": [
+"올레길5 (Ollegil 5)",
+"올레길6 (Ollegil 6)",
+"제주환상자전거길"
+],
+"offpts": [
+[
+33.24215,
+126.5914,
+36
+]
+]
+},
+"zurich-lake": {
+"name": "취리히 호숫가 (뷔르클리 광장 → 티펜브루넨)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 2.35,
+"off": 0.0,
+"trail": 1.1,
+"steps_m": 0,
+"car": 0.0,
+"cycle": 1.1,
+"foot": 89.4,
+"names": [
+[
+"(footway)",
+79
+],
+[
+"(service)",
+10
+],
+[
+"(path)",
+5
+]
+],
+"rel": [
+"Bellevue - Tiefenbrunnen",
+"Burgwis - Zürichhorn",
+"Zürichhorn - Bellvue",
+"Zürichsee Rundweg - Etappe 10"
+],
+"offpts": []
+},
+"luzern-lake": {
+"name": "루체른 호숫가 (카펠교 → 교통박물관)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 3.1,
+"off": 2.4,
+"trail": 0.0,
+"steps_m": 0,
+"car": 0.0,
+"cycle": 0.0,
+"foot": 88.7,
+"names": [
+[
+"(footway)",
+45
+],
+[
+"Nationalquai",
+19
+],
+[
+"Schweizerhofquai",
+12
+],
+[
+"Hans-Erni-Quai",
+11
+],
+[
+"Carl-Spitteler-Quai",
+6
+],
+[
+"Lidostrasse",
+6
+]
+],
+"rel": [
+"Alpenpanorama-Weg",
+"Lido - Seeburg",
+"Lido - Würzenbach",
+"Luzern - Lido",
+"Luzern - Talacheri",
+"Luzerner Hinterland-Rigi",
+"St. Anna - Luzern",
+"Waldstätterweg - Etappe 3"
+],
+"offpts": [
+[
+47.05448,
+8.31444,
+39
+],
+[
+47.05451,
+8.31477,
+39
+],
+[
+47.05454,
+8.31509,
+39
+]
+]
+},
+"geneva-lake": {
+"name": "제네바 호숫가 (파키 → 라 그랑주 공원)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 2.9,
+"off": 0.0,
+"trail": 8.6,
+"steps_m": 50,
+"car": 12.1,
+"cycle": 1.7,
+"foot": 83.6,
+"names": [
+[
+"(footway)",
+88
+],
+[
+"Pont du Mont-Blanc",
+9
+],
+[
+"(path)",
+8
+],
+[
+"Quai du Général-Guisan",
+4
+],
+[
+"(steps)",
+2
+],
+[
+"(primary_link)",
+2
+]
+],
+"rel": [
+"Chemin panorama alpin",
+"EuroVélo 17 - 11: Chens-sur-Léman – Geneva",
+"Tour du Léman - Étape 1",
+"Via Lugdunum, Geneva to Lyon",
+"ViaJacobi"
+],
+"offpts": []
+},
+"lavaux-bike": {
+"name": "라보 포도밭 호숫길 (로잔 우시 → 브베)",
+"kind": "자전거",
+"lab": true,
+"km": 20.25,
+"off": 0.0,
+"trail": 0.0,
+"steps_m": 0,
+"car": 90.2,
+"cycle": 0.0,
+"foot": 1.6,
+"names": [
+[
+"Route de Lavaux",
+169
+],
+[
+"Route de Lausanne",
+132
+],
+[
+"Route du Lac",
+119
+],
+[
+"Route de Vevey",
+58
+],
+[
+"Quai d'Ouchy",
+30
+],
+[
+"Avenue Général Guisan",
+29
+]
+],
+"rel": [
+"Chemin panorama alpin",
+"Dézaley - Lavaux Vinorama? - fixme",
+"Epesses - Epesses gare? - fixme",
+"Rivaz - Dézaley",
+"Rivaz - Rivaz gare ? - fixme",
+"Route Mittelland",
+"Route des lacs",
+"Route du Coeur"
+],
+"offpts": []
+},
+"retiro-loop": {
+"name": "마드리드 레티로 공원 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"km": 5.15,
+"off": 0.0,
+"trail": 1.0,
+"steps_m": 50,
+"car": 4.9,
+"cycle": 0.0,
+"foot": 84.5,
+"names": [
+[
+"(footway)",
+154
+],
+[
+"Paseo de México",
+10
+],
+[
+"Paseo de la Reina Cristina",
+6
+],
+[
+"Paseo de Colombia",
+5
+],
+[
+"Calle de Julián Gayarre",
+5
+],
+[
+"Calle de Méndez Núñez",
+5
+]
+],
+"rel": [
+"Ruta ciclista 05. Barrio de Salamanca",
+"Ruta ciclista 07. Plaza de Oriente",
+"Ruta ciclista 08. Plaza de Oriente (bis)",
+"Ruta ciclista 09. Madrid Histórico"
+],
+"offpts": []
+},
+"madrid-rio": {
+"name": "마드리드 리오 강변 (레이 다리 → 마타데로)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 4.95,
+"off": 0.0,
+"trail": 0.0,
+"steps_m": 0,
+"car": 3.0,
+"cycle": 2.5,
+"foot": 80.3,
+"names": [
+[
+"(footway)",
+120
+],
+[
+"Calle de Cobos de Segovia",
+18
+],
+[
+"Paseo Bajo de la Virgen del Puerto",
+14
+],
+[
+"Puente de Toledo",
+14
+],
+[
+"Puente de Segovia",
+6
+],
+[
+"Calle de Ruy González de Clavijo",
+6
+]
+],
+"rel": [
+"Camino Santiaguista de Uclés",
+"Ruta Verde 05 Madrid Río",
+"Ruta Verde 06 Arroyo Meaques",
+"Ruta Verde 3.1 Canal del Manzanares",
+"Ruta Verde 5.3 Príncipe Pío-Boadilla",
+"Ruta ciclista 03. Templo de Debod"
+],
+"offpts": []
+},
+"barcelona-beach": {
+"name": "바르셀로나 해변 (바르셀로네타 → 마르 베야)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 5.05,
+"off": 1.0,
+"trail": 1.5,
+"steps_m": 75,
+"car": 0.0,
+"cycle": 0.0,
+"foot": 89.1,
+"names": [
+[
+"(footway)",
+86
+],
+[
+"Passeig Marítim del Bogatell",
+25
+],
+[
+"Passeig del Mare Nostrum",
+21
+],
+[
+"(pedestrian)",
+19
+],
+[
+"Moll de Xaloc",
+16
+],
+[
+"Passeig Marítim de Nova Icària",
+14
+]
+],
+"rel": [
+"Bicivia 1",
+"Ronda Verda - Sector Front Marítim"
+],
+"offpts": [
+[
+41.37108,
+2.18897,
+-1
+],
+[
+41.3713,
+2.18901,
+-1
+]
+]
+},
+"formentor-bike": {
+"name": "마요르카 포르멘토르 곶 (폴렌사 항 → 등대)",
+"kind": "자전거",
+"lab": true,
+"km": 23.27,
+"off": 1.1,
+"trail": 7.0,
+"steps_m": 25,
+"car": 72.0,
+"cycle": 0.0,
+"foot": 7.2,
+"names": [
+[
+"(tertiary)",
+610
+],
+[
+"camí de la talaia d'Albercutx",
+120
+],
+[
+"carrer de Formentor",
+69
+],
+[
+"(path)",
+63
+],
+[
+"Carrer de Formentor",
+35
+],
+[
+"(unclassified)",
+15
+]
+],
+"rel": [
+"[CIMA IB07] Talaia d'Albercutx"
+],
+"offpts": [
+[
+39.9366,
+3.14218,
+34
+],
+[
+39.94055,
+3.14771,
+32
+],
+[
+39.94069,
+3.14795,
+30
+],
+[
+39.94429,
+3.15432,
+-1
+],
+[
+39.94442,
+3.15456,
+-1
+],
+[
+39.94455,
+3.15479,
+-1
+],
+[
+39.94562,
+3.15668,
+40
+],
+[
+39.94575,
+3.15692,
+52
+],
+[
+39.94588,
+3.15716,
+71
+],
+[
+39.94695,
+3.15905,
+127
+]
+]
+},
+"copenhagen-lakes": {
+"name": "코펜하겐 호수 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"km": 6.25,
+"off": 1.6,
+"trail": 0.4,
+"steps_m": 25,
+"car": 6.4,
+"cycle": 30.4,
+"foot": 36.4,
+"names": [
+[
+"(footway)",
+79
+],
+[
+"Peblinge Dossering",
+24
+],
+[
+"Sortedam Dossering",
+24
+],
+[
+"Øster Søgade",
+20
+],
+[
+"(service)",
+19
+],
+[
+"Svineryggen",
+17
+]
+],
+"rel": [
+"3'eren",
+"Albertslundruten",
+"Allerødruten",
+"Farumruten",
+"Frederikssundsruten",
+"Hanstholm - København",
+"Hareskovruten",
+"Lyngbyruten"
+],
+"offpts": [
+[
+55.67778,
+12.55765,
+-1
+],
+[
+55.68062,
+12.55716,
+47
+],
+[
+55.68085,
+12.55721,
+44
+],
+[
+55.67778,
+12.55773,
+-1
+]
+]
+},
+"djurgarden-loop": {
+"name": "스톡홀름 유르고르덴 섬 한 바퀴",
+"kind": "도보·조깅",
+"lab": true,
+"km": 9.88,
+"off": 0.0,
+"trail": 12.9,
+"steps_m": 0,
+"car": 7.6,
+"cycle": 10.4,
+"foot": 44.3,
+"names": [
+[
+"(footway)",
+120
+],
+[
+"Djurgårdsbrunnsvägen",
+51
+],
+[
+"(bridleway)",
+34
+],
+[
+"Sjötullsbacken",
+24
+],
+[
+"Djurgårdsvägen",
+22
+],
+[
+"Prins Eugens Väg",
+20
+]
+],
+"rel": [
+"Djurgårdsstråket",
+"Hälsans stig",
+"Kustlinjen",
+"Parkleden",
+"Regionalt cykelnät Stockholm (Värtanstråket)",
+"Södra Lidingöstråket"
+],
+"offpts": []
+},
+"akerselva": {
+"name": "오슬로 아케르 강 산책로 (마리달 호수 → 바테를란)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 9.4,
+"off": 0.0,
+"trail": 17.3,
+"steps_m": 75,
+"car": 0.0,
+"cycle": 2.1,
+"foot": 93.1,
+"names": [
+[
+"(footway)",
+292
+],
+[
+"(path)",
+58
+],
+[
+"Maridalsveien",
+11
+],
+[
+"(cycleway)",
+8
+],
+[
+"(track)",
+4
+],
+[
+"(steps)",
+3
+]
+],
+"rel": [
+"Blåstier i Nordmarka (syd)",
+"Byrute 4",
+"Byrute 8",
+"Gudbrandsdalsleden",
+"Jotunheimstien (Etappe 1B)",
+"Jotunheimstien (Oslo - Maridalsvannet)",
+"Maridalsveien",
+"Påls vei"
+],
+"offpts": []
+},
+"atlantic-road": {
+"name": "노르웨이 대서양 도로 (베방 → 코르보그)",
+"kind": "자전거",
+"lab": true,
+"km": 9.05,
+"off": 1.7,
+"trail": 0.0,
+"steps_m": 0,
+"car": 95.9,
+"cycle": 0.0,
+"foot": 0.0,
+"names": [
+[
+"Atlanterhavsvegen",
+271
+],
+[
+"Utheimsveien",
+41
+],
+[
+"Storseisundbrua",
+11
+],
+[
+"Hulvågbrua",
+8
+],
+[
+"Hamna",
+6
+],
+[
+"Klipabrua",
+5
+]
+],
+"rel": [
+"Nasjonal sykkelrute 1 (Bergen–Trondheim)",
+"Nasjonal sykkelrute 3"
+],
+"offpts": [
+[
+63.01333,
+7.41611,
+-1
+],
+[
+63.01324,
+7.41657,
+-1
+],
+[
+63.01272,
+7.41931,
+-1
+],
+[
+63.01263,
+7.41976,
+-1
+],
+[
+63.01255,
+7.42022,
+72
+],
+[
+63.01246,
+7.42068,
+50
+]
+]
+},
+"centralpark-10k": {
+"err": "overpass"
+},
+"kokyo-5k": {
+"name": "도쿄 황거 한 바퀴 (고쿄 런)",
+"kind": "도보·조깅",
+"lab": true,
+"km": 6.83,
+"off": 0.0,
+"trail": 1.1,
+"steps_m": 75,
+"car": 0.0,
+"cycle": 0.0,
+"foot": 97.1,
+"names": [
+[
+"(footway)",
+216
+],
+[
+"千鳥ヶ淵緑道",
+28
+],
+[
+"竹橋",
+16
+],
+[
+"(pedestrian)",
+5
+],
+[
+"(service)",
+5
+],
+[
+"桜田門",
+3
+]
+],
+"rel": [
+"ふるさと文化の散歩道",
+"千鳥ヶ淵さんぽみち",
+"歴史と文化の散歩道-1-お堀端コース",
+"歴史と文化の散歩道　芝高輪コース",
+"歴史と文化の散歩道　銀座佃島コース",
+"甲州道中"
+],
+"offpts": []
+},
+"dragonsback-9k": {
+"name": "홍콩 드래곤스 백 (토테이완→빅웨이브베이)",
+"kind": "트레킹",
+"lab": true,
+"km": 9.5,
+"off": 0.0,
+"trail": 46.8,
+"steps_m": 900,
+"car": 3.7,
+"cycle": 0.0,
+"foot": 72.6,
+"names": [
+[
+"(path)",
+106
+],
+[
+"歌連臣角道 Cape Collinson Road",
+63
+],
+[
+"(footway)",
+50
+],
+[
+"龍脊 Dragon's Back",
+44
+],
+[
+"歌連臣山引水道 Mount Collinson Catchwater",
+35
+],
+[
+"砵甸乍山南引水道 Mount Pottinger South Catchwater",
+28
+]
+],
+"rel": [
+"Shek O Mountain Bike Trail",
+"活力環島長廊 Round-the-Island Trail",
+"港島徑第8段 Hong Kong Trail Section 8",
+"砵甸乍山郊遊徑 Pottinger Peak Country Trail",
+"綠悠徑 Nature Walk",
+"龍躍徑 Leaping Dragon Walk"
+],
+"offpts": []
 }
 }
