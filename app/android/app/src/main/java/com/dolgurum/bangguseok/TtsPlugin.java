@@ -18,11 +18,16 @@ import java.util.Locale;
  * 음성 안내 (11/17). 웹 화면에서 window.Capacitor.Plugins.Tts.speak({ text }) 로 부름.
  * 폰 기본 음성(TextToSpeech)을 써서 화면이 꺼져 있어도 말함 (잠금 중 GPS 알림이 앱을 깨워 둠).
  * 말하는 동안 음악은 잠깐 작아지고(ducking), 끝나면 원래대로.
+ * 11/25 다국어: speak({ text, lang: 'en-US' }) 처럼 언어를 받아 그 언어 목소리로 말함 (없으면 한국어).
+ * available() 이 multi:true 를 돌려주면 웹 화면은 '새 앱'으로 알고 다른 언어 안내도 이 음성으로 보냄.
+ * 폰에 그 언어 목소리가 없으면 lang:false → 웹 화면은 말하지 않고 글자로만 보여 줌.
  */
 @CapacitorPlugin(name = "Tts")
 public class TtsPlugin extends Plugin {
     private TextToSpeech tts;
     private boolean ready = false;
+    private boolean inited = false;
+    private String curLang = "ko-KR";
     private int pending = 0;
     private AudioManager am;
     private AudioFocusRequest focusReq;
@@ -35,6 +40,7 @@ public class TtsPlugin extends Plugin {
             if (status != TextToSpeech.SUCCESS) return;
             int r = tts.setLanguage(Locale.KOREAN);
             ready = r != TextToSpeech.LANG_MISSING_DATA && r != TextToSpeech.LANG_NOT_SUPPORTED;
+            inited = true;
             AudioAttributes aa = new AudioAttributes.Builder()
                 .setUsage(AudioAttributes.USAGE_ASSISTANCE_NAVIGATION_GUIDANCE)
                 .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build();
@@ -69,11 +75,22 @@ public class TtsPlugin extends Plugin {
         else am.abandonAudioFocus(focusListener);
     }
 
+    /** 그 언어 목소리로 바꿈. 폰에 목소리가 없으면 false (그 전 언어 그대로) */
+    private synchronized boolean useLang(String tag) {
+        if (tag == null || tag.isEmpty()) tag = "ko-KR";
+        if (tag.equals(curLang)) return !"ko-KR".equals(tag) || ready;   // 한국어 목소리가 없는 폰은 예전처럼 말하지 않음
+        int r = tts.setLanguage(Locale.forLanguageTag(tag));
+        boolean ok = r != TextToSpeech.LANG_MISSING_DATA && r != TextToSpeech.LANG_NOT_SUPPORTED;
+        if (ok) curLang = tag; else tts.setLanguage(Locale.forLanguageTag(curLang));
+        return ok;
+    }
+
     @PluginMethod
     public void speak(PluginCall call) {
         String text = call.getString("text", "");
         JSObject r = new JSObject();
-        if (!ready || text == null || text.isEmpty()) { r.put("ok", false); call.resolve(r); return; }
+        if (!inited || text == null || text.isEmpty()) { r.put("ok", false); call.resolve(r); return; }
+        if (!useLang(call.getString("lang", "ko-KR"))) { r.put("ok", false); r.put("reason", "lang"); call.resolve(r); return; }
         Float rate = call.getFloat("rate", 1.0f);
         tts.setSpeechRate(rate == null ? 1.0f : rate);
         grab();
@@ -93,7 +110,13 @@ public class TtsPlugin extends Plugin {
 
     @PluginMethod
     public void available(PluginCall call) {
-        JSObject r = new JSObject(); r.put("ready", ready); call.resolve(r);
+        JSObject r = new JSObject(); r.put("ready", ready); r.put("multi", true);
+        String lang = call.getString("lang", null);
+        if (lang != null && inited) {   // 그 언어 목소리가 폰에 있는지 (아직 준비 전이면 모름 → 넣지 않음)
+            int a = tts.isLanguageAvailable(Locale.forLanguageTag(lang));
+            r.put("lang", a != TextToSpeech.LANG_MISSING_DATA && a != TextToSpeech.LANG_NOT_SUPPORTED);
+        }
+        call.resolve(r);
     }
 
     @Override
