@@ -1,0 +1,25 @@
+name: oncheon-loop
+# 온천천 양쪽 기슭 순환 노선 (data/route/oncheon-loop-*.json)
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths: [ 'tools/oncheon_loop.py' ]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: timeout 2100 python -u tools/oncheon_loop.py
+        continue-on-error: true
+      - if: always()
+        run: |
+          git config user.name "route-bot"; git config user.email "route-bot@users.noreply.github.com"
+          git add data/route data/oncheon_loop_log.json || true
+          git commit -m "온천천 순환 노선 시험 (앱 화면 변경 없음)" || echo "no change"
+          git pull --rebase origin main && git push origin HEAD:main
