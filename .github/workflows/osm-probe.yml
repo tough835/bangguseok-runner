@@ -9,12 +9,12 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
-      - run: timeout 2200 python -u tools/route_osm_probe.py
+      - run: timeout 17000 python -u tools/route_osm_probe.py
         continue-on-error: true
       - if: always()
         run: |

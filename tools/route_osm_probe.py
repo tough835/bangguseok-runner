@@ -28,17 +28,20 @@ def ovp(ql):
         host = OVP[k % len(OVP)]
         try:
             time.sleep(2 + 3 * k)
-            r = urllib.request.urlopen(urllib.request.Request(host, ('data=' + urllib.parse.quote(ql)).encode(), UA), timeout=180)
+            r = urllib.request.urlopen(urllib.request.Request(host, ('data=' + urllib.parse.quote(ql)).encode(), UA), timeout=100)
             return json.load(r)
         except Exception as e: print('  overpass 실패', host[8:30], str(e)[:80])
     return None
 TRAIL = {'path', 'track', 'bridleway', 'steps'}; CAR = {'motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'motorway_link', 'trunk_link', 'primary_link', 'secondary_link'}
-out = {}
-for c in json.load(open('data/osm_probe_list.json', encoding='utf-8')):
+try: out = json.load(open('data/route_osm_probe.json', encoding='utf-8'))   # 이어 하기: 이미 받은 코스는 건너뜀
+except Exception: out = {}
+todo = sorted(json.load(open('data/osm_probe_list.json', encoding='utf-8')), key=lambda c: c['lab'])   # 일반 목록 코스 먼저
+for c in todo:
+    if c['id'] in out and 'err' not in out[c['id']]: continue
     p = [q[:2] for q in json.load(open(c['file'], encoding='utf-8'))['p']]
     s = resample(p, 25); line = resample(p, 150)
     coords = ','.join('%.5f,%.5f' % (q[0], q[1]) for q in line[:400])
-    j = ovp('[out:json][timeout:170];way["highway"](around:60,%s)->.w;.w out geom;rel(bw.w)["route"~"bicycle|hiking|foot|mtb"];out tags;' % coords)
+    j = ovp('[out:json][timeout:90];way["highway"](around:60,%s)->.w;.w out geom;rel(bw.w)["route"~"bicycle|hiking|foot|mtb"];out tags;' % coords)
     if not j: out[c['id']] = {'err': 'overpass'}; continue
     ways = [e for e in j['elements'] if e['type'] == 'way']; rels = [e for e in j['elements'] if e['type'] == 'relation']
     segs = []
