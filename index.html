@@ -656,6 +656,20 @@
   /* 11/25 보스 '출발 바는 항상 제일 하단': 내용이 짧은 화면(일반·계단)에서도 출발 버튼을 화면 맨 아래 같은 자리에 (엄지 자리) */
   #bStart{position:fixed;left:18px;right:18px;width:auto;margin:0}
   #startScreen{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+  /* 11/25 보스 폰 "거리·속도·출발 버튼 조금 더 크게(아까 92×84보다는 작게) · 출발이 잘 안 보임": 운동 화면 버튼(72)과 느낌을 맞춤 */
+  #liveBox .seg button{height:56px;font-size:18px}
+  #startScreen .speedRow button{width:64px;height:64px;font-size:30px;border-radius:16px;touch-action:manipulation}
+  #startScreen .speedRow{gap:8px}
+  #startScreen .speedRow button{flex:none}
+  #startScreen .speedRow .val{font-size:32px;white-space:nowrap;min-width:0;overflow:hidden;letter-spacing:-1px}
+  #startScreen .speedRow .val small{font-size:13px}
+  #startScreen .speedRow .val::before{display:none}   /* 버튼이 커져 칸이 좁음: '속도' 글자는 빼고 숫자·단위만 */
+  #startScreen #bAuto.auto{max-width:84px;padding:0 8px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #startScreen #bAuto.auto{height:64px}
+  #bStart{height:68px;border-radius:18px}
+  #bStart .bsN{font-size:12.5px}
+  #bStart .bsG{font-size:27px;letter-spacing:-.5px}
+  #startScreen{padding-bottom:calc(106px + env(safe-area-inset-bottom))}
   /* 11/25: 끝 화면이 길어도 '✓ 완료'는 늘 보이게 */
   #bHome{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}
   /* 11/25 보스 '코스를 선택하면 전체 경로 미리 확인': 고른 코스 카드 오른쪽 작은 길 그림(산은 높이 그래프) · 누르면 크게 */
@@ -1317,7 +1331,7 @@
 </div>
 
 <script>
-const BUILD = '202611252010';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611252030';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4071,7 +4085,7 @@ function routeSvg(W, H, pad, big, noMap){
 }
 function routeThumb(){
   if (!REAL_PATH || COURSE.long || P.length < 2) return '';
-  return '<div class="rthumb" onclick="event.stopPropagation();openRoute()">' + routeSvg(64, 64, 6, false, saverZ() > 0).html + (routeEst() ? '<em>' + T.rt_estTag + '</em>' : '') + '<i>🔍</i></div>';
+  return '<div class="rthumb" onclick="event.stopPropagation();openRoute()">' + routeSvg(64, 64, 6, false).html + (routeEst() ? '<em>' + T.rt_estTag + '</em>' : '') + '<i>🔍</i></div>';
 }
 function openRoute(){
   const min = Math.max(1, Math.round(L / 1000 / (S.speed > 0 ? S.speed : 6) * 60));
@@ -4114,7 +4128,7 @@ function mtnMap(m, G, W, H, pad, big, noMap){
 function mtnThumb(m){
   if (!m || m.kind !== 'mountain') return '';
   const G = mtnGeo(m); if (!G || !G.e || G.e.length < 2 || !G.p) return '';
-  return '<div class="rthumb" onclick="event.stopPropagation();openMtnRoute(\'' + m.id + '\')">' + mtnMap(m, G, 64, 64, 6, false, saverZ() > 0).html + '<i>🔍</i></div>';
+  return '<div class="rthumb" onclick="event.stopPropagation();openMtnRoute(\'' + m.id + '\')">' + mtnMap(m, G, 64, 64, 6, false).html + '<i>🔍</i></div>';
 }
 function openMtnRoute(id){
   const m = TGT(id), G = m && MTN_GEO[m.id]; if (!G) return;
