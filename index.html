@@ -1387,7 +1387,7 @@
 </div>
 
 <script>
-const BUILD = '202611262330';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611270830';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6094,7 +6094,14 @@ function stepsOn(k){   // 그날 걸음 { n 합계, work 운동 걸음 } — 오
   if (k === dayKey()){ const si = stepInfo(); return { n: si.total, work: si.work }; }
   const t = (DB.steps || {})[k], est = DB.records.filter(r => calKey(new Date(r.date)) === k).reduce((a, r) => a + recSteps(r), 0);
   if (!t) return { n: est, work: est };
-  const work = Math.max(t.run || 0, est), raw = t.native != null ? Math.max(t.native, 0) : Math.max(0, (t.n || 0) - (t.run || 0)) + work;
+  /* 11/27 보스 폰 '월요일 삼성 헬스 4,259인데 1만 보 이상으로 나옴'
+     · 헬스 커넥트(삼성 헬스) 숫자(t.hc)가 있으면 그 숫자만 — 예전엔 폰 걸음 칩 기록이 'max(큰 값)'으로 덮어써,
+       밤사이 못 읽은 걸음이 몰린 큰 값이 삼성 숫자를 이길 수 있었음 (1분마다 번갈아 덮임)
+     · 앱(APK)에서 폰 걸음 숫자가 없는 날은 화면 흔들림으로 센 걸음(n)을 쓰지 않음 — 손동작까지 세서 부풀음 (오늘 숫자와 같은 규칙) */
+  const work = Math.max(t.run || 0, est);
+  if (t.hc != null) return { n: Math.max(0, t.hc), work: Math.min(work, Math.max(0, t.hc)) };
+  const app = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+  const raw = t.native != null ? Math.max(t.native, 0) : app ? work : Math.max(0, (t.n || 0) - (t.run || 0)) + work;
   const n = t.set != null ? t.set + Math.max(0, raw - (t.setBase != null ? t.setBase : raw)) : raw;
   return { n, work: Math.min(work, n) };
 }
@@ -6144,6 +6151,7 @@ function dayPop(k){
   $('dbBody').innerHTML = '<div class="st">' + mrDate(dt, true) + '</div><div class="mrN"><b>' + x.n.toLocaleString() + '</b><span>' + T.kcSteps + '</span></div>' + mr2Html(x) +
     (x.recs.length ? '<h3>' + T.mr_runs + '</h3>' + x.recs.map(r => { const t = new Date(r.date);
       return '<div class="mrRun"><b>' + (ACTS[r.act] || ACTS.tread).icon + ' ' + esc(recWhere(r)) + '</b>' + String(t.getHours()).padStart(2, '0') + ':' + String(t.getMinutes()).padStart(2, '0') + ' · ' + recAmt(r) + (r.sec >= 30 ? ' · ' + Math.round(r.sec / 60) + T.min : '') + (kcalOf(r) ? ' · ' + kcalTxt(kcalOf(r)) : '') + '</div>'; }).join('') : '');
+  if (LAB_ON()){ const t = (DB.steps || {})[k] || {}; $('dbBody').innerHTML += '<div class="muted" style="font-size:12px;margin-top:8px">🧪 삼성 ' + (t.hc != null ? t.hc : '-') + ' · 폰칩 ' + (t.native != null ? t.native : '-') + ' · 흔들림 ' + (t.n || 0) + ' · 운동중 ' + (t.run || 0) + ' · 맞춤 ' + (t.set != null ? t.set : '-') + ' · HC ' + (HC.ok ? 'ok' : 'x') + '</div>'; }   // 11/27 숫자 출처 확인용
   $('dbGo').classList.toggle('hidden', !x.recs.length);
   $('dbGo').onclick = () => { $('dayBox').classList.add('hidden'); REC.day = k; REC.mon = [y, m - 1]; REC.sv = 'month'; refreshRec(); setTimeout(() => $('recCap').scrollIntoView({ block: 'start', behavior: 'smooth' }), 60); };
   $('dayBox').classList.remove('hidden');
@@ -6614,7 +6622,7 @@ function stepInfo(){   // { total 하루 합계, work 운동 걸음, other 운�
   /* 11/16 정정: 앱(APK)은 폰 걸음 칩 숫자만 씀 (흔들림으로 센 걸음은 손동작까지 세서 더 많이 나옴 → 더하지 않음)
      웹은 폰 걸음 칩이 없으니 운동 기록 + 켜 둔 동안 센 걸음
      '삼성 헬스 걸음수로 맞추기' = 그 순간 숫자를 그 값으로 고정, 이후 새로 걸은 만큼만 더함 (더 작은 숫자로도 낮아짐) */
-  const raw = d.native != null ? Math.max(d.native, 0) : other + work;
+  const raw = d.hc != null && HC.ok ? Math.max(d.hc, 0) : d.native != null ? Math.max(d.native, 0) : other + work;   // 11/27 삼성 숫자 우선
   let total = raw;
   if (d.set != null && !(HC && HC.ok)) total = d.set + Math.max(0, raw - (d.setBase != null ? d.setBase : raw));
   const free = Math.max(0, total - work - d.used);
@@ -6700,8 +6708,8 @@ function nativeSteps(first){
     if (any){
       HC.ok = true; NSTEP.ok = true; NSTEP.perm = false;
       HC.t = Date.now(); Object.values(DB.steps || {}).forEach(t => { delete t.set; delete t.setBase; delete t.setT; });   // 손으로 맞춘 값 지움 → 화면 숫자 = 삼성 숫자
-      stepDay().native = h.steps;
-      Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; if (!(v > 0)) return; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
+      stepDay().native = h.steps; stepDay().hc = h.steps;   // 11/27: 삼성(헬스 커넥트) 숫자는 hc에 따로 → 폰 걸음 칩 기록이 덮어쓰지 못함
+      Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; if (!(v > 0)) return; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; t.hc = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
       saveDB(); refreshSteps();
       if (first && P) P.start().catch(() => {});   // 센서 예약은 예비로 유지
       return;
