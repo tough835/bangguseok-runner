@@ -1339,7 +1339,7 @@
 </div>
 
 <script>
-const BUILD = '202611262145';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611262200';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4507,7 +4507,7 @@ function showRun(on){
   $('startScreen').classList.add('hidden');
 }
 function clearPopups(){ $('popup').classList.add('hidden'); popupQueue = []; clearTimeout(popupTimer); popupTimer = null; }
-$('bStart').onclick = () => {
+$('bStart').onclick = () => { S.goT = Date.now();   // 11/26 보스 '출발하자마자 끝낼까요 창': 출발 바와 종료 버튼이 같은 자리 → 출발 누른 손가락이 바로 종료로 눌림
   if (rView === 'cards' && !isFree()){ rView = 'city'; refreshCourses(); startLabel(); $('rHead').scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }   // 11/25: 지역 고르기가 열린 채 출발 → 먼저 닫고 고른 코스를 보여 줌 (안 보이는 코스로 바로 출발하지 않게)
   if ($('bStart').classList.contains('need') && !isFree()){ toastMsg(T.j_pickFirst); $('startScreen').scrollTop = 0; return; }
   if (!rsPass && askResume()) return;   // 완주 안 한 코스 → 이어서 / 처음부터 먼저 고르기
@@ -4843,6 +4843,7 @@ $('bFix').onclick = () => {   // 기계에 찍힌 숫자로 맞추기
 let cfWasPaused = false;
 function openConfirm(){
   if (!S.running || !$('confirmBox').classList.contains('hidden')) return;
+  if (Date.now() - (S.goT || 0) < 1500) return;   // 11/26 출발 1.5초 안의 종료·뒤로 = 잘못 눌린 것으로 보고 무시
   cfWasPaused = S.paused; S.paused = true;
   $('cfSum').textContent = (isClimb() ? Math.round(S.sessionM) + ' m' : (S.sessionM / 1000).toFixed(2) + ' km') + ' · ' + fmtTime(S.elapsed);
   $('confirmBox').classList.remove('hidden');
