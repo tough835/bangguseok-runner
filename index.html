@@ -30,6 +30,8 @@
   /* 11/23 보스 "위 탭·목표·전체 지도는 그대로, 밑에 띠만 없애고 영상은 꽉 차게": 세로 화면 = 위 띠 아래 ~ 기록판 위 전부 영상 (영상 위에는 아무것도 안 겹침) */
   body.vidOn.vidP #hudTop,body.vidOn.vidP #map,body.vidOn.vidP #altChip{visibility:visible}
   body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
+  body.vidOn.vidP #view{visibility:hidden}   /* 11/26 보스 '영상 중 위쪽 글자가 엉킴': 버튼 뒤로 큰 지도 글자(200m 등)가 비침 → 영상 중엔 큰 지도를 숨겨 위 칸을 깨끗하게 */
+  body.vidOn.vidP{background:var(--ch)}
   body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
   body.vidOn.vidMine #bYt{display:none}   /* 11/26: 코스 영상 중에도 ▶ 유튜브는 보임 */
@@ -1337,7 +1339,7 @@
 </div>
 
 <script>
-const BUILD = '202611262039';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611262145';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2091,6 +2093,14 @@ Object.assign(TEXT.ja, {"w_mVid": "🎬 動画", "h_ytBtn": "▶ YouTube", "h_yt
 Object.assign(TEXT.vi, {"w_mVid": "🎬 Video", "h_ytBtn": "▶ YouTube", "h_ytAria": "Vừa xem YouTube vừa tập", "h_vidSwap": "▶ Đổi"});
 Object.assign(TEXT.fr, {"w_mVid": "🎬 Vidéo", "h_ytBtn": "▶ YouTube", "h_ytAria": "S'entraîner avec YouTube", "h_vidSwap": "▶ Changer"});
 Object.assign(TEXT.es, {"w_mVid": "🎬 Vídeo", "h_ytBtn": "▶ YouTube", "h_ytAria": "Entrenar con YouTube", "h_vidSwap": "▶ Cambiar"});
+/* 11/26 코스 표시 🎬(직접 찍은 영상)·📺(코스 영상) */
+Object.assign(TEXT.ko, {"mk_mine": "직접 찍은 영상", "mk_vid": "코스 영상"});
+Object.assign(TEXT.en, {"mk_mine": "Filmed by us", "mk_vid": "Course video"});
+Object.assign(TEXT.zh, {"mk_mine": "亲自拍摄", "mk_vid": "路线视频"});
+Object.assign(TEXT.ja, {"mk_mine": "自分で撮影", "mk_vid": "コース動画"});
+Object.assign(TEXT.vi, {"mk_mine": "Tự quay", "mk_vid": "Video cung đường"});
+Object.assign(TEXT.fr, {"mk_mine": "Filmé par nous", "mk_vid": "Vidéo du parcours"});
+Object.assign(TEXT.es, {"mk_mine": "Grabado por nosotros", "mk_vid": "Vídeo de la ruta"});
 Object.assign(TEXT.ko, {"w_summitCert": "🏔 정상 인증", "w_trailPct": "등산로 {p}%"});
 Object.assign(TEXT.en, {"w_summitCert": "🏔 Summit verified", "w_trailPct": "Trail {p}%"});
 Object.assign(TEXT.zh, {"w_summitCert": "🏔 登顶认证", "w_trailPct": "山路 {p}%"});
@@ -4053,8 +4063,9 @@ const ROUTE_LAB = new Set(["oncheon-loop-14k", "gwangalli-3k", "woryeong-gil", "
 Object.values(ALL_ROADS).forEach(c => { if (ROUTE_LAB.has(c.id)) c.lab = true; });
 const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
 Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
-const cMarks = c => (c.video ? '🎬' : '') + (c.kind === '내 코스' ? '⭐' : '') + (LAB_ON() && roadLab(c) ? '🧪' : '');
-const MARK_KEY = rows => { const k = [['🎬', '코스 영상'], ['⭐', '내 코스'], ['🧪', '시험 중']].filter(([e]) => rows.includes('class="mk">' + e) || new RegExp('class="mk">[^<]*' + e).test(rows)).map(x => x.join(' ')).join(' · '); return k ? '<div class="muted" style="font-size:13px;padding:10px 0 2px">' + k + '</div>' : ''; };
+/* 11/26 보스 '직접 찍은 곳과 아닌 곳 구분': 보스가 직접 찍은 영상(video.mine) = 🎬, 남의 영상으로 만든 코스 영상 = 📺 · 영상 자료 하나로 판단 → 앞으로 추가될 코스도 저절로 (실험실 전용 영상은 실험실에서만 보이고 표시도 같이) */
+const cMarks = c => (c.video ? (c.video.mine ? '🎬' : '📺') : '') + (c.kind === '내 코스' ? '⭐' : '') + (LAB_ON() && roadLab(c) ? '🧪' : '');
+const MARK_KEY = rows => { const k = [['🎬', T.mk_mine || '직접 찍은 영상'], ['📺', T.mk_vid || '코스 영상'], ['⭐', '내 코스'], ['🧪', '시험 중']].filter(([e]) => rows.includes('class="mk">' + e) || new RegExp('class="mk">[^<]*' + e).test(rows)).map(x => x.join(' ')).join(' · '); return k ? '<div class="muted" style="font-size:13px;padding:10px 0 2px">' + k + '</div>' : ''; };
 function roadRow(c, o){
   const t = posTotal(c), laps = Math.floor(t / c.lengthM), pct = Math.floor((t % c.lengthM) / c.lengthM * 100), hubs = c.landmarks.filter(l => l.hub).length || c.landmarks.length;
   const mk = cMarks(c);
@@ -6358,7 +6369,7 @@ function fillApply(){
   $('apSub').textContent = T.apSub.replace('{a}', amt);
   const city = WORLD.cities[DB.region.city] || CITY;
   const opts = up ? TARGETS.filter(t => inCity(t, DB.region.city)).map(t => [t.id, (t.kind === 'tower' ? '🏙 ' : '⛰ ') + tr(t.name)])
-                  : Object.values(city.courses).filter(c => c.mode === 'distance').map(c => [c.id, '🛣 ' + tr(c.name)]);
+                  : Object.values(city.courses).filter(c => c.mode === 'distance').map(c => [c.id, '🛣 ' + tr(c.name) + (cMarks(c).match(/🎬|📺/) ? ' ' + cMarks(c).match(/🎬|📺/)[0] : '')]);
   if (!opts.length) opts.push(up ? [DB.climb.sel, tr(TGT(DB.climb.sel).name)] : [COURSE.id, tr(COURSE.name)]);
   const def = up ? DB.climb.sel : COURSE.id;
   sel.innerHTML = opts.map(([id, nm]) => '<option value="' + id + '"' + (id === def ? ' selected' : '') + '>' + nm + '</option>').join('');
@@ -7609,7 +7620,9 @@ function vidTick(kmh){
     let k = 1;
     if (v.sync){ VID.dr = VID.dr || { t: 0, k: 1 };
       if (Date.now() - VID.dr.t > 1500){ VID.dr.t = Date.now(); const d = vidAt(v) - VID.P.getCurrentTime();
-        if (d > 12 || d < -90){ vSelf(); VID.P.seekTo(vidAt(v), true); VID.dr.k = 1; } else VID.dr.k = Math.max(0.5, Math.min(1.5, 1 + d / 10)); }   // 앞선 쪽은 안 찍힌 구간(최대 80초)을 지나며 생기니 되감지 않고 천천히
+        /* 11/26 보스 12km/h 달리기: 찍은 속도의 2배(유튜브 한계)를 넘으면 영상이 계속 뒤처짐 → 아무 때나 건너뛰면 엉켜 보이니, 조각이 바뀌는 자리(원래 끊기는 곳)에서만 앞으로 건너뜀 */
+        const fast = kmh / v.kmh > 2, cur = VID.P.getCurrentTime(), nb = (v.clips || []).some(c => c[0] > cur && c[0] - cur < 1.6);
+        if ((d > 12 && (!fast || nb || d > 120)) || d < -90){ vSelf(); VID.P.seekTo(vidAt(v), true); VID.dr.k = 1; } else VID.dr.k = Math.max(0.5, Math.min(1.5, 1 + d / 10)); }   // 앞선 쪽은 안 찍힌 구간(최대 80초)을 지나며 생기니 되감지 않고 천천히
       k = VID.dr.k; }
     const r = Math.max(0.25, Math.min(2, Math.round(kmh / v.kmh * k * 20) / 20));
     if (r !== VID.rate){ VID.P.setPlaybackRate(r); VID.rate = r; }
