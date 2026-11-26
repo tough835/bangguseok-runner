@@ -1332,7 +1332,7 @@
 </div>
 
 <script>
-const BUILD = '202611261800';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611261815';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -3048,7 +3048,9 @@ try { const o = 'haeundae-5k', n = 'haeundae-dongbaek';   // 11/24 보스: 옛 �
   const sc = localStorage.getItem('bgsj_course'); if (sc && sc.endsWith('/' + o)) localStorage.setItem('bgsj_course', sc.replace(o, n));
 } catch(e){}
 /* 11/25 보스 "상림 영상처럼 시험 중인 영상은 실험실에서만": video.lab 인 영상은 실험실 폰(LAB_ON)이 아니면 숨김 (자료는 videoHold로 보관) */
-if (!DB.meterShow) Object.values(ALL_ROADS).forEach(c => { if (c.video && c.video.lab){ c.videoHold = c.video; delete c.video; } });
+/* 11/26 보스 폰 '지도 탭에 영상이 안 나옴': 실험실을 켜고 끌 때도 바로 반영 (예전엔 앱을 다시 켜야 영상이 돌아옴) */
+function labVideos(){ Object.values(ALL_ROADS).forEach(c => { if (!DB.meterShow && c.video && c.video.lab){ c.videoHold = c.video; delete c.video; } else if (DB.meterShow && c.videoHold){ c.video = c.videoHold; delete c.videoHold; } }); }
+labVideos();
 if (!DB.pick || !DB.pick.type) DB.pick = { type: 'road', id: COURSE.id };
 if (DB.pick.type === 'road') DB.pick.id = COURSE.id;            // 길 코스는 화면을 불러올 때 정해짐
 else DB.climb.sel = TGT(DB.pick.id).id;
@@ -4641,7 +4643,7 @@ function meterBoxFill(){
 }
 (() => { let n = 0, t = 0; const h = document.querySelector('#recScreen h1'); if (!h) return;
   h.addEventListener('click', () => { const now = Date.now(); n = now - t < 1500 ? n + 1 : 1; t = now;
-    if (n >= 5){ n = 0; DB.meterShow = !DB.meterShow; saveDB(); meterBoxFill(); toastMsg(DB.meterShow ? '🧪 실험실 켬 — 해외·실험 코스와 측정이 이 폰에만 보여요 (통계에서 빠짐)' : '🧪 실험실 끔 — 일반 사용자 화면'); try { refreshStart(); } catch(e){} } }); })();
+    if (n >= 5){ n = 0; DB.meterShow = !DB.meterShow; saveDB(); labVideos(); meterBoxFill(); toastMsg(DB.meterShow ? '🧪 실험실 켬 — 해외·실험 코스와 측정이 이 폰에만 보여요 (통계에서 빠짐)' : '🧪 실험실 끔 — 일반 사용자 화면'); try { refreshStart(); } catch(e){} } }); })();
 /* 11/19 보스: 화면 색 고르기 (어두운 / 밝은) — 폰이 기억(bgsj_skin). 처음 그릴 때는 <head>의 한 줄이 먼저 맞춰 둠 */
 function isLight(){ return document.documentElement.dataset.skin === 'light'; }
 function skinBtn(){ document.querySelectorAll('#skinSeg button').forEach(b => b.classList.toggle('on', (b.dataset.skin === 'light') === isLight())); }
@@ -7768,15 +7770,15 @@ function v3dBtn(){   // 11/23 14:25 보스: 영상은 지도 버튼과 분리 �
   const c = mapCur(m); b.textContent = (isClimb() && c === 'flat' ? (climbGeoOn() ? T.w_mMap : T.w_mMtn) : MAPL[c]) + ' ↻';
   if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
 }
-function vidBtnPos(){   // 11/26 보스: '▶ 유튜브'는 지도 탭과 따로, 오른쪽 고도 칸 옆 (고도 칸이 없거나 영상 중이면 버튼 줄 안)
+function vidBtnPos(){   // 11/26 보스: '▶ 유튜브'는 지도 탭과 따로 · 고도 칸 옆은 가린다 → 고도 칸 바로 아래 오른쪽 (고도 칸이 없거나 영상 중이면 버튼 줄 안)
   const y = $('bYt'), a = $('altChip'), r = a && !a.classList.contains('hidden') && !document.body.classList.contains('vidOn') ? a.getBoundingClientRect() : null;
-  if (r && r.height && !y.classList.contains('hidden')){ y.classList.add('ytFix'); Object.assign(y.style, { top: Math.round(r.top + (r.height - 40) / 2) + 'px', right: Math.round(innerWidth - r.left + 6) + 'px' }); }
+  if (r && r.height && !y.classList.contains('hidden')){ y.classList.add('ytFix'); Object.assign(y.style, { top: Math.round(r.bottom + 6) + 'px', right: Math.round(innerWidth - r.right) + 'px' }); }
   else { y.classList.remove('ytFix'); y.style.top = y.style.right = ''; }
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say(T.j_voiceOnSay); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? T.j_voiceOff : T.j_voiceOn); };
 function vidEnter(){ if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }   // 11/26: '▶ 유튜브' = 일반 유튜브만 (코스 영상은 지도 탭 안)
-$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; const c = mapCur(m), n = m[(m.indexOf(c) + 1) % m.length] || m[0];
+$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; const c = mapCur(m), i = m.indexOf(c), n = i < 0 ? m[0] : m[(i + 1) % m.length];
   if (n === 'vid'){ vidOn(); return; }
   if (c === 'vid') vidOffNow();
   setMode(n); };
