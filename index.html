@@ -21,6 +21,7 @@
     border-radius:14px;background:rgba(250,248,240,.85);box-shadow:0 2px 8px rgba(0,0,0,.3)}
   #altChip{position:fixed;top:calc(10px + env(safe-area-inset-top));right:10px;padding:5px 10px;border-radius:12px;background:rgba(20,22,25,.72);color:#fff;font-size:15px;font-weight:800;line-height:1.2;text-align:right;pointer-events:none}
   #altChip small{display:block;font-size:11px;font-weight:700;color:var(--vtx)}
+  #hudTop #bYt.ytFix{position:fixed;z-index:6}   /* 11/26 고도 칸 옆 */
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
   /* 11/23 보스 "위 탭·목표·전체 지도는 그대로, 밑에 띠만 없애고 영상은 꽉 차게": 세로 화면 = 위 띠 아래 ~ 기록판 위 전부 영상 (영상 위에는 아무것도 안 겹침) */
@@ -28,7 +29,7 @@
   body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
   body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
-  body.vidOn #bYt{display:none}
+  body.vidOn.vidMine #bYt{display:none}   /* 11/26: 코스 영상 중에도 ▶ 유튜브는 보임 */
   #vidTop{display:none;padding:calc(6px + env(safe-area-inset-top)) 12px 6px;background:#111;color:#fff;font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #vidBox.mine #vidTop{display:block}
   #vidBar .vb{display:flex;gap:6px;flex:none}
@@ -667,7 +668,7 @@
   #startScreen #bAuto.auto{max-width:84px;padding:0 8px;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   #startScreen #bAuto.auto{height:64px}
   #bStart{height:68px;border-radius:18px}
-  #bStart .bsN{font-size:12.5px}
+  #bStart .bsN{font-size:16px;font-weight:800;opacity:.85}   /* 11/26 보스 '출발 왼쪽 글귀 너무 작다' */
   #bStart .bsG{font-size:27px;letter-spacing:-.5px}
   #startScreen{padding-bottom:calc(106px + env(safe-area-inset-bottom))}
   /* 11/25: 끝 화면이 길어도 '✓ 완료'는 늘 보이게 */
@@ -797,9 +798,9 @@
   <button class="pill satb hidden" id="bSat"></button>
   <button class="pill satb hidden" id="b3d"></button>
   <button class="pill satb hidden" id="bVoice" aria-label="음성 안내" data-ta="h_voice"></button>
-  <button class="pill satb hidden" id="bVid" data-t="h_vidSwap">🎬 바꾸기</button>
+  <button class="pill satb hidden" id="bVid" data-t="h_vidSwap">▶ 바꾸기</button>
   <button class="pill satb hidden" id="bVidOff" data-t="h_vidMap">🗺 지도</button>
-  <button class="pill satb hidden" id="bYt" aria-label="영상 보며 운동" data-ta="h_ytAria" data-t="h_ytBtn">🎬 영상</button>   <!-- 11/23 15:05 보스 "너저분": 지도 버튼과는 따로, 같은 버튼 줄에 -->   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
+  <button class="pill satb hidden" id="bYt" aria-label="유튜브 보며 운동" data-ta="h_ytAria" data-t="h_ytBtn">▶ 유튜브</button>   <!-- 11/23 15:05 보스 "너저분": 지도 버튼과는 따로, 같은 버튼 줄에 -->   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
 <div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" data-t="h_vidSwap" class="hidden">🎬 바꾸기</button><button id="vidOff" data-t="h_vidToMap">🗺 지도로</button></span></div></div>
 <div id="ytBox" class="modal hidden">
@@ -1331,7 +1332,7 @@
 </div>
 
 <script>
-const BUILD = '202611261740';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611261800';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1433,7 +1434,7 @@ const WORLD = {
       courses: {
         'sangnim-3k': {
           id: 'sangnim-3k', official: 'data/route/sangnim-gps2.json',
-          video: { yt: 'nlrRMnEQPLw', ok: true, lab: true, mine: true, ar: 9 / 16, vy: 0, kmh: 4.96, sync: true, fit: 'top', note: '보스 촬영 · 상림 숲길 한 바퀴 28분 46초' },   // 11/26 보스 11/21 촬영 22개 이어 붙임·얼굴/번호판 흐림 (예전 1분 41초 1ozmFi2Omgc 대신) · kmh 4.96 = 2.38km ÷ 28분 46초 → 영상 처음·끝이 코스 출발·완주와 맞음 name: { ko: '상림 숲길 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/21 보스 촬영 10:51 (걸은 속도 약 3.6km/h) · 11/21 검수 A1: 이름이 주석 뒤로 밀려 사라졌던 것
+          video: { yt: 'nlrRMnEQPLw', ok: true, lab: true, mine: true, ar: 9 / 16, kmh: 4.96, sync: true, vy: 0.2, cut: 0.14, note: '보스 촬영 · 상림 한 바퀴 28분 46초' }, name: { ko: '상림 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/26 보스 11/21 촬영 22개 이어 붙임·얼굴/번호판 흐림 · kmh 4.96 = 2.38km ÷ 28분 46초 → 영상 처음·끝 = 출발·완주 · 11/26 보스 "아래 그림자 음영 안 보이게 잘라 꽉 차게" → fit:'top' 대신 꽉 채우고 아래 14% 더 자름 (cut) · 이름이 주석 뒤로 밀려 사라졌던 것 다시 바로잡음
           mode: 'distance', lengthM: 2380, loop: true,
           elev: [[0,170],[2380,170]],   // 상림 숲길은 거의 평지
           note: '11/21 보스가 직접 걸은 GPS 길 (곁가지 정리 · 2.38km)', source: '보스 GPS 걷기 기록 2026-11-21 · 거점 위치는 사진 찍은 시각으로 맞춤',
@@ -2077,6 +2078,14 @@ Object.assign(TEXT.ja, {"v_finish": "完走しました。{d}、{t}。", "v_near
 Object.assign(TEXT.vi, {"v_finish": "Hoàn thành cung đường. {d}, {t}.", "v_near": "Gần {s}. Cách đường {o}.", "v_arrive": "Đã đến {s}.", "v_stop": "điểm dừng tiếp theo", "v_km": "{k}. {t}.", "v_avgKmh": " Tốc độ trung bình {v} một giờ.", "v_lap": " Kilômét vừa rồi {t}.", "v_toGoal": " Còn {d} đến mục tiêu.", "v_toFin": " Còn {d} đến đích.", "v_toNext": " Còn {d} đến điểm dừng {s}.", "v_up100": "Đã leo {m}. {t}.", "v_floor": " Tầng {f}.", "v_toTop": " Còn {m} đến nóc.", "v_toSummit": " Còn {m} đến đỉnh.", "v_upEndBike": "Hết dốc lên. Hãy giảm lực cản.", "v_upEnd": "Hết dốc lên. Hãy đưa độ dốc máy về 0.", "v_upAhead": "Phía trước dốc lên {d}, độ dốc trung bình {g} phần trăm.", "v_upNow": "Từ đây dốc lên {d}, độ dốc trung bình {g} phần trăm.", "v_upBike": " Hãy thử tăng lực cản.", "v_upTread": " Hãy thử tăng độ dốc máy lên {g}.", "v_slow": " Có thể giảm tốc độ một chút.", "v_dnAhead": "Phía trước dốc xuống {d}.", "v_dnNow": "Từ đây dốc xuống {d}.", "v_dnBike": " Hãy giảm lực cản.", "v_dnTread": " Giữ độ dốc ở 0 và tăng tốc một chút.", "v_freeGoal": "Đã đạt mục tiêu {g}.", "v_siteHub": "Đã đóng dấu tại chỗ ở {s}.", "v_pause": "Tạm dừng.", "v_resume": "Tiếp tục.", "v_mtnTrail": "{m}: đã đến {s}.", "v_summitOk": "Đã lên đỉnh {m}. Xác nhận tại chỗ xong.", "v_bang": "Rầm!", "u_h": "{n} giờ", "u_h1": "1 giờ", "u_m": "{n} phút", "u_m1": "1 phút", "u_s": "{n} giây", "u_s1": "1 giây", "u_km": "{n} ki-lô-mét", "u_km1": "1 ki-lô-mét", "u_mt": "{n} mét", "w_lapGo": "Bắt đầu vòng {n}", "w_startPt": "Điểm đầu", "w_offRoute": "Cách đường khoảng {o}", "w_nearTag": "gần đây", "w_tooShort": "Dưới 1 phút hoặc {d} nên không lưu", "w_base": "Điểm xuất phát", "w_summitM": "đỉnh {h}m", "w_trailKm": "đường núi {k}km", "w_resumeAt": "Tiếp từ {h}m", "w_todayGoal": "🎯 Hôm nay {g} phút · cả tuyến khoảng {a} phút", "w_aboutMin": "Khoảng {n} phút", "w_split": " · Dừng giữa chừng vẫn nối tiếp được", "w_upToEnd": "Leo khoảng {n}m là xong", "w_allMin": " · cả tuyến khoảng {a} phút", "w_toEndMin": "Cả tuyến khoảng {a} phút", "w_min": "{n} phút", "w_toEnd": "Hết tuyến", "w_trailPos": "Đường {a}/{b}km", "w_restMore": " · phần còn lại để lần sau", "w_goalDone": "Đạt mục tiêu!", "w_hNow": "Độ cao hiện tại", "w_gain": "leo {g}m", "w_nextHub": "🚩 Điểm tiếp theo {s} · khoảng {n} phút", "w_summitMin": "⏱ Với mức này, khoảng {n} phút tới đỉnh", "w_cooler": "🌡 Mát hơn chân núi khoảng {t}℃", "w_restFoot": "Dừng bây giờ, lần sau tiếp từ {h}m", "w_more": "Xem thêm ›", "w_top": "🏙 Lên đỉnh!", "w_summit": "⛰ Đỉnh núi!", "w_finish": "🏁 Về đích!", "w_freeGoal": "🎯 Đạt mục tiêu!", "w_mToon": "🎨 3D vẽ", "w_mSat": "🛰 Vệ tinh", "w_mMap": "🗺 Bản đồ", "w_mFlat": "▦ Phẳng", "w_mMtn": "⛰ Hình núi", "w_calDays": "Số ngày tập: {n}", "w_streak": " · 🔥 {n} ngày liên tiếp", "w_total": "Tổng {p}", "w_dayOnly": "Chỉ xem {p}", "w_showAll": "Xem tất cả ✕"});
 Object.assign(TEXT.fr, {"v_finish": "Parcours terminé. {d}, {t}.", "v_near": "Près de {s}, à {o} du parcours.", "v_arrive": "Arrivée à {s}.", "v_stop": "la prochaine étape", "v_km": "{k}. {t}.", "v_avgKmh": " Vitesse moyenne {v} à l'heure.", "v_lap": " Dernier kilomètre en {t}.", "v_toGoal": " Plus que {d} avant l'objectif.", "v_toFin": " Plus que {d} avant l'arrivée.", "v_toNext": " Plus que {d} avant {s}.", "v_up100": "Vous avez gravi {m}. {t}.", "v_floor": " Étage {f}.", "v_toTop": " Plus que {m} jusqu'en haut.", "v_toSummit": " Plus que {m} jusqu'au sommet.", "v_upEndBike": "Fin de la montée. Baissez la résistance.", "v_upEnd": "Fin de la montée. Remettez l'inclinaison à 0.", "v_upAhead": "Montée de {d} devant, pente moyenne {g} pour cent.", "v_upNow": "Montée de {d} à partir d'ici, pente moyenne {g} pour cent.", "v_upBike": " Essayez d'augmenter la résistance.", "v_upTread": " Essayez de régler l'inclinaison sur {g}.", "v_slow": " Vous pouvez ralentir un peu.", "v_dnAhead": "Descente de {d} devant.", "v_dnNow": "Descente de {d} à partir d'ici.", "v_dnBike": " Baissez la résistance.", "v_dnTread": " Gardez l'inclinaison à 0 et accélérez un peu.", "v_freeGoal": "Objectif de {g} atteint.", "v_siteHub": "Tampon sur place obtenu à {s}.", "v_pause": "Pause.", "v_resume": "Reprise.", "v_mtnTrail": "{m} : vous êtes à {s}.", "v_summitOk": "Sommet du {m} atteint. Validation sur place faite.", "v_bang": "Bam !", "u_h": "{n} heures", "u_h1": "1 heure", "u_m": "{n} minutes", "u_m1": "1 minute", "u_s": "{n} secondes", "u_s1": "1 seconde", "u_km": "{n} kilomètres", "u_km1": "1 kilomètre", "u_mt": "{n} mètres", "w_lapGo": "Tour {n} lancé", "w_startPt": "Départ", "w_offRoute": "À env. {o} du parcours", "w_nearTag": "à proximité", "w_tooShort": "Moins de 1 min ou {d} : non enregistré", "w_base": "Départ", "w_summitM": "sommet {h}m", "w_trailKm": "sentier {k}km", "w_resumeAt": "Reprise à {h}m", "w_todayGoal": "🎯 Aujourd'hui {g} min · env. {a} min en tout", "w_aboutMin": "Env. {n} min", "w_split": " · Reprise possible plus tard", "w_upToEnd": "Fini après env. {n}m de montée", "w_allMin": " · env. {a} min en tout", "w_toEndMin": "Env. {a} min en tout", "w_min": "{n} min", "w_toEnd": "Jusqu'au bout", "w_trailPos": "Sentier {a}/{b}km", "w_restMore": " · la suite la prochaine fois", "w_goalDone": "Objectif atteint !", "w_hNow": "Altitude", "w_gain": "montée {g}m", "w_nextHub": "🚩 Prochaine étape {s} · env. {n} min", "w_summitMin": "⏱ Env. {n} min jusqu'au sommet à ce niveau", "w_cooler": "🌡 Env. {t}℃ plus frais qu'en bas", "w_restFoot": "Si vous arrêtez, reprise à {h}m la prochaine fois", "w_more": "En savoir plus ›", "w_top": "🏙 Au sommet !", "w_summit": "⛰ Sommet !", "w_finish": "🏁 Terminé !", "w_freeGoal": "🎯 Objectif atteint !", "w_mToon": "🎨 3D dessin", "w_mSat": "🛰 Satellite", "w_mMap": "🗺 Carte", "w_mFlat": "▦ Plat", "w_mMtn": "⛰ Dessin", "w_calDays": "Jours d'entraînement : {n}", "w_streak": " · 🔥 {n} jours d'affilée", "w_total": "Total {p}", "w_dayOnly": "Seulement le {p}", "w_showAll": "Tout voir ✕"});
 Object.assign(TEXT.es, {"v_finish": "Ruta completada. {d}, {t}.", "v_near": "Cerca de {s}, a {o} de la ruta.", "v_arrive": "Llegada a {s}.", "v_stop": "la próxima parada", "v_km": "{k}. {t}.", "v_avgKmh": " Velocidad media {v} por hora.", "v_lap": " Último kilómetro en {t}.", "v_toGoal": " Faltan {d} para la meta.", "v_toFin": " Faltan {d} para la llegada.", "v_toNext": " Faltan {d} para {s}.", "v_up100": "Has subido {m}. {t}.", "v_floor": " Piso {f}.", "v_toTop": " Faltan {m} para arriba.", "v_toSummit": " Faltan {m} para la cima.", "v_upEndBike": "Fin de la subida. Baja la resistencia.", "v_upEnd": "Fin de la subida. Pon la inclinación en 0.", "v_upAhead": "Subida de {d} por delante, pendiente media del {g} por ciento.", "v_upNow": "Subida de {d} desde aquí, pendiente media del {g} por ciento.", "v_upBike": " Prueba a subir la resistencia.", "v_upTread": " Prueba a poner la inclinación en {g}.", "v_slow": " Puedes bajar un poco el ritmo.", "v_dnAhead": "Bajada de {d} por delante.", "v_dnNow": "Bajada de {d} desde aquí.", "v_dnBike": " Baja la resistencia.", "v_dnTread": " Deja la inclinación en 0 y acelera un poco.", "v_freeGoal": "Meta de {g} lograda.", "v_siteHub": "Sello en el lugar conseguido en {s}.", "v_pause": "En pausa.", "v_resume": "Seguimos.", "v_mtnTrail": "{m}: has llegado a {s}.", "v_summitOk": "Cima de {m} alcanzada. Verificación hecha.", "v_bang": "¡Pum!", "u_h": "{n} horas", "u_h1": "1 hora", "u_m": "{n} minutos", "u_m1": "1 minuto", "u_s": "{n} segundos", "u_s1": "1 segundo", "u_km": "{n} kilómetros", "u_km1": "1 kilómetro", "u_mt": "{n} metros", "w_lapGo": "Vuelta {n}", "w_startPt": "Inicio", "w_offRoute": "A unos {o} de la ruta", "w_nearTag": "cerca", "w_tooShort": "Menos de 1 min o {d}: no se guardó", "w_base": "Salida", "w_summitM": "cima {h}m", "w_trailKm": "sendero {k}km", "w_resumeAt": "Sigue desde {h}m", "w_todayGoal": "🎯 Hoy {g} min · unos {a} min en total", "w_aboutMin": "Unos {n} min", "w_split": " · Puedes seguir otro día", "w_upToEnd": "Terminas tras unos {n}m de subida", "w_allMin": " · unos {a} min en total", "w_toEndMin": "Unos {a} min en total", "w_min": "{n} min", "w_toEnd": "Hasta el final", "w_trailPos": "Sendero {a}/{b}km", "w_restMore": " · el resto otro día", "w_goalDone": "¡Meta lograda!", "w_hNow": "Altura actual", "w_gain": "subida {g}m", "w_nextHub": "🚩 Próxima parada {s} · unos {n} min", "w_summitMin": "⏱ Unos {n} min a la cima a este nivel", "w_cooler": "🌡 Unos {t}℃ más fresco que abajo", "w_restFoot": "Si paras ahora, seguirás desde {h}m", "w_more": "Más ›", "w_top": "🏙 ¡Arriba!", "w_summit": "⛰ ¡Cima!", "w_finish": "🏁 ¡Meta!", "w_freeGoal": "🎯 ¡Meta lograda!", "w_mToon": "🎨 3D dibujo", "w_mSat": "🛰 Satélite", "w_mMap": "🗺 Mapa", "w_mFlat": "▦ Plano", "w_mMtn": "⛰ Dibujo", "w_calDays": "Días de ejercicio: {n}", "w_streak": " · 🔥 {n} días seguidos", "w_total": "Total {p}", "w_dayOnly": "Solo {p}", "w_showAll": "Ver todo ✕"});
+/* 11/26 보스: 코스 영상 = 지도 탭 안 '영상', 일반 유튜브 = '▶ 유튜브' 따로 */
+Object.assign(TEXT.ko, {"w_mVid": "🎬 영상", "h_ytBtn": "▶ 유튜브", "h_ytAria": "유튜브 보며 운동", "h_vidSwap": "▶ 바꾸기"});
+Object.assign(TEXT.en, {"w_mVid": "🎬 Video", "h_ytBtn": "▶ YouTube", "h_ytAria": "Work out with YouTube", "h_vidSwap": "▶ Change"});
+Object.assign(TEXT.zh, {"w_mVid": "🎬 视频", "h_ytBtn": "▶ YouTube", "h_ytAria": "边看YouTube边运动", "h_vidSwap": "▶ 更换"});
+Object.assign(TEXT.ja, {"w_mVid": "🎬 動画", "h_ytBtn": "▶ YouTube", "h_ytAria": "YouTubeを見ながら運動", "h_vidSwap": "▶ 切り替え"});
+Object.assign(TEXT.vi, {"w_mVid": "🎬 Video", "h_ytBtn": "▶ YouTube", "h_ytAria": "Vừa xem YouTube vừa tập", "h_vidSwap": "▶ Đổi"});
+Object.assign(TEXT.fr, {"w_mVid": "🎬 Vidéo", "h_ytBtn": "▶ YouTube", "h_ytAria": "S'entraîner avec YouTube", "h_vidSwap": "▶ Changer"});
+Object.assign(TEXT.es, {"w_mVid": "🎬 Vídeo", "h_ytBtn": "▶ YouTube", "h_ytAria": "Entrenar con YouTube", "h_vidSwap": "▶ Cambiar"});
 Object.assign(TEXT.ko, {"w_summitCert": "🏔 정상 인증", "w_trailPct": "등산로 {p}%"});
 Object.assign(TEXT.en, {"w_summitCert": "🏔 Summit verified", "w_trailPct": "Trail {p}%"});
 Object.assign(TEXT.zh, {"w_summitCert": "🏔 登顶认证", "w_trailPct": "山路 {p}%"});
@@ -7501,15 +7510,19 @@ function v3dRibbon(pos){   // 앞길 350m를 화면 맨 위에 그림(건물·�
 function v3dShow(on){ const el = $('map3d'); if (on === !el.classList.contains('hidden')) return; el.classList.toggle('hidden', !on); if (on && V3D.map){ try { V3D.map.resize(); } catch(e){} } }
 /* 11/18 18:32 보스 "지도 탭이 헷갈림 → 한 버튼, 누를 때마다 바뀜": 예전 🏔3D↔▦평면 + 🛰위성↔🗺지도 두 버튼 → 한 버튼 순환
    길(방구석) = 🏔 3D → 🛰 위성 → 🗺 지도 / 산 = 🏔 3D → ▦ 평면 / 바깥 = 🛰 위성 → 🗺 지도. 버튼 글자 = 지금 보이는 지도 + ↻ */
-const MAPL = { '3d': '🏔 3D', toon: T.w_mToon, sat: T.w_mSat, map: T.w_mMap, flat: T.w_mFlat };
-function mapModes(){
+const MAPL = { '3d': '🏔 3D', toon: T.w_mToon, sat: T.w_mSat, map: T.w_mMap, flat: T.w_mFlat, vid: T.w_mVid || '🎬 영상' };
+/* 11/26 보스: 코스 영상(코스와 맞춘 영상)은 지도 바꾸기 탭 안에 — 3D → 위성 → 지도 → 🎬 영상 → 다시 3D. 검색해서 보는 일반 유튜브는 '▶ 유튜브' 버튼으로 따로 */
+const vidMode = () => !!(COURSE.video && !S.free && !isClimb() && S.running && !S.gps);
+const mapCur = m => m.includes('vid') && VID.on && !VID.mine ? 'vid' : mapCur0(m);
+function mapModes(){ const m = mapModes0(); if (vidMode() && !NAV.full) m.push('vid'); return m; }
+function mapModes0(){
   const hot = V3D.hot; V3D.hot = false; const c3 = v3dAble() && !NAV.full; V3D.hot = hot;   // 과열로 평면이 됐어도 3D를 다시 고를 수 있게
   const m = c3 ? (V3D_TOON ? ['3d', 'toon'] : ['3d']) : [];   // 11/18 23:38 보스: 그림 3D가 폰에서 끊기면 할 이유 없음 → 종전 3개(3D·위성·지도)
   if (!NAV.full && (isClimb() ? climbGeoOn() : (S.gps || SAT_OK))) m.push('sat', 'map'); else if (c3) m.push('flat');   // 11/23 보스: 등산로 지도가 있는 산도 위성·지도·3D 셋 다
   return m;
 }
 const V3D_TOON = false;   // 그림 3D 보류 (코드는 남김)
-const mapCur = m => m.includes('3d') && DB.v3d !== false && !V3D.hot ? (DB.v3dSty === 'toon' && V3D_TOON ? 'toon' : '3d') : m.includes('sat') ? mapSty() : 'flat';
+const mapCur0 = m => m.includes('3d') && DB.v3d !== false && !V3D.hot ? (DB.v3dSty === 'toon' && V3D_TOON ? 'toon' : '3d') : m.includes('sat') ? mapSty() : 'flat';
 /* ---- 🎬 영상 코스 시험 (11/21 보스 상림 촬영 → 유튜브 일부 공개) ----
    큰 화면 = 유튜브 영상, 재생 속도 = 지금 속도 ÷ 찍을 때 걸은 속도 (0.25~2배). 일시정지·종료 = 영상도 멈춤
    유튜브 약관: 영상 위를 우리 그림으로 덮지 않음 → 위쪽 알약·작은 지도는 숨기고 숫자는 아래 칸에만 */
@@ -7530,10 +7543,11 @@ function vidFit(){
   const bw = w.clientWidth, bh = w.clientHeight; if (!bw || !bh) return;
   if (VID.mine || (COURSE.video && COURSE.video.fit === 'top')){   /* 11/23 보스 "꽉 차게": 영상 칸 전부를 플레이어로 → 유튜브가 자르지 않고 비율대로 크게 (쇼츠 = 세로 가득) */
     Object.assign(f.style, { width: bw + 'px', height: bh + 'px', left: '0px', top: '0px' }); return; }
-  let fw = bw, fh = bw / ar; if (fh < bh){ fh = bh; fw = bh * ar; }
+  const cut = (COURSE.video && COURSE.video.cut) || 0;   // 11/26 보스: 아래(그림자) 띠를 cut 비율만큼 더 잘라냄
+  let fw = bw, fh = bw / ar; if (fh * (1 - cut) < bh){ fh = bh / (1 - cut); fw = fh * ar; }
   /* 11/21 보스 "아래(그림자)는 자르고 위를 살려": 넘치는 높이 중 위는 vy만큼만 자르고 나머지는 아래에서 자름 (vy 0 = 위 그대로, 0.5 = 가운데) */
   const vy = COURSE.video && COURSE.video.vy != null ? COURSE.video.vy : 0;
-  Object.assign(f.style, { width: fw + 'px', height: fh + 'px', left: (bw - fw) / 2 + 'px', top: -(fh - bh) * vy + 'px' });
+  Object.assign(f.style, { width: fw + 'px', height: fh + 'px', left: (bw - fw) / 2 + 'px', top: -(fh * (1 - cut) - bh) * vy + 'px' });
 }
 window.addEventListener('resize', () => { if (VID.on) vidLay(); try { vidBtnPos(); } catch(e){} });
 async function vidOn(){
@@ -7745,22 +7759,27 @@ $('pubYes').onclick = async () => {
 };
 function v3dBtn(){   // 11/23 14:25 보스: 영상은 지도 버튼과 분리 — 지도 버튼 = 지도·위성·3D만, 🎬 영상은 오른쪽 따로
   const vOK = S.running && !S.gps;
-  $('bYt').classList.toggle('hidden', !vOK || VID.on); ytTop(); vidBtnPos();
-  $('bVid').classList.toggle('hidden', !(vOK && VID.on)); $('bVid').textContent = '🎬 바꾸기';
-  $('bVidOff').classList.toggle('hidden', !(vOK && VID.on));
+  const mine = !!(VID.on && VID.mine);   // 11/26: 내가 고른 일반 유튜브 재생 중
+  $('bYt').classList.toggle('hidden', !vOK || mine); ytTop();
+  $('bVid').classList.toggle('hidden', !(vOK && mine)); $('bVid').textContent = T.h_vidSwap || '▶ 바꾸기';
+  $('bVidOff').classList.toggle('hidden', !(vOK && mine));
   const m = mapModes(), b = $('b3d'); $('bSat').classList.add('hidden');
-  b.classList.toggle('hidden', m.length < 2 || VID.on); if (m.length < 2) return;
+  b.classList.toggle('hidden', m.length < 2 || mine); vidBtnPos(); if (m.length < 2) return;
   const c = mapCur(m); b.textContent = (isClimb() && c === 'flat' ? (climbGeoOn() ? T.w_mMap : T.w_mMtn) : MAPL[c]) + ' ↻';
   if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
 }
-function vidBtnPos(){   // 오른쪽 위 전체 지도·높이 아래에 붙임
-  let t = 0; ['map', 'altChip'].forEach(id => { const e = $(id); if (!e || e.classList.contains('hidden')) return; const r = e.getBoundingClientRect(); if (r.height && r.top < innerHeight * 0.4) t = Math.max(t, r.bottom); });
-  void t;   // 15:05부터 버튼 줄 안에 있음 (위치 계산 안 함)
+function vidBtnPos(){   // 11/26 보스: '▶ 유튜브'는 지도 탭과 따로, 오른쪽 고도 칸 옆 (고도 칸이 없거나 영상 중이면 버튼 줄 안)
+  const y = $('bYt'), a = $('altChip'), r = a && !a.classList.contains('hidden') && !document.body.classList.contains('vidOn') ? a.getBoundingClientRect() : null;
+  if (r && r.height && !y.classList.contains('hidden')){ y.classList.add('ytFix'); Object.assign(y.style, { top: Math.round(r.top + (r.height - 40) / 2) + 'px', right: Math.round(innerWidth - r.left + 6) + 'px' }); }
+  else { y.classList.remove('ytFix'); y.style.top = y.style.right = ''; }
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say(T.j_voiceOnSay); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? T.j_voiceOff : T.j_voiceOn); };
-function vidEnter(){ if (COURSE.video && !S.free && !isClimb()) vidOn(); else if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }
-$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; setMode(m[(m.indexOf(mapCur(m)) + 1) % m.length] || m[0]); };
+function vidEnter(){ if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }   // 11/26: '▶ 유튜브' = 일반 유튜브만 (코스 영상은 지도 탭 안)
+$('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; const c = mapCur(m), n = m[(m.indexOf(c) + 1) % m.length] || m[0];
+  if (n === 'vid'){ vidOn(); return; }
+  if (c === 'vid') vidOffNow();
+  setMode(n); };
 $('bYt').onclick = e => { e.stopPropagation(); vidEnter(); };
 $('bVidOff').onclick = e => { e.stopPropagation(); vidOffNow(); };
 function setMode(n){
