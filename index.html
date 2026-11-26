@@ -728,6 +728,45 @@
   .ctrl #bPause{flex:1}
   #recPeriod{display:none}                                           /* B2 기간 고르기 → 달력 하나로 */
   .recCap{font-size:13px;color:var(--mut);margin:14px 2px 0}
+  /* 11/26 보스 '걸음수·칼로리는 따로 눈에 띄게' — 내 기록 맨 위 오늘 카드 + 주(요일 막대)·월(달력 이모지) */
+  .mrToday{margin-top:14px;background:var(--ch2);border-radius:18px;padding:14px 16px 12px;border:2px solid var(--vt)}
+  .mrH{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;color:var(--mut);font-weight:700}
+  .mrH a{color:var(--mut);font-weight:600;text-decoration:underline;font-size:12px;padding:8px 0;margin:-8px 0;text-align:right}
+  .mrN{display:flex;align-items:baseline;gap:6px;margin:2px 0 8px}
+  .mrN b{font-size:46px;font-weight:900;letter-spacing:-1px;line-height:1.1}
+  .mrN span{font-size:18px;font-weight:800;color:var(--tx2)}
+  .mr2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mr2 div{background:rgba(var(--ink),.07);border-radius:12px;padding:8px 10px}
+  .mr2 small{display:block;font-size:12px;color:var(--mut);font-weight:700}
+  .mr2 b{font-size:22px;font-weight:900}
+  .mr2 b i{font-style:normal;font-size:14px;font-weight:700;color:var(--tx2);margin-left:2px}
+  .mrApply{display:block;width:100%;margin-top:10px;min-height:46px;border:0;border-radius:12px;background:var(--vt);color:#1b1c1f;font-size:15px;font-weight:900}
+  .mrSeg{display:flex;gap:6px;margin-top:14px;background:var(--ch2);padding:4px;border-radius:999px}
+  .mrSeg button{flex:1;height:40px;border:0;border-radius:999px;background:transparent;color:var(--tx);font-size:15px;font-weight:700}
+  .mrSeg button.on{background:var(--vt);color:var(--onv);font-weight:900}
+  .mrWeek{background:var(--ch2);border-radius:16px;padding:10px 12px 12px;margin-top:10px}
+  .mrBars{display:flex;align-items:flex-end;gap:6px;height:170px;margin-top:6px;padding:0 2px}
+  .mrBars>div{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+  .mrBars .v{font-size:11px;font-weight:700;color:var(--tx2);margin-bottom:3px;white-space:nowrap}
+  .mrBars .r{font-size:15px;line-height:1;margin-bottom:2px}
+  .mrBars .c{width:100%;border-radius:8px 8px 4px 4px;background:rgba(var(--ink),.22);min-height:3px}
+  .mrBars .td .c{background:var(--vt)}.mrBars .td .v{color:var(--vtx);font-weight:900}
+  .mrDays{display:flex;gap:6px;margin-top:6px;padding:0 2px}
+  .mrDays span{flex:1;min-width:0;text-align:center;font-size:13px;color:var(--mut);font-weight:700;white-space:nowrap}
+  .mrDays span.td{color:var(--vtx);font-weight:900}
+  .mrSum{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;margin-top:12px}
+  .mrSum div{background:rgba(var(--ink),.07);border-radius:12px;padding:7px 6px;text-align:center}
+  .mrSum small{display:block;font-size:11px;color:var(--mut);font-weight:700}
+  .mrSum b{font-size:15px;font-weight:900;white-space:nowrap}
+  .mrLeg{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;margin-top:10px;font-size:12px;color:var(--mut);font-weight:700}
+  .mrLeg i{display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--vt);vertical-align:-1px;margin-right:3px}
+  #recCal .calg b{height:44px;position:relative;font-size:19px}
+  #recCal .calg b i{position:absolute;left:5px;top:3px;font-size:10px;font-weight:700;color:inherit;opacity:.75}
+  #recCal .calg b.fu{opacity:.4}
+  #dayBox .mr2{margin-top:4px}
+  #dayBox h3{font-size:13px;color:var(--mut);margin:14px 0 6px;font-weight:800}
+  .mrRun{background:rgba(var(--ink),.07);border-radius:12px;padding:9px 12px;margin-top:6px;font-size:13px;color:var(--tx2);line-height:1.5}
+  .mrRun b{display:block;font-size:15px;color:var(--tx)}
   #regionPane .rgh,#regionPane .sel3,#regionPane h2[data-t=course]{display:none}   /* B3 드롭다운 3개 → 지역 카드 */
   .rhead{display:flex;align-items:center;gap:8px;margin:12px 0 8px}
   .rhead .rback{flex:none;height:44px;border:0;border-radius:12px;background:var(--ch2);color:var(--tx);font-size:14px;font-weight:700;padding:0 14px}
@@ -1100,9 +1139,12 @@
   <div class="seg" id="recPeriod" style="margin-top:14px">
     <button data-per="week" data-t="pWeek">이번 주</button><button data-per="month" data-t="pMonth">이번 달</button><button data-per="all" data-t="pAll">전체</button>
   </div>
+  <div class="mrToday" id="mrToday"></div>   <!-- 11/26 보스: 오늘 걸음·칼로리를 맨 위에 크게 -->
+  <div class="mrSeg" id="mrSeg"><button data-sv="week" data-t="mr_week">주</button><button data-sv="month" data-t="mr_month">월</button></div>
+  <div class="mrWeek" id="mrWeek"></div>
+  <div class="card" id="recCal"></div>
   <div class="recCap" id="recCap"></div>
-  <div class="sum4" id="recSum"></div>
-  <div class="card" id="recCal"></div>   <!-- 11/17 습관 달력: 운동한 날 · 날짜를 누르면 그날 기록만 -->
+  <div class="sum4" id="recSum"></div>   <!-- 11/17 습관 달력: 운동한 날 · 날짜를 누르면 그날 기록만 -->
   <div class="card hidden" id="meterBox" style="margin-top:10px;font-size:13px;line-height:1.6"></div>   <!-- 11/17 측정 평균 (측정 보기를 켠 폰만) -->
   <div id="stampBox">
     <h2 id="stampTitle"></h2>
@@ -1183,6 +1225,12 @@
     <div class="muted" id="stMsg" style="margin-top:8px;line-height:1.6"></div>
     <button id="stHc" data-t="h_stHc" class="toggle hidden" style="margin-top:10px;width:100%">🔗 삼성 헬스 걸음 연결</button>
     <button id="stClose" class="x2" data-t="close">닫기</button>
+  </div>
+</div>
+<div id="dayBox" class="modal hidden">   <!-- 11/26 막대·달력 날짜를 누르면: 그날 걸음·칼로리·거리 + 앱 운동 -->
+  <div class="sb">
+    <div id="dbBody"></div>
+    <div class="mbtn"><button id="dbClose" data-t="close">닫기</button><button id="dbGo" class="go" data-t="mr_dayRecs">그날 기록 보기</button></div>
   </div>
 </div>
 <div id="bkBox" class="modal hidden">
@@ -1339,7 +1387,7 @@
 </div>
 
 <script>
-const BUILD = '202611262200';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611262330';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2129,6 +2177,14 @@ Object.assign(TEXT.ja, {"w_langLater":"運動が終わると新しい言語に�
 Object.assign(TEXT.vi, {"w_langLater":"Ngôn ngữ mới sẽ áp dụng khi kết thúc buổi tập"});
 Object.assign(TEXT.fr, {"w_langLater":"La nouvelle langue s'appliquera à la fin de la séance"});
 Object.assign(TEXT.es, {"w_langLater":"El nuevo idioma se aplicará al terminar el entreno"});
+/* 11/26 내 기록 개편: 오늘 걸음 카드·주/월 */
+Object.assign(TEXT.ko, {"mr_today": "👣 오늘", "mr_fix": "삼성 헬스와 다르면 ›", "mr_kcal": "🔥 태운 칼로리", "mr_km": "📏 걸은 거리", "mr_week": "주", "mr_month": "월", "mr_avg": "하루 평균", "mr_kcSum": "🔥 합계", "mr_runs": "🏃 앱 운동", "mr_todayTag": "오늘", "mr_lg10k": "🔥 1만 보 이상", "mr_lg5k": "👟 5천 보 이상", "mr_lgRun": "앱 운동한 날", "mr_dayRecs": "그날 기록 보기"});
+Object.assign(TEXT.en, {"mr_today": "👣 Today", "mr_fix": "Differs from Samsung Health? ›", "mr_kcal": "🔥 Calories burned", "mr_km": "📏 Distance walked", "mr_week": "Week", "mr_month": "Month", "mr_avg": "Daily average", "mr_kcSum": "🔥 Total", "mr_runs": "🏃 App workouts", "mr_todayTag": "Today", "mr_lg10k": "🔥 10,000+ steps", "mr_lg5k": "👟 5,000+ steps", "mr_lgRun": "Workout day", "mr_dayRecs": "See that day"});
+Object.assign(TEXT.zh, {"mr_today": "👣 今天", "mr_fix": "与三星健康不同？ ›", "mr_kcal": "🔥 消耗热量", "mr_km": "📏 步行距离", "mr_week": "周", "mr_month": "月", "mr_avg": "日均", "mr_kcSum": "🔥 合计", "mr_runs": "🏃 应用运动", "mr_todayTag": "今天", "mr_lg10k": "🔥 1万步以上", "mr_lg5k": "👟 5千步以上", "mr_lgRun": "运动日", "mr_dayRecs": "查看当天记录"});
+Object.assign(TEXT.ja, {"mr_today": "👣 今日", "mr_fix": "Samsung Healthと違うなら ›", "mr_kcal": "🔥 消費カロリー", "mr_km": "📏 歩いた距離", "mr_week": "週", "mr_month": "月", "mr_avg": "1日平均", "mr_kcSum": "🔥 合計", "mr_runs": "🏃 アプリ運動", "mr_todayTag": "今日", "mr_lg10k": "🔥 1万歩以上", "mr_lg5k": "👟 5千歩以上", "mr_lgRun": "運動した日", "mr_dayRecs": "その日の記録"});
+Object.assign(TEXT.vi, {"mr_today": "👣 Hôm nay", "mr_fix": "Khác Samsung Health? ›", "mr_kcal": "🔥 Calo đã đốt", "mr_km": "📏 Quãng đường đi bộ", "mr_week": "Tuần", "mr_month": "Tháng", "mr_avg": "TB mỗi ngày", "mr_kcSum": "🔥 Tổng", "mr_runs": "🏃 Buổi tập", "mr_todayTag": "Nay", "mr_lg10k": "🔥 Từ 10.000 bước", "mr_lg5k": "👟 Từ 5.000 bước", "mr_lgRun": "Ngày tập", "mr_dayRecs": "Xem ngày đó"});
+Object.assign(TEXT.fr, {"mr_today": "👣 Aujourd'hui", "mr_fix": "Différent de Samsung Health ? ›", "mr_kcal": "🔥 Calories brûlées", "mr_km": "📏 Distance marchée", "mr_week": "Semaine", "mr_month": "Mois", "mr_avg": "Moyenne/jour", "mr_kcSum": "🔥 Total", "mr_runs": "🏃 Séances", "mr_todayTag": "Auj.", "mr_lg10k": "🔥 10 000 pas et +", "mr_lg5k": "👟 5 000 pas et +", "mr_lgRun": "Jour de séance", "mr_dayRecs": "Voir ce jour"});
+Object.assign(TEXT.es, {"mr_today": "👣 Hoy", "mr_fix": "¿Distinto de Samsung Health? ›", "mr_kcal": "🔥 Calorías quemadas", "mr_km": "📏 Distancia caminada", "mr_week": "Semana", "mr_month": "Mes", "mr_avg": "Media diaria", "mr_kcSum": "🔥 Total", "mr_runs": "🏃 Entrenos", "mr_todayTag": "Hoy", "mr_lg10k": "🔥 10.000+ pasos", "mr_lg5k": "👟 5.000+ pasos", "mr_lgRun": "Día de entreno", "mr_dayRecs": "Ver ese día"});
 /* 11/25 짧은 버튼 말 */
 const SHORT_I18N = {"en": {"fUpAct": "Stairs·Hike", "aBike": "Bike", "myRec": "📒 Records", "gpsStart": "▶ Start GPS", "bodyBtn": "⚖️ Body info (calories)", "j_telOn": "📊 Anonymous stats · On", "j_telOff": "📊 Anonymous stats · Off", "h_mtnHowTitle": "⛰ Mountain numbers", "j_moreLow": "More ▾ (+{n})"}, "zh": {"gpsStart": "▶ GPS记录", "bodyBtn": "⚖️ 身体信息（热量）", "j_telOn": "📊 匿名统计 · 开", "j_telOff": "📊 匿名统计 · 关", "j_moreLow": "更多 ▾（+{n}）"}, "ja": {"aFoot": "歩く·走る", "aWalkOut": "歩く·走る", "gpsStart": "▶ GPS記録", "bodyBtn": "⚖️ 体の情報（カロリー）", "j_telOn": "📊 匿名統計 · オン", "j_telOff": "📊 匿名統計 · オフ", "h_mtnHowTitle": "⛰ 山の数字の見方", "j_moreLow": "もっと ▾（+{n}）"}, "vi": {"aFoot": "Đi·Chạy", "aWalkOut": "Đi·Chạy", "fUpAct": "Leo núi", "zOutTitle": "‹ 🌳 Ngoài", "zInTitle": "‹ 🏠 Nhà", "myRec": "📒 Nhật ký", "h_segNear": "Gần tôi", "h_segTopic": "Chủ đề", "h_segRegion": "Khu vực", "gpsStart": "▶ Ghi GPS", "bodyBtn": "⚖️ Cơ thể (calo)", "j_telOn": "📊 Thống kê ẩn danh · Bật", "j_telOff": "📊 Thống kê ẩn danh · Tắt", "h_mtnHowTitle": "⛰ Số liệu núi", "j_moreLow": "Thêm ▾ (+{n})"}, "fr": {"aFoot": "Marche", "aWalkOut": "Marche", "fUpAct": "Montée", "zInTitle": "‹ 🏠 Maison", "myRec": "📒 Journal", "h_segNear": "Proche", "h_segTopic": "Thèmes", "h_segRegion": "Régions", "gpsStart": "▶ Lancer le GPS", "bodyBtn": "⚖️ Profil (calories)", "j_telOn": "📊 Stats anonymes · Oui", "j_telOff": "📊 Stats anonymes · Non", "h_mtnHowTitle": "⛰ Chiffres montagne", "j_moreLow": "Plus ▾ (+{n})"}, "es": {"aFoot": "Caminar", "aWalkOut": "Caminar", "fUpAct": "Subir", "aBike": "Bici", "myRec": "📒 Registro", "h_segNear": "Cerca", "h_segTopic": "Temas", "h_segRegion": "Regiones", "gpsStart": "▶ Iniciar GPS", "bodyBtn": "⚖️ Perfil (calorías)", "j_telOn": "📊 Estadísticas · Sí", "j_telOff": "📊 Estadísticas · No", "h_mtnHowTitle": "⛰ Cifras de montaña", "j_moreLow": "Más ▾ (+{n})"}};   // 360폭에서 두 줄·잘림 나던 버튼만 짧은 말로 (11/25 검사)
 /* 11/25 다국어: 경상도 응원 대사 → 언어별 표준 말투 한 벌 (문 응원 door · 산 응원 mtc) */
@@ -5932,6 +5988,7 @@ $('hubSheet').onclick = e => { if (e.target.id === 'hubSheet') $('hubSheet').cla
     else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) $('hubSheet').classList.add('hidden'); }, { passive: true }); })();
 function refreshRec(){
   try { refreshSteps(); } catch(e){}
+  if (REC.day) REC.sv = 'month';
   refreshStamps(); $('stampBox').classList.toggle('hidden', DB.pick.type === 'climb');
   document.querySelectorAll('[data-per]').forEach(b => b.classList.toggle('on', b.dataset.per === REC.per && !REC.day));
   document.querySelectorAll('[data-f]').forEach(b => b.classList.toggle('on', b.dataset.f === REC.f));
@@ -5952,10 +6009,9 @@ function refreshRec(){
       : '<div><span>' + T.sDist + '</span><b>' + (dist / 1000).toFixed(1) + ' km</b></div>') +
     '<div><span>' + T.sUp + '</span><b>' + up.toLocaleString() + ' m</b></div>' +
     '<div><span>' + T.sCount + '</span><b>' + cnt + T.cntUnit + '</b></div>' +
-    '<div><span>' + T.sTime + '</span><b>' + (sec >= 3600 ? (sec / 3600).toFixed(1) + T.hourUnit : Math.round(sec / 60) + T.min) + '</b></div>' +
-    '<div class="kc"><span>🔥 ' + T.sKcal + ' · ' + T['kcalLv' + bodyFix()[2]] + '</span><b>' + kcalTxt(list.reduce((a, r) => a + kcalOf(r), 0)) + '</b></div>';
+    '<div><span>' + T.sTime + '</span><b>' + (sec >= 3600 ? (sec / 3600).toFixed(1) + T.hourUnit : Math.round(sec / 60) + T.min) + '</b></div>';   // 11/26: 칼로리 칸은 위 오늘 카드·주·월 합계로 옮김 (같은 숫자 한 곳)
   $('bBody').textContent = T.bodyBtn;
-  { const kc = $('recSum').querySelector('.kc'); if (kc) kc.onclick = () => $('bBody').click(); }   // 칼로리 칸을 누르면 내 몸 정보
+  mrFill();
   /* 11/21 보스 "기록이 날마다 다 나열돼 지저분" → 날짜 줄만 보이고(그날 합계), 누르면 그날 기록이 펼쳐짐. 기록 줄은 예전처럼 한 줄 + 오른쪽 수정·삭제
      기록 글을 누르면 지나온 거점(사진·설명) · 내 코스면 공개 신청 */
   const groups = [];
@@ -6007,13 +6063,15 @@ function calFill(fOK){
   const [y, m] = REC.mon, first = new Date(y, m, 1), days = new Date(y, m + 1, 0).getDate();
   const recs = DB.records.filter(r => r.src !== 'legacy' && r.src !== 'steps' && fOK(r));
   const by = {}; recs.forEach(r => { const k = calKey(new Date(r.date)); (by[k] = by[k] || []).push(r); });
-  let cnt = 0, sec = 0, kc = 0, cells = '';
+  let cnt = 0, sec = 0, kc = 0, cells = '', mDays = 0, mSteps = 0, mKc = 0;
   for (let i = 0; i < first.getDay(); i++) cells += '<b class="x"></b>';
   for (let d = 1; d <= days; d++){
     const k = y + '-' + (m + 1) + '-' + d, rs = by[k] || [], mn = rs.reduce((a, r) => a + (r.sec || 0), 0) / 60;
     if (rs.length){ cnt++; sec += mn * 60; kc += rs.reduce((a, r) => a + kcalOf(r), 0); }
     const lv = !rs.length ? '' : mn >= 60 ? 'l3' : mn >= 30 ? 'l2' : 'l1';
-    cells += '<b data-cd="' + k + '" class="' + lv + (k === calKey(now) ? ' td' : '') + (k === REC.day ? ' sel' : '') + '">' + d + '</b>';
+    const fu = new Date(y, m, d) > now, sn = fu ? 0 : stepsOn(k).n;   // 11/26 걸음: 🔥 1만 보 이상 · 👟 5천 보 이상
+    if (sn > 0){ mDays++; mSteps += sn; mKc += dayAll(k).kc; }
+    cells += '<b data-cd="' + k + '" class="' + lv + (k === calKey(now) ? ' td' : '') + (k === REC.day ? ' sel' : '') + (fu ? ' fu' : '') + '"><i>' + d + '</i>' + (sn >= 10000 ? '🔥' : sn >= 5000 ? '👟' : '') + '</b>';
   }
   let st = 0; for (let t = new Date(now); ; t.setDate(t.getDate() - 1)){ const k = calKey(t); if (by[k]) st++; else if (k !== calKey(now)) break; if (st > 400) break; }   // 연속: 오늘(아직 안 했으면 어제)부터
   const sel = REC.day ? REC.day.split('-') : null;
@@ -6021,12 +6079,77 @@ function calFill(fOK){
   $('recCal').innerHTML = '<div class="calh"><button id="calPrev" aria-label="&lsaquo;">‹</button><span>' + (ko ? y + '년 ' + (m + 1) + '월' : calFmt(new Date(y, m, 15), { year: 'numeric', month: 'long' })) + '</span><button id="calNext" aria-label="&rsaquo;">›</button></div>' +
     '<div class="calsum">' + fillT('w_calDays', { n: cnt }) + (st >= 2 && y === now.getFullYear() && m === now.getMonth() ? fillT('w_streak', { n: st }) : '') + '</div>' +   // 11/18 A14: 시간·칼로리는 위 합계 칸에 있어 뺌
     '<div class="calg">' + (ko ? '일월화수목금토'.split('') : [0, 1, 2, 3, 4, 5, 6].map(i => calFmt(new Date(2026, 10, 1 + i), { weekday: 'narrow' }))).map(c => '<i>' + c + '</i>').join('') + cells + '</div>' +
+    '<div class="mrLeg"><span>' + T.mr_lg10k + '</span><span>' + T.mr_lg5k + '</span><span><i></i>' + T.mr_lgRun + '</span></div>' +
+    '<div class="mrSum"><div><small>' + T.mr_avg + '</small><b>' + (mDays ? Math.round(mSteps / mDays).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + kcalTxt(mKc) + '</b></div></div>' +
     (sel ? '<div class="calday"><span>' + (ko ? sel[1] + '월 ' + sel[2] + '일 기록만 보는 중' : fillT('w_dayOnly', { p: calFmt(new Date(REC.day + 'T12:00'), { month: 'short', day: 'numeric' }) })) + '</span><button id="calAll">' + T.w_showAll + '</button></div>' : '');
-  $('recCal').querySelectorAll('[data-cd]').forEach(b => b.onclick = () => { REC.day = REC.day === b.dataset.cd ? '' : b.dataset.cd; refreshRec(); });
+  $('recCal').querySelectorAll('[data-cd]').forEach(b => b.onclick = () => dayPop(b.dataset.cd));   // 11/26: 누르면 그날 걸음·칼로리 팝업 → '그날 기록 보기'로 아래 목록을 그날만
   $('calPrev').onclick = () => { REC.mon = m ? [y, m - 1] : [y - 1, 11]; refreshRec(); };
   $('calNext').onclick = () => { REC.mon = m === 11 ? [y + 1, 0] : [y, m + 1]; refreshRec(); };
   if ($('calAll')) $('calAll').onclick = () => { REC.day = ''; refreshRec(); };
 }
+/* ---- 11/26 보스: 걸음수·칼로리를 '내 기록' 맨 위에 따로 크게 (요즘 걸음수만 보는 사람이 많음) ----
+   오늘 카드(걸음·태운 칼로리·걸은 거리) + 주(요일별 걸음 막대, 🏃 = 앱 운동한 날) · 월(달력 칸 🔥/👟)
+   칼로리 = 지금 계산식(kcalOf) 그대로: 생활 걸음(운동 밖 걸음)을 시속 5km 걷기로 + 그날 운동 기록 (걸음 칩 창의 '오늘 소모 칼로리'와 같은 숫자) */
+function stepsOn(k){   // 그날 걸음 { n 합계, work 운동 걸음 } — 오늘은 stepInfo(), 지난날은 같은 규칙으로 저장된 값에서
+  if (k === dayKey()){ const si = stepInfo(); return { n: si.total, work: si.work }; }
+  const t = (DB.steps || {})[k], est = DB.records.filter(r => calKey(new Date(r.date)) === k).reduce((a, r) => a + recSteps(r), 0);
+  if (!t) return { n: est, work: est };
+  const work = Math.max(t.run || 0, est), raw = t.native != null ? Math.max(t.native, 0) : Math.max(0, (t.n || 0) - (t.run || 0)) + work;
+  const n = t.set != null ? t.set + Math.max(0, raw - (t.setBase != null ? t.setBase : raw)) : raw;
+  return { n, work: Math.min(work, n) };
+}
+function dayAll(k){   // { n 걸음, kc 칼로리, km 걸은 거리, recs 앱 운동 }
+  const s = stepsOn(k), st = DB.stride.walk || 0.72, life = Math.max(0, s.n - s.work);
+  const recs = DB.records.filter(r => r.src !== 'legacy' && r.src !== 'steps' && calKey(new Date(r.date)) === k);
+  const kc = kcalOf({ act: 'walk', src: 'steps', distM: life * st }) + recs.reduce((a, r) => a + kcalOf(r), 0);
+  const km = (life * st + recs.filter(r => actGroup(r) === 'foot').reduce((a, r) => a + (r.distM || 0), 0)) / 1000;
+  return { n: s.n, kc, km, recs };
+}
+const mrSU = () => (/^(ko|zh|ja)$/.test(ACTIVE.lang) ? '' : ' ') + T.kcSteps;   // '7,334보' / '7,334 steps'
+const mrDate = (dt, o) => ACTIVE.lang === 'ko' ? (dt.getMonth() + 1) + '월 ' + dt.getDate() + '일' + (o ? ' (' + '일월화수목금토'[dt.getDay()] + ')' : '') : calFmt(dt, o ? { month: 'short', day: 'numeric', weekday: 'short' } : { month: 'short', day: 'numeric' });
+const mr2Html = x => '<div class="mr2"><div data-kc><small>' + T.mr_kcal + '</small><b>' + x.kc.toLocaleString() + '<i>kcal</i></b></div><div><small>' + T.mr_km + '</small><b>' + x.km.toFixed(1) + '<i>km</i></b></div></div>';
+function mrTodayFill(){
+  const now = new Date(), x = dayAll(calKey(now)), free = stepFree(), road = DB.pick.type !== 'climb';
+  $('mrToday').innerHTML = '<div class="mrH"><span>' + T.mr_today + ' · ' + mrDate(now, true) + '</span><a id="mrFix">' + T.mr_fix + '</a></div>' +
+    '<div class="mrN"><b>' + x.n.toLocaleString() + '</b><span>' + T.kcSteps + '</span></div>' + mr2Html(x) +
+    (road && free >= 10 ? '<button class="mrApply" id="mrApply">' + T.stApply.replace('{n}', free.toLocaleString()).replace('{d}', (free * (DB.stride.walk || 0.7) / 1000).toFixed(2)) + '</button>' : '');
+  $('mrToday').querySelector('[data-kc]').onclick = () => $('bBody').click();   // 칼로리를 누르면 내 몸 정보 (예전 칼로리 칸과 같음)
+  $('mrFix').onclick = () => { stepsPermission(); STFIX = true; $('stInput').value = ''; $('stepBox').classList.remove('hidden'); refreshSteps(); };   // 숫자 맞추기는 예전 걸음 창 그대로
+  if ($('mrApply')) $('mrApply').onclick = () => { $('stApply').onclick(); refreshRec(); };
+}
+function mrWeekFill(){
+  const end = new Date(); end.setHours(12, 0, 0, 0); end.setDate(end.getDate() - 7 * (REC.wk || 0));
+  const ds = []; for (let i = 6; i >= 0; i--){ const dt = new Date(end); dt.setDate(end.getDate() - i); const k = calKey(dt); ds.push(Object.assign(dayAll(k), { dt, k, td: k === dayKey() })); }
+  const mx = Math.max(5000, ...ds.map(x => x.n)) * 1.08, H = 128, ko = ACTIVE.lang === 'ko';
+  const tot = ds.reduce((a, x) => a + x.n, 0), kc = ds.reduce((a, x) => a + x.kc, 0), runs = ds.reduce((a, x) => a + x.recs.length, 0), have = ds.filter(x => x.n > 0).length;
+  $('mrWeek').innerHTML = '<div class="calh"><button id="wkPrev" aria-label="&lsaquo;">‹</button><span>' + mrDate(ds[0].dt) + ' ~ ' + mrDate(ds[6].dt) + '</span><button id="wkNext" aria-label="&rsaquo;"' + (REC.wk ? '' : ' style="opacity:.25"') + '>›</button></div>' +
+    '<div class="mrBars">' + ds.map(x => '<div data-wd="' + x.k + '" class="' + (x.td ? 'td' : '') + '">' + (x.recs.length ? '<span class="r">🏃</span>' : '') + '<span class="v">' + (x.n ? x.n.toLocaleString() : '') + '</span><div class="c" style="height:' + Math.round(x.n / mx * H) + 'px"></div></div>').join('') + '</div>' +
+    '<div class="mrDays">' + ds.map(x => '<span class="' + (x.td ? 'td' : '') + '">' + (x.td ? T.mr_todayTag : ko ? '일월화수목금토'[x.dt.getDay()] : calFmt(x.dt, { weekday: 'narrow' })) + '</span>').join('') + '</div>' +
+    '<div class="mrSum"><div><small>' + T.mr_avg + '</small><b>' + (have ? Math.round(tot / have).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + kcalTxt(kc) + '</b></div><div><small>' + T.mr_runs + '</small><b>' + runs + T.cntUnit + '</b></div></div>';
+  $('wkPrev').onclick = () => { REC.wk = (REC.wk || 0) + 1; mrWeekFill(); };
+  $('wkNext').onclick = () => { if (REC.wk){ REC.wk--; mrWeekFill(); } };
+  $('mrWeek').querySelectorAll('[data-wd]').forEach(b => b.onclick = () => dayPop(b.dataset.wd));
+}
+function mrFill(){
+  try { mrTodayFill(); } catch(e){}
+  const sv = REC.sv || 'week';
+  document.querySelectorAll('[data-sv]').forEach(b => b.classList.toggle('on', b.dataset.sv === sv));
+  $('mrWeek').classList.toggle('hidden', sv !== 'week'); $('recCal').classList.toggle('hidden', sv !== 'month');
+  if (sv === 'week') try { mrWeekFill(); } catch(e){}
+}
+document.querySelectorAll('[data-sv]').forEach(b => b.onclick = () => { REC.sv = b.dataset.sv; if (REC.sv === 'week') REC.day = ''; refreshRec(); });
+function dayPop(k){
+  const [y, m, d] = k.split('-').map(Number), dt = new Date(y, m - 1, d); if (dt > new Date()) return;
+  const x = dayAll(k);
+  $('dbBody').innerHTML = '<div class="st">' + mrDate(dt, true) + '</div><div class="mrN"><b>' + x.n.toLocaleString() + '</b><span>' + T.kcSteps + '</span></div>' + mr2Html(x) +
+    (x.recs.length ? '<h3>' + T.mr_runs + '</h3>' + x.recs.map(r => { const t = new Date(r.date);
+      return '<div class="mrRun"><b>' + (ACTS[r.act] || ACTS.tread).icon + ' ' + esc(recWhere(r)) + '</b>' + String(t.getHours()).padStart(2, '0') + ':' + String(t.getMinutes()).padStart(2, '0') + ' · ' + recAmt(r) + (r.sec >= 30 ? ' · ' + Math.round(r.sec / 60) + T.min : '') + (kcalOf(r) ? ' · ' + kcalTxt(kcalOf(r)) : '') + '</div>'; }).join('') : '');
+  $('dbGo').classList.toggle('hidden', !x.recs.length);
+  $('dbGo').onclick = () => { $('dayBox').classList.add('hidden'); REC.day = k; REC.mon = [y, m - 1]; REC.sv = 'month'; refreshRec(); setTimeout(() => $('recCap').scrollIntoView({ block: 'start', behavior: 'smooth' }), 60); };
+  $('dayBox').classList.remove('hidden');
+}
+$('dbClose').onclick = () => $('dayBox').classList.add('hidden');
+$('dayBox').onclick = e => { if (e.target.id === 'dayBox') $('dayBox').classList.add('hidden'); };
 /* 11/18 보스 "기록 수정에서 운동 방식도": 바깥 걷기·조깅 / 러닝머신 / 자전거 / 천국의 계단 / 등산
    코스에 반영된 기록(r.credit)은 같은 종류끼리만(길 ↔ 길, 산 ↔ 산) — 진행 거리가 엉키지 않게 */
 const ED_ACTS = [['walk', '🌳', '바깥 걷기'], ['tread', '🏃', '러닝머신'], ['bike', '🚴', '자전거'], ['stair', '🪜', '계단'], ['hike', '🥾', '등산']];
@@ -6065,7 +6188,7 @@ $('edClose').onclick = () => $('editBox').classList.add('hidden');
 document.querySelectorAll('[data-per]').forEach(b => b.onclick = () => { REC.per = b.dataset.per; REC.day = ''; refreshRec(); });
 document.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { REC.f = b.dataset.f; refreshRec(); });
 $('bSet').onclick = () => { const open = $('setBox').classList.toggle('hidden'); $('bSet').textContent = open ? T.h_settingsOpen || '⚙️ 설정 ▾' : T.j_setClose; if (!open) setTimeout(() => $('bTel').scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 50); };
-function openRec(){ $('setBox').classList.add('hidden'); $('bSet').textContent = T.h_settingsOpen || '⚙️ 설정 ▾'; REC.delId = null; REC.day = ''; REC.mon = null; $('startScreen').classList.add('hidden'); $('recScreen').classList.remove('hidden'); $('recScreen').scrollTop = 0; refreshRec(); meterBoxFill(); saverBtn(); }
+function openRec(){ REC.sv = 'week'; REC.wk = 0; $('setBox').classList.add('hidden'); $('bSet').textContent = T.h_settingsOpen || '⚙️ 설정 ▾'; REC.delId = null; REC.day = ''; REC.mon = null; $('startScreen').classList.add('hidden'); $('recScreen').classList.remove('hidden'); $('recScreen').scrollTop = 0; refreshRec(); meterBoxFill(); saverBtn(); }
 $('bRec').onclick = () => { REC.fromHome = false; openRec(); };
 $('bRecHome').onclick = () => { REC.fromHome = true; $('homeScreen').classList.add('hidden'); openRec(); };   // 첫 화면에서 바로
 $('recBack').onclick = () => { $('recScreen').classList.add('hidden'); if (REC.fromHome){ showHome(); return; } $('startScreen').classList.remove('hidden'); refreshStart(); drawIdle(); };
@@ -6471,7 +6594,7 @@ function importBackup(){
    ===================================================================== */
 const STEP = { ok: false, avg: 9.8, f: 0, rising: false, last: 0 };
 const dayKey = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
-function stepDay(){ DB.steps = DB.steps || {}; const k = dayKey(); if (!DB.steps[k]){ DB.steps[k] = { n: 0, run: 0, used: 0 }; Object.keys(DB.steps).sort().slice(0, -40).forEach(x => delete DB.steps[x]); } return DB.steps[k]; }
+function stepDay(){ DB.steps = DB.steps || {}; const k = dayKey(); if (!DB.steps[k]){ DB.steps[k] = { n: 0, run: 0, used: 0 }; }   /* 11/26 보스: 월 달력 걸음 이모지 → 하루 걸음 숫자는 기간 제한 없이 남김 (예전 최근 40일, 하루 몇십 글자라 용량 작음) */ return DB.steps[k]; }
 /* 운동 기록에서 걸음 추정 (센서가 못 센 운동도 하루 합계에 들어가게)
    걷기·조깅·트레드밀 = 거리 ÷ 보폭 · 천국의 계단 = 오른 높이 ÷ 계단 20cm · 실제 등산 = 오른 높이 1m당 약 15보 · 자전거 = 0 */
 function recSteps(r){
@@ -6520,6 +6643,7 @@ var NSTEP = { ok: false, perm: false };
 function refreshSteps(){
   const d = stepDay(), si = stepInfo();
   document.querySelectorAll('[data-steps]').forEach(b => b.textContent = T.stBtn.replace('{n}', si.total.toLocaleString()));
+  if (!$('recScreen').classList.contains('hidden') && $('mrToday').innerHTML) try { mrTodayFill(); } catch(e){}
   if ($('stepBox').classList.contains('hidden')) return;
   $('stNum').textContent = si.total.toLocaleString(); try { $('stKcal').innerHTML = kcalDayHtml(); } catch(e){}
   const appSteps = HC.ok || NSTEP.ok;   // 11/24 보스: 설명 줄이기 — 문제 있을 때만 한 줄
@@ -6534,9 +6658,10 @@ function refreshSteps(){
   $('stForm').classList.toggle('hidden', appSteps && !STFIX); $('stFixLink').classList.toggle('hidden', !appSteps || STFIX);   // 앱이 걸음을 세면 '숫자 다를 때'만 펼침
   $('stMsg').textContent = !road ? T.stClimb : free < 10 ? (d.used ? T.stApplied.replace('{n}', d.used.toLocaleString()) : '') : T.stHelp.replace('{c}', tr(COURSE.short || COURSE.name));
 }
-document.querySelectorAll('[data-steps]').forEach(b => b.onclick = () => { stepsPermission(); $('stInput').value = ''; $('stepBox').classList.remove('hidden'); refreshSteps(); });
+/* 11/26 보스: 걸음수 칩은 그대로, 누르면 '내 기록'(맨 위 오늘 걸음·칼로리 카드) — 숫자 맞추기·코스 반영은 그 카드에서 */
+document.querySelectorAll('[data-steps]').forEach(b => b.onclick = () => { stepsPermission(); const home = !$('homeScreen').classList.contains('hidden'); REC.fromHome = home; if (home) $('homeScreen').classList.add('hidden'); openRec(); });
 $('stFixLink').onclick = () => { STFIX = true; refreshSteps(); };
-$('stClose').onclick = () => { STFIX = false; $('stepBox').classList.add('hidden'); };
+$('stClose').onclick = () => { STFIX = false; $('stepBox').classList.add('hidden'); if (!$('recScreen').classList.contains('hidden')) refreshRec(); };
 $('stSet').onclick = () => { const v = parseInt($('stInput').value, 10); if (!(v >= 0)) return; const sd = stepDay(); sd.setBase = sd.native != null ? sd.native : Math.max(0, sd.n - sd.run) + Math.max(sd.run, DB.records.filter(r => new Date(r.date).toDateString() === new Date().toDateString()).reduce((a, r) => a + recSteps(r), 0)); sd.set = v; sd.setT = Date.now(); saveDB(); $('stInput').value = ''; refreshSteps(); };
 $('stApply').onclick = () => {
   const free = stepFree(); if (free < 10 || DB.pick.type === 'climb') return;
