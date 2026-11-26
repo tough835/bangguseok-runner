@@ -1332,7 +1332,7 @@
 </div>
 
 <script>
-const BUILD = '202611261820';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611262025';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1434,7 +1434,7 @@ const WORLD = {
       courses: {
         'sangnim-3k': {
           id: 'sangnim-3k', official: 'data/route/sangnim-gps2.json',
-          video: { yt: 'nlrRMnEQPLw', ok: true, lab: true, mine: true, ar: 9 / 16, kmh: 4.96, sync: true, vy: 0.2, cut: 0.14, note: '보스 촬영 · 상림 한 바퀴 28분 46초' }, name: { ko: '상림 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/26 보스 11/21 촬영 22개 이어 붙임·얼굴/번호판 흐림 · kmh 4.96 = 2.38km ÷ 28분 46초 → 영상 처음·끝 = 출발·완주 · 11/26 보스 "아래 그림자 음영 안 보이게 잘라 꽉 차게" → fit:'top' 대신 꽉 채우고 아래 14% 더 자름 (cut) · 이름이 주석 뒤로 밀려 사라졌던 것 다시 바로잡음
+          video: { yt: 'nlrRMnEQPLw', ok: true, lab: true, mine: true, ar: 9 / 16, kmh: 3.98, sync: true, clips: [[0,0],[120,174],[220,295],[379,471],[465,654],[545,760],[647,888],[726,977],[794,1095],[841,1160],[860,1198],[1015,1379],[1060,1443],[1190,1645],[1250,1725],[1388,1879],[1480,2037],[1556,2136],[1581,2179],[1593,2224],[1700,2351]], vy: 0.2, cut: 0.14, note: '보스 촬영 · 상림 한 바퀴 28분 46초' }, name: { ko: '상림 한 바퀴' }, short: { ko: '상림' }, kind: '도보',   // 11/26 보스 11/21 촬영 22개 이어 붙임·얼굴/번호판 흐림 · 11/26 보스 '속도가 너무 안 맞음' → kmh 3.98 = 실제 걸은 속도(2.38km ÷ 10:39:44~11:15:36) · clips = [영상 초, 그 조각이 시작한 코스 m] (찍은 시각으로 계산, 조각 사이는 안 찍힌 구간) · 11/26 보스 "아래 그림자 음영 안 보이게 잘라 꽉 차게" → fit:'top' 대신 꽉 채우고 아래 14% 더 자름 (cut) · 이름이 주석 뒤로 밀려 사라졌던 것 다시 바로잡음
           mode: 'distance', lengthM: 2380, loop: true,
           elev: [[0,170],[2380,170]],   // 상림 숲길은 거의 평지
           note: '11/21 보스가 직접 걸은 GPS 길 (곁가지 정리 · 2.38km)', source: '보스 GPS 걷기 기록 2026-11-21 · 거점 위치는 사진 찍은 시각으로 맞춤',
@@ -7580,8 +7580,15 @@ function vidSyncPause(){   // 일시정지 버튼 → 내 영상도 멈춤·재�
   return;   // 11/23 보스: 내 영상(쇼츠 등)은 운동과 따로 — 서로 멈추지 않음
 }
 /* 11/26 상림 한 바퀴 영상(sync): 코스 중간에서 시작·이어 하기여도 지금 위치 장면부터 (위치 m ÷ 찍은 속도 = 영상 초) */
+function vidAt(v){   // 지금 간 거리 → 영상 몇 초가 맞는지. 조각 안 = 찍은 속도대로 · 조각 사이(안 찍힌 길) = 다음 조각 첫 장면에서 기다림
+  const m = ((totalNow() % L) + L) % L, ps = v.kmh / 3.6;
+  if (!v.clips) return m / ps;
+  let i = 0; while (i + 1 < v.clips.length && v.clips[i + 1][1] <= m) i++;
+  const [t0, d0] = v.clips[i], end = i + 1 < v.clips.length ? v.clips[i + 1][0] : Infinity;
+  return Math.min(t0 + (m - d0) / ps, end);
+}
 function vidSeekCourse(){ const v = COURSE.video; if (!v || !v.sync || VID.mine) return;
-  try { const m = ((totalNow() % L) + L) % L, t = m / 1000 / v.kmh * 3600; if (t > 2){ vSelf(); VID.P.seekTo(t, true); } } catch(e){} }
+  try { const t = vidAt(v); if (t > 2){ vSelf(); VID.P.seekTo(t, true); } } catch(e){} }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
 function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); altChip(); } catch(e){} }
 function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
@@ -7591,7 +7598,13 @@ function vidTick(kmh){
   const v = COURSE.video, go = S.running && !S.paused && kmh > 0;
   try {
     if (!go){ if (VID.P.getPlayerState() !== 2){ vSelf(); VID.P.pauseVideo(); } $('vidTx').textContent = '⏸ 멈춤'; return; }
-    const r = Math.max(0.25, Math.min(2, Math.round(kmh / v.kmh * 20) / 20));
+    /* 11/26 보스 '속도가 안 맞음': 기본 = 내 속도 ÷ 찍은 속도, 그리고 1.5초마다 '지금 간 거리'의 장면과 비교해 늦으면 조금 빠르게·앞서면 조금 느리게 (12초 넘게 늦으면 바로 건너뜀) */
+    let k = 1;
+    if (v.sync){ VID.dr = VID.dr || { t: 0, k: 1 };
+      if (Date.now() - VID.dr.t > 1500){ VID.dr.t = Date.now(); const d = vidAt(v) - VID.P.getCurrentTime();
+        if (d > 12 || d < -90){ vSelf(); VID.P.seekTo(vidAt(v), true); VID.dr.k = 1; } else VID.dr.k = Math.max(0.5, Math.min(1.5, 1 + d / 10)); }   // 앞선 쪽은 안 찍힌 구간(최대 80초)을 지나며 생기니 되감지 않고 천천히
+      k = VID.dr.k; }
+    const r = Math.max(0.25, Math.min(2, Math.round(kmh / v.kmh * k * 20) / 20));
     if (r !== VID.rate){ VID.P.setPlaybackRate(r); VID.rate = r; }
     if (VID.P.getPlayerState() !== 1){ vSelf(); VID.P.playVideo(); }
     $('vidTx').textContent = '🎬 ' + r.toFixed(2).replace(/0$/, '') + '배속' + (kmh / v.kmh > 2 ? ' · 영상은 최대 2배' : '');
