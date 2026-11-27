@@ -1402,7 +1402,7 @@
 </div>
 
 <script>
-const BUILD = '202611280640';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611280700';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -8067,11 +8067,13 @@ function drawClimbNav(g, x, y, vw, vh, st, mini){
   const m = st.m, tower = m.kind === 'tower', cw = g.canvas.width, chh = g.canvas.height;
   const bg = g.createLinearGradient(0, 0, 0, chh); bg.addColorStop(0, tower ? '#dfe7ef' : '#dbe9f3'); bg.addColorStop(1, tower ? '#eef1f4' : '#e8efe0');
   g.fillStyle = bg; g.fillRect(0, 0, cw, chh);
-  const cy = y + vh * 0.6, pulse = 1 + 0.25 * Math.sin(performance.now() / 300);
+  let cy = y + vh * 0.6; const pulse = 1 + 0.25 * Math.sin(performance.now() / 300);
   const dot = (px, py) => { g.fillStyle = 'rgba(232,87,74,.25)'; g.beginPath(); g.arc(px, py, (mini ? 9 : 17) * DPR * pulse, 0, 7); g.fill();
     g.fillStyle = '#e8574a'; g.strokeStyle = '#fff'; g.lineWidth = (mini ? 2 : 3) * DPR; g.beginPath(); g.arc(px, py, (mini ? 5 : 9) * DPR, 0, 7); g.fill(); g.stroke(); };
   if (tower){
     const fh = m.gain / m.floors, nfl = mini ? 6 : 12, ppm = vh / (nfl * fh), bw0 = vw * (mini ? 0.56 : 0.5), mid = x + vw / 2, tx = TOWER_X[m.id] || {};
+    /* 11/28 보스 폰 '건물 아래~숫자 칸 위 빈 여백': 낮은 층에선 땅이 화면 중간에 떠서 아래가 빈 바닥 → 땅을 화면 아래(숫자 칸 바로 위)에 붙이고, 오를수록 빨간 점이 원래 자리(60%)로 */
+    if (!mini) cy = Math.max(cy, y + vh - 44 * DPR - st.climbed * ppm);
     const yOf = hgt => cy - (hgt - st.climbed) * ppm, yGround = yOf(0), yTop = Math.max(-10, yOf(m.gain)), yBot = Math.min(chh + 10, yGround);
     const sc = skyCols(m, st.ratio), night = sc[2] === 'night';
     if (!mini){
