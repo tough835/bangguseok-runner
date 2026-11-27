@@ -25,6 +25,11 @@
   #altChip{position:fixed;top:calc(10px + env(safe-area-inset-top));right:10px;padding:5px 10px;border-radius:12px;background:rgba(20,22,25,.72);color:#fff;font-size:15px;font-weight:800;line-height:1.2;text-align:right;pointer-events:none}
   #altChip small{display:block;font-size:11px;font-weight:700;color:var(--vtx)}
   #hudTop #bYt.ytFix{position:fixed;z-index:6}   /* 11/26 고도 칸 옆 */
+  /* 11/28 보스 '왼쪽 위는 제목만, 지도·소리 탭은 오른쪽 작은 지도 아래로 차례로': 오른쪽 한 줄 = 지도 종류 → 고도(한 줄) → 유튜브 → 소리(맨 아래, 크기 그대로) · 위 셋은 가로 길이 같게 (자리·폭은 rStack()이 잼) */
+  body.rcol #hudTop #b3d,body.rcol #hudTop #bYt,body.rcol #hudTop #bVoice{position:fixed;z-index:6;justify-content:center}
+  body.rcol #altChip{display:flex;align-items:center;justify-content:center;gap:5px;min-height:40px;padding:0 12px;border-radius:20px;box-sizing:border-box;white-space:nowrap}
+  body.rcol #altChip.hidden{display:none}
+  body.rcol #altChip small{display:inline;font-size:13px}
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
   /* 11/23 보스 "위 탭·목표·전체 지도는 그대로, 밑에 띠만 없애고 영상은 꽉 차게": 세로 화면 = 위 띠 아래 ~ 기록판 위 전부 영상 (영상 위에는 아무것도 안 겹침) */
@@ -1402,7 +1407,7 @@
 </div>
 
 <script>
-const BUILD = '202611280740';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611280800';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -7097,9 +7102,10 @@ function altChip(){
   $('altChip').classList.toggle('hidden', !show);
   const va = $('vAlt'); va.classList.toggle('hidden', !(show && document.body.classList.contains('vidP')));
   if (show) va.textContent = (top != null ? '⛰' + Math.round(top).toLocaleString() + 'm' : '') + (typeof sub === 'number' && (sub >= 1 || top == null) ? (top != null ? ' ' : '') + '↑' + Math.round(sub).toLocaleString() : '');   // 줄임: 오른 높이 0이면 뺌
-  if (!show) return;
+  if (!show) return rStack();
   const mp = $('map'), mr = !mp.classList.contains('hidden') && mp.getBoundingClientRect(); $('altChip').style.top = mr && mr.height ? Math.round(mr.bottom + 8) + 'px' : '';   // 작은 지도가 있으면 바로 아래
   $('altChip').innerHTML = (top != null ? '⛰ ' + Math.round(top).toLocaleString() + 'm' : '⛰') + (sub != null ? '<small>↑ ' + (typeof sub === 'number' ? Math.round(sub).toLocaleString() + 'm' : sub) + '</small>' : '');
+  rStack();
 }
 /* ---- 11/18 보스 "워치·이어폰 연동" (앱 v0.1.15~ WorkoutPlugin) ----
    · 알림 칸에 운동 숫자(15초마다 소리 없이 고침) → 갤럭시 워치가 폰 알림을 그대로 보여 줌. 1km마다 한 번 울림(워치 진동)
@@ -8011,12 +8017,23 @@ function v3dBtn(){   // 11/23 14:25 보스: 영상은 지도 버튼과 분리 �
   const c = mapCur(m); b.textContent = (isClimb() && c === 'flat' ? (climbGeoOn() ? T.w_mMap : T.w_mMtn) : MAPL[c]) + ' ↻';
   if (c === '3d' || c === 'toon'){ v3dLoad(); if (V3D.ready && V3D.sty !== c) v3dStyle(c); }
 }
-function vidBtnPos(){   // 11/26 보스: '▶ 유튜브'는 지도 탭과 따로 · 고도 칸 옆은 가린다 → 고도 칸 바로 아래 오른쪽 (고도 칸이 없거나 영상 중이면 버튼 줄 안)
-  const y = $('bYt'), a = $('altChip'), r = a && !a.classList.contains('hidden') && !document.body.classList.contains('vidOn') ? a.getBoundingClientRect() : null;
-  if (r && r.height && !y.classList.contains('hidden')){ y.classList.add('ytFix'); Object.assign(y.style, { top: Math.round(r.bottom + 6) + 'px', right: Math.round(innerWidth - r.right) + 'px' }); }
-  else { y.classList.remove('ytFix'); y.style.top = y.style.right = ''; }
+function vidBtnPos(){ rStack(); }
+/* 11/28 보스: 세로 운동 화면(영상 아닐 때) 오른쪽 한 줄 = 작은 지도 아래로 지도 종류 → 고도 → 유튜브 → 소리. 위 셋은 같은 폭(가장 넓은 것·작은 지도 폭 중 큰 값), 소리는 그대로 40px.
+   영상 중·가로 화면은 예전처럼 왼쪽 버튼 줄 */
+let RCOL_B = 0;
+function rStack(){
+  const on = S.running && !landUI() && !document.body.classList.contains('vidOn'), B = document.body;
+  const eq = ['b3d', 'altChip', 'bYt'].map($), all = eq.concat($('bVoice'));
+  if (B.classList.contains('rcol') !== on) B.classList.toggle('rcol', on);
+  all.forEach(e => { e.classList.remove('ytFix'); if (e.id !== 'altChip') e.style.top = ''; e.style.right = e.style.width = ''; });
+  if (!on) return;
+  const vis = e => !e.classList.contains('hidden') && e.offsetHeight > 0, mp = $('map'), mr = vis(mp) ? mp.getBoundingClientRect() : null;
+  const sh = eq.filter(vis), w = Math.ceil(Math.max(mr ? mr.width : 0, ...sh.map(e => e.getBoundingClientRect().width)));
+  let y = mr ? mr.bottom + 8 : ($('hudTop').getBoundingClientRect().top || 10);
+  all.filter(vis).forEach(e => { Object.assign(e.style, { top: Math.round(y) + 'px', right: '10px', width: e.id === 'bVoice' ? '' : w + 'px' }); y += e.getBoundingClientRect().height + 6; });
+  RCOL_B = Math.round(y + 4);
 }
-function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; }
+function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; try { rStack(); } catch(e){} }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say(T.j_voiceOnSay); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? T.j_voiceOff : T.j_voiceOn); };
 function vidEnter(){ if (MYT.last) ytPlay(MYT.last); else ytBoxOpen(''); }   // 11/26: '▶ 유튜브' = 일반 유튜브만 (코스 영상은 지도 탭 안)
 $('b3d').onclick = e => { e.stopPropagation(); const m = mapModes(); if (m.length < 2) return; const c = mapCur(m), i = m.indexOf(c), n = i < 0 ? m[0] : m[(i + 1) % m.length];
@@ -8113,7 +8130,7 @@ function drawClimbNav(g, x, y, vw, vh, st, mini){
     if (!mini) fadeBottom(g, vh);
     const wc = wOf(st.climbed / fh); g.fillStyle = '#e8574a'; g.fillRect(mid - wc / 2 - 10 * DPR, cy - 2 * DPR, wc + 20 * DPR, 4 * DPR);
     if (!mini){ const fa = ((TOWER_X[m.id] || {}).facts || []).filter(([f]) => f <= st.floor).pop();   // 지금 층 이야기 한 줄
-      const y0 = 122 * DPR; g.textAlign = 'center';
+      const y0 = Math.max(122, (document.body.classList.contains('rcol') && RCOL_B) || 0) * DPR; g.textAlign = 'center';   // 11/28: 오른쪽 버튼 줄(유튜브·소리) 아래로
       if (fa){ g.font = '700 ' + Math.round(12 * DPR) + 'px sans-serif'; const tt = '📌 ' + fa[1], tw = Math.min(vw - 24 * DPR, g.measureText(tt).width); g.fillStyle = 'rgba(255,255,255,.93)'; g.fillRect(mid - tw / 2 - 8 * DPR, y0, tw + 16 * DPR, 24 * DPR); g.fillStyle = '#24332a'; g.fillText(tt, mid, y0 + 17 * DPR, vw - 24 * DPR); }
       if (WINV.lookTxt){ g.font = '700 ' + Math.round(10.5 * DPR) + 'px sans-serif'; const tt = WINV.lookTxt, tw = Math.min(vw - 24 * DPR, g.measureText(tt).width); g.fillStyle = 'rgba(0,0,0,.45)'; g.fillRect(mid - tw / 2 - 8 * DPR, y0 + 28 * DPR, tw + 16 * DPR, 20 * DPR); g.fillStyle = '#fff'; g.fillText(tt, mid, y0 + 42 * DPR, vw - 24 * DPR); }
       g.textAlign = 'left'; }
