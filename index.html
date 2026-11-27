@@ -1402,7 +1402,7 @@
 </div>
 
 <script>
-const BUILD = '202611271900';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611272110';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4145,8 +4145,8 @@ Object.values(ALL_ROADS).forEach(c => { if (ROUTE_LAB.has(c.id)) c.lab = true; }
    ROUTE_LAB(노선 불량)과 따로 둠 → 3D를 맞춘 코스는 이 목록에서 id만 지우면 바로 일반 목록으로 복귀 (기록·진행 그대로) */
 const V3D_LAB = new Set(["baegun-gil", "buyeo-gil", "dalseong-bike", "dongbaek-1k", "dulle-all-44k", "dulle-ds-12k", "dulle-gd-11k", "dulle-ig-20k", "geumgang-bike", "geumoji-gil", "gongjicheon-gil", "gyeongbok-3k", "gyeongchun-bike-24k", "haeparang-750k", "haeundae-dongbaek", "hangang-bike-11k", "hwaseong-gil", "igidae-5k", "ilsanlake-gil", "jando-gil", "jeonjuhanok-gil", "jirisan-dulle-274k", "jongmyo-5k", "juknokwon-gil", "kt-hp-01", "kt-hp-02", "kt-hp-03", "kt-hp-04", "kt-hp-05", "kt-hp-06", "kt-hp-07", "kt-hp-08", "kt-hp-09", "kt-hp-10", "kt-hp-11", "kt-hp-12", "kt-hp-13", "kt-hp-15", "kt-hp-16", "kt-hp-17", "kt-hp-18", "kt-hp-19", "kt-hp-20", "kt-hp-21", "kt-hp-22", "kt-hp-23", "kt-hp-24", "kt-hp-25", "kt-hp-26", "kt-hp-27", "kt-hp-28", "kt-hp-29", "kt-hp-30", "kt-hp-32", "kt-hp-33", "kt-hp-34", "kt-hp-35", "kt-hp-36", "kt-hp-37", "kt-hp-38", "kt-hp-39", "kt-hp-40", "kt-hp-41", "kt-hp-42", "kt-hp-43", "kt-hp-44", "kt-hp-45", "kt-hp-46", "kt-hp-47", "kt-hp-48", "kt-hp-49", "kt-hp-50", "kt-np-01", "kt-np-02", "kt-np-03", "kt-np-04", "kt-np-05", "kt-np-06", "kt-np-07", "kt-np-08", "kt-np-09", "kt-np-10", "kt-np-11", "kt-np-12", "kt-np-13", "kt-np-14", "kt-np-15", "kt-np-16", "kt-np-17", "kt-np-18", "kt-np-19", "kt-np-20", "kt-np-21", "kt-np-22", "kt-np-23", "kt-np-24", "kt-np-25", "kt-np-26", "kt-np-27", "kt-np-28", "kt-np-29", "kt-np-30", "kt-np-31", "kt-np-32", "kt-np-33", "kt-np-34", "kt-np-35", "kt-np-36", "kt-np-37", "kt-np-38", "kt-np-39", "kt-np-40", "kt-np-41", "kt-np-42", "kt-np-43", "kt-np-44", "kt-np-46", "kt-np-48", "kt-np-49", "kt-np-51", "kt-np-54", "kt-np-55", "kt-np-56", "kt-np-57", "kt-np-58", "kt-np-59", "kt-np-60", "kt-np-61", "kt-np-62", "kt-np-63", "kt-np-64", "kt-np-65", "kt-np-66", "kt-np-67", "kt-np-68", "kt-np-69", "kt-np-70", "kt-np-71", "kt-np-72", "kt-np-73", "kt-np-74", "kt-np-75", "kt-np-76", "kt-np-77", "kt-np-78", "kt-np-79", "kt-np-80", "kt-np-81", "kt-np-82", "kt-np-83", "kt-np-84", "kt-np-85", "kt-np-86", "kt-sh-01", "kt-sh-02", "kt-sh-03", "kt-sh-04", "kt-sh-05", "kt-sh-06", "kt-sh-07", "kt-sh-08", "kt-sh-09", "kt-sh-10", "kt-sh-101", "kt-sh-11", "kt-sh-12", "kt-sh-13", "kt-sh-14", "kt-sh-15", "kt-sh-16", "kt-sh-17", "kt-sh-18", "kt-sh-19", "kt-sh-20", "kt-sh-22", "kt-sh-23", "kt-sh-24", "kt-sh-25", "kt-sh-26", "kt-sh-27", "kt-sh-28", "kt-sh-29", "kt-sh-34", "kt-sh-36", "kt-sh-37", "kt-sh-38", "kt-sh-39", "kt-sh-40", "kt-sh-41", "kt-sh-42", "kt-sh-43", "kt-sh-44", "kt-sh-45", "kt-sh-46", "kt-sh-47", "kt-sh-48", "kt-sh-49", "kt-sh-50", "kt-sh-51", "kt-sh-52", "kt-sh-53", "kt-sh-54", "kt-sh-55", "kt-sh-56", "kt-sh-57", "kt-sh-58", "kt-sh-60", "kt-sh-61", "kt-sh-62", "kt-sh-64", "kt-sh-66", "kt-sh-67", "kt-sh-69", "kt-sh-70", "kt-sh-71", "kt-sh-72", "kt-sh-73", "kt-sh-74", "kt-sh-76", "kt-sh-81", "kt-sh-82", "kt-sh-84", "kt-sh-85", "kt-sh-86", "kt-sh-87", "kt-sh-89", "kt-sh-90", "kt-sh-91", "kt-sh-92", "kt-sh-94", "kt-sh-95", "kt-sh-96", "kt-sh-97", "kt-sh-98", "naejang-gil", "nakdong-bike-18k", "namhangang-bike", "nampa-1470k", "pungam-gil", "pureungil-gil", "saejae-gil", "sangnim-3k", "sanjeong-gil", "seohae-1800k", "seokchon-3k", "sincheon-gil", "suseongmot-gil", "suyeong-bike-7k", "tapjeong-gil", "tapjeong-road", "woljeongsa-gil", "woncheon-gil", "yeongsan-bike"]);
 const V3D_LAB_MTN = new Set(["baegun", "cheonwang", "cheonwang-hwaeom", "cheonwang-jungsan", "daebong", "darangswi", "gamtu", "geomang", "geumwon", "gibaek", "hwangseok", "m100-002", "m100-004", "m100-006", "m100-007", "m100-008", "m100-009", "m100-010", "m100-011", "m100-012", "m100-013", "m100-014", "m100-015", "m100-016", "m100-017", "m100-018", "m100-019", "m100-022", "m100-023", "m100-024", "m100-025", "m100-026", "m100-027", "m100-028", "m100-029", "m100-031", "m100-032", "m100-033", "m100-034", "m100-035", "m100-036", "m100-037", "m100-038", "m100-039", "m100-041", "m100-042", "m100-043", "m100-044", "m100-045", "m100-046", "m100-047", "m100-048", "m100-049", "m100-050", "m100-051", "m100-052", "m100-053", "m100-055", "m100-056", "m100-057", "m100-058", "m100-059", "m100-060", "m100-061", "m100-062", "m100-063", "m100-064", "m100-065", "m100-066", "m100-067", "m100-068", "m100-069", "m100-070", "m100-071", "m100-072", "m100-074", "m100-075", "m100-076", "m100-078", "m100-079", "m100-080", "m100-081", "m100-082", "m100-083", "m100-084", "m100-085", "m100-086", "m100-087", "m100-089", "m100-090", "m100-091", "m100-092", "m100-093", "m100-094", "m100-095", "m100-096", "m100-098", "m100-100", "namdeogyu", "sambong", "samjeong", "wabul", "wolbong"]);
-Object.values(ALL_ROADS).forEach(c => { if (V3D_LAB.has(c.id)) c.lab = true; });
-TARGETS.forEach(t => { if (V3D_LAB_MTN.has(t.id)) t.lab = true; });
+/* 11/27 저녁 보스 "3D는 점검이 더 필요 → 3D는 감추고, 위성·그림 지도가 맞으면 오픈": 3D 보기 자체를 실험실 폰에서만(V3D_LAB_ONLY) → 위 두 목록은 코스를 숨기지 않고 '3D 다시 열 때 점검할 목록'으로만 남김 */
+const V3D_LAB_ONLY = true;
 const LAB_CITY = new Set(['newyork', 'tokyo', 'fuji', 'hongkong', 'dubai', 'paris', 'pisa']);
 Object.entries(WORLD.cities).forEach(([cid, ct]) => Object.values(ct.courses || {}).forEach(c => { if (c && (LAB_CITY.has(cid) || (c.video && /^시험/.test(c.video.note || '')))) { c.lab = true; (c.segments || []).forEach(g => g.lab = true); } }));
 /* 11/26 보스 '직접 찍은 곳과 아닌 곳 구분': 보스가 직접 찍은 영상(video.mine) = 🎬, 남의 영상으로 만든 코스 영상 = 📺 · 영상 자료 하나로 판단 → 앞으로 추가될 코스도 저절로 (실험실 전용 영상은 실험실에서만 보이고 표시도 같이) */
@@ -4817,7 +4817,7 @@ function preTick(){
   PRE.busy = true;
   (async () => {
     if (await preAll()) return;
-    if (DB.v3d === false || $('startScreen').classList.contains('hidden') || !preNetOk(true)) { PRE.k = ''; return; }
+    if (DB.v3d === false || (V3D_LAB_ONLY && !LAB_ON()) || $('startScreen').classList.contains('hidden') || !preNetOk(true)) { PRE.k = ''; return; }
     const key = preKey(); if (DB.pre?.[key]) return;
     if (PRE.k !== key){ PRE.k = key; PRE.t = Date.now(); return; }
     if (Date.now() - PRE.t < 4000) return;
@@ -7455,7 +7455,7 @@ function v3dSat(lat, lon){   // 코스 위치에 맞게 위성 사진 출처·�
 }
 const V3D = { map: null, ready: false, loading: false, failed: false, key: '', me: null, tags: [], brg: null, last: 0, mc: null, kr: null, bad: 0, ok: 0 };
 const v3dAble = () => S.running && !S.free && !S.gps && !V3D.failed && !V3D.hot && !LOWP && (isClimb() ? TGT(DB.climb.sel).kind === 'mountain' && !!MTN_GEO[DB.climb.sel] : SAT_OK);
-const v3dOn = () => DB.v3d !== false && V3D.ready && !NAV.full && v3dAble();
+const v3dOn = () => DB.v3d !== false && (!V3D_LAB_ONLY || LAB_ON()) && V3D.ready && !NAV.full && v3dAble();
 function v3dLoad(){
   if (V3D.map || V3D.loading || V3D.failed) return; V3D.loading = true;
   const bad = () => { V3D.failed = true; V3D.loading = false; };
@@ -7719,7 +7719,7 @@ const vidMode = () => !!(COURSE.video && !S.free && !isClimb() && S.running && !
 const mapCur = m => m.includes('vid') && VID.on && !VID.mine ? 'vid' : mapCur0(m);
 function mapModes(){ const m = mapModes0(); if (vidMode() && !NAV.full) m.push('vid'); return m; }
 function mapModes0(){
-  const hot = V3D.hot; V3D.hot = false; const c3 = v3dAble() && !NAV.full; V3D.hot = hot;   // 과열로 평면이 됐어도 3D를 다시 고를 수 있게
+  const hot = V3D.hot; V3D.hot = false; const c3 = (!V3D_LAB_ONLY || LAB_ON()) && v3dAble() && !NAV.full; V3D.hot = hot;   // 과열로 평면이 됐어도 3D를 다시 고를 수 있게
   const m = c3 ? (V3D_TOON ? ['3d', 'toon'] : ['3d']) : [];   // 11/18 23:38 보스: 그림 3D가 폰에서 끊기면 할 이유 없음 → 종전 3개(3D·위성·지도)
   if (!NAV.full && (isClimb() ? climbGeoOn() : (S.gps || SAT_OK))) m.push('sat', 'map'); else if (c3) m.push('flat');   // 11/23 보스: 등산로 지도가 있는 산도 위성·지도·3D 셋 다
   return m;
