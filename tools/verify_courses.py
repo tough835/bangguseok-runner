@@ -2,7 +2,8 @@
 """11/27 보스 "사용자가 앱 보고 실제로 가니까 검증되고 확실한 것만 오픈, 애매하면 실험실" — 코스별 검증 판정.
 
 오픈 조건 (전부 만족해야 오픈):
-  ① 노선 근거 = 공식 GPX(두루누비 코리아둘레길 · 지리산둘레길 · 산림청 100대명산) 또는 보스 현장 GPS
+  ① 노선 근거 = 공식 GPX(길 코스는 공식 노선이 없으면 ③ 지도 대조 통과로 대신 · 보스 11/27 "지도확인으로 충분")
+     원래: 공식 GPX(두루누비 코리아둘레길 · 지리산둘레길 · 산림청 100대명산) 또는 보스 현장 GPS
      (지도 길찾기로 점을 이어 만든 노선은 '공식 아님' → 실험실)
   ② 되돌림·엉킴 점검(tools/route_audit.py) '통과'
   ③ 그림 지도(오픈스트리트맵) 대조(tools/route_osm_local.py → data/route_osm_probe.json):
@@ -32,7 +33,8 @@ for kind, lst, fk in (('길', d['roads'], 'official'), ('산', d['mtns'], 'geo')
         src = json.load(open(c[fk], encoding='utf-8')).get('src', '')
         b, bs = basis(src); a = A.get(c['id'], {}); p = P.get(c['id'])
         why = []
-        if not b: why.append('공식 노선 아님(지도 길찾기로 이은 노선)')
+        if not b and kind == '산': why.append('공식 노선 아님(지도 자동 생성 등산로)')
+        if not b and kind == '길': bs = '지도 확인(공식 노선 없는 산책길 · 보스 11/27 "지도확인으로 충분") · ' + src   # ③ 그림 지도 대조 통과가 조건
         if a.get('grade') != '통과': why.append('되돌림·엉킴 ' + str(a.get('grade') or '점검 없음'))
         bike = '자전거' in (c.get('kind') or '')
         if b != 'gps':
