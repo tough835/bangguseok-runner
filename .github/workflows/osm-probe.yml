@@ -3,7 +3,7 @@ name: osm-probe
 on:
   workflow_dispatch:
   push:
-    paths: [ 'tools/route_osm_probe.py', 'data/osm_probe_list.json' ]
+    paths: [ 'tools/route_osm_probe.py' ]   # 11/27 목록이 바뀌면 빠른 osm-local 만 (둘이 같이 돌면 결과 파일을 서로 덮음)
 permissions:
   contents: write
 jobs:
