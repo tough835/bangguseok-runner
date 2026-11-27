@@ -27,9 +27,11 @@
   #hudTop #bYt.ytFix{position:fixed;z-index:6}   /* 11/26 고도 칸 옆 */
   /* 11/28 보스 '왼쪽 위는 제목만, 지도·소리 탭은 오른쪽 작은 지도 아래로 차례로': 오른쪽 한 줄 = 지도 종류 → 고도(한 줄) → 유튜브 → 소리(맨 아래, 크기 그대로) · 위 셋은 가로 길이 같게 (자리·폭은 rStack()이 잼) */
   body.rcol #hudTop #b3d,body.rcol #hudTop #bYt,body.rcol #hudTop #bVoice{position:fixed;z-index:6;justify-content:center}
-  body.rcol #altChip{display:flex;align-items:center;justify-content:center;gap:5px;min-height:40px;padding:0 12px;border-radius:20px;box-sizing:border-box;white-space:nowrap}
+  /* 11/28 보스 '칸이 지도보다 넓어 가림 → 지도 폭 이하' + '너무 줄이진 말고 모두 한 줄': 세 칸 폭 = 작은 지도 폭, 글자 13px, 안 들어가면 rStack()이 한 줄에 들어갈 때까지 글자만 줄임(최소 10px) */
+  body.rcol #hudTop #b3d,body.rcol #hudTop #bYt{min-height:36px;padding:0 6px;font-size:13px;border-radius:17px;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  body.rcol #altChip{display:flex;align-items:center;justify-content:center;gap:4px;min-height:36px;padding:0 5px;border-radius:18px;box-sizing:border-box;white-space:nowrap;overflow:hidden;font-size:13px}
   body.rcol #altChip.hidden{display:none}
-  body.rcol #altChip small{display:inline;font-size:13px}
+  body.rcol #altChip small{display:inline;font-size:.85em}
   #vidBox{position:fixed;left:0;right:0;top:0;bottom:var(--vidB,300px);z-index:4;background:#000;display:flex;flex-direction:column}#vidWrap{flex:1;position:relative;overflow:hidden}#vidWrap iframe,#vidFrame{position:absolute;border:0;left:0;top:0;width:100%;height:100%}#vidBar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:#111;color:#c9cbd0;font-size:13px}#vidBar button{min-height:40px;padding:0 14px;border-radius:20px;border:0;background:#34373c;color:#fff;font-size:14px;font-weight:700}
   body.vidOn #hudTop,body.vidOn #map,body.vidOn #altChip{visibility:hidden}
   /* 11/23 보스 "위 탭·목표·전체 지도는 그대로, 밑에 띠만 없애고 영상은 꽉 차게": 세로 화면 = 위 띠 아래 ~ 기록판 위 전부 영상 (영상 위에는 아무것도 안 겹침) */
@@ -1407,7 +1409,7 @@
 </div>
 
 <script>
-const BUILD = '202611280800';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611280835';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -7104,7 +7106,8 @@ function altChip(){
   if (show) va.textContent = (top != null ? '⛰' + Math.round(top).toLocaleString() + 'm' : '') + (typeof sub === 'number' && (sub >= 1 || top == null) ? (top != null ? ' ' : '') + '↑' + Math.round(sub).toLocaleString() : '');   // 줄임: 오른 높이 0이면 뺌
   if (!show) return rStack();
   const mp = $('map'), mr = !mp.classList.contains('hidden') && mp.getBoundingClientRect(); $('altChip').style.top = mr && mr.height ? Math.round(mr.bottom + 8) + 'px' : '';   // 작은 지도가 있으면 바로 아래
-  $('altChip').innerHTML = (top != null ? '⛰ ' + Math.round(top).toLocaleString() + 'm' : '⛰') + (sub != null ? '<small>↑ ' + (typeof sub === 'number' ? Math.round(sub).toLocaleString() + 'm' : sub) + '</small>' : '');
+  const rc = document.body.classList.contains('rcol') || (S.running && !landUI() && !document.body.classList.contains('vidOn')), sp = rc ? '' : ' ';   // 11/28 보스 '한 줄로': 오른쪽 줄에선 빈칸을 빼 짧게
+  $('altChip').innerHTML = (top != null ? '⛰' + sp + Math.round(top).toLocaleString() + 'm' : '⛰') + (sub != null ? '<small>↑' + sp + (typeof sub === 'number' ? Math.round(sub).toLocaleString() + 'm' : sub) + '</small>' : '');
   rStack();
 }
 /* ---- 11/18 보스 "워치·이어폰 연동" (앱 v0.1.15~ WorkoutPlugin) ----
@@ -8025,13 +8028,14 @@ function rStack(){
   const on = S.running && !landUI() && !document.body.classList.contains('vidOn'), B = document.body;
   const eq = ['b3d', 'altChip', 'bYt'].map($), all = eq.concat($('bVoice'));
   if (B.classList.contains('rcol') !== on) B.classList.toggle('rcol', on);
-  all.forEach(e => { e.classList.remove('ytFix'); if (e.id !== 'altChip') e.style.top = ''; e.style.right = e.style.width = ''; });
+  all.forEach(e => { e.classList.remove('ytFix'); if (e.id !== 'altChip') e.style.top = ''; e.style.right = e.style.width = e.style.fontSize = ''; });
   if (!on) return;
   const vis = e => !e.classList.contains('hidden') && e.offsetHeight > 0, mp = $('map'), mr = vis(mp) ? mp.getBoundingClientRect() : null;
-  const sh = eq.filter(vis), w = Math.ceil(Math.max(mr ? mr.width : 0, ...sh.map(e => e.getBoundingClientRect().width)));
+  const w = Math.round(mr ? mr.width : 96);   // 11/28 보스: 작은 지도 폭 이하 (지도 오른쪽 끝에 맞춤)
   let y = mr ? mr.bottom + 8 : ($('hudTop').getBoundingClientRect().top || 10);
-  all.filter(vis).forEach(e => { Object.assign(e.style, { top: Math.round(y) + 'px', right: '10px', width: e.id === 'bVoice' ? '' : w + 'px' }); y += e.getBoundingClientRect().height + 6; });
+  all.filter(vis).forEach(e => { Object.assign(e.style, { top: Math.round(y) + 'px', right: (mr ? Math.round(innerWidth - mr.right) : 10) + 'px', width: e.id === 'bVoice' ? '' : w + 'px' }); y += e.getBoundingClientRect().height + 6; });
   RCOL_B = Math.round(y + 4);
+  eq.filter(vis).forEach(e => { for (let f = 13; f > 10 && e.scrollWidth > e.clientWidth + 1; ) e.style.fontSize = --f + 'px'; });   // 한 줄에 안 들어가면 글자만 조금씩 작게
 }
 function voiceBtn(on){ const b = $('bVoice'); b.classList.toggle('hidden', !on); b.textContent = DB.voice === false ? '🔇' : '🔊'; try { rStack(); } catch(e){} }
 $('bVoice').onclick = () => { DB.voice = DB.voice === false; saveDB(); voiceBtn(true); if (DB.voice !== false) say(T.j_voiceOnSay); else { try { if (ttsNative()) CAP.Plugins.Tts.stop(); else window.speechSynthesis && speechSynthesis.cancel(); } catch(e){} } toastMsg(DB.voice === false ? T.j_voiceOff : T.j_voiceOn); };
