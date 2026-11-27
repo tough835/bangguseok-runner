@@ -1,0 +1,25 @@
+name: osm-local
+# 11/27 노선 ↔ 오픈스트리트맵 길 대조를 한국 전체 지도 파일로 한 번에 (Overpass보다 훨씬 빠름) → data/route_osm_probe.json
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths: [ 'tools/route_osm_local.py', 'data/osm_probe_list.json' ]
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install osmium
+      - run: timeout 4800 python -u tools/route_osm_local.py
+      - if: success()
+        run: |
+          git config user.name "probe-bot"; git config user.email "probe-bot@users.noreply.github.com"
+          git add data/route_osm_probe.json
+          git commit -m "노선 ↔ 오픈스트리트맵 길 대조 결과 · 지도 파일로 전체 (앱 화면 변경 없음)" || echo "no change"
+          git pull --rebase origin main && git push origin HEAD:main

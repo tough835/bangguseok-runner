@@ -1,541 +1,2935 @@
 [
 {
-"id": "namsan-7k",
-"name": "남산 한 바퀴 (북측순환로 → 남산공원길)",
-"kind": "도보·조깅",
+"id": "sangnim-3k",
+"name": "Sangnim Loop",
+"kind": "도보",
 "lab": false,
+"file": "data/route/sangnim-gps2.json"
+},
+{
+"id": "dulle-gd-11k",
+"name": "Jirisan Dulle-gil Geumgye→Donggang",
+"kind": "도보",
+"lab": false,
+"file": "data/jiri/c4.json"
+},
+{
+"id": "dulle-ds-12k",
+"name": "Jirisan Dulle-gil Donggang→Sucheol",
+"kind": "도보",
+"lab": false,
+"file": "data/jiri/c5.json"
+},
+{
+"id": "dulle-ig-20k",
+"name": "Jirisan Dulle-gil Inwol→Geumgye",
+"kind": "도보",
+"lab": false,
+"file": "data/jiri/c3.json"
+},
+{
+"id": "dulle-all-44k",
+"name": "Jirisan Dulle-gil, all Hamyang sections (Inwol→Geumgye→Donggang→Sucheol)",
+"kind": "도보",
+"lab": false,
+"file": "data/jiri/c345.json"
+},
+{
+"id": "haeparang-750k",
+"name": "Haeparang Trail (Busan Oryukdo → Gangwon Goseong Tongil Observatory)",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/haeparang2.json"
+},
+{
+"id": "nampa-1470k",
+"name": "Namparang Trail (Busan Oryukdo → Haenam Ttangkkeut)",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/nampa2.json"
+},
+{
+"id": "seohae-1800k",
+"name": "Seohaerang Trail (Haenam Ttangkkeut → Incheon Ganghwa)",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seohae2.json"
+},
+{
+"id": "jirisan-dulle-274k",
+"name": "Jirisan Dulle-gil (Han Bakwi · Namwon Jucheon Start)",
+"kind": "걷기",
+"lab": false,
+"file": "data/jiri/loop2.json"
+},
+{
+"id": "namsan-7k",
+"name": "Namsan Loop (Bukcheuksunhwallo → Namsangongwon Trail)",
+"kind": "도보·조깅",
+"lab": true,
 "file": "data/route/namsan-7k-v2.json"
 },
 {
 "id": "hangang-bike-11k",
-"name": "한강 자전거길 남쪽 (반포 → 잠실)",
+"name": "Hangang Bike Path south (Banpo → Jamsil)",
 "kind": "자전거·조깅",
 "lab": false,
 "file": "data/route/hangang-bike-11k.json"
 },
 {
 "id": "yeouido-10k",
-"name": "여의도 한강 다리 한 바퀴 (원효대교·마포대교)",
+"name": "Yeouido Hangang Bridge Loop (Wonhyodaegyo Bridge·Mapodaegyo Bridge)",
 "kind": "도보·조깅·자전거",
 "lab": true,
 "file": "data/route/yeouido-10k.json"
 },
 {
 "id": "gyeongbok-3k",
-"name": "경복궁 돌담길 한 바퀴",
+"name": "Gyeongbokgung Doldam Trail Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/gyeongbok-3k-v2.json"
 },
 {
 "id": "jongmyo-5k",
-"name": "광화문→종묘→청계천 한 바퀴",
+"name": "Gwanghwamun Gate→Jongmyo→Cheonggyecheon Stream Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/jongmyo-5k-v3.json"
 },
 {
 "id": "seokchon-3k",
-"name": "석촌호수 한 바퀴 (롯데타워 옆)",
+"name": "Seokchonhosu Lake Loop (near Lotte Tower)",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/seokchon-3k-v3.json"
 },
 {
 "id": "greenrail-5k",
-"name": "해운대 그린레일웨이 (미포→청사포→송정)",
+"name": "Haeundae Green Railway (Mipo→Cheongsapo→Songjeong)",
 "kind": "해안길",
-"lab": false,
+"lab": true,
 "file": "data/route/greenrail-5k-v2.json"
 },
 {
 "id": "moontan-3k",
-"name": "달맞이 문탠로드 (한 바퀴)",
+"name": "Dalmaji Moontan Road (Han Bakwi)",
 "kind": "도보",
-"lab": false,
+"lab": true,
 "file": "data/route/moontan-3k-v3.json"
 },
 {
 "id": "nakdong-bike-18k",
-"name": "낙동강 자전거길 (하굿둑 → 화명생태공원)",
+"name": "Nakdonggang River Bike Path (Hagutduk → Hwamyeongsaengtae Park)",
 "kind": "자전거·조깅",
 "lab": false,
 "file": "data/route/nakdong-bike-18k.json"
 },
 {
 "id": "suyeong-bike-7k",
-"name": "수영강 자전거길 (민락 → 원동)",
+"name": "Suyeonggang River Bike Path (Millak → Wondong)",
 "kind": "자전거·조깅",
 "lab": false,
 "file": "data/route/suyeong-bike-7k.json"
 },
 {
 "id": "oncheon-bike-8k",
-"name": "온천천 자전거길 (수영강 합류 → 온천장)",
+"name": "Oncheoncheon Stream Bike Path (Suyeonggang River Junction → Oncheonjang)",
 "kind": "자전거·조깅",
-"lab": false,
+"lab": true,
 "file": "data/route/oncheon-bike-8k.json"
 },
 {
+"id": "oncheon-loop-14k",
+"name": "Oncheoncheon Stream Yangjjok Duk Trail Loop (Gyodae Start · Suyeonggang River Junction~Busandae)",
+"kind": "도보·조깅",
+"lab": true,
+"file": "data/route/oncheon-loop-14k.json"
+},
+{
+"id": "oncheon-loop-3k",
+"name": "Oncheoncheon Stream Short Loop (Gyodae~Yeonsan-dong)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/oncheon-loop-3k.json"
+},
+{
+"id": "oncheon-loop-4k",
+"name": "Oncheoncheon Stream Loop (Gyodae~Suyeonggang River Junction)",
+"kind": "도보·조깅",
+"lab": false,
+"file": "data/route/oncheon-loop-4k.json"
+},
+{
 "id": "dongbaek-1k",
-"name": "동백섬 한 바퀴",
+"name": "Dongbaekseom Island Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/dongbaek-1k-v2.json"
 },
 {
 "id": "haeundae-dongbaek",
-"name": "해운대 해변 → 동백섬 한 바퀴",
+"name": "Haeundae Beach → Dongbaekseom Island Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/haeundae-dongbaek-v2.json"
 },
 {
 "id": "igidae-5k",
-"name": "이기대 해안산책로 (동생말→오륙도)",
+"name": "Igidae Haean Promenade (Dongsaengmal→Oryukdo)",
 "kind": "해안길",
 "lab": false,
 "file": "data/route/igidae-5k-v2.json"
 },
 {
 "id": "gwangalli-3k",
-"name": "광안리 해변 왕복",
+"name": "Gwangan-ri Beach round trip",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/gwangalli-3k.json"
 },
 {
 "id": "hwaseong-gil",
-"name": "수원 화성 성곽길 한 바퀴",
+"name": "Suwon Hwaseong Seonggwak Trail Loop",
 "kind": "도보",
 "lab": false,
 "file": "data/route/hwaseong-gil-v2.json"
 },
 {
 "id": "woncheon-gil",
-"name": "광교호수공원 원천호수 한 바퀴",
+"name": "Gwanggyohosu Park Woncheonhosu Lake Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/woncheon-gil.json"
 },
 {
 "id": "baegun-gil",
-"name": "백운호수 한 바퀴",
+"name": "Baegunhosu Lake Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/baegun-gil.json"
 },
 {
 "id": "giheung-gil",
-"name": "기흥호수 한 바퀴",
+"name": "Giheunghosu Lake Loop",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/giheung-gil.json"
 },
 {
 "id": "sanjeong-gil",
-"name": "산정호수 둘레길",
+"name": "Sanjeonghosu Lake Dulle-gil",
 "kind": "도보",
 "lab": false,
 "file": "data/route/sanjeong-gil.json"
 },
 {
 "id": "sinjeong-gil",
-"name": "신정호 한 바퀴",
+"name": "Sinjeongho Lake Loop",
 "kind": "도보·조깅",
-"lab": false,
+"lab": true,
 "file": "data/route/sinjeong-gil-v2.json"
 },
 {
 "id": "upo-gil",
-"name": "우포늪 생명길",
+"name": "Uponeup Saengmyeong Trail",
 "kind": "도보",
-"lab": false,
+"lab": true,
 "file": "data/route/upo-gil.json"
 },
 {
 "id": "jeonjuhanok-gil",
-"name": "전주 한옥마을 한 바퀴",
+"name": "Jeonju Hanok Village Loop",
 "kind": "도보",
 "lab": false,
 "file": "data/route/jeonjuhanok-gil-v3.json"
 },
 {
 "id": "woryeong-gil",
-"name": "안동 월영교·낙동강변 왕복",
+"name": "Andong Woryeonggyo Bridge·Nakdong Riverside round trip",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/woryeong-gil.json"
 },
 {
 "id": "gwanghallu-gil",
-"name": "남원 광한루원↔춘향테마파크 왕복",
+"name": "Namwon Gwanghalluwon↔Chunhyang Theme Park round trip",
 "kind": "도보",
 "lab": true,
 "file": "data/route/gwanghallu-gil.json"
 },
 {
 "id": "jinjuseong-gil",
-"name": "진주성·남강 한 바퀴",
+"name": "Jinjuseong Fortress·Namgang Loop",
 "kind": "도보·조깅",
-"lab": false,
+"lab": true,
 "file": "data/route/jinjuseong-gil-v2.json"
 },
 {
 "id": "daecheong-bike",
-"name": "대전 갑천·금강 자전거길 (엑스포다리→대청댐)",
+"name": "Daejeon Gapcheon·Geumgang Bike Path (Expo Bridge→Daecheongdaem)",
 "kind": "자전거",
-"lab": false,
+"lab": true,
 "file": "data/route/daecheong-bike.json"
 },
 {
 "id": "expo-gil",
-"name": "대전 한밭수목원·엑스포 한 바퀴",
+"name": "Daejeon Hanbat Arboretum·Expo Loop",
 "kind": "도보·조깅",
-"lab": false,
+"lab": true,
 "file": "data/route/expo-gil-v2.json"
 },
 {
 "id": "musimcheon-gil",
-"name": "청주 무심천 (꽃다리→송천교)",
+"name": "Cheongju Musimcheon Stream (Kkot Bridge→Songcheongyo Bridge)",
 "kind": "조깅·자전거",
-"lab": false,
+"lab": true,
 "file": "data/route/musimcheon-gil-v2.json"
 },
 {
 "id": "gongjicheon-gil",
-"name": "춘천 소양강 스카이워크→공지천→의암공원",
+"name": "Chuncheon Soyanggang River Seukaiwokeu→Gongjicheon Stream→Uiam Park",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/gongjicheon-gil.json"
 },
 {
 "id": "juknokwon-gil",
-"name": "담양 죽녹원→관방제림→메타프로방스",
+"name": "Damyang Jungnogwon→Gwanbangjerim→Meta Provence",
 "kind": "도보",
 "lab": false,
 "file": "data/route/juknokwon-gil.json"
 },
 {
 "id": "woljeongsa-gil",
-"name": "오대산 월정사→상원사",
+"name": "Odaesan Woljeongsa Temple→Sangwonsa Temple",
 "kind": "도보",
 "lab": false,
 "file": "data/route/woljeongsa-gil.json"
 },
 {
 "id": "sorigil-gil",
-"name": "가야산 소리길 (대장경테마파크→해인사)",
+"name": "Gayasan Sori Trail (Daejanggyeong Theme Park→Haeinsa Temple)",
 "kind": "도보",
-"lab": false,
+"lab": true,
 "file": "data/route/sorigil-gil.json"
 },
 {
 "id": "jando-gil",
-"name": "단양 구경시장→단양강 잔도→만천하스카이워크",
+"name": "Danyang Gugyeong Market→Danyanggang River Jando→Mancheonha Skywalk",
 "kind": "도보",
 "lab": false,
 "file": "data/route/jando-gil.json"
 },
 {
 "id": "gongsanseong-gil",
-"name": "공주 공산성→무령왕릉→한옥마을 다녀오기",
+"name": "Gongju Gongsanseong Fortress→Muryeongwangneung→Hanok Village Danyeoogi",
 "kind": "도보",
 "lab": true,
 "file": "data/route/gongsanseong-gil.json"
 },
 {
 "id": "buyeo-gil",
-"name": "부여 궁남지→정림사지→낙화암",
+"name": "Buyeo Gungnamji→Jeongnimsaji→Nakhwaam",
 "kind": "도보",
 "lab": false,
 "file": "data/route/buyeo-gil-v2.json"
 },
 {
 "id": "sejonglake-gil",
-"name": "세종호수공원 한 바퀴",
+"name": "Sejonghosu Park Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/sejonglake-gil.json"
 },
 {
 "id": "geumgang-bike",
-"name": "금강 자전거길 (세종보→공주보)",
+"name": "Geumgang Bike Path (Sejongbo→Gongjubo)",
 "kind": "자전거",
 "lab": false,
 "file": "data/route/geumgang-bike-v2.json"
 },
 {
 "id": "dumulmeori-gil",
-"name": "양평 양수역↔세미원↔두물머리 왕복",
+"name": "Yangpyeong Yangsu Station↔Semiwon↔Dumulmeo-ri round trip",
 "kind": "도보",
 "lab": true,
 "file": "data/route/dumulmeori-gil.json"
 },
 {
 "id": "namhangang-bike",
-"name": "남한강 자전거길 (팔당역→양평역)",
+"name": "Namhangang River Bike Path (Paldang Station→Yangpyeong Station)",
 "kind": "자전거",
 "lab": false,
 "file": "data/route/namhangang-bike.json"
 },
 {
 "id": "seomjin-bike",
-"name": "섬진강 자전거길 (섬진강댐→장군목→향가유원지)",
+"name": "Seomjingang River Bike Path (Seomjingangdaem→Janggunmok→Hyangga Resort)",
 "kind": "자전거",
-"lab": false,
+"lab": true,
 "file": "data/route/seomjin-bike.json"
 },
 {
 "id": "ilsanlake-gil",
-"name": "일산호수공원 한 바퀴",
+"name": "Ilsanhosu Park Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/ilsanlake-gil.json"
 },
 {
 "id": "pungam-gil",
-"name": "풍암호수 한 바퀴",
+"name": "Pungamhosu Lake Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/pungam-gil.json"
 },
 {
 "id": "pureungil-gil",
-"name": "광주 푸른길 (광주역→남광주역→백운광장)",
+"name": "Gwangju Pureun Trail (Gwangju Station→Namgwangju Station→Baegun Plaza)",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/pureungil-gil.json"
 },
 {
 "id": "hoamji-gil",
-"name": "호암지 한 바퀴",
+"name": "Hoamji Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/hoamji-gil.json"
 },
 {
 "id": "tangeum-bike",
-"name": "충주 탄금호 자전거길 (충주댐→탄금대→중앙탑)",
+"name": "Chungju Tangeumho Lake Bike Path (Chungjudaem→Tangeumdae→Jungangtap)",
 "kind": "자전거",
-"lab": false,
+"lab": true,
 "file": "data/route/tangeum-bike.json"
 },
 {
 "id": "geumoji-gil",
-"name": "금오산 올레길 (금오지 한 바퀴)",
+"name": "Geumosan Olle Trail (Geumoji Loop)",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/geumoji-gil.json"
 },
 {
 "id": "cheonhoji-gil",
-"name": "천호지 한 바퀴 (단대호수)",
+"name": "Cheonhoji Loop (Dandaehosu Lake)",
 "kind": "도보·조깅",
-"lab": false,
+"lab": true,
 "file": "data/route/cheonhoji-gil.json"
 },
 {
 "id": "tapjeong-gil",
-"name": "탑정호 한 바퀴",
+"name": "Tapjeongho Lake Loop",
 "kind": "도보",
 "lab": false,
 "file": "data/route/tapjeong-gil.json"
 },
 {
 "id": "tapjeong-road",
-"name": "탑정호 찻길 한 바퀴",
+"name": "Tapjeongho Lake Chat Trail Loop",
 "kind": "자전거",
 "lab": false,
 "file": "data/route/tapjeong-road.json"
 },
 {
 "id": "saejae-gil",
-"name": "문경새재 과거길 (1관문→2관문→3관문)",
+"name": "Mungyeongsaejae Pass Gwageo Trail (1 Gwanmun→2 Gwanmun→3 Gwanmun)",
 "kind": "도보",
 "lab": false,
 "file": "data/route/saejae-gil.json"
 },
 {
 "id": "naejang-gil",
-"name": "내장산 단풍길 (터미널→우화정→내장사)",
+"name": "Naejangsan Danpung Trail (Teomineol→Uhwajeong Pavilion→Naejangsa Temple)",
 "kind": "도보",
 "lab": false,
 "file": "data/route/naejang-gil.json"
 },
 {
 "id": "yeongsan-bike",
-"name": "영산강 자전거길 (승촌보→죽산보)",
+"name": "Yeongsangang River Bike Path (Seungchonbo→Juksanbo)",
 "kind": "자전거",
 "lab": false,
 "file": "data/route/yeongsan-bike.json"
 },
 {
 "id": "suseongmot-gil",
-"name": "수성못 한 바퀴",
+"name": "Suseongmot Pond Loop",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/suseongmot-gil.json"
 },
 {
 "id": "sincheon-gil",
-"name": "대구 신천 (상동교→침산교)",
+"name": "Daegu Sincheon (Sangdonggyo Bridge→Chimsangyo Bridge)",
 "kind": "조깅·자전거",
 "lab": false,
 "file": "data/route/sincheon-gil-v2.json"
 },
 {
 "id": "dalseong-bike",
-"name": "낙동강 자전거길 (강정고령보→달성보)",
+"name": "Nakdonggang River Bike Path (Gangjeonggoryeongbo→Dalseongbo)",
 "kind": "자전거",
 "lab": false,
 "file": "data/route/dalseong-bike.json"
 },
 {
 "id": "bomun-gil",
-"name": "보문호 한 바퀴 (보문호반길)",
+"name": "Bomunho Lake Loop (Bomunhoban Trail)",
 "kind": "도보·조깅",
 "lab": false,
 "file": "data/route/bomun-gil-v2.json"
 },
 {
 "id": "gyeongjuhist-gil",
-"name": "경주 대릉원→첨성대→월정교→동궁과 월지 돌아오기",
+"name": "Gyeongju Daereungwon→Cheomseongdae→Woljeonggyo Bridge→Donggunggwa Wolji return",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/gyeongjuhist-gil.json"
 },
 {
 "id": "gyeongchun-bike-24k",
-"name": "경춘선 자전거길 (마석 → 대성리 → 청평 → 가평)",
+"name": "Gyeongchunseon Bike Path (Maseok → Daeseong-ri → Cheongpyeong → Gapyeong)",
 "kind": "자전거·조깅",
 "lab": false,
 "file": "data/route/gyeongchun-bike-24k.json"
 },
 {
 "id": "olle7-18k",
-"name": "제주올레 7코스 (여행자센터→외돌개→월평)",
+"name": "Jeju Olle Course 7 (Yeohaengja Center→Oedolgae→Wolpyeong)",
 "kind": "해안길",
 "lab": true,
 "file": "data/route/olle7-18k.json"
 },
 {
 "id": "olle1-15k",
-"name": "제주올레 1코스 (시흥→말미오름→성산→광치기)",
+"name": "Jeju Olle Course 1 (Siheung→Malmi Oreum→Seongsan→Gwangchigi)",
 "kind": "도보",
 "lab": true,
 "file": "data/route/olle1-15k.json"
 },
 {
 "id": "olle6-11k",
-"name": "제주올레 6코스 (쇠소깍→정방폭포→서귀포)",
+"name": "Jeju Olle Course 6 (Soesokkak→Jeongbang Falls→Seogwipo)",
 "kind": "해안길",
 "lab": true,
 "file": "data/route/olle6-11k.json"
 },
 {
 "id": "zurich-lake",
-"name": "취리히 호숫가 (뷔르클리 광장 → 티펜브루넨)",
+"name": "Zurich Lakeside (Bürkliplatz → Tiefenbrunnen)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/zurich-lake.json"
 },
 {
 "id": "luzern-lake",
-"name": "루체른 호숫가 (카펠교 → 교통박물관)",
+"name": "Lucerne Lakeside (Chapel Bridge → Transport Museum)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/luzern-lake.json"
 },
 {
 "id": "geneva-lake",
-"name": "제네바 호숫가 (파키 → 라 그랑주 공원)",
+"name": "Geneva Lakeside (Pâquis → Parc La Grange)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/geneva-lake.json"
 },
 {
 "id": "lavaux-bike",
-"name": "라보 포도밭 호숫길 (로잔 우시 → 브베)",
+"name": "Lavaux Vineyard Lake Trail (Lausanne Ouchy → Vevey)",
 "kind": "자전거",
 "lab": true,
 "file": "data/route/lavaux-bike.json"
 },
 {
 "id": "retiro-loop",
-"name": "마드리드 레티로 공원 한 바퀴",
+"name": "Madrid Retiro Park Loop",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/retiro-loop.json"
 },
 {
 "id": "madrid-rio",
-"name": "마드리드 리오 강변 (레이 다리 → 마타데로)",
+"name": "Madrid Río (Puente del Rey → Matadero)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/madrid-rio.json"
 },
 {
 "id": "barcelona-beach",
-"name": "바르셀로나 해변 (바르셀로네타 → 마르 베야)",
+"name": "Barcelona Beaches (Barceloneta → Mar Bella)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/barcelona-beach.json"
 },
 {
 "id": "formentor-bike",
-"name": "마요르카 포르멘토르 곶 (폴렌사 항 → 등대)",
+"name": "Mallorca Cap de Formentor (Port de Pollença → Lighthouse)",
 "kind": "자전거",
 "lab": true,
 "file": "data/route/formentor-bike.json"
 },
 {
 "id": "copenhagen-lakes",
-"name": "코펜하겐 호수 한 바퀴",
+"name": "Copenhagen Lakes Loop",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/copenhagen-lakes.json"
 },
 {
 "id": "djurgarden-loop",
-"name": "스톡홀름 유르고르덴 섬 한 바퀴",
+"name": "Stockholm Djurgården Loop",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/djurgarden-loop.json"
 },
 {
 "id": "akerselva",
-"name": "오슬로 아케르 강 산책로 (마리달 호수 → 바테를란)",
+"name": "Oslo Akerselva River Walk (Maridalsvannet → Vaterland)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/akerselva.json"
 },
 {
 "id": "atlantic-road",
-"name": "노르웨이 대서양 도로 (베방 → 코르보그)",
+"name": "Atlantic Ocean Road, Norway (Vevang → Kårvåg)",
 "kind": "자전거",
 "lab": true,
 "file": "data/route/atlantic-road.json"
 },
 {
 "id": "centralpark-10k",
-"name": "뉴욕 센트럴파크 한 바퀴 (Park Drive)",
+"name": "Central Park Loop, New York (Park Drive)",
 "kind": "도보·조깅·자전거",
 "lab": true,
 "file": "data/route/centralpark-10k.json"
 },
 {
 "id": "kokyo-5k",
-"name": "도쿄 황거 한 바퀴 (고쿄 런)",
+"name": "Tokyo Imperial Palace Loop (Kokyo Run)",
 "kind": "도보·조깅",
 "lab": true,
 "file": "data/route/kokyo-5k.json"
 },
 {
 "id": "dragonsback-9k",
-"name": "홍콩 드래곤스 백 (토테이완→빅웨이브베이)",
+"name": "Hong Kong Dragon's Back (To Tei Wan → Big Wave Bay)",
 "kind": "트레킹",
 "lab": true,
 "file": "data/route/dragonsback-9k.json"
+},
+{
+"id": "kt-hp-01",
+"name": "Haeparang Trail Course 1",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-01.json"
+},
+{
+"id": "kt-hp-02",
+"name": "Haeparang Trail Course 2",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-02.json"
+},
+{
+"id": "kt-hp-03",
+"name": "Haeparang Trail Course 3",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-03.json"
+},
+{
+"id": "kt-hp-04",
+"name": "Haeparang Trail Course 4",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-04.json"
+},
+{
+"id": "kt-hp-05",
+"name": "Haeparang Trail Course 5",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-05.json"
+},
+{
+"id": "kt-hp-06",
+"name": "Haeparang Trail Course 6",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-06.json"
+},
+{
+"id": "kt-hp-07",
+"name": "Haeparang Trail Course 7",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-07.json"
+},
+{
+"id": "kt-hp-08",
+"name": "Haeparang Trail Course 8",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-08.json"
+},
+{
+"id": "kt-hp-09",
+"name": "Haeparang Trail Course 9",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-09.json"
+},
+{
+"id": "kt-hp-10",
+"name": "Haeparang Trail Course 10",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-10.json"
+},
+{
+"id": "kt-hp-11",
+"name": "Haeparang Trail Course 11",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-11.json"
+},
+{
+"id": "kt-hp-12",
+"name": "Haeparang Trail Course 12",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-12-v2.json"
+},
+{
+"id": "kt-hp-13",
+"name": "Haeparang Trail Course 13",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-13.json"
+},
+{
+"id": "kt-hp-14",
+"name": "Haeparang Trail Course 14",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-14.json"
+},
+{
+"id": "kt-hp-15",
+"name": "Haeparang Trail Course 15",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-15.json"
+},
+{
+"id": "kt-hp-16",
+"name": "Haeparang Trail Course 16",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-16.json"
+},
+{
+"id": "kt-hp-17",
+"name": "Haeparang Trail Course 17",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-17.json"
+},
+{
+"id": "kt-hp-18",
+"name": "Haeparang Trail Course 18",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-18-v2.json"
+},
+{
+"id": "kt-hp-19",
+"name": "Haeparang Trail Course 19",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-19.json"
+},
+{
+"id": "kt-hp-20",
+"name": "Haeparang Trail Course 20",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-20.json"
+},
+{
+"id": "kt-hp-21",
+"name": "Haeparang Trail Course 21",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-21.json"
+},
+{
+"id": "kt-hp-22",
+"name": "Haeparang Trail Course 22",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-22.json"
+},
+{
+"id": "kt-hp-23",
+"name": "Haeparang Trail Course 23",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-23.json"
+},
+{
+"id": "kt-hp-24",
+"name": "Haeparang Trail Course 24",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-24.json"
+},
+{
+"id": "kt-hp-25",
+"name": "Haeparang Trail Course 25",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-25.json"
+},
+{
+"id": "kt-hp-26",
+"name": "Haeparang Trail Course 26",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-26.json"
+},
+{
+"id": "kt-hp-27",
+"name": "Haeparang Trail Course 27",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-27.json"
+},
+{
+"id": "kt-hp-28",
+"name": "Haeparang Trail Course 28",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-28.json"
+},
+{
+"id": "kt-hp-29",
+"name": "Haeparang Trail Course 29",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-29.json"
+},
+{
+"id": "kt-hp-30",
+"name": "Haeparang Trail Course 30",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-30.json"
+},
+{
+"id": "kt-hp-31",
+"name": "Haeparang Trail Course 31",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-31.json"
+},
+{
+"id": "kt-hp-32",
+"name": "Haeparang Trail Course 32",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-32.json"
+},
+{
+"id": "kt-hp-33",
+"name": "Haeparang Trail Course 33",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-33.json"
+},
+{
+"id": "kt-hp-34",
+"name": "Haeparang Trail Course 34",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-34.json"
+},
+{
+"id": "kt-hp-35",
+"name": "Haeparang Trail Course 35",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-35.json"
+},
+{
+"id": "kt-hp-36",
+"name": "Haeparang Trail Course 36",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-36.json"
+},
+{
+"id": "kt-hp-37",
+"name": "Haeparang Trail Course 37",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-37.json"
+},
+{
+"id": "kt-hp-38",
+"name": "Haeparang Trail Course 38",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-38.json"
+},
+{
+"id": "kt-hp-39",
+"name": "Haeparang Trail Course 39",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-39.json"
+},
+{
+"id": "kt-hp-40",
+"name": "Haeparang Trail Course 40",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-40.json"
+},
+{
+"id": "kt-hp-41",
+"name": "Haeparang Trail Course 41",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-41.json"
+},
+{
+"id": "kt-hp-42",
+"name": "Haeparang Trail Course 42",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-42.json"
+},
+{
+"id": "kt-hp-43",
+"name": "Haeparang Trail Course 43",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-43.json"
+},
+{
+"id": "kt-hp-44",
+"name": "Haeparang Trail Course 44",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-44.json"
+},
+{
+"id": "kt-hp-45",
+"name": "Haeparang Trail Course 45",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-45.json"
+},
+{
+"id": "kt-hp-46",
+"name": "Haeparang Trail Course 46",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-46.json"
+},
+{
+"id": "kt-hp-47",
+"name": "Haeparang Trail Course 47",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-47.json"
+},
+{
+"id": "kt-hp-48",
+"name": "Haeparang Trail Course 48",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-48.json"
+},
+{
+"id": "kt-hp-49",
+"name": "Haeparang Trail Course 49",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-49.json"
+},
+{
+"id": "kt-hp-50",
+"name": "Haeparang Trail Course 50",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/hp-50.json"
+},
+{
+"id": "kt-np-01",
+"name": "Namparang Trail Course 1",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-01.json"
+},
+{
+"id": "kt-np-02",
+"name": "Namparang Trail Course 2",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-02.json"
+},
+{
+"id": "kt-np-03",
+"name": "Namparang Trail Course 3",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-03.json"
+},
+{
+"id": "kt-np-04",
+"name": "Namparang Trail Course 4",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-04.json"
+},
+{
+"id": "kt-np-05",
+"name": "Namparang Trail Course 5",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-05.json"
+},
+{
+"id": "kt-np-06",
+"name": "Namparang Trail Course 6",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-06.json"
+},
+{
+"id": "kt-np-07",
+"name": "Namparang Trail Course 7",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-07.json"
+},
+{
+"id": "kt-np-08",
+"name": "Namparang Trail Course 8",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-08.json"
+},
+{
+"id": "kt-np-09",
+"name": "Namparang Trail Course 9",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-09.json"
+},
+{
+"id": "kt-np-10",
+"name": "Namparang Trail Course 10",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-10.json"
+},
+{
+"id": "kt-np-11",
+"name": "Namparang Trail Course 11",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-11.json"
+},
+{
+"id": "kt-np-12",
+"name": "Namparang Trail Course 12",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-12.json"
+},
+{
+"id": "kt-np-13",
+"name": "Namparang Trail Course 13",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-13.json"
+},
+{
+"id": "kt-np-14",
+"name": "Namparang Trail Course 14",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-14.json"
+},
+{
+"id": "kt-np-15",
+"name": "Namparang Trail Course 15",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-15.json"
+},
+{
+"id": "kt-np-16",
+"name": "Namparang Trail Course 16",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-16.json"
+},
+{
+"id": "kt-np-17",
+"name": "Namparang Trail Course 17",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-17.json"
+},
+{
+"id": "kt-np-18",
+"name": "Namparang Trail Course 18",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-18.json"
+},
+{
+"id": "kt-np-19",
+"name": "Namparang Trail Course 19",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-19.json"
+},
+{
+"id": "kt-np-20",
+"name": "Namparang Trail Course 20",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-20.json"
+},
+{
+"id": "kt-np-21",
+"name": "Namparang Trail Course 21",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-21.json"
+},
+{
+"id": "kt-np-22",
+"name": "Namparang Trail Course 22",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-22.json"
+},
+{
+"id": "kt-np-23",
+"name": "Namparang Trail Course 23",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-23.json"
+},
+{
+"id": "kt-np-24",
+"name": "Namparang Trail Course 24",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-24.json"
+},
+{
+"id": "kt-np-25",
+"name": "Namparang Trail Course 25",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-25.json"
+},
+{
+"id": "kt-np-26",
+"name": "Namparang Trail Course 26",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-26.json"
+},
+{
+"id": "kt-np-27",
+"name": "Namparang Trail Course 27",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-27.json"
+},
+{
+"id": "kt-np-28",
+"name": "Namparang Trail Course 28",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-28.json"
+},
+{
+"id": "kt-np-29",
+"name": "Namparang Trail Course 29",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-29.json"
+},
+{
+"id": "kt-np-30",
+"name": "Namparang Trail Course 30",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-30.json"
+},
+{
+"id": "kt-np-31",
+"name": "Namparang Trail Course 31",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-31.json"
+},
+{
+"id": "kt-np-32",
+"name": "Namparang Trail Course 32",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-32.json"
+},
+{
+"id": "kt-np-33",
+"name": "Namparang Trail Course 33",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-33.json"
+},
+{
+"id": "kt-np-34",
+"name": "Namparang Trail Course 34",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-34.json"
+},
+{
+"id": "kt-np-35",
+"name": "Namparang Trail Course 35",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-35.json"
+},
+{
+"id": "kt-np-36",
+"name": "Namparang Trail Course 36",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-36.json"
+},
+{
+"id": "kt-np-37",
+"name": "Namparang Trail Course 37",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-37.json"
+},
+{
+"id": "kt-np-38",
+"name": "Namparang Trail Course 38",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-38.json"
+},
+{
+"id": "kt-np-39",
+"name": "Namparang Trail Course 39",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-39.json"
+},
+{
+"id": "kt-np-40",
+"name": "Namparang Trail Course 40",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-40.json"
+},
+{
+"id": "kt-np-41",
+"name": "Namparang Trail Course 41",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-41.json"
+},
+{
+"id": "kt-np-42",
+"name": "Namparang Trail Course 42",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-42.json"
+},
+{
+"id": "kt-np-43",
+"name": "Namparang Trail Course 43",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-43.json"
+},
+{
+"id": "kt-np-44",
+"name": "Namparang Trail Course 44",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-44.json"
+},
+{
+"id": "kt-np-46",
+"name": "Namparang Trail Course 46",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-46.json"
+},
+{
+"id": "kt-np-48",
+"name": "Namparang Trail Course 48",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-48.json"
+},
+{
+"id": "kt-np-49",
+"name": "Namparang Trail Course 49",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-49.json"
+},
+{
+"id": "kt-np-51",
+"name": "Namparang Trail Course 51",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-51.json"
+},
+{
+"id": "kt-np-54",
+"name": "Namparang Trail Course 54",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-54.json"
+},
+{
+"id": "kt-np-55",
+"name": "Namparang Trail Course 55",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-55.json"
+},
+{
+"id": "kt-np-56",
+"name": "Namparang Trail Course 56",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-56.json"
+},
+{
+"id": "kt-np-57",
+"name": "Namparang Trail Course 57",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-57.json"
+},
+{
+"id": "kt-np-58",
+"name": "Namparang Trail Course 58",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-58.json"
+},
+{
+"id": "kt-np-59",
+"name": "Namparang Trail Course 59",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-59.json"
+},
+{
+"id": "kt-np-60",
+"name": "Namparang Trail Course 60",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-60.json"
+},
+{
+"id": "kt-np-61",
+"name": "Namparang Trail Course 61",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-61.json"
+},
+{
+"id": "kt-np-62",
+"name": "Namparang Trail Course 62",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-62.json"
+},
+{
+"id": "kt-np-63",
+"name": "Namparang Trail Course 63",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-63.json"
+},
+{
+"id": "kt-np-64",
+"name": "Namparang Trail Course 64",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-64.json"
+},
+{
+"id": "kt-np-65",
+"name": "Namparang Trail Course 65",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-65.json"
+},
+{
+"id": "kt-np-66",
+"name": "Namparang Trail Course 66",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-66.json"
+},
+{
+"id": "kt-np-67",
+"name": "Namparang Trail Course 67",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-67.json"
+},
+{
+"id": "kt-np-68",
+"name": "Namparang Trail Course 68",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-68.json"
+},
+{
+"id": "kt-np-69",
+"name": "Namparang Trail Course 69",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-69.json"
+},
+{
+"id": "kt-np-70",
+"name": "Namparang Trail Course 70",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-70.json"
+},
+{
+"id": "kt-np-71",
+"name": "Namparang Trail Course 71",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-71.json"
+},
+{
+"id": "kt-np-72",
+"name": "Namparang Trail Course 72",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-72.json"
+},
+{
+"id": "kt-np-73",
+"name": "Namparang Trail Course 73",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-73.json"
+},
+{
+"id": "kt-np-74",
+"name": "Namparang Trail Course 74",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-74.json"
+},
+{
+"id": "kt-np-75",
+"name": "Namparang Trail Course 75",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-75.json"
+},
+{
+"id": "kt-np-76",
+"name": "Namparang Trail Course 76",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-76.json"
+},
+{
+"id": "kt-np-77",
+"name": "Namparang Trail Course 77",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-77.json"
+},
+{
+"id": "kt-np-78",
+"name": "Namparang Trail Course 78",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-78.json"
+},
+{
+"id": "kt-np-79",
+"name": "Namparang Trail Course 79",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-79.json"
+},
+{
+"id": "kt-np-80",
+"name": "Namparang Trail Course 80",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-80.json"
+},
+{
+"id": "kt-np-81",
+"name": "Namparang Trail Course 81",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-81.json"
+},
+{
+"id": "kt-np-82",
+"name": "Namparang Trail Course 82",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-82.json"
+},
+{
+"id": "kt-np-83",
+"name": "Namparang Trail Course 83",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-83.json"
+},
+{
+"id": "kt-np-84",
+"name": "Namparang Trail Course 84",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-84.json"
+},
+{
+"id": "kt-np-85",
+"name": "Namparang Trail Course 85",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-85.json"
+},
+{
+"id": "kt-np-86",
+"name": "Namparang Trail Course 86",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/np-86-v2.json"
+},
+{
+"id": "kt-sh-01",
+"name": "Seohaerang Trail Course 1",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-01.json"
+},
+{
+"id": "kt-sh-02",
+"name": "Seohaerang Trail Course 2",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-02.json"
+},
+{
+"id": "kt-sh-03",
+"name": "Seohaerang Trail Course 3",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-03.json"
+},
+{
+"id": "kt-sh-04",
+"name": "Seohaerang Trail Course 4",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-04.json"
+},
+{
+"id": "kt-sh-05",
+"name": "Seohaerang Trail Course 5",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-05.json"
+},
+{
+"id": "kt-sh-06",
+"name": "Seohaerang Trail Course 6",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-06.json"
+},
+{
+"id": "kt-sh-07",
+"name": "Seohaerang Trail Course 7",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-07.json"
+},
+{
+"id": "kt-sh-08",
+"name": "Seohaerang Trail Course 8",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-08.json"
+},
+{
+"id": "kt-sh-09",
+"name": "Seohaerang Trail Course 9",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-09.json"
+},
+{
+"id": "kt-sh-10",
+"name": "Seohaerang Trail Course 10",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-10.json"
+},
+{
+"id": "kt-sh-11",
+"name": "Seohaerang Trail Course 11",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-11.json"
+},
+{
+"id": "kt-sh-12",
+"name": "Seohaerang Trail Course 12",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-12.json"
+},
+{
+"id": "kt-sh-13",
+"name": "Seohaerang Trail Course 13",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-13.json"
+},
+{
+"id": "kt-sh-14",
+"name": "Seohaerang Trail Course 14",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-14.json"
+},
+{
+"id": "kt-sh-15",
+"name": "Seohaerang Trail Course 15",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-15.json"
+},
+{
+"id": "kt-sh-16",
+"name": "Seohaerang Trail Course 16",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-16-v2.json"
+},
+{
+"id": "kt-sh-17",
+"name": "Seohaerang Trail Course 17",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-17.json"
+},
+{
+"id": "kt-sh-18",
+"name": "Seohaerang Trail Course 18",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-18.json"
+},
+{
+"id": "kt-sh-19",
+"name": "Seohaerang Trail Course 19",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-19.json"
+},
+{
+"id": "kt-sh-20",
+"name": "Seohaerang Trail Course 20",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-20.json"
+},
+{
+"id": "kt-sh-21",
+"name": "Seohaerang Trail Course 21",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-21.json"
+},
+{
+"id": "kt-sh-22",
+"name": "Seohaerang Trail Course 22",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-22.json"
+},
+{
+"id": "kt-sh-23",
+"name": "Seohaerang Trail Course 23",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-23.json"
+},
+{
+"id": "kt-sh-24",
+"name": "Seohaerang Trail Course 24",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-24-v2.json"
+},
+{
+"id": "kt-sh-25",
+"name": "Seohaerang Trail Course 25",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-25.json"
+},
+{
+"id": "kt-sh-26",
+"name": "Seohaerang Trail Course 26",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-26.json"
+},
+{
+"id": "kt-sh-27",
+"name": "Seohaerang Trail Course 27",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-27.json"
+},
+{
+"id": "kt-sh-28",
+"name": "Seohaerang Trail Course 28",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-28.json"
+},
+{
+"id": "kt-sh-29",
+"name": "Seohaerang Trail Course 29",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-29.json"
+},
+{
+"id": "kt-sh-34",
+"name": "Seohaerang Trail Course 34",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-34-v2.json"
+},
+{
+"id": "kt-sh-36",
+"name": "Seohaerang Trail Course 36",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-36.json"
+},
+{
+"id": "kt-sh-37",
+"name": "Seohaerang Trail Course 37",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-37.json"
+},
+{
+"id": "kt-sh-38",
+"name": "Seohaerang Trail Course 38",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-38.json"
+},
+{
+"id": "kt-sh-39",
+"name": "Seohaerang Trail Course 39",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-39.json"
+},
+{
+"id": "kt-sh-40",
+"name": "Seohaerang Trail Course 40",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-40.json"
+},
+{
+"id": "kt-sh-41",
+"name": "Seohaerang Trail Course 41",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-41.json"
+},
+{
+"id": "kt-sh-42",
+"name": "Seohaerang Trail Course 42",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-42.json"
+},
+{
+"id": "kt-sh-43",
+"name": "Seohaerang Trail Course 43",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-43.json"
+},
+{
+"id": "kt-sh-44",
+"name": "Seohaerang Trail Course 44",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-44.json"
+},
+{
+"id": "kt-sh-45",
+"name": "Seohaerang Trail Course 45",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-45.json"
+},
+{
+"id": "kt-sh-46",
+"name": "Seohaerang Trail Course 46",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-46-v2.json"
+},
+{
+"id": "kt-sh-47",
+"name": "Seohaerang Trail Course 47",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-47.json"
+},
+{
+"id": "kt-sh-48",
+"name": "Seohaerang Trail Course 48",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-48.json"
+},
+{
+"id": "kt-sh-49",
+"name": "Seohaerang Trail Course 49",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-49.json"
+},
+{
+"id": "kt-sh-50",
+"name": "Seohaerang Trail Course 50",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-50.json"
+},
+{
+"id": "kt-sh-51",
+"name": "Seohaerang Trail Course 51",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-51.json"
+},
+{
+"id": "kt-sh-52",
+"name": "Seohaerang Trail Course 52",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-52.json"
+},
+{
+"id": "kt-sh-53",
+"name": "Seohaerang Trail Course 53",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-53.json"
+},
+{
+"id": "kt-sh-54",
+"name": "Seohaerang Trail Course 54",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-54.json"
+},
+{
+"id": "kt-sh-55",
+"name": "Seohaerang Trail Course 55",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-55.json"
+},
+{
+"id": "kt-sh-56",
+"name": "Seohaerang Trail Course 56",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-56-v2.json"
+},
+{
+"id": "kt-sh-57",
+"name": "Seohaerang Trail Course 57",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-57.json"
+},
+{
+"id": "kt-sh-58",
+"name": "Seohaerang Trail Course 58",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-58-v2.json"
+},
+{
+"id": "kt-sh-60",
+"name": "Seohaerang Trail Course 60",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-60-v2.json"
+},
+{
+"id": "kt-sh-61",
+"name": "Seohaerang Trail Course 61",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-61.json"
+},
+{
+"id": "kt-sh-62",
+"name": "Seohaerang Trail Course 62",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-62-v2.json"
+},
+{
+"id": "kt-sh-64",
+"name": "Seohaerang Trail Course 64",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-64.json"
+},
+{
+"id": "kt-sh-66",
+"name": "Seohaerang Trail Course 66",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-66.json"
+},
+{
+"id": "kt-sh-67",
+"name": "Seohaerang Trail Course 67",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-67-v2.json"
+},
+{
+"id": "kt-sh-69",
+"name": "Seohaerang Trail Course 69",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-69-v2.json"
+},
+{
+"id": "kt-sh-70",
+"name": "Seohaerang Trail Course 70",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-70.json"
+},
+{
+"id": "kt-sh-71",
+"name": "Seohaerang Trail Course 71",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-71-v2.json"
+},
+{
+"id": "kt-sh-72",
+"name": "Seohaerang Trail Course 72",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-72.json"
+},
+{
+"id": "kt-sh-73",
+"name": "Seohaerang Trail Course 73",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-73-v2.json"
+},
+{
+"id": "kt-sh-74",
+"name": "Seohaerang Trail Course 74",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-74.json"
+},
+{
+"id": "kt-sh-76",
+"name": "Seohaerang Trail Course 76",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-76.json"
+},
+{
+"id": "kt-sh-81",
+"name": "Seohaerang Trail Course 81",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-81.json"
+},
+{
+"id": "kt-sh-82",
+"name": "Seohaerang Trail Course 82",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-82-v2.json"
+},
+{
+"id": "kt-sh-84",
+"name": "Seohaerang Trail Course 84",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-84-v2.json"
+},
+{
+"id": "kt-sh-85",
+"name": "Seohaerang Trail Course 85",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-85-v2.json"
+},
+{
+"id": "kt-sh-86",
+"name": "Seohaerang Trail Course 86",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-86.json"
+},
+{
+"id": "kt-sh-87",
+"name": "Seohaerang Trail Course 87",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-87.json"
+},
+{
+"id": "kt-sh-89",
+"name": "Seohaerang Trail Course 89",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-89.json"
+},
+{
+"id": "kt-sh-90",
+"name": "Seohaerang Trail Course 90",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-90.json"
+},
+{
+"id": "kt-sh-91",
+"name": "Seohaerang Trail Course 91",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-91.json"
+},
+{
+"id": "kt-sh-92",
+"name": "Seohaerang Trail Course 92",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-92.json"
+},
+{
+"id": "kt-sh-93",
+"name": "Seohaerang Trail Course 93",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-93.json"
+},
+{
+"id": "kt-sh-94",
+"name": "Seohaerang Trail Course 94",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-94.json"
+},
+{
+"id": "kt-sh-95",
+"name": "Seohaerang Trail Course 95",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-95.json"
+},
+{
+"id": "kt-sh-96",
+"name": "Seohaerang Trail Course 96",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-96.json"
+},
+{
+"id": "kt-sh-97",
+"name": "Seohaerang Trail Course 97",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-97.json"
+},
+{
+"id": "kt-sh-98",
+"name": "Seohaerang Trail Course 98",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-98.json"
+},
+{
+"id": "kt-sh-101",
+"name": "Seohaerang Trail Course 101",
+"kind": "걷기",
+"lab": false,
+"file": "data/kt/seg/sh-101.json"
+},
+{
+"id": "gamtu",
+"name": "Gamtusan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/gamtu.json"
+},
+{
+"id": "sambong",
+"name": "Sambongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/sambong.json"
+},
+{
+"id": "daebong",
+"name": "Daebongsan (Gyegwanbong)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/daebong.json"
+},
+{
+"id": "baegun",
+"name": "Baegunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/baegun.json"
+},
+{
+"id": "wolbong",
+"name": "Wolbongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/wolbong.json"
+},
+{
+"id": "wabul",
+"name": "Wabulsan (Sangnaebong)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/wabul.json"
+},
+{
+"id": "geomang",
+"name": "Geomangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/geomang.json"
+},
+{
+"id": "namdeogyu",
+"name": "Namdeogyusan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/namdeogyu.json"
+},
+{
+"id": "samjeong",
+"name": "Samjeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/samjeong.json"
+},
+{
+"id": "geumwon",
+"name": "Geumwonsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/geumwon.json"
+},
+{
+"id": "gibaek",
+"name": "Gibaeksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/gibaek.json"
+},
+{
+"id": "hwangseok",
+"name": "Hwangseoksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/hwangseok.json"
+},
+{
+"id": "cheonwang",
+"name": "Jirisan Cheonwangbong",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/cheonwang.json"
+},
+{
+"id": "cheonwang-jungsan",
+"name": "Jirisan Cheonwangbong",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/cheonwang-jungsan.json"
+},
+{
+"id": "cheonwang-hwaeom",
+"name": "Jirisan Cheonwangbong",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/cheonwang-hwaeom.json"
+},
+{
+"id": "abu",
+"name": "Abu Oreum",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/abu.json"
+},
+{
+"id": "geumoreum",
+"name": "Geum Oreum",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/geumoreum.json"
+},
+{
+"id": "darangswi",
+"name": "Darangswi Oreum",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/darangswi.json"
+},
+{
+"id": "halla",
+"name": "Hallasan Baengnokdam",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/halla.json"
+},
+{
+"id": "m100-005",
+"name": "Gamaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-005.json"
+},
+{
+"id": "m100-010",
+"name": "Gwanaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-010.json"
+},
+{
+"id": "m100-027",
+"name": "Dobongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-027.json"
+},
+{
+"id": "m100-030",
+"name": "Manisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-030.json"
+},
+{
+"id": "m100-032",
+"name": "Myeongseongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-032.json"
+},
+{
+"id": "m100-033",
+"name": "Myeongjisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-033.json"
+},
+{
+"id": "m100-045",
+"name": "Baegunsan (Pocheon)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-045.json"
+},
+{
+"id": "m100-047",
+"name": "Bukhansan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-047.json"
+},
+{
+"id": "m100-055",
+"name": "Soyosan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-055.json"
+},
+{
+"id": "m100-061",
+"name": "Yongmunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-061.json"
+},
+{
+"id": "m100-064",
+"name": "Unaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-064.json"
+},
+{
+"id": "m100-068",
+"name": "Yumyeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-068.json"
+},
+{
+"id": "m100-080",
+"name": "Cheonmasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-080.json"
+},
+{
+"id": "m100-085",
+"name": "Chungnyeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-085.json"
+},
+{
+"id": "m100-094",
+"name": "Hwaaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-094.json"
+},
+{
+"id": "m100-001",
+"name": "Garisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-001.json"
+},
+{
+"id": "m100-002",
+"name": "Gariwangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-002.json"
+},
+{
+"id": "m100-008",
+"name": "Gyebangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-008.json"
+},
+{
+"id": "m100-009",
+"name": "Gongjaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-009.json"
+},
+{
+"id": "m100-025",
+"name": "Deokhangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-025.json"
+},
+{
+"id": "m100-029",
+"name": "Dutasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-029.json"
+},
+{
+"id": "m100-040",
+"name": "Bangtaesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-040.json"
+},
+{
+"id": "m100-041",
+"name": "Baekdeoksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-041.json"
+},
+{
+"id": "m100-044",
+"name": "Baegunsan (Jeongseon)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-044.json"
+},
+{
+"id": "m100-049",
+"name": "Samaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-049.json"
+},
+{
+"id": "m100-052",
+"name": "Seoraksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-052.json"
+},
+{
+"id": "m100-059",
+"name": "Odaesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-059.json"
+},
+{
+"id": "m100-060",
+"name": "Obongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-060.json"
+},
+{
+"id": "m100-062",
+"name": "Yonghwasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-062.json"
+},
+{
+"id": "m100-073",
+"name": "Jeombongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-073.json"
+},
+{
+"id": "m100-086",
+"name": "Chiaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-086.json"
+},
+{
+"id": "m100-088",
+"name": "Taebaeksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-088.json"
+},
+{
+"id": "m100-091",
+"name": "Palbongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-091.json"
+},
+{
+"id": "m100-007",
+"name": "Gyeryongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-007.json"
+},
+{
+"id": "m100-011",
+"name": "Gubyeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-011.json"
+},
+{
+"id": "m100-013",
+"name": "Geumsusan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-013.json"
+},
+{
+"id": "m100-020",
+"name": "Daedunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-020.json"
+},
+{
+"id": "m100-023",
+"name": "Deoksungsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-023.json"
+},
+{
+"id": "m100-026",
+"name": "Doraksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-026.json"
+},
+{
+"id": "m100-038",
+"name": "Minjujisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-038.json"
+},
+{
+"id": "m100-050",
+"name": "Seodaesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-050.json"
+},
+{
+"id": "m100-056",
+"name": "Songnisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-056.json"
+},
+{
+"id": "m100-066",
+"name": "Woraksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-066.json"
+},
+{
+"id": "m100-082",
+"name": "Cheontaesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-082.json"
+},
+{
+"id": "m100-087",
+"name": "Chilgapsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-087.json"
+},
+{
+"id": "m100-089",
+"name": "Taehwasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-089.json"
+},
+{
+"id": "m100-100",
+"name": "Huiyangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-100.json"
+},
+{
+"id": "m100-006",
+"name": "Gangcheonsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-006.json"
+},
+{
+"id": "m100-016",
+"name": "Gitdaebong",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-016.json"
+},
+{
+"id": "m100-019",
+"name": "Naejangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-019.json"
+},
+{
+"id": "m100-024",
+"name": "Deogyusan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-024.json"
+},
+{
+"id": "m100-028",
+"name": "Duryunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-028.json"
+},
+{
+"id": "m100-031",
+"name": "Maisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-031.json"
+},
+{
+"id": "m100-034",
+"name": "Moaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-034.json"
+},
+{
+"id": "m100-035",
+"name": "Mudeungsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-035.json"
+},
+{
+"id": "m100-039",
+"name": "Bangjangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-039.json"
+},
+{
+"id": "m100-042",
+"name": "Baegamsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-042.json"
+},
+{
+"id": "m100-043",
+"name": "Baegunsan (Gwangyang)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-043.json"
+},
+{
+"id": "m100-046",
+"name": "Byeonsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-046.json"
+},
+{
+"id": "m100-051",
+"name": "Seonunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-051.json"
+},
+{
+"id": "m100-065",
+"name": "Unjangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-065.json"
+},
+{
+"id": "m100-067",
+"name": "Wolchulsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-067.json"
+},
+{
+"id": "m100-070",
+"name": "Jangansan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-070.json"
+},
+{
+"id": "m100-072",
+"name": "Jeoksangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-072.json"
+},
+{
+"id": "m100-074",
+"name": "Jogyesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-074.json"
+},
+{
+"id": "m100-079",
+"name": "Cheongwansan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-079.json"
+},
+{
+"id": "m100-084",
+"name": "Chuwolsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-084.json"
+},
+{
+"id": "m100-092",
+"name": "Paryeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-092.json"
+},
+{
+"id": "m100-003",
+"name": "Gayasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-003.json"
+},
+{
+"id": "m100-004",
+"name": "Gajisan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-004.json"
+},
+{
+"id": "m100-012",
+"name": "Geumsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-012.json"
+},
+{
+"id": "m100-014",
+"name": "Geumosan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-014.json"
+},
+{
+"id": "m100-015",
+"name": "Geumjeongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-015.json"
+},
+{
+"id": "m100-017",
+"name": "Namsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-017.json"
+},
+{
+"id": "m100-018",
+"name": "Naeyeonsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-018.json"
+},
+{
+"id": "m100-022",
+"name": "Daeyasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-022.json"
+},
+{
+"id": "m100-036",
+"name": "Muhaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-036.json"
+},
+{
+"id": "m100-037",
+"name": "Mireuksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-037.json"
+},
+{
+"id": "m100-048",
+"name": "Biseulsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-048.json"
+},
+{
+"id": "m100-053",
+"name": "Seonginbong",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-053.json"
+},
+{
+"id": "m100-054",
+"name": "Sobaeksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-054.json"
+},
+{
+"id": "m100-057",
+"name": "Sinbulsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-057.json"
+},
+{
+"id": "m100-058",
+"name": "Yeonhwasan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-058.json"
+},
+{
+"id": "m100-063",
+"name": "Unmunsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-063.json"
+},
+{
+"id": "m100-069",
+"name": "Eungbongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-069.json"
+},
+{
+"id": "m100-071",
+"name": "Jaeyaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-071.json"
+},
+{
+"id": "m100-075",
+"name": "Juwangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-075.json"
+},
+{
+"id": "m100-076",
+"name": "Juheulsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-076.json"
+},
+{
+"id": "m100-078",
+"name": "Jirisan (Tongyeong)",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-078.json"
+},
+{
+"id": "m100-081",
+"name": "Cheonseongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-081.json"
+},
+{
+"id": "m100-083",
+"name": "Cheongnyangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-083.json"
+},
+{
+"id": "m100-090",
+"name": "Palgongsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-090.json"
+},
+{
+"id": "m100-095",
+"name": "Hwawangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-095.json"
+},
+{
+"id": "m100-096",
+"name": "Hwangmaesan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-096.json"
+},
+{
+"id": "m100-098",
+"name": "Hwangaksan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-098.json"
+},
+{
+"id": "m100-099",
+"name": "Hwangjangsan",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-099.json"
+},
+{
+"id": "m100-093",
+"name": "Hallasan Baengnokdam",
+"kind": "등산",
+"lab": false,
+"file": "data/mtn/m100-093.json"
 }
 ]
