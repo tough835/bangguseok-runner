@@ -1402,7 +1402,7 @@
 </div>
 
 <script>
-const BUILD = '202611280700';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611280720';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -8082,7 +8082,8 @@ function drawClimbNav(g, x, y, vw, vh, st, mini){
       // 창밖 도시: 올라갈수록 발아래로 내려가고 작아짐
       const hz = Math.min(chh + 40 * DPR, cy + vh * (0.12 + st.ratio * 0.55)), shrink = 1 - st.ratio * 0.75;
       WINV.lookTxt = ''; if (drawGround7(g, cw, cy, chh, st.climbed + 2, m, sc[2])){ const lk = (TOWER_X[m.id] || {}).look;
-        WINV.lookTxt = lk ? '🪟 창밖 = 실제 항공사진 · ' + lk[1] : ''; }
+        /* 11/28 보스 폰 2층 '창밖?': 눈높이가 낮으면 사진이 지평선에 납작하게 눌려 흐린 땅으로만 보임(실제로도 저층 창밖은 길·옆 건물) → 사진이 알아볼 만해지는 약 60m(빌딩마다 층 수 계산)부터 안내, 그 아래는 몇 층부터인지 */
+        const fl60 = Math.ceil(58 / fh); WINV.lookTxt = !lk ? '' : st.climbed + 2 >= 60 ? '🪟 창밖 = 실제 항공사진 · ' + lk[1] : '🪟 ' + fl60 + '층쯤부터 창밖에 실제 항공사진이 보여요'; }
       else {
       g.fillStyle = night ? '#0f1b30' : sc[2] === 'dusk' ? '#5b5f78' : '#9fb0bf'; g.fillRect(0, hz, cw, chh - hz);
       for (let i = 0; i < 34; i++){ const bx2 = (i / 34) * cw, bwid = cw / 34 * (0.7 + rnd(i) * 0.6), bh2 = (20 + rnd(i + 5) * 90) * DPR * shrink;
