@@ -1401,7 +1401,7 @@
 </div>
 
 <script>
-const BUILD = '202611271300';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611271625';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -1510,12 +1510,12 @@ const WORLD = {
           path: [[35.52443,127.71879],[35.5247,127.71839],[35.52641,127.71827],[35.52761,127.71697],[35.52837,127.71504],[35.52992,127.714],[35.53154,127.71314],[35.53248,127.71301],[35.53129,127.71462],[35.53008,127.71601],[35.52876,127.71734],[35.52733,127.71855],[35.52568,127.71916],[35.52443,127.71879]],
           segments: [ { from: 0, to: 2380, scene: 'forest' } ],
           landmarks: [   // 11/21 보스 사진 (img/hub/)
-            { id: 'hamhwaru',        name: { ko: '함화루' },            at: 40,   side:  1, art: 'gate',     photo: 'img/hub/hamhwaru.webp',        desc: { ko: '상림 입구의 누각, 옛 함양읍성 남문' }, hub: true },
             { id: 'sawoon',          name: { ko: '사운정' },            at: 330,  side: -1, art: 'pavilion', photo: null,                            desc: { ko: '숲속 정자' } },
             { id: 'sangnim-history', name: { ko: '역사인물공원' },      at: 680,  side:  1, art: 'stele',    photo: 'img/hub/sangnim-history.webp', desc: { ko: '최치원 등 함양의 옛 인물 흉상이 줄지어 선 곳' }, hub: true },
             { id: 'sangnim-mill',    name: { ko: '물레방앗간' },        at: 1200, side: -1, art: 'mill',     photo: 'img/hub/sangnim-mill.webp',    desc: { ko: '숲 북쪽 끝 초가 물레방앗간, 여기서 돌아섬' }, hub: true },
             { id: 'sangnim-eoksae',  name: { ko: '억새 정원' },         at: 1970, side:  1, art: 'sign',     photo: 'img/hub/sangnim-eoksae.webp',  desc: { ko: '문화예술회관 앞 억새·꽃밭' } },
-            { id: 'hwasujeong',      name: { ko: '파평윤씨 화수정' },   at: 2120, side: -1, art: 'pavilion', photo: 'img/hub/hwasujeong.webp',      desc: { ko: '숲길 남쪽 정자, 한 바퀴 끝이 가까움' }, hub: true }
+            { id: 'hwasujeong',      name: { ko: '파평윤씨 화수정' },   at: 2120, side: -1, art: 'pavilion', photo: 'img/hub/hwasujeong.webp',      desc: { ko: '숲길 남쪽 정자, 한 바퀴 끝이 가까움' }, hub: true },
+            { id: 'hamhwaru',        name: { ko: '함화루' },            at: 2340, side:  1, art: 'gate',     photo: 'img/hub/hamhwaru.webp',        desc: { ko: '상림 입구의 누각, 옛 함양읍성 남문' }, hub: true },   // 11/27 보스 폰 '출발하자마자 함화루 도착이 뜸 — 함화루는 도착 지점': 보스가 걸은 순서대로 한 바퀴 끝(2.34km)으로 옮김 (출발점 바로 옆이라 땅 위치는 같음)
           ]
         },
         'sangnim-5k': {
