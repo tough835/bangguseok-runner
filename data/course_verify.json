@@ -1,0 +1,6839 @@
+[
+{
+"kind": "길",
+"id": "sangnim-3k",
+"name": "상림 한 바퀴",
+"basis": "보스 현장 GPS",
+"audit": "통과",
+"probe": {
+"off": 4.2,
+"trail": 4.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dulle-gd-11k",
+"name": "지리산둘레길 금계→동강",
+"basis": "지리산둘레길 공식 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 34.3,
+"car": 0.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dulle-ds-12k",
+"name": "지리산둘레길 동강→수철",
+"basis": "지리산둘레길 공식 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.2,
+"trail": 55.7,
+"car": 8.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dulle-ig-20k",
+"name": "지리산둘레길 인월→금계",
+"basis": "지리산둘레길 공식 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.6,
+"trail": 43.1,
+"car": 4.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dulle-all-44k",
+"name": "지리산둘레길 함양 전 구간 (인월→금계→동강→수철)",
+"basis": "지리산둘레길 공식 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.6,
+"trail": 44.1,
+"car": 4.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "haeparang-750k",
+"name": "해파랑길 (부산 오륙도 → 강원 고성 통일전망대)",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "불량",
+"probe": {
+"off": 5.8,
+"trail": 11.5,
+"car": 20.4
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량",
+"길 밖 5.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "nampa-1470k",
+"name": "남파랑길 (부산 오륙도 → 해남 땅끝)",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "불량",
+"probe": {
+"off": 9.8,
+"trail": 13.7,
+"car": 25.7
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량",
+"길 밖 9.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "seohae-1800k",
+"name": "서해랑길 (해남 땅끝 → 인천 강화)",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "불량",
+"probe": {
+"off": 9.8,
+"trail": 11.5,
+"car": 21.8
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량",
+"길 밖 9.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "jirisan-dulle-274k",
+"name": "지리산둘레길 (한 바퀴 · 남원 주천 출발)",
+"basis": "지리산둘레길 공식 GPX 21코스 본선",
+"audit": "불량",
+"probe": {
+"off": 0.4,
+"trail": 39.7,
+"car": 7.5
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "namsan-7k",
+"name": "남산 한 바퀴 (북측순환로 → 남산공원길)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 27.1,
+"car": 9.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "hangang-bike-11k",
+"name": "한강 자전거길 남쪽 (반포 → 잠실)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 5.4
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "yeouido-10k",
+"name": "여의도 한강 다리 한 바퀴 (원효대교·마포대교)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.5,
+"trail": 0.9,
+"car": 0.7
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "gyeongbok-3k",
+"name": "경복궁 돌담길 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 24.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "jongmyo-5k",
+"name": "광화문→종묘→청계천 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.9,
+"car": 14.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "seokchon-3k",
+"name": "석촌호수 한 바퀴 (롯데타워 옆)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 1.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "greenrail-5k",
+"name": "해운대 그린레일웨이 (미포→청사포→송정)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 8.3,
+"car": 1.5
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "moontan-3k",
+"name": "달맞이 문탠로드 (한 바퀴)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 3.4,
+"car": 6.9
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "nakdong-bike-18k",
+"name": "낙동강 자전거길 (하굿둑 → 화명생태공원)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.6,
+"car": 21.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "suyeong-bike-7k",
+"name": "수영강 자전거길 (민락 → 원동)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 11.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "oncheon-bike-8k",
+"name": "온천천 자전거길 (수영강 합류 → 온천장)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 74.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 74.2%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "oncheon-loop-14k",
+"name": "온천천 양쪽 둑길 순환 (교대 출발 · 수영강 합류~부산대)",
+"basis": "오픈스트리트맵 걷기 길 찾기(OSRM) · 온천천 양쪽 기슭 산책로 점(Overpass)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 16.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "oncheon-loop-3k",
+"name": "온천천 짧은 순환 (교대~연산동)",
+"basis": "오픈스트리트맵 걷기 길 찾기(OSRM) · 온천천 양쪽 기슭 산책로 점(Overpass)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "oncheon-loop-4k",
+"name": "온천천 순환 (교대~수영강 합류)",
+"basis": "오픈스트리트맵 걷기 길 찾기(OSRM) · 온천천 양쪽 기슭 산책로 점(Overpass)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dongbaek-1k",
+"name": "동백섬 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 19.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "haeundae-dongbaek",
+"name": "해운대 해변 → 동백섬 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 18.6,
+"car": 6.4
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "igidae-5k",
+"name": "이기대 해안산책로 (동생말→오륙도)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 87.8,
+"car": 1.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "gwangalli-3k",
+"name": "광안리 해변 왕복",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 1.5,
+"car": 8.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "hwaseong-gil",
+"name": "수원 화성 성곽길 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 33.3,
+"car": 5.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "woncheon-gil",
+"name": "광교호수공원 원천호수 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 1.7,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "baegun-gil",
+"name": "백운호수 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "giheung-gil",
+"name": "기흥호수 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 32.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "sanjeong-gil",
+"name": "산정호수 둘레길",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "sinjeong-gil",
+"name": "신정호 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 36.5
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "upo-gil",
+"name": "우포늪 생명길",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 45.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "jeonjuhanok-gil",
+"name": "전주 한옥마을 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 7.1,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "woryeong-gil",
+"name": "안동 월영교·낙동강변 왕복",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 44.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량",
+"찻길 44.3%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "gwanghallu-gil",
+"name": "남원 광한루원↔춘향테마파크 왕복",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 30.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "jinjuseong-gil",
+"name": "진주성·남강 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 55.9
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"찻길 55.9%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "daecheong-bike",
+"name": "대전 갑천·금강 자전거길 (엑스포다리→대청댐)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 7.6,
+"car": 9.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"자전거 코스에 산길 7.6%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "expo-gil",
+"name": "대전 한밭수목원·엑스포 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 11.4,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "musimcheon-gil",
+"name": "청주 무심천 (꽃다리→송천교)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 38.1
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "gongjicheon-gil",
+"name": "춘천 소양강 스카이워크→공지천→의암공원",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.7,
+"car": 16.5
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "juknokwon-gil",
+"name": "담양 죽녹원→관방제림→메타프로방스",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 21.8,
+"car": 7.9
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "woljeongsa-gil",
+"name": "오대산 월정사→상원사",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 2.4,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "sorigil-gil",
+"name": "가야산 소리길 (대장경테마파크→해인사)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 8.0,
+"car": 51.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 51.2%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "jando-gil",
+"name": "단양 구경시장→단양강 잔도→만천하스카이워크",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "gongsanseong-gil",
+"name": "공주 공산성→무령왕릉→한옥마을 다녀오기",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 2.7,
+"car": 6.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "buyeo-gil",
+"name": "부여 궁남지→정림사지→낙화암",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 5.6,
+"car": 33.1
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "sejonglake-gil",
+"name": "세종호수공원 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 84.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "geumgang-bike",
+"name": "금강 자전거길 (세종보→공주보)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 31.7
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dumulmeori-gil",
+"name": "양평 양수역↔세미원↔두물머리 왕복",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 29.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "namhangang-bike",
+"name": "남한강 자전거길 (팔당역→양평역)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.2,
+"car": 7.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "seomjin-bike",
+"name": "섬진강 자전거길 (섬진강댐→장군목→향가유원지)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 50.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 50.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "ilsanlake-gil",
+"name": "일산호수공원 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "pungam-gil",
+"name": "풍암호수 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 52.7,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "pureungil-gil",
+"name": "광주 푸른길 (광주역→남광주역→백운광장)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 21.4
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "hoamji-gil",
+"name": "호암지 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "tangeum-bike",
+"name": "충주 탄금호 자전거길 (충주댐→탄금대→중앙탑)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 68.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"찻길 68.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "geumoji-gil",
+"name": "금오산 올레길 (금오지 한 바퀴)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "cheonhoji-gil",
+"name": "천호지 한 바퀴 (단대호수)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 3.2,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "tapjeong-gil",
+"name": "탑정호 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 26.1,
+"car": 17.4
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "tapjeong-road",
+"name": "탑정호 찻길 한 바퀴",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 60.5
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "saejae-gil",
+"name": "문경새재 과거길 (1관문→2관문→3관문)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 95.5,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "naejang-gil",
+"name": "내장산 단풍길 (터미널→우화정→내장사)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 63.4,
+"car": 1.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "yeongsan-bike",
+"name": "영산강 자전거길 (승촌보→죽산보)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 32.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "suseongmot-gil",
+"name": "수성못 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "sincheon-gil",
+"name": "대구 신천 (상동교→침산교)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.3,
+"car": 44.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 44.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "dalseong-bike",
+"name": "낙동강 자전거길 (강정고령보→달성보)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 1.8,
+"car": 66.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 66.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "bomun-gil",
+"name": "보문호 한 바퀴 (보문호반길)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "gyeongjuhist-gil",
+"name": "경주 대릉원→첨성대→월정교→동궁과 월지 돌아오기",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 21.9,
+"car": 18.7
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "gyeongchun-bike-24k",
+"name": "경춘선 자전거길 (마석 → 대성리 → 청평 → 가평)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 95.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"찻길 95.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "olle7-18k",
+"name": "제주올레 7코스 (여행자센터→외돌개→월평)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 8.7,
+"car": 36.8
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "olle1-15k",
+"name": "제주올레 1코스 (시흥→말미오름→성산→광치기)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 2.2,
+"car": 36.2
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "olle6-11k",
+"name": "제주올레 6코스 (쇠소깍→정방폭포→서귀포)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 6.5,
+"car": 33.7
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "zurich-lake",
+"name": "취리히 호숫가 (뷔르클리 광장 → 티펜브루넨)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "luzern-lake",
+"name": "루체른 호숫가 (카펠교 → 교통박물관)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "geneva-lake",
+"name": "제네바 호숫가 (파키 → 라 그랑주 공원)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "lavaux-bike",
+"name": "라보 포도밭 호숫길 (로잔 우시 → 브베)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "retiro-loop",
+"name": "마드리드 레티로 공원 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "madrid-rio",
+"name": "마드리드 리오 강변 (레이 다리 → 마타데로)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "barcelona-beach",
+"name": "바르셀로나 해변 (바르셀로네타 → 마르 베야)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "formentor-bike",
+"name": "마요르카 포르멘토르 곶 (폴렌사 항 → 등대)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "copenhagen-lakes",
+"name": "코펜하겐 호수 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "djurgarden-loop",
+"name": "스톡홀름 유르고르덴 섬 한 바퀴",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "akerselva",
+"name": "오슬로 아케르 강 산책로 (마리달 호수 → 바테를란)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "atlantic-road",
+"name": "노르웨이 대서양 도로 (베방 → 코르보그)",
+"basis": "오픈스트리트맵 자전거 길 찾기(OSRM)",
+"audit": "통과",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "centralpark-10k",
+"name": "뉴욕 센트럴파크 한 바퀴 (Park Drive)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "kokyo-5k",
+"name": "도쿄 황거 한 바퀴 (고쿄 런)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "경계",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 경계",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "dragonsback-9k",
+"name": "홍콩 드래곤스 백 (토테이완→빅웨이브베이)",
+"basis": "오픈스트리트맵 길 찾기(OSRM)",
+"audit": "불량",
+"probe": {
+"off": 100.0,
+"trail": 0.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)",
+"되돌림·엉킴 불량",
+"길 밖 100.0%"
+],
+"routeLab": true
+},
+{
+"kind": "길",
+"id": "kt-hp-01",
+"name": "해파랑길 1코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.9,
+"trail": 27.1,
+"car": 15.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-02",
+"name": "해파랑길 2코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.8,
+"trail": 12.4,
+"car": 9.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-03",
+"name": "해파랑길 3코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 2.7,
+"trail": 19.5,
+"car": 52.2
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"찻길 52.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-04",
+"name": "해파랑길 4코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 21.0,
+"trail": 0.6,
+"car": 30.0
+},
+"ok": false,
+"why": [
+"길 밖 21.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-05",
+"name": "해파랑길 5코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 5.7,
+"trail": 0.0,
+"car": 37.5
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 5.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-06",
+"name": "해파랑길 6코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 68.4,
+"car": 12.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-07",
+"name": "해파랑길 7코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.9,
+"trail": 0.4,
+"car": 35.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-08",
+"name": "해파랑길 8코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.7,
+"trail": 34.1,
+"car": 13.4
+},
+"ok": false,
+"why": [
+"길 밖 9.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-09",
+"name": "해파랑길 9코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.2,
+"trail": 19.1,
+"car": 33.1
+},
+"ok": false,
+"why": [
+"길 밖 9.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-10",
+"name": "해파랑길 10코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 7.4,
+"trail": 2.9,
+"car": 4.1
+},
+"ok": false,
+"why": [
+"길 밖 7.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-11",
+"name": "해파랑길 11코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.2,
+"trail": 0.0,
+"car": 38.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-12",
+"name": "해파랑길 12코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 12.1,
+"trail": 0.0,
+"car": 3.1
+},
+"ok": false,
+"why": [
+"길 밖 12.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-13",
+"name": "해파랑길 13코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.5,
+"trail": 0.5,
+"car": 5.0
+},
+"ok": false,
+"why": [
+"길 밖 6.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-14",
+"name": "해파랑길 14코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 4.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-15",
+"name": "해파랑길 15코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.3,
+"trail": 0.0,
+"car": 1.2
+},
+"ok": false,
+"why": [
+"길 밖 9.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-16",
+"name": "해파랑길 16코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.7,
+"trail": 0.3,
+"car": 3.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-17",
+"name": "해파랑길 17코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 8.5,
+"car": 14.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-18",
+"name": "해파랑길 18코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 11.2,
+"trail": 3.6,
+"car": 0.7
+},
+"ok": false,
+"why": [
+"길 밖 11.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-19",
+"name": "해파랑길 19코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.8,
+"trail": 0.2,
+"car": 7.8
+},
+"ok": false,
+"why": [
+"길 밖 6.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-20",
+"name": "해파랑길 20코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.8,
+"trail": 67.6,
+"car": 5.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-21",
+"name": "해파랑길 21코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 1.5,
+"trail": 50.3,
+"car": 2.9
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-22",
+"name": "해파랑길 22코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 45.8,
+"car": 2.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-23",
+"name": "해파랑길 23코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 2.4,
+"car": 7.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-24",
+"name": "해파랑길 24코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.6,
+"trail": 0.3,
+"car": 13.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-25",
+"name": "해파랑길 25코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 5.3,
+"trail": 0.0,
+"car": 32.2
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 5.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-26",
+"name": "해파랑길 26코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.8,
+"trail": 0.0,
+"car": 2.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-27",
+"name": "해파랑길 27코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.6,
+"trail": 0.7,
+"car": 6.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-28",
+"name": "해파랑길 28코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 15.5,
+"car": 22.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-29",
+"name": "해파랑길 29코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.1,
+"car": 11.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-30",
+"name": "해파랑길 30코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.5,
+"trail": 5.7,
+"car": 21.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-31",
+"name": "해파랑길 31코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 21.9,
+"car": 25.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-32",
+"name": "해파랑길 32코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.4,
+"trail": 3.0,
+"car": 31.5
+},
+"ok": false,
+"why": [
+"길 밖 9.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-33",
+"name": "해파랑길 33코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 32.9,
+"trail": 0.0,
+"car": 17.0
+},
+"ok": false,
+"why": [
+"길 밖 32.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-34",
+"name": "해파랑길 34코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.3,
+"trail": 3.5,
+"car": 44.4
+},
+"ok": false,
+"why": [
+"찻길 44.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-35",
+"name": "해파랑길 35코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.1,
+"trail": 25.1,
+"car": 49.9
+},
+"ok": false,
+"why": [
+"찻길 49.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-36",
+"name": "해파랑길 36코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-37",
+"name": "해파랑길 37코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 36.0,
+"car": 3.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-38",
+"name": "해파랑길 38코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.1,
+"trail": 12.7,
+"car": 10.5
+},
+"ok": false,
+"why": [
+"길 밖 10.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-39",
+"name": "해파랑길 39코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 13.7,
+"trail": 2.2,
+"car": 16.9
+},
+"ok": false,
+"why": [
+"길 밖 13.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-40",
+"name": "해파랑길 40코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 7.8,
+"trail": 3.8,
+"car": 50.2
+},
+"ok": false,
+"why": [
+"길 밖 7.8%",
+"찻길 50.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-41",
+"name": "해파랑길 41코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.9,
+"trail": 0.0,
+"car": 6.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-42",
+"name": "해파랑길 42코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 6.0,
+"car": 14.2
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-43",
+"name": "해파랑길 43코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 40.3
+},
+"ok": false,
+"why": [
+"찻길 40.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-44",
+"name": "해파랑길 44코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.4,
+"trail": 0.4,
+"car": 28.6
+},
+"ok": false,
+"why": [
+"길 밖 6.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-45",
+"name": "해파랑길 45코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.4,
+"trail": 1.5,
+"car": 42.4
+},
+"ok": false,
+"why": [
+"길 밖 6.4%",
+"찻길 42.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-46",
+"name": "해파랑길 46코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.8,
+"trail": 0.0,
+"car": 40.7
+},
+"ok": false,
+"why": [
+"찻길 40.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-47",
+"name": "해파랑길 47코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.1,
+"trail": 0.5,
+"car": 29.1
+},
+"ok": false,
+"why": [
+"길 밖 8.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-48",
+"name": "해파랑길 48코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.5,
+"trail": 0.0,
+"car": 23.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-49",
+"name": "해파랑길 49코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.3,
+"trail": 23.7,
+"car": 17.0
+},
+"ok": false,
+"why": [
+"길 밖 8.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-hp-50",
+"name": "해파랑길 50코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 24.4,
+"trail": 0.0,
+"car": 59.9
+},
+"ok": false,
+"why": [
+"길 밖 24.4%",
+"찻길 59.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-01",
+"name": "남파랑길 1코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.9,
+"trail": 10.6,
+"car": 46.7
+},
+"ok": false,
+"why": [
+"찻길 46.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-02",
+"name": "남파랑길 2코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.7,
+"trail": 13.1,
+"car": 26.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-03",
+"name": "남파랑길 3코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.9,
+"trail": 18.3,
+"car": 46.1
+},
+"ok": false,
+"why": [
+"찻길 46.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-04",
+"name": "남파랑길 4코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.8,
+"trail": 18.7,
+"car": 20.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-05",
+"name": "남파랑길 5코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 0.0,
+"car": 20.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-06",
+"name": "남파랑길 6코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.7,
+"trail": 0.0,
+"car": 69.5
+},
+"ok": false,
+"why": [
+"길 밖 8.7%",
+"찻길 69.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-07",
+"name": "남파랑길 7코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 44.3
+},
+"ok": false,
+"why": [
+"찻길 44.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-08",
+"name": "남파랑길 8코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 92.9,
+"car": 0.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-09",
+"name": "남파랑길 9코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 25.4,
+"car": 46.9
+},
+"ok": false,
+"why": [
+"찻길 46.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-10",
+"name": "남파랑길 10코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 11.1,
+"trail": 36.6,
+"car": 33.4
+},
+"ok": false,
+"why": [
+"길 밖 11.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-11",
+"name": "남파랑길 11코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.9,
+"trail": 0.0,
+"car": 24.9
+},
+"ok": false,
+"why": [
+"길 밖 9.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-12",
+"name": "남파랑길 12코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.0,
+"trail": 0.8,
+"car": 91.7
+},
+"ok": false,
+"why": [
+"찻길 91.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-13",
+"name": "남파랑길 13코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 23.1,
+"trail": 0.9,
+"car": 38.3
+},
+"ok": false,
+"why": [
+"길 밖 23.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-14",
+"name": "남파랑길 14코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 30.5,
+"trail": 0.0,
+"car": 17.7
+},
+"ok": false,
+"why": [
+"길 밖 30.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-15",
+"name": "남파랑길 15코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.5,
+"trail": 3.4,
+"car": 27.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-16",
+"name": "남파랑길 16코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.7,
+"trail": 10.9,
+"car": 13.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-17",
+"name": "남파랑길 17코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 0.3,
+"trail": 22.4,
+"car": 17.3
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-18",
+"name": "남파랑길 18코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.8,
+"trail": 25.2,
+"car": 29.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-19",
+"name": "남파랑길 19코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 21.0,
+"car": 58.4
+},
+"ok": false,
+"why": [
+"찻길 58.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-20",
+"name": "남파랑길 20코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 36.0,
+"trail": 11.8,
+"car": 7.6
+},
+"ok": false,
+"why": [
+"길 밖 36.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-21",
+"name": "남파랑길 21코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 20.5,
+"trail": 8.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"길 밖 20.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-22",
+"name": "남파랑길 22코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 11.8,
+"trail": 48.5,
+"car": 10.9
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 11.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-23",
+"name": "남파랑길 23코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.3,
+"trail": 90.2,
+"car": 3.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-24",
+"name": "남파랑길 24코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.6,
+"trail": 0.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-25",
+"name": "남파랑길 25코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.2,
+"trail": 17.0,
+"car": 26.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-26",
+"name": "남파랑길 26코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 35.6,
+"car": 8.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-27",
+"name": "남파랑길 27코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 41.4,
+"car": 13.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-28",
+"name": "남파랑길 28코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.9,
+"trail": 20.8,
+"car": 6.9
+},
+"ok": false,
+"why": [
+"길 밖 5.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-29",
+"name": "남파랑길 29코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.2,
+"trail": 0.6,
+"car": 57.4
+},
+"ok": false,
+"why": [
+"찻길 57.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-30",
+"name": "남파랑길 30코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 13.6,
+"trail": 35.7,
+"car": 5.8
+},
+"ok": false,
+"why": [
+"길 밖 13.6%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-31",
+"name": "남파랑길 31코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.5,
+"trail": 0.2,
+"car": 30.1
+},
+"ok": false,
+"why": [
+"길 밖 10.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-32",
+"name": "남파랑길 32코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 12.1,
+"trail": 17.1,
+"car": 29.6
+},
+"ok": false,
+"why": [
+"길 밖 12.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-33",
+"name": "남파랑길 33코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 21.3,
+"car": 23.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-34",
+"name": "남파랑길 34코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 10.8,
+"car": 30.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-35",
+"name": "남파랑길 35코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 13.5,
+"car": 22.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-36",
+"name": "남파랑길 36코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.7,
+"trail": 25.9,
+"car": 23.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-37",
+"name": "남파랑길 37코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 39.3,
+"car": 10.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-38",
+"name": "남파랑길 38코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 28.1,
+"car": 32.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-39",
+"name": "남파랑길 39코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 13.6,
+"trail": 0.0,
+"car": 7.2
+},
+"ok": false,
+"why": [
+"길 밖 13.6%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-40",
+"name": "남파랑길 40코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.4,
+"trail": 48.3,
+"car": 22.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-41",
+"name": "남파랑길 41코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 36.4,
+"trail": 2.8,
+"car": 24.5
+},
+"ok": false,
+"why": [
+"길 밖 36.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-42",
+"name": "남파랑길 42코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 47.7,
+"trail": 12.8,
+"car": 14.1
+},
+"ok": false,
+"why": [
+"길 밖 47.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-43",
+"name": "남파랑길 43코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 45.3,
+"trail": 11.9,
+"car": 9.7
+},
+"ok": false,
+"why": [
+"길 밖 45.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-44",
+"name": "남파랑길 44코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 31.6,
+"car": 7.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-46",
+"name": "남파랑길 46코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 10.4,
+"trail": 0.3,
+"car": 19.7
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 10.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-48",
+"name": "남파랑길 48코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.6,
+"trail": 0.0,
+"car": 24.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-49",
+"name": "남파랑길 49코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.7,
+"trail": 0.3,
+"car": 45.0
+},
+"ok": false,
+"why": [
+"찻길 45.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-51",
+"name": "남파랑길 51코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 7.3,
+"trail": 0.3,
+"car": 39.0
+},
+"ok": false,
+"why": [
+"길 밖 7.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-54",
+"name": "남파랑길 54코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.2,
+"trail": 3.9,
+"car": 34.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-55",
+"name": "남파랑길 55코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.1,
+"trail": 0.3,
+"car": 25.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-56",
+"name": "남파랑길 56코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.2,
+"trail": 0.0,
+"car": 63.5
+},
+"ok": false,
+"why": [
+"찻길 63.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-57",
+"name": "남파랑길 57코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.4,
+"trail": 7.9,
+"car": 39.1
+},
+"ok": false,
+"why": [
+"길 밖 6.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-58",
+"name": "남파랑길 58코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.2,
+"trail": 0.0,
+"car": 14.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-59",
+"name": "남파랑길 59코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 79.8
+},
+"ok": false,
+"why": [
+"찻길 79.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-60",
+"name": "남파랑길 60코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 14.4,
+"trail": 4.2,
+"car": 36.3
+},
+"ok": false,
+"why": [
+"길 밖 14.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-61",
+"name": "남파랑길 61코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.5,
+"trail": 61.8,
+"car": 10.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-62",
+"name": "남파랑길 62코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.1,
+"trail": 19.7,
+"car": 20.2
+},
+"ok": false,
+"why": [
+"길 밖 6.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-63",
+"name": "남파랑길 63코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.0,
+"trail": 4.2,
+"car": 6.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-64",
+"name": "남파랑길 64코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.3,
+"trail": 13.8,
+"car": 4.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-65",
+"name": "남파랑길 65코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.5,
+"trail": 0.7,
+"car": 29.1
+},
+"ok": false,
+"why": [
+"길 밖 6.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-66",
+"name": "남파랑길 66코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 35.7,
+"trail": 54.4,
+"car": 2.5
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 35.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-67",
+"name": "남파랑길 67코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 49.8
+},
+"ok": false,
+"why": [
+"찻길 49.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-68",
+"name": "남파랑길 68코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 15.5,
+"trail": 10.4,
+"car": 31.3
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 15.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-69",
+"name": "남파랑길 69코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 1.8,
+"trail": 12.9,
+"car": 6.7
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-70",
+"name": "남파랑길 70코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 16.6,
+"trail": 1.9,
+"car": 40.5
+},
+"ok": false,
+"why": [
+"길 밖 16.6%",
+"찻길 40.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-71",
+"name": "남파랑길 71코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 14.8,
+"trail": 3.6,
+"car": 30.5
+},
+"ok": false,
+"why": [
+"길 밖 14.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-72",
+"name": "남파랑길 72코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 7.3,
+"trail": 0.0,
+"car": 47.8
+},
+"ok": false,
+"why": [
+"길 밖 7.3%",
+"찻길 47.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-73",
+"name": "남파랑길 73코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.2,
+"trail": 2.3,
+"car": 9.6
+},
+"ok": false,
+"why": [
+"길 밖 10.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-74",
+"name": "남파랑길 74코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.9,
+"trail": 5.5,
+"car": 18.5
+},
+"ok": false,
+"why": [
+"길 밖 6.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-75",
+"name": "남파랑길 75코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 12.1,
+"trail": 0.1,
+"car": 20.4
+},
+"ok": false,
+"why": [
+"길 밖 12.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-76",
+"name": "남파랑길 76코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 4.2,
+"trail": 0.0,
+"car": 56.9
+},
+"ok": false,
+"why": [
+"찻길 56.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-77",
+"name": "남파랑길 77코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 14.9,
+"trail": 12.4,
+"car": 55.8
+},
+"ok": false,
+"why": [
+"길 밖 14.9%",
+"찻길 55.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-78",
+"name": "남파랑길 78코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.0,
+"trail": 0.1,
+"car": 40.2
+},
+"ok": false,
+"why": [
+"길 밖 6.0%",
+"찻길 40.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-79",
+"name": "남파랑길 79코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.2,
+"trail": 0.1,
+"car": 62.9
+},
+"ok": false,
+"why": [
+"길 밖 8.2%",
+"찻길 62.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-80",
+"name": "남파랑길 80코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 10.7,
+"car": 16.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-81",
+"name": "남파랑길 81코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 0.0,
+"car": 24.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-82",
+"name": "남파랑길 82코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.9,
+"trail": 6.4,
+"car": 10.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-83",
+"name": "남파랑길 83코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 39.0,
+"car": 2.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-84",
+"name": "남파랑길 84코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 73.5
+},
+"ok": false,
+"why": [
+"찻길 73.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-85",
+"name": "남파랑길 85코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.1,
+"car": 40.4
+},
+"ok": false,
+"why": [
+"찻길 40.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-np-86",
+"name": "남파랑길 86코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 16.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-01",
+"name": "서해랑길 1코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 8.6,
+"car": 8.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-02",
+"name": "서해랑길 2코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.3,
+"trail": 0.8,
+"car": 7.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-03",
+"name": "서해랑길 3코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 11.8,
+"car": 6.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-04",
+"name": "서해랑길 4코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 5.9,
+"car": 2.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-05",
+"name": "서해랑길 5코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 11.2,
+"car": 8.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-06",
+"name": "서해랑길 6코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 17.5,
+"car": 43.0
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"찻길 43.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-07",
+"name": "서해랑길 7코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "불량",
+"probe": {
+"off": 0.0,
+"trail": 29.2,
+"car": 6.8
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 불량"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-08",
+"name": "서해랑길 8코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.3,
+"trail": 6.4,
+"car": 7.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-09",
+"name": "서해랑길 9코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.2,
+"car": 46.9
+},
+"ok": false,
+"why": [
+"찻길 46.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-10",
+"name": "서해랑길 10코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 15.6,
+"car": 27.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-11",
+"name": "서해랑길 11코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.1,
+"trail": 0.0,
+"car": 47.1
+},
+"ok": false,
+"why": [
+"찻길 47.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-12",
+"name": "서해랑길 12코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 8.5,
+"car": 34.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-13",
+"name": "서해랑길 13코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.9,
+"trail": 3.3,
+"car": 16.1
+},
+"ok": false,
+"why": [
+"길 밖 5.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-14",
+"name": "서해랑길 14코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 48.5
+},
+"ok": false,
+"why": [
+"찻길 48.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-15",
+"name": "서해랑길 15코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 3.0,
+"car": 30.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-16",
+"name": "서해랑길 16코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.3,
+"trail": 0.2,
+"car": 21.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-17",
+"name": "서해랑길 17코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.0,
+"trail": 0.0,
+"car": 28.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-18",
+"name": "서해랑길 18코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.0,
+"trail": 30.5,
+"car": 27.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-19",
+"name": "서해랑길 19코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 11.8,
+"trail": 6.3,
+"car": 11.2
+},
+"ok": false,
+"why": [
+"길 밖 11.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-20",
+"name": "서해랑길 20코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 17.1,
+"trail": 6.3,
+"car": 32.7
+},
+"ok": false,
+"why": [
+"길 밖 17.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-21",
+"name": "서해랑길 21코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 11.6,
+"car": 23.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-22",
+"name": "서해랑길 22코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 39.1,
+"car": 21.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-23",
+"name": "서해랑길 23코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.1,
+"trail": 2.8,
+"car": 13.3
+},
+"ok": false,
+"why": [
+"길 밖 8.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-24",
+"name": "서해랑길 24코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 15.5,
+"trail": 2.4,
+"car": 14.0
+},
+"ok": false,
+"why": [
+"길 밖 15.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-25",
+"name": "서해랑길 25코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.6,
+"trail": 28.8,
+"car": 8.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-26",
+"name": "서해랑길 26코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 34.9,
+"trail": 8.8,
+"car": 30.7
+},
+"ok": false,
+"why": [
+"길 밖 34.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-27",
+"name": "서해랑길 27코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.8,
+"trail": 17.8,
+"car": 22.6
+},
+"ok": false,
+"why": [
+"길 밖 8.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-28",
+"name": "서해랑길 28코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 7.0,
+"trail": 8.5,
+"car": 0.2
+},
+"ok": false,
+"why": [
+"길 밖 7.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-29",
+"name": "서해랑길 29코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 11.8,
+"trail": 28.0,
+"car": 26.6
+},
+"ok": false,
+"why": [
+"길 밖 11.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-34",
+"name": "서해랑길 34코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 30.4,
+"trail": 0.3,
+"car": 18.0
+},
+"ok": false,
+"why": [
+"길 밖 30.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-36",
+"name": "서해랑길 36코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 19.5,
+"trail": 0.0,
+"car": 1.4
+},
+"ok": false,
+"why": [
+"길 밖 19.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-37",
+"name": "서해랑길 37코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.9,
+"trail": 0.3,
+"car": 11.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-38",
+"name": "서해랑길 38코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.0,
+"trail": 2.0,
+"car": 8.8
+},
+"ok": false,
+"why": [
+"길 밖 10.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-39",
+"name": "서해랑길 39코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 12.3,
+"trail": 22.6,
+"car": 29.4
+},
+"ok": false,
+"why": [
+"길 밖 12.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-40",
+"name": "서해랑길 40코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 12.7,
+"trail": 0.2,
+"car": 18.0
+},
+"ok": false,
+"why": [
+"길 밖 12.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-41",
+"name": "서해랑길 41코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.0,
+"trail": 0.1,
+"car": 65.3
+},
+"ok": false,
+"why": [
+"길 밖 8.0%",
+"찻길 65.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-42",
+"name": "서해랑길 42코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.8,
+"trail": 30.2,
+"car": 3.3
+},
+"ok": false,
+"why": [
+"길 밖 5.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-43",
+"name": "서해랑길 43코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.8,
+"trail": 15.2,
+"car": 13.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-44",
+"name": "서해랑길 44코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.4,
+"trail": 7.9,
+"car": 22.0
+},
+"ok": false,
+"why": [
+"길 밖 5.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-45",
+"name": "서해랑길 45코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 29.0,
+"trail": 0.0,
+"car": 22.4
+},
+"ok": false,
+"why": [
+"길 밖 29.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-46",
+"name": "서해랑길 46코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 40.6,
+"trail": 4.1,
+"car": 22.4
+},
+"ok": false,
+"why": [
+"길 밖 40.6%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-47",
+"name": "서해랑길 47코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.8,
+"trail": 55.4,
+"car": 17.9
+},
+"ok": false,
+"why": [
+"길 밖 5.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-48",
+"name": "서해랑길 48코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 7.9,
+"trail": 0.0,
+"car": 57.7
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 7.9%",
+"찻길 57.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-49",
+"name": "서해랑길 49코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 2.9,
+"car": 8.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-50",
+"name": "서해랑길 50코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 30.0,
+"trail": 3.6,
+"car": 15.9
+},
+"ok": false,
+"why": [
+"길 밖 30.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-51",
+"name": "서해랑길 51코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 10.3,
+"car": 6.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-52",
+"name": "서해랑길 52코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 38.0,
+"car": 0.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-53",
+"name": "서해랑길 53코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.1,
+"trail": 20.9,
+"car": 11.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-54",
+"name": "서해랑길 54코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 40.1,
+"car": 7.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-55",
+"name": "서해랑길 55코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.1,
+"trail": 0.0,
+"car": 25.0
+},
+"ok": false,
+"why": [
+"길 밖 10.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-56",
+"name": "서해랑길 56코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 23.1,
+"trail": 7.7,
+"car": 15.4
+},
+"ok": false,
+"why": [
+"길 밖 23.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-57",
+"name": "서해랑길 57코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 1.0,
+"trail": 0.0,
+"car": 20.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-58",
+"name": "서해랑길 58코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 39.7,
+"trail": 0.0,
+"car": 12.8
+},
+"ok": false,
+"why": [
+"길 밖 39.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-60",
+"name": "서해랑길 60코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 3.7,
+"trail": 4.9,
+"car": 64.9
+},
+"ok": false,
+"why": [
+"찻길 64.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-61",
+"name": "서해랑길 61코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 11.0,
+"car": 42.5
+},
+"ok": false,
+"why": [
+"찻길 42.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-62",
+"name": "서해랑길 62코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 27.2,
+"trail": 7.8,
+"car": 32.7
+},
+"ok": false,
+"why": [
+"길 밖 27.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-64",
+"name": "서해랑길 64코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 26.7,
+"trail": 23.8,
+"car": 7.8
+},
+"ok": false,
+"why": [
+"길 밖 26.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-66",
+"name": "서해랑길 66코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.4,
+"trail": 5.9,
+"car": 6.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-67",
+"name": "서해랑길 67코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 19.9,
+"trail": 13.7,
+"car": 8.7
+},
+"ok": false,
+"why": [
+"길 밖 19.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-69",
+"name": "서해랑길 69코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 29.0,
+"trail": 35.5,
+"car": 8.6
+},
+"ok": false,
+"why": [
+"길 밖 29.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-70",
+"name": "서해랑길 70코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 53.4,
+"trail": 8.4,
+"car": 12.5
+},
+"ok": false,
+"why": [
+"길 밖 53.4%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-71",
+"name": "서해랑길 71코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 10.1,
+"trail": 13.0,
+"car": 6.4
+},
+"ok": false,
+"why": [
+"길 밖 10.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-72",
+"name": "서해랑길 72코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 2.8,
+"trail": 97.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-73",
+"name": "서해랑길 73코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 41.3,
+"car": 31.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-74",
+"name": "서해랑길 74코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 46.5,
+"car": 15.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-76",
+"name": "서해랑길 76코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 33.8,
+"trail": 4.6,
+"car": 0.7
+},
+"ok": false,
+"why": [
+"길 밖 33.8%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-81",
+"name": "서해랑길 81코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 90.2
+},
+"ok": false,
+"why": [
+"찻길 90.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-82",
+"name": "서해랑길 82코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 0.0,
+"car": 9.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-84",
+"name": "서해랑길 84코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 0.0,
+"car": 2.8
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-85",
+"name": "서해랑길 85코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 5.9,
+"trail": 15.6,
+"car": 30.8
+},
+"ok": false,
+"why": [
+"길 밖 5.9%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-86",
+"name": "서해랑길 86코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 8.0,
+"trail": 0.0,
+"car": 50.7
+},
+"ok": false,
+"why": [
+"길 밖 8.0%",
+"찻길 50.7%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-87",
+"name": "서해랑길 87코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 9.6,
+"trail": 12.1,
+"car": 64.6
+},
+"ok": false,
+"why": [
+"길 밖 9.6%",
+"찻길 64.6%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-89",
+"name": "서해랑길 89코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.1,
+"trail": 19.9,
+"car": 2.9
+},
+"ok": false,
+"why": [
+"길 밖 6.1%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-90",
+"name": "서해랑길 90코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 6.3,
+"trail": 15.3,
+"car": 5.6
+},
+"ok": false,
+"why": [
+"길 밖 6.3%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-91",
+"name": "서해랑길 91코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 33.1,
+"car": 6.9
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-92",
+"name": "서해랑길 92코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 0.0,
+"car": 77.0
+},
+"ok": false,
+"why": [
+"찻길 77.0%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-93",
+"name": "서해랑길 93코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.4,
+"trail": 5.5,
+"car": 5.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-94",
+"name": "서해랑길 94코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 16.5,
+"trail": 26.3,
+"car": 21.2
+},
+"ok": false,
+"why": [
+"길 밖 16.5%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-95",
+"name": "서해랑길 95코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 1.1,
+"car": 46.2
+},
+"ok": false,
+"why": [
+"찻길 46.2%"
+],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-96",
+"name": "서해랑길 96코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.9,
+"trail": 25.9,
+"car": 36.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-97",
+"name": "서해랑길 97코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 78.6,
+"car": 10.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-98",
+"name": "서해랑길 98코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 61.2,
+"car": 22.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "길",
+"id": "kt-sh-101",
+"name": "서해랑길 101코스",
+"basis": "두루누비(한국관광공사) 코리아둘레길 GPX",
+"audit": "통과",
+"probe": {
+"off": 39.4,
+"trail": 2.9,
+"car": 27.3
+},
+"ok": false,
+"why": [
+"길 밖 39.4%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "gamtu",
+"name": "감투산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 97.6,
+"car": 2.4
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "sambong",
+"name": "삼봉산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.7,
+"car": 1.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "daebong",
+"name": "대봉산(계관봉)",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.5,
+"car": 0.5
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "baegun",
+"name": "백운산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.0,
+"car": 1.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "wolbong",
+"name": "월봉산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.1,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "wabul",
+"name": "와불산(상내봉)",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "geomang",
+"name": "거망산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 75.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "namdeogyu",
+"name": "남덕유산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 85.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "samjeong",
+"name": "삼정산",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.3,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "geumwon",
+"name": "금원산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.9,
+"trail": 92.3,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "gibaek",
+"name": "기백산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 94.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "hwangseok",
+"name": "황석산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 83.4,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "cheonwang",
+"name": "지리산 천왕봉",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 93.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "cheonwang-jungsan",
+"name": "지리산 천왕봉",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 94.9,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "cheonwang-hwaeom",
+"name": "지리산 천왕봉",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 7.9,
+"trail": 78.4,
+"car": 4.2
+},
+"ok": false,
+"why": [
+"길 밖 7.9%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "abu",
+"name": "아부오름",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 22.0,
+"car": 68.3
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "geumoreum",
+"name": "금오름",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 94.6,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "darangswi",
+"name": "다랑쉬오름",
+"basis": "오픈스트리트맵 등산로(Valhalla) · 높이 Open-Meteo · 11/23 자동 생성",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"공식 노선 아님(지도 길찾기로 이은 노선)"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "halla",
+"name": "한라산 백록담",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.9,
+"car": 0.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-005",
+"name": "감악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 62.3,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-010",
+"name": "관악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 73.9,
+"car": 0.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-027",
+"name": "도봉산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 93.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-030",
+"name": "마니산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 46.9,
+"car": 1.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-032",
+"name": "명성산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 94.2,
+"car": 1.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-033",
+"name": "명지산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 59.7,
+"car": 0.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-045",
+"name": "백운산(포천)",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 89.0,
+"car": 2.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-047",
+"name": "북한산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 90.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-055",
+"name": "소요산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 57.8,
+"car": 0.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-061",
+"name": "용문산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 84.3,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-064",
+"name": "운악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 83.6,
+"car": 3.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-068",
+"name": "유명산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 17.5,
+"trail": 55.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"길 밖 17.5%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-080",
+"name": "천마산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 18.9,
+"trail": 80.3,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"길 밖 18.9%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-085",
+"name": "축령산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 83.9,
+"car": 4.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-094",
+"name": "화악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.9,
+"trail": 89.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-001",
+"name": "가리산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 80.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-002",
+"name": "가리왕산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-008",
+"name": "계방산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-009",
+"name": "공작산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 66.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-025",
+"name": "덕항산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.6,
+"trail": 65.8,
+"car": 1.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-029",
+"name": "두타산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 82.4,
+"car": 0.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-040",
+"name": "방태산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-041",
+"name": "백덕산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-044",
+"name": "백운산(정선)",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 6.3,
+"trail": 80.3,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 6.3%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-049",
+"name": "삼악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-052",
+"name": "설악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 93.7,
+"car": 6.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-059",
+"name": "오대산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.5,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-060",
+"name": "오봉산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-062",
+"name": "용화산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 70.0,
+"car": 30.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-073",
+"name": "점봉산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.1,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-086",
+"name": "치악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 51.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-088",
+"name": "태백산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 43.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-091",
+"name": "팔봉산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-007",
+"name": "계룡산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.1,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-011",
+"name": "구병산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 79.7,
+"car": 0.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-013",
+"name": "금수산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.0,
+"car": 2.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-020",
+"name": "대둔산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 2.6,
+"trail": 78.1,
+"car": 4.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-023",
+"name": "덕숭산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 22.8,
+"trail": 53.7,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 22.8%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-026",
+"name": "도락산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 4.3,
+"trail": 94.3,
+"car": 1.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-038",
+"name": "민주지산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 86.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-050",
+"name": "서대산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-056",
+"name": "속리산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 89.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-066",
+"name": "월악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 78.2,
+"car": 2.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-082",
+"name": "천태산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 84.9,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-087",
+"name": "칠갑산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 2.8,
+"trail": 73.4,
+"car": 5.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-089",
+"name": "태화산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 5.3,
+"trail": 89.0,
+"car": 0.5
+},
+"ok": false,
+"why": [
+"길 밖 5.3%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-100",
+"name": "희양산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 80.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-006",
+"name": "강천산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 73.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-016",
+"name": "깃대봉",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 86.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-019",
+"name": "내장산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 72.3,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-024",
+"name": "덕유산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 92.3,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-028",
+"name": "두륜산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-031",
+"name": "마이산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 95.9,
+"car": 1.6
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-034",
+"name": "모악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 79.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-035",
+"name": "무등산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 87.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-039",
+"name": "방장산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 76.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-042",
+"name": "백암산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 4.1,
+"trail": 60.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-043",
+"name": "백운산(광양)",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 60.9,
+"trail": 15.0,
+"car": 8.9
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 60.9%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-046",
+"name": "변산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 3.8,
+"trail": 48.1,
+"car": 39.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-051",
+"name": "선운산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 92.3,
+"car": 0.2
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-065",
+"name": "운장산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 97.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-067",
+"name": "월출산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 4.5,
+"trail": 80.9,
+"car": 10.7
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-070",
+"name": "장안산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 7.1,
+"trail": 92.4,
+"car": 0.5
+},
+"ok": false,
+"why": [
+"길 밖 7.1%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-072",
+"name": "적상산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 71.2,
+"car": 1.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-074",
+"name": "조계산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-079",
+"name": "천관산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 6.7,
+"trail": 91.8,
+"car": 1.5
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계",
+"길 밖 6.7%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-084",
+"name": "추월산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.5,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-092",
+"name": "팔영산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 86.6,
+"car": 3.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-003",
+"name": "가야산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 91.5,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-004",
+"name": "가지산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 96.6,
+"car": 1.1
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-012",
+"name": "금산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 63.2,
+"car": 32.9
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-014",
+"name": "금오산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 1.5,
+"trail": 92.3,
+"car": 1.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-015",
+"name": "금정산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 8.0,
+"trail": 84.0,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"길 밖 8.0%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-017",
+"name": "남산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.5,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-018",
+"name": "내연산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.8,
+"trail": 96.6,
+"car": 2.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-022",
+"name": "대야산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 91.9,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-036",
+"name": "무학산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 66.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-037",
+"name": "미륵산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 0.0,
+"trail": 92.8,
+"car": 0.0
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-048",
+"name": "비슬산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "경계",
+"probe": {
+"off": 1.8,
+"trail": 86.6,
+"car": 10.4
+},
+"ok": false,
+"why": [
+"되돌림·엉킴 경계"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-053",
+"name": "성인봉",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.3,
+"trail": 52.6,
+"car": 39.4
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-054",
+"name": "소백산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 73.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-057",
+"name": "신불산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 18.4,
+"trail": 77.4,
+"car": 1.7
+},
+"ok": false,
+"why": [
+"길 밖 18.4%"
+],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-058",
+"name": "연화산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 2.6,
+"trail": 63.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-063",
+"name": "운문산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 67.8,
+"car": 0.5
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-069",
+"name": "응봉산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 99.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-071",
+"name": "재약산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 83.7,
+"car": 10.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-075",
+"name": "주왕산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-076",
+"name": "주흘산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.2,
+"trail": 95.7,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-078",
+"name": "지리산(통영)",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 100.0,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-081",
+"name": "천성산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.5,
+"trail": 99.5,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-083",
+"name": "청량산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.8,
+"car": 1.2
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-090",
+"name": "팔공산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 1.2,
+"trail": 91.1,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-095",
+"name": "화왕산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 87.8,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-096",
+"name": "황매산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 87.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-098",
+"name": "황악산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 62.2,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-099",
+"name": "황장산",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 61.6,
+"car": 0.0
+},
+"ok": true,
+"why": [],
+"routeLab": false
+},
+{
+"kind": "산",
+"id": "m100-093",
+"name": "한라산 백록담",
+"basis": "산림청 100대명산 GPX · 한국등산·트레킹지원센터 (공공데이터포털)",
+"audit": "통과",
+"probe": {
+"off": 0.0,
+"trail": 98.8,
+"car": 0.3
+},
+"ok": true,
+"why": [],
+"routeLab": false
+}
+]
