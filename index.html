@@ -756,9 +756,11 @@
   .mrDays span{flex:1;min-width:0;text-align:center;font-size:13px;color:var(--mut);font-weight:700;white-space:nowrap}
   .mrDays span.td{color:var(--vtx);font-weight:900}
   .mrSum{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;margin-top:12px}
-  .mrSum div{background:rgba(var(--ink),.07);border-radius:12px;padding:7px 6px;text-align:center}
-  .mrSum small{display:block;font-size:11px;color:var(--mut);font-weight:700}
-  .mrSum b{font-size:15px;font-weight:900;white-space:nowrap}
+  .mrSum div{background:rgba(var(--ink),.07);border-radius:12px;padding:9px 10px;text-align:left;min-width:0}   /* 11/27 보스: 세 칸 제목·숫자 위치를 아래 합계 칸·오늘 카드와 같게 (왼쪽 정렬, 같은 높이) */
+  .mrSum small{display:block;font-size:12px;line-height:18px;height:18px;color:var(--mut);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mrSum b{display:block;font-size:17px;line-height:24px;font-weight:900;white-space:nowrap;margin-top:2px}
+  .mrSum b i{font-style:normal;font-size:12px;font-weight:700;color:var(--tx2);margin-left:2px}
+  .dbFix{display:flex;gap:8px;margin-top:10px}.dbFix input{flex:1;min-width:0;height:44px;border-radius:12px;border:0;padding:0 12px;font-size:16px;background:rgba(var(--ink),.08);color:var(--tx)}.dbFix button{height:44px;border:0;border-radius:12px;padding:0 16px;font-weight:800;background:rgba(var(--ink),.16);color:var(--tx)}
   .mrLeg{display:flex;flex-wrap:wrap;gap:4px 12px;justify-content:center;margin-top:10px;font-size:12px;color:var(--mut);font-weight:700}
   .mrLeg i{display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--vt);vertical-align:-1px;margin-right:3px}
   #recCal .calg b{height:44px;position:relative;font-size:19px}
@@ -1388,7 +1390,7 @@
 </div>
 
 <script>
-const BUILD = '202611270902';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611271040';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -5920,6 +5922,8 @@ function applyEdit(r, amt, min){
   if (min != null) r.sec = Math.round(min * 60);
   r.fixed = true; saveDB();
 }
+/* 11/27 보스 폰 '월요일(11/23) 삼성 헬스 4,259인데 10,609': 그날 폰 걸음 칩 기록에 전날 걸음이 몰려 들어감(재부팅 뒤 누적값) → 그 폰만(그날 값 10,609) 한 번 삼성 숫자로 고침 */
+(function(){ try { const t = (DB.steps || {})['2026-11-23']; if (t && t.fix == null && (t.native === 10609 || t.hc === 10609)){ t.fix = 4259; saveDB(); } } catch(e){} })();
 /* 11/23 보스 "탑정호 17.18km 아직 그대로": 11/22 탑정호를 3번 나눠 탔는데 마지막 회차(09:24)에 자전거 계기의 총거리 17.18km가 들어감
    → 그 회차만 앞 두 번(6.86 + 5.00)을 뺀 5.32km로 폰에서 한 번만 자동 고침 (수정 버튼과 같은 방식 → 코스 진행도 같이 맞춰짐) */
 (function(){ try {
@@ -6081,7 +6085,7 @@ function calFill(fOK){
     '<div class="calsum">' + fillT('w_calDays', { n: cnt }) + (st >= 2 && y === now.getFullYear() && m === now.getMonth() ? fillT('w_streak', { n: st }) : '') + '</div>' +   // 11/18 A14: 시간·칼로리는 위 합계 칸에 있어 뺌
     '<div class="calg">' + (ko ? '일월화수목금토'.split('') : [0, 1, 2, 3, 4, 5, 6].map(i => calFmt(new Date(2026, 10, 1 + i), { weekday: 'narrow' }))).map(c => '<i>' + c + '</i>').join('') + cells + '</div>' +
     '<div class="mrLeg"><span>' + T.mr_lg10k + '</span><span>' + T.mr_lg5k + '</span><span><i></i>' + T.mr_lgRun + '</span></div>' +
-    '<div class="mrSum"><div><small>' + T.mr_avg + '</small><b>' + (mDays ? Math.round(mSteps / mDays).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + kcalTxt(mKc) + '</b></div></div>' +
+    '<div class="mrSum"><div><small>👣 ' + T.mr_avg + '</small><b>' + (mDays ? Math.round(mSteps / mDays).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + mKc.toLocaleString() + '<i>kcal</i></b></div></div>' +
     (sel ? '<div class="calday"><span>' + (ko ? sel[1] + '월 ' + sel[2] + '일 기록만 보는 중' : fillT('w_dayOnly', { p: calFmt(new Date(REC.day + 'T12:00'), { month: 'short', day: 'numeric' }) })) + '</span><button id="calAll">' + T.w_showAll + '</button></div>' : '');
   $('recCal').querySelectorAll('[data-cd]').forEach(b => b.onclick = () => dayPop(b.dataset.cd));   // 11/26: 누르면 그날 걸음·칼로리 팝업 → '그날 기록 보기'로 아래 목록을 그날만
   $('calPrev').onclick = () => { REC.mon = m ? [y, m - 1] : [y - 1, 11]; refreshRec(); };
@@ -6100,6 +6104,7 @@ function stepsOn(k){   // 그날 걸음 { n 합계, work 운동 걸음 } — 오
        밤사이 못 읽은 걸음이 몰린 큰 값이 삼성 숫자를 이길 수 있었음 (1분마다 번갈아 덮임)
      · 앱(APK)에서 폰 걸음 숫자가 없는 날은 화면 흔들림으로 센 걸음(n)을 쓰지 않음 — 손동작까지 세서 부풀음 (오늘 숫자와 같은 규칙) */
   const work = Math.max(t.run || 0, est);
+  if (t.fix != null) return { n: Math.max(0, t.fix), work: Math.min(work, Math.max(0, t.fix)) };   // 11/27 날짜 팝업에서 삼성 헬스 숫자로 고친 값 (헬스 커넥트·폰 칩이 다시 덮지 못함)
   if (t.hc != null) return { n: Math.max(0, t.hc), work: Math.min(work, Math.max(0, t.hc)) };
   const app = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
   const raw = t.native != null ? Math.max(t.native, 0) : app ? work : Math.max(0, (t.n || 0) - (t.run || 0)) + work;
@@ -6133,7 +6138,7 @@ function mrWeekFill(){
   $('mrWeek').innerHTML = '<div class="calh"><button id="wkPrev" aria-label="&lsaquo;">‹</button><span>' + mrDate(ds[0].dt) + ' ~ ' + mrDate(ds[6].dt) + '</span><button id="wkNext" aria-label="&rsaquo;"' + (REC.wk ? '' : ' style="opacity:.25"') + '>›</button></div>' +
     '<div class="mrBars">' + ds.map(x => '<div data-wd="' + x.k + '" class="' + (x.td ? 'td' : '') + '">' + (x.recs.length ? '<span class="r">🏃</span>' : '') + '<span class="v">' + (x.n ? x.n.toLocaleString() : '') + '</span><div class="c" style="height:' + Math.round(x.n / mx * H) + 'px"></div></div>').join('') + '</div>' +
     '<div class="mrDays">' + ds.map(x => '<span class="' + (x.td ? 'td' : '') + '">' + (x.td ? T.mr_todayTag : ko ? '일월화수목금토'[x.dt.getDay()] : calFmt(x.dt, { weekday: 'narrow' })) + '</span>').join('') + '</div>' +
-    '<div class="mrSum"><div><small>' + T.mr_avg + '</small><b>' + (have ? Math.round(tot / have).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + kcalTxt(kc) + '</b></div><div><small>' + T.mr_runs + '</small><b>' + runs + T.cntUnit + '</b></div></div>';
+    '<div class="mrSum"><div><small>👣 ' + T.mr_avg + '</small><b>' + (have ? Math.round(tot / have).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + kc.toLocaleString() + '<i>kcal</i></b></div><div><small>' + T.mr_runs + '</small><b>' + runs + T.cntUnit + '</b></div></div>';
   $('wkPrev').onclick = () => { REC.wk = (REC.wk || 0) + 1; mrWeekFill(); };
   $('wkNext').onclick = () => { if (REC.wk){ REC.wk--; mrWeekFill(); } };
   $('mrWeek').querySelectorAll('[data-wd]').forEach(b => b.onclick = () => dayPop(b.dataset.wd));
@@ -6152,7 +6157,10 @@ function dayPop(k){
   $('dbBody').innerHTML = '<div class="st">' + mrDate(dt, true) + '</div><div class="mrN"><b>' + x.n.toLocaleString() + '</b><span>' + T.kcSteps + '</span></div>' + mr2Html(x) +
     (x.recs.length ? '<h3>' + T.mr_runs + '</h3>' + x.recs.map(r => { const t = new Date(r.date);
       return '<div class="mrRun"><b>' + (ACTS[r.act] || ACTS.tread).icon + ' ' + esc(recWhere(r)) + '</b>' + String(t.getHours()).padStart(2, '0') + ':' + String(t.getMinutes()).padStart(2, '0') + ' · ' + recAmt(r) + (r.sec >= 30 ? ' · ' + Math.round(r.sec / 60) + T.min : '') + (kcalOf(r) ? ' · ' + kcalTxt(kcalOf(r)) : '') + '</div>'; }).join('') : '');
+  if (k !== dayKey()) $('dbBody').innerHTML += '<a id="dbFixL" class="muted" style="display:block;text-align:right;font-size:12px;text-decoration:underline;padding:8px 0 0">' + T.mr_fix + '</a><div class="dbFix hidden" id="dbFixF"><input id="dbFixN" type="number" inputmode="numeric" min="0" placeholder="' + x.n + '"><button id="dbFixB">' + T.stSet + '</button></div>';
   if (LAB_ON()){ const t = (DB.steps || {})[k] || {}; $('dbBody').innerHTML += '<div class="muted" style="font-size:12px;margin-top:8px">🧪 삼성 ' + (t.hc != null ? t.hc : '-') + ' · 폰칩 ' + (t.native != null ? t.native : '-') + ' · 흔들림 ' + (t.n || 0) + ' · 운동중 ' + (t.run || 0) + ' · 맞춤 ' + (t.set != null ? t.set : '-') + ' · HC ' + (HC.ok ? 'ok' : 'x') + '</div>'; }   // 11/27 숫자 출처 확인용
+  if ($('dbFixL')){ $('dbFixL').onclick = () => { $('dbFixL').classList.add('hidden'); $('dbFixF').classList.remove('hidden'); $('dbFixN').focus(); };
+    $('dbFixB').onclick = () => { const v = parseInt($('dbFixN').value, 10); if (!(v >= 0)) return; DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.fix = v; saveDB(); refreshRec(); dayPop(k); }; }
   $('dbGo').classList.toggle('hidden', !x.recs.length);
   $('dbGo').onclick = () => { $('dayBox').classList.add('hidden'); REC.day = k; REC.mon = [y, m - 1]; REC.sv = 'month'; refreshRec(); setTimeout(() => $('recCap').scrollIntoView({ block: 'start', behavior: 'smooth' }), 60); };
   $('dayBox').classList.remove('hidden');
