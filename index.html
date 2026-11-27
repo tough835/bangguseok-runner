@@ -32,6 +32,14 @@
   body.vidOn.vidP #hudTop{flex-direction:row;flex-wrap:wrap;align-items:center}
   body.vidOn.vidP #view{visibility:hidden}   /* 11/26 보스 '영상 중 위쪽 글자가 엉킴': 버튼 뒤로 큰 지도 글자(200m 등)가 비침 → 영상 중엔 큰 지도를 숨겨 위 칸을 깨끗하게 */
   body.vidOn.vidP{background:var(--ch)}
+  /* 11/27 보스 '영상 중 오른쪽 위 전체 지도를 누르면 다른 지도처럼 서로 교대': 큰 화면 = 전체 코스 지도, 영상 = 오른쪽 위 작은 칸(유튜브 최소 크기 200×200) */
+  body.vidOn.vidP.vidSw #view{visibility:visible}
+  body.vidOn.vidP.vidSw{background:transparent}
+  body.vidSw #vidBox{left:auto;right:8px;top:var(--vidT,150px);bottom:auto;width:200px;height:200px;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.45)}
+  body.vidSw #map,body.vidSw #b3d,body.vidSw #infoPanel{display:none!important}   /* 사진·코스 칸 자리에 영상 → 길 그림은 가리지 않게 */
+  body.vidSw #vidBox{top:calc(10px + env(safe-area-inset-top))}
+  #vidBig{position:fixed;right:8px;z-index:6;min-height:40px;padding:0 14px;border-radius:20px;border:0;background:rgba(0,0,0,.72);color:#fff;font-size:14px;font-weight:800}
+  html[data-skin=light] #vidBig{background:rgba(255,255,255,.95);color:#1b1c1f}
   body.vidP #vidBox{top:var(--vidT,150px)}body.vidP #vidTop,body.vidP #vidBar{display:none!important}
   /* 11/22 보스 "운동 화면 오른쪽 버튼 → 유튜브에서 고른 영상을 지도 자리에": 버튼·고르는 창·영상 위 띠(코스 이름·정상 — 영상 위에 겹치지 않게 밖에 둠) */
   body.vidOn.vidMine #bYt{display:none}   /* 11/26: 코스 영상 중에도 ▶ 유튜브는 보임 */
@@ -851,6 +859,7 @@
   <button class="pill satb hidden" id="bVidOff" data-t="h_vidMap">🗺 지도</button>
   <button class="pill satb hidden" id="bYt" aria-label="유튜브 보며 운동" data-ta="h_ytAria" data-t="h_ytBtn">▶ 유튜브</button>   <!-- 11/23 15:05 보스 "너저분": 지도 버튼과는 따로, 같은 버튼 줄에 -->   <!-- 11/21 영상 코스 시험 (유튜브) -->   <!-- 11/17 음성 안내 켜기·끄기 -->
 </div>
+<button id="vidBig" class="hidden" data-t="h_vidBig">⇄ 영상 크게</button>
 <div id="vidBox" class="hidden"><div id="vidTop"></div><div id="vidWrap"><div id="vidFrame"></div></div><div id="vidBar"><span id="vidTx"></span><span class="vb"><button id="vidPick" data-t="h_vidSwap" class="hidden">🎬 바꾸기</button><button id="vidOff" data-t="h_vidToMap">🗺 지도로</button></span></div></div>
 <div id="ytBox" class="modal hidden">
   <div class="sb">
@@ -1390,7 +1399,7 @@
 </div>
 
 <script>
-const BUILD = '202611271200';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611271240';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2152,6 +2161,14 @@ Object.assign(TEXT.ja, {"mk_mine": "自分で撮影", "mk_vid": "コース動画
 Object.assign(TEXT.vi, {"mk_mine": "Tự quay", "mk_vid": "Video cung đường"});
 Object.assign(TEXT.fr, {"mk_mine": "Filmé par nous", "mk_vid": "Vidéo du parcours"});
 Object.assign(TEXT.es, {"mk_mine": "Grabado por nosotros", "mk_vid": "Vídeo de la ruta"});
+/* 11/27 영상↔지도 교대 */
+Object.assign(TEXT.ko, {"h_vidBig": "⇄ 영상 크게"});
+Object.assign(TEXT.en, {"h_vidBig": "⇄ Video big"});
+Object.assign(TEXT.zh, {"h_vidBig": "⇄ 放大视频"});
+Object.assign(TEXT.ja, {"h_vidBig": "⇄ 動画を大きく"});
+Object.assign(TEXT.vi, {"h_vidBig": "⇄ Phóng to video"});
+Object.assign(TEXT.fr, {"h_vidBig": "⇄ Vidéo en grand"});
+Object.assign(TEXT.es, {"h_vidBig": "⇄ Vídeo grande"});
 Object.assign(TEXT.ko, {"w_summitCert": "🏔 정상 인증", "w_trailPct": "등산로 {p}%"});
 Object.assign(TEXT.en, {"w_summitCert": "🏔 Summit verified", "w_trailPct": "Trail {p}%"});
 Object.assign(TEXT.zh, {"w_summitCert": "🏔 登顶认证", "w_trailPct": "山路 {p}%"});
@@ -5725,6 +5742,7 @@ function outTheme(){ return S.gps && !S.free && !isClimb(); }
 /* 11/16 보스: 오른쪽 위를 누를 때마다 큰 화면이 돌아가며 바뀜 — 실제 → 테마(확대) → 전체 경로 → 실제 … · 작은 칸에는 '다음 화면'을 미리 보여 줌 */
 $('map').onclick = () => {
   if (!S.running) return;
+  if (VID.on && !VID.mine){ vidSwap(true); return; }   // 11/27 코스 영상 중: 작은 지도 누르면 영상과 자리 교대
   if (outTheme()){
     if (NAV.full){ NAV.full = false; NAV.alt = false; showViewMode(true); }
     else if (NAV.alt){ NAV.alt = false; NAV.full = true; showViewMode(true); }
@@ -7755,7 +7773,15 @@ function vidSeekCourse(){ const v = COURSE.video; if (!v || !v.sync || VID.mine)
   try { const t = vidAt(v); if (t > 2){ vSelf(); VID.P.seekTo(t, true); } } catch(e){} }
 function vidDrop(){ try { VID.P && VID.P.destroy(); } catch(e){} VID.P = null; VID.ready = false; VID.rate = 1; $('vidWrap').innerHTML = '<div id="vidFrame"></div>'; }
 function vidOffNow(){ vidOff0(); document.body.classList.remove('vidP'); try { v3dBtn(); altChip(); } catch(e){} }
-function vidOff0(){ if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
+function vidSwap(on){   // 11/27 큰 화면 = 전체 코스 지도 ↔ 영상
+  VID.sw = !!on && VID.on && !VID.mine; document.body.classList.toggle('vidSw', VID.sw);
+  NAV.full = VID.sw; showViewMode(true);
+  const b = $('vidBig'); b.classList.toggle('hidden', !VID.sw);
+  setTimeout(() => { vidLay(); if (VID.sw){ const r = $('vidBox').getBoundingClientRect(); b.style.top = Math.round(r.bottom + 8) + 'px'; }
+    else $('vidBox').style.top = ''; vidFit(); window.dispatchEvent(new Event('resize')); }, 60);
+}
+$('vidBig').onclick = e => { e.stopPropagation(); vidSwap(false); };
+function vidOff0(){ if (VID.sw) vidSwap(false); if (VID.mine){ VID.mine = null; vidDrop(); $('vidBox').classList.remove('mine'); document.body.classList.remove('vidMine'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); }
   VID.on = false; document.body.classList.remove('vidOn', 'vidMine'); $('vidBox').classList.add('hidden'); setTimeout(() => window.dispatchEvent(new Event('resize')), 60); try { if (VID.ready){ vSelf(); VID.P.pauseVideo(); } } catch(e){} }
 function vidTick(kmh){
   if (!VID.on || !VID.ready || VID.mine) return;   // 내가 고른 영상은 속도에 맞추지 않음
