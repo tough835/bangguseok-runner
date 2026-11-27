@@ -119,8 +119,9 @@
   #syncBox .st{font-size:18px;font-weight:800}
   #syncBox .x{margin-top:10px;width:100%;height:44px;border:0;border-radius:12px;background:rgba(var(--ink),.15);color:var(--tx);font-size:15px}
   #speedFlash{z-index:20;position:fixed;left:50%;top:36%;transform:translate(-50%,-50%);background:rgba(0,0,0,.6);color:#fff;border-radius:26px;padding:12px 32px;display:flex;align-items:baseline;gap:8px}
-  #speedFlash span{font-size:96px;font-weight:900;letter-spacing:-3px}
+  #speedFlash span{font-size:min(96px,22vw);font-weight:900;letter-spacing:-3px}
   #speedFlash small{font-size:24px}
+  #speedFlash,#speedFlash *{white-space:nowrap;word-break:keep-all;overflow-wrap:normal}#speedFlash{width:max-content;max-width:94vw;box-sizing:border-box}   /* 11/27 보스 폰: 화면 가운데(left:50%)라 폭이 반쪽으로 묶여 '15.0 km/h'가 한 글자씩 세로로 쌓이던 것 → 한 줄 고정 */
   /* 11/19 산 코스: 고비 응원(잠깐 떴다 사라짐) · 쉬어가기 카드 */
   #cheer{position:fixed;left:50%;top:calc(184px + env(safe-area-inset-top));transform:translateX(-50%);z-index:24;width:min(90vw,350px);padding:10px 14px 12px;border-radius:18px;background:rgba(var(--pop),.96);color:var(--tx);box-shadow:0 10px 34px rgba(0,0,0,var(--sha));pointer-events:none;display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;animation:chIn .45s cubic-bezier(.2,1.4,.4,1)}
   #cheer i{display:block;font-style:normal;font-size:42px;line-height:1.1;animation:chBob 1.1s ease-in-out infinite}#cheer i img{display:block;height:64px;width:auto}
@@ -1401,7 +1402,7 @@
 </div>
 
 <script>
-const BUILD = '202611271625';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611271750';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
