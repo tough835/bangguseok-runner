@@ -1,0 +1,11880 @@
+[
+{
+"km": 2.37,
+"minE": 171.8,
+"sea": 0,
+"bump": 6.1,
+"bumpAt": [
+35.52496,
+127.71951,
+2279
+],
+"grade": 0.118,
+"gradeAt": [
+35.52459,
+127.719,
+2345
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.1m @2279m"
+],
+"id": "sangnim-3k",
+"kind": "road",
+"name": "Sangnim Loop",
+"city": "hamyang",
+"lab": false,
+"file": "data/route/sangnim-gps2.json"
+},
+{
+"km": 11.77,
+"minE": 158.9,
+"sea": 0,
+"bump": 21.3,
+"bumpAt": [
+35.39373,
+127.69643,
+1640
+],
+"grade": 0.525,
+"gradeAt": [
+35.39637,
+127.69451,
+1268
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 21.3m @1640m",
+"경사 52% @1268m"
+],
+"id": "dulle-gd-11k",
+"kind": "road",
+"name": "Jirisan Dulle-gil Geumgye→Donggang",
+"city": "hamyang",
+"lab": false,
+"file": "data/jiri/c4.json"
+},
+{
+"km": 11.59,
+"minE": 154.0,
+"sea": 0,
+"bump": 16.8,
+"bumpAt": [
+35.40329,
+127.79766,
+8476
+],
+"grade": 0.401,
+"gradeAt": [
+35.42753,
+127.79272,
+4222
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.8m @8476m",
+"경사 40% @4222m"
+],
+"id": "dulle-ds-12k",
+"kind": "road",
+"name": "Jirisan Dulle-gil Donggang→Sucheol",
+"city": "hamyang",
+"lab": false,
+"file": "data/jiri/c5.json"
+},
+{
+"km": 19.93,
+"minE": 255.4,
+"sea": 0,
+"bump": 16.3,
+"bumpAt": [
+35.43201,
+127.63344,
+9478
+],
+"grade": 0.459,
+"gradeAt": [
+35.41081,
+127.67953,
+18781
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.3m @9478m",
+"경사 46% @18781m"
+],
+"id": "dulle-ig-20k",
+"kind": "road",
+"name": "Jirisan Dulle-gil Inwol→Geumgye",
+"city": "hamyang",
+"lab": false,
+"file": "data/jiri/c3.json"
+},
+{
+"km": 43.31,
+"minE": 154.0,
+"sea": 0,
+"bump": 21.3,
+"bumpAt": [
+35.39373,
+127.69643,
+21580
+],
+"grade": 0.525,
+"gradeAt": [
+35.39637,
+127.69451,
+21209
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 21.3m @21580m",
+"경사 52% @21209m"
+],
+"id": "dulle-all-44k",
+"kind": "road",
+"name": "Jirisan Dulle-gil, all Hamyang sections (Inwol→Geumgye→Donggang→Sucheol)",
+"city": "hamyang",
+"lab": false,
+"file": "data/jiri/c345.json"
+},
+{
+"km": 709.79,
+"minE": -2048.0,
+"sea": 297,
+"bump": 2055.8,
+"bumpAt": [
+37.43553,
+129.17385,
+472876
+],
+"grade": 40.823,
+"gradeAt": [
+37.43553,
+129.17385,
+472876
+],
+"ok": false,
+"why": [
+"물속 꺼짐 297점(최저 -2048.0m)",
+"솟음·꺼짐 2055.8m @472876m",
+"경사 4082% @472876m"
+],
+"id": "haeparang-750k",
+"kind": "road",
+"name": "Haeparang Trail (Busan Oryukdo → Gangwon Goseong Tongil Observatory)",
+"city": "longwalk",
+"lab": false,
+"file": "data/kt/haeparang2.json"
+},
+{
+"km": 1429.13,
+"minE": -8492.0,
+"sea": 1976,
+"bump": 8493.2,
+"bumpAt": [
+34.68747,
+127.11178,
+1202813
+],
+"grade": 167.337,
+"gradeAt": [
+34.68706,
+127.11153,
+1202864
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1976점(최저 -8492.0m)",
+"솟음·꺼짐 8493.2m @1202813m",
+"경사 16734% @1202864m"
+],
+"id": "nampa-1470k",
+"kind": "road",
+"name": "Namparang Trail (Busan Oryukdo → Haenam Ttangkkeut)",
+"city": "longwalk",
+"lab": false,
+"file": "data/kt/nampa2.json"
+},
+{
+"km": 1408.14,
+"minE": -2219.8,
+"sea": 1230,
+"bump": 2223.3,
+"bumpAt": [
+34.37815,
+126.14519,
+135713
+],
+"grade": 44.255,
+"gradeAt": [
+34.37815,
+126.14519,
+135713
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1230점(최저 -2219.8m)",
+"솟음·꺼짐 2223.3m @135713m",
+"경사 4426% @135713m"
+],
+"id": "seohae-1800k",
+"kind": "road",
+"name": "Seohaerang Trail (Haenam Ttangkkeut → Incheon Ganghwa)",
+"city": "longwalk",
+"lab": false,
+"file": "data/kt/seohae2.json"
+},
+{
+"km": 225.13,
+"minE": -1672.1,
+"sea": 10,
+"bump": 1818.7,
+"bumpAt": [
+35.16309,
+127.78546,
+122476
+],
+"grade": 35.738,
+"gradeAt": [
+35.16277,
+127.78506,
+122527
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -1672.1m)",
+"솟음·꺼짐 1818.7m @122476m",
+"경사 3574% @122527m"
+],
+"id": "jirisan-dulle-274k",
+"kind": "road",
+"name": "Jirisan Dulle-gil (Han Bakwi · Namwon Jucheon Start)",
+"city": "longwalk",
+"lab": false,
+"file": "data/jiri/loop2.json"
+},
+{
+"km": 8.09,
+"minE": 67.0,
+"sea": 0,
+"bump": 20.0,
+"bumpAt": [
+37.55548,
+126.9917,
+2468
+],
+"grade": 0.376,
+"gradeAt": [
+37.54872,
+126.99046,
+5366
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 20.0m @2468m",
+"경사 38% @5366m"
+],
+"id": "namsan-7k",
+"kind": "road",
+"name": "Namsan Loop (Bukcheuksunhwallo → Namsangongwon Trail)",
+"city": "seoul",
+"lab": true,
+"file": "data/route/namsan-7k-v2.json"
+},
+{
+"km": 10.65,
+"minE": 4.8,
+"sea": 0,
+"bump": 13.8,
+"bumpAt": [
+37.52209,
+127.06302,
+8007
+],
+"grade": 0.257,
+"gradeAt": [
+37.52152,
+127.06344,
+8079
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 13.8m @8007m",
+"경사 26% @8079m"
+],
+"id": "hangang-bike-11k",
+"kind": "road",
+"name": "Hangang Bike Path south (Banpo → Jamsil)",
+"city": "seoul",
+"lab": false,
+"file": "data/route/hangang-bike-11k.json"
+},
+{
+"km": 10.58,
+"minE": 3.2,
+"sea": 0,
+"bump": 15.4,
+"bumpAt": [
+37.52719,
+126.93341,
+1244
+],
+"grade": 0.375,
+"gradeAt": [
+37.52811,
+126.93108,
+939
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.4m @1244m",
+"경사 38% @939m"
+],
+"id": "yeouido-10k",
+"kind": "road",
+"name": "Yeouido Hangang Bridge Loop (Wonhyodaegyo Bridge·Mapodaegyo Bridge)",
+"city": "seoul",
+"lab": true,
+"file": "data/route/yeouido-10k.json"
+},
+{
+"km": 2.71,
+"minE": 33.2,
+"sea": 0,
+"bump": 6.8,
+"bumpAt": [
+37.57589,
+126.97838,
+158
+],
+"grade": 0.168,
+"gradeAt": [
+37.58085,
+126.97356,
+1910
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.8m @158m"
+],
+"id": "gyeongbok-3k",
+"kind": "road",
+"name": "Gyeongbokgung Doldam Trail Loop",
+"city": "seoul",
+"lab": false,
+"file": "data/route/gyeongbok-3k-v2.json"
+},
+{
+"km": 5.27,
+"minE": 26.4,
+"sea": 0,
+"bump": 23.7,
+"bumpAt": [
+37.56924,
+126.97757,
+412
+],
+"grade": 0.519,
+"gradeAt": [
+37.56933,
+126.97758,
+402
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 23.7m @412m",
+"경사 52% @402m"
+],
+"id": "jongmyo-5k",
+"kind": "road",
+"name": "Gwanghwamun Gate→Jongmyo→Cheonggyecheon Stream Loop",
+"city": "seoul",
+"lab": false,
+"file": "data/route/jongmyo-5k-v3.json"
+},
+{
+"km": 3.07,
+"minE": 7.0,
+"sea": 0,
+"bump": 8.5,
+"bumpAt": [
+37.51001,
+127.1034,
+2628
+],
+"grade": 0.185,
+"gradeAt": [
+37.50986,
+127.10354,
+2607
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.5m @2628m"
+],
+"id": "seokchon-3k",
+"kind": "road",
+"name": "Seokchonhosu Lake Loop (near Lotte Tower)",
+"city": "seoul",
+"lab": false,
+"file": "data/route/seokchon-3k-v3.json"
+},
+{
+"km": 5.09,
+"minE": 2.3,
+"sea": 0,
+"bump": 12.9,
+"bumpAt": [
+35.16005,
+129.18659,
+2245
+],
+"grade": 0.392,
+"gradeAt": [
+35.16005,
+129.18659,
+2245
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 12.9m @2245m",
+"경사 39% @2245m"
+],
+"id": "greenrail-5k",
+"kind": "road",
+"name": "Haeundae Green Railway (Mipo→Cheongsapo→Songjeong)",
+"city": "busan",
+"lab": true,
+"file": "data/route/greenrail-5k-v2.json"
+},
+{
+"km": 2.87,
+"minE": 38.3,
+"sea": 0,
+"bump": 10.6,
+"bumpAt": [
+35.1569,
+129.17898,
+549
+],
+"grade": 0.263,
+"gradeAt": [
+35.15723,
+129.17737,
+353
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.6m @549m",
+"경사 26% @353m"
+],
+"id": "moontan-3k",
+"kind": "road",
+"name": "Dalmaji Moontan Road (Han Bakwi)",
+"city": "busan",
+"lab": true,
+"file": "data/route/moontan-3k-v3.json"
+},
+{
+"km": 18.02,
+"minE": -1266.1,
+"sea": 189,
+"bump": 1270.2,
+"bumpAt": [
+35.12423,
+128.96223,
+3874
+],
+"grade": 25.171,
+"gradeAt": [
+35.12423,
+128.96223,
+3874
+],
+"ok": false,
+"why": [
+"물속 꺼짐 189점(최저 -1266.1m)",
+"솟음·꺼짐 1270.2m @3874m",
+"경사 2517% @3874m"
+],
+"id": "nakdong-bike-18k",
+"kind": "road",
+"name": "Nakdonggang River Bike Path (Hagutduk → Hwamyeongsaengtae Park)",
+"city": "busan",
+"lab": false,
+"file": "data/route/nakdong-bike-18k.json"
+},
+{
+"km": 4.84,
+"minE": -0.5,
+"sea": 0,
+"bump": 8.1,
+"bumpAt": [
+35.19486,
+129.11388,
+4371
+],
+"grade": 0.141,
+"gradeAt": [
+35.19536,
+129.11398,
+4428
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.1m @4371m"
+],
+"id": "suyeong-bike-7k",
+"kind": "road",
+"name": "Suyeonggang River Bike Path (Millak → Wondong)",
+"city": "busan",
+"lab": false,
+"file": "data/route/suyeong-bike-7k.json"
+},
+{
+"km": 5.97,
+"minE": 2.2,
+"sea": 0,
+"bump": 6.8,
+"bumpAt": [
+35.20428,
+129.07882,
+3853
+],
+"grade": 0.136,
+"gradeAt": [
+35.1933,
+129.09475,
+1775
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.8m @3853m"
+],
+"id": "oncheon-bike-8k",
+"kind": "road",
+"name": "Oncheoncheon Stream Bike Path (Suyeonggang River Junction → Oncheonjang)",
+"city": "busan",
+"lab": true,
+"file": "data/route/oncheon-bike-8k.json"
+},
+{
+"km": 13.32,
+"minE": -1.7,
+"sea": 3,
+"bump": 11.1,
+"bumpAt": [
+35.21065,
+129.0777,
+11480
+],
+"grade": 0.215,
+"gradeAt": [
+35.21017,
+129.07747,
+11537
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1.7m)",
+"솟음·꺼짐 11.1m @11480m",
+"경사 22% @11537m"
+],
+"id": "oncheon-loop-14k",
+"kind": "road",
+"name": "Oncheoncheon Stream Yangjjok Duk Trail Loop (Gyodae Start · Suyeonggang River Junction~Busandae)",
+"city": "busan",
+"lab": true,
+"file": "data/route/oncheon-loop-14k.json"
+},
+{
+"km": 2.89,
+"minE": 3.2,
+"sea": 0,
+"bump": 5.1,
+"bumpAt": [
+35.19632,
+129.08353,
+2726
+],
+"grade": 0.115,
+"gradeAt": [
+35.19313,
+129.09468,
+1625
+],
+"ok": true,
+"why": [],
+"id": "oncheon-loop-3k",
+"kind": "road",
+"name": "Oncheoncheon Stream Short Loop (Gyodae~Yeonsan-dong)",
+"city": "busan",
+"lab": false,
+"file": "data/route/oncheon-loop-3k.json"
+},
+{
+"km": 4.39,
+"minE": 3.2,
+"sea": 0,
+"bump": 5.6,
+"bumpAt": [
+35.19171,
+129.1006,
+2566
+],
+"grade": 0.128,
+"gradeAt": [
+35.19186,
+129.09991,
+2631
+],
+"ok": true,
+"why": [],
+"id": "oncheon-loop-4k",
+"kind": "road",
+"name": "Oncheoncheon Stream Loop (Gyodae~Suyeonggang River Junction)",
+"city": "busan",
+"lab": false,
+"file": "data/route/oncheon-loop-4k.json"
+},
+{
+"km": 1.39,
+"minE": 4.6,
+"sea": 0,
+"bump": 10.9,
+"bumpAt": [
+35.15411,
+129.15075,
+524
+],
+"grade": 0.309,
+"gradeAt": [
+35.15369,
+129.15108,
+590
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.9m @524m",
+"경사 31% @590m"
+],
+"id": "dongbaek-1k",
+"kind": "road",
+"name": "Dongbaekseom Island Loop",
+"city": "busan",
+"lab": false,
+"file": "data/route/dongbaek-1k-v2.json"
+},
+{
+"km": 3.49,
+"minE": 4.6,
+"sea": 0,
+"bump": 17.4,
+"bumpAt": [
+35.15965,
+129.16436,
+949
+],
+"grade": 0.324,
+"gradeAt": [
+35.15965,
+129.16436,
+949
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 17.4m @949m",
+"경사 32% @949m"
+],
+"id": "haeundae-dongbaek",
+"kind": "road",
+"name": "Haeundae Beach → Dongbaekseom Island Loop",
+"city": "busan",
+"lab": false,
+"file": "data/route/haeundae-dongbaek-v2.json"
+},
+{
+"km": 4.87,
+"minE": 6.4,
+"sea": 0,
+"bump": 30.6,
+"bumpAt": [
+35.10673,
+129.12398,
+3979
+],
+"grade": 0.684,
+"gradeAt": [
+35.10966,
+129.12701,
+3496
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 30.6m @3979m",
+"경사 68% @3496m"
+],
+"id": "igidae-5k",
+"kind": "road",
+"name": "Igidae Haean Promenade (Dongsaengmal→Oryukdo)",
+"city": "busan",
+"lab": false,
+"file": "data/route/igidae-5k-v2.json"
+},
+{
+"km": 3.34,
+"minE": 4.6,
+"sea": 0,
+"bump": 6.5,
+"bumpAt": [
+35.1523,
+129.1175,
+382
+],
+"grade": 0.168,
+"gradeAt": [
+35.15188,
+129.11718,
+328
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.5m @382m"
+],
+"id": "gwangalli-3k",
+"kind": "road",
+"name": "Gwangan-ri Beach round trip",
+"city": "busan",
+"lab": true,
+"file": "data/route/gwangalli-3k.json"
+},
+{
+"km": 5.14,
+"minE": 49.1,
+"sea": 0,
+"bump": 16.4,
+"bumpAt": [
+37.2801,
+127.0119,
+4489
+],
+"grade": 0.463,
+"gradeAt": [
+37.2801,
+127.0119,
+4489
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.4m @4489m",
+"경사 46% @4489m"
+],
+"id": "hwaseong-gil",
+"kind": "road",
+"name": "Suwon Hwaseong Seonggwak Trail Loop",
+"city": "suwon",
+"lab": false,
+"file": "data/route/hwaseong-gil-v2.json"
+},
+{
+"km": 2.94,
+"minE": 37.4,
+"sea": 0,
+"bump": 10.1,
+"bumpAt": [
+37.27635,
+127.06457,
+2352
+],
+"grade": 0.223,
+"gradeAt": [
+37.27619,
+127.06444,
+2331
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.1m @2352m",
+"경사 22% @2331m"
+],
+"id": "woncheon-gil",
+"kind": "road",
+"name": "Gwanggyohosu Park Woncheonhosu Lake Loop",
+"city": "suwon",
+"lab": false,
+"file": "data/route/woncheon-gil.json"
+},
+{
+"km": 2.89,
+"minE": -1060.0,
+"sea": 6,
+"bump": 1140.7,
+"bumpAt": [
+37.37932,
+127.00492,
+1323
+],
+"grade": 21.812,
+"gradeAt": [
+37.37932,
+127.00492,
+1323
+],
+"ok": false,
+"why": [
+"물속 꺼짐 6점(최저 -1060.0m)",
+"솟음·꺼짐 1140.7m @1323m",
+"경사 2181% @1323m"
+],
+"id": "baegun-gil",
+"kind": "road",
+"name": "Baegunhosu Lake Loop",
+"city": "uiwang",
+"lab": false,
+"file": "data/route/baegun-gil.json"
+},
+{
+"km": 10.52,
+"minE": 37.4,
+"sea": 0,
+"bump": 18.8,
+"bumpAt": [
+37.23852,
+127.09219,
+5952
+],
+"grade": 0.354,
+"gradeAt": [
+37.23852,
+127.09219,
+5952
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.8m @5952m",
+"경사 35% @5952m"
+],
+"id": "giheung-gil",
+"kind": "road",
+"name": "Giheunghosu Lake Loop",
+"city": "yongin",
+"lab": true,
+"file": "data/route/giheung-gil.json"
+},
+{
+"km": 2.92,
+"minE": -1101.4,
+"sea": 6,
+"bump": 1322.9,
+"bumpAt": [
+38.07151,
+127.31946,
+1831
+],
+"grade": 23.594,
+"gradeAt": [
+38.07032,
+127.31806,
+2013
+],
+"ok": false,
+"why": [
+"물속 꺼짐 6점(최저 -1101.4m)",
+"솟음·꺼짐 1322.9m @1831m",
+"경사 2359% @2013m"
+],
+"id": "sanjeong-gil",
+"kind": "road",
+"name": "Sanjeonghosu Lake Dulle-gil",
+"city": "pocheon",
+"lab": false,
+"file": "data/route/sanjeong-gil.json"
+},
+{
+"km": 4.77,
+"minE": -628.6,
+"sea": 2,
+"bump": 663.4,
+"bumpAt": [
+36.77498,
+126.97598,
+934
+],
+"grade": 13.677,
+"gradeAt": [
+36.77493,
+126.97597,
+940
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -628.6m)",
+"솟음·꺼짐 663.4m @934m",
+"경사 1368% @940m"
+],
+"id": "sinjeong-gil",
+"kind": "road",
+"name": "Sinjeongho Lake Loop",
+"city": "asan",
+"lab": true,
+"file": "data/route/sinjeong-gil-v2.json"
+},
+{
+"km": 7.75,
+"minE": 5.6,
+"sea": 0,
+"bump": 15.5,
+"bumpAt": [
+35.54498,
+128.40596,
+6684
+],
+"grade": 0.477,
+"gradeAt": [
+35.54498,
+128.406,
+6688
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.5m @6684m",
+"경사 48% @6688m"
+],
+"id": "upo-gil",
+"kind": "road",
+"name": "Uponeup Saengmyeong Trail",
+"city": "changnyeong",
+"lab": true,
+"file": "data/route/upo-gil.json"
+},
+{
+"km": 2.77,
+"minE": 42.1,
+"sea": 0,
+"bump": 11.0,
+"bumpAt": [
+35.81413,
+127.15433,
+1571
+],
+"grade": 0.258,
+"gradeAt": [
+35.81367,
+127.15394,
+1634
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.0m @1571m",
+"경사 26% @1634m"
+],
+"id": "jeonjuhanok-gil",
+"kind": "road",
+"name": "Jeonju Hanok Village Loop",
+"city": "jeonju",
+"lab": false,
+"file": "data/route/jeonjuhanok-gil-v3.json"
+},
+{
+"km": 5.73,
+"minE": -1378.4,
+"sea": 26,
+"bump": 1490.9,
+"bumpAt": [
+36.57103,
+128.75286,
+2613
+],
+"grade": 29.152,
+"gradeAt": [
+36.57069,
+128.75248,
+2664
+],
+"ok": false,
+"why": [
+"물속 꺼짐 26점(최저 -1378.4m)",
+"솟음·꺼짐 1490.9m @2613m",
+"경사 2915% @2664m"
+],
+"id": "woryeong-gil",
+"kind": "road",
+"name": "Andong Woryeonggyo Bridge·Nakdong Riverside round trip",
+"city": "andong",
+"lab": true,
+"file": "data/route/woryeong-gil.json"
+},
+{
+"km": 2.38,
+"minE": 94.9,
+"sea": 0,
+"bump": 6.1,
+"bumpAt": [
+35.40193,
+127.38935,
+1189
+],
+"grade": 0.115,
+"gradeAt": [
+35.40193,
+127.38935,
+1189
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.1m @1189m"
+],
+"id": "gwanghallu-gil",
+"kind": "road",
+"name": "Namwon Gwanghalluwon↔Chunhyang Theme Park round trip",
+"city": "namwon",
+"lab": true,
+"file": "data/route/gwanghallu-gil.json"
+},
+{
+"km": 3.38,
+"minE": 18.6,
+"sea": 0,
+"bump": 9.8,
+"bumpAt": [
+35.18927,
+128.07827,
+577
+],
+"grade": 0.321,
+"gradeAt": [
+35.18774,
+128.07487,
+1089
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.8m @577m",
+"경사 32% @1089m"
+],
+"id": "jinjuseong-gil",
+"kind": "road",
+"name": "Jinjuseong Fortress·Namgang Loop",
+"city": "jinju",
+"lab": true,
+"file": "data/route/jinjuseong-gil-v2.json"
+},
+{
+"km": 23.77,
+"minE": -1100.1,
+"sea": 17,
+"bump": 1143.9,
+"bumpAt": [
+36.45122,
+127.45823,
+19431
+],
+"grade": 17.218,
+"gradeAt": [
+36.45122,
+127.45823,
+19431
+],
+"ok": false,
+"why": [
+"물속 꺼짐 17점(최저 -1100.1m)",
+"솟음·꺼짐 1143.9m @19431m",
+"경사 1722% @19431m"
+],
+"id": "daecheong-bike",
+"kind": "road",
+"name": "Daejeon Gapcheon·Geumgang Bike Path (Expo Bridge→Daecheongdaem)",
+"city": "daejeon",
+"lab": true,
+"file": "data/route/daecheong-bike.json"
+},
+{
+"km": 4.12,
+"minE": 33.2,
+"sea": 0,
+"bump": 13.3,
+"bumpAt": [
+36.37639,
+127.38806,
+1919
+],
+"grade": 0.323,
+"gradeAt": [
+36.36689,
+127.38286,
+4104
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 13.3m @1919m",
+"경사 32% @4104m"
+],
+"id": "expo-gil",
+"kind": "road",
+"name": "Daejeon Hanbat Arboretum·Expo Loop",
+"city": "daejeon",
+"lab": true,
+"file": "data/route/expo-gil-v2.json"
+},
+{
+"km": 6.93,
+"minE": 36.0,
+"sea": 0,
+"bump": 11.1,
+"bumpAt": [
+36.6365,
+127.48463,
+1488
+],
+"grade": 0.283,
+"gradeAt": [
+36.63644,
+127.48405,
+1540
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.1m @1488m",
+"경사 28% @1540m"
+],
+"id": "musimcheon-gil",
+"kind": "road",
+"name": "Cheongju Musimcheon Stream (Kkot Bridge→Songcheongyo Bridge)",
+"city": "cheongju",
+"lab": true,
+"file": "data/route/musimcheon-gil-v2.json"
+},
+{
+"km": 3.44,
+"minE": 69.2,
+"sea": 0,
+"bump": 8.7,
+"bumpAt": [
+37.87248,
+127.7112,
+3119
+],
+"grade": 0.261,
+"gradeAt": [
+37.87248,
+127.7112,
+3119
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.7m @3119m",
+"경사 26% @3119m"
+],
+"id": "gongjicheon-gil",
+"kind": "road",
+"name": "Chuncheon Soyanggang River Seukaiwokeu→Gongjicheon Stream→Uiam Park",
+"city": "chuncheon",
+"lab": false,
+"file": "data/route/gongjicheon-gil.json"
+},
+{
+"km": 2.51,
+"minE": 49.6,
+"sea": 0,
+"bump": 9.8,
+"bumpAt": [
+35.3282,
+126.98506,
+69
+],
+"grade": 0.281,
+"gradeAt": [
+35.32668,
+126.98544,
+263
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.8m @69m",
+"경사 28% @263m"
+],
+"id": "juknokwon-gil",
+"kind": "road",
+"name": "Damyang Jungnogwon→Gwanbangjerim→Meta Provence",
+"city": "damyang",
+"lab": false,
+"file": "data/route/juknokwon-gil.json"
+},
+{
+"km": 8.37,
+"minE": 656.1,
+"sea": 0,
+"bump": 21.7,
+"bumpAt": [
+37.74277,
+128.5837,
+1634
+],
+"grade": 0.378,
+"gradeAt": [
+37.74262,
+128.58376,
+1617
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 21.7m @1634m",
+"경사 38% @1617m"
+],
+"id": "woljeongsa-gil",
+"kind": "road",
+"name": "Odaesan Woljeongsa Temple→Sangwonsa Temple",
+"city": "pyeongchang",
+"lab": false,
+"file": "data/route/woljeongsa-gil.json"
+},
+{
+"km": 7.5,
+"minE": 244.8,
+"sea": 0,
+"bump": 18.2,
+"bumpAt": [
+35.78396,
+128.11325,
+3918
+],
+"grade": 0.331,
+"gradeAt": [
+35.78638,
+128.10474,
+4866
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.2m @3918m",
+"경사 33% @4866m"
+],
+"id": "sorigil-gil",
+"kind": "road",
+"name": "Gayasan Sori Trail (Daejanggyeong Theme Park→Haeinsa Temple)",
+"city": "hapcheon",
+"lab": true,
+"file": "data/route/sorigil-gil.json"
+},
+{
+"km": 4.46,
+"minE": -1155.1,
+"sea": 2,
+"bump": 1299.5,
+"bumpAt": [
+36.98134,
+128.34802,
+2685
+],
+"grade": 25.709,
+"gradeAt": [
+36.98151,
+128.34749,
+2735
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -1155.1m)",
+"솟음·꺼짐 1299.5m @2685m",
+"경사 2571% @2735m"
+],
+"id": "jando-gil",
+"kind": "road",
+"name": "Danyang Gugyeong Market→Danyanggang River Jando→Mancheonha Skywalk",
+"city": "danyang",
+"lab": false,
+"file": "data/route/jando-gil.json"
+},
+{
+"km": 5.55,
+"minE": 16.1,
+"sea": 0,
+"bump": 7.2,
+"bumpAt": [
+36.46087,
+127.11246,
+1404
+],
+"grade": 0.209,
+"gradeAt": [
+36.46281,
+127.10994,
+3871
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.2m @1404m",
+"경사 21% @3871m"
+],
+"id": "gongsanseong-gil",
+"kind": "road",
+"name": "Gongju Gongsanseong Fortress→Muryeongwangneung→Hanok Village Danyeoogi",
+"city": "gongju",
+"lab": true,
+"file": "data/route/gongsanseong-gil.json"
+},
+{
+"km": 3.53,
+"minE": 7.2,
+"sea": 0,
+"bump": 10.1,
+"bumpAt": [
+36.29135,
+126.91261,
+3396
+],
+"grade": 0.439,
+"gradeAt": [
+36.2924,
+126.91219,
+3528
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.1m @3396m",
+"경사 44% @3528m"
+],
+"id": "buyeo-gil",
+"kind": "road",
+"name": "Buyeo Gungnamji→Jeongnimsaji→Nakhwaam",
+"city": "buyeo",
+"lab": false,
+"file": "data/route/buyeo-gil-v2.json"
+},
+{
+"km": 4.04,
+"minE": 18.0,
+"sea": 0,
+"bump": 4.9,
+"bumpAt": [
+36.49217,
+127.28153,
+460
+],
+"grade": 0.096,
+"gradeAt": [
+36.49197,
+127.28068,
+378
+],
+"ok": true,
+"why": [],
+"id": "sejonglake-gil",
+"kind": "road",
+"name": "Sejonghosu Park Loop",
+"city": "sejong",
+"lab": false,
+"file": "data/route/sejonglake-gil.json"
+},
+{
+"km": 20.67,
+"minE": -1680.4,
+"sea": 10,
+"bump": 1560.5,
+"bumpAt": [
+36.45076,
+127.17125,
+11140
+],
+"grade": 30.88,
+"gradeAt": [
+36.45488,
+127.15717,
+12487
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -1680.4m)",
+"솟음·꺼짐 1560.5m @11140m",
+"경사 3088% @12487m"
+],
+"id": "geumgang-bike",
+"kind": "road",
+"name": "Geumgang Bike Path (Sejongbo→Gongjubo)",
+"city": "sejong",
+"lab": false,
+"file": "data/route/geumgang-bike-v2.json"
+},
+{
+"km": 4.17,
+"minE": 21.1,
+"sea": 0,
+"bump": 5.6,
+"bumpAt": [
+37.53795,
+127.32118,
+1280
+],
+"grade": 0.109,
+"gradeAt": [
+37.54542,
+127.32867,
+4151
+],
+"ok": true,
+"why": [],
+"id": "dumulmeori-gil",
+"kind": "road",
+"name": "Yangpyeong Yangsu Station↔Semiwon↔Dumulmeo-ri round trip",
+"city": "yangpyeong",
+"lab": true,
+"file": "data/route/dumulmeori-gil.json"
+},
+{
+"km": 29.49,
+"minE": 25.3,
+"sea": 0,
+"bump": 16.6,
+"bumpAt": [
+37.52908,
+127.28187,
+3552
+],
+"grade": 0.403,
+"gradeAt": [
+37.5419,
+127.33691,
+11660
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.6m @3552m",
+"경사 40% @11660m"
+],
+"id": "namhangang-bike",
+"kind": "road",
+"name": "Namhangang River Bike Path (Paldang Station→Yangpyeong Station)",
+"city": "yangpyeong",
+"lab": false,
+"file": "data/route/namhangang-bike.json"
+},
+{
+"km": 34.21,
+"minE": 70.9,
+"sea": 0,
+"bump": 15.1,
+"bumpAt": [
+35.42553,
+127.20479,
+22058
+],
+"grade": 0.604,
+"gradeAt": [
+35.3411,
+127.18547,
+33822
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.1m @22058m",
+"경사 60% @33822m"
+],
+"id": "seomjin-bike",
+"kind": "road",
+"name": "Seomjingang River Bike Path (Seomjingangdaem→Janggunmok→Hyangga Resort)",
+"city": "imsil",
+"lab": true,
+"file": "data/route/seomjin-bike.json"
+},
+{
+"km": 4.42,
+"minE": -5.5,
+"sea": 10,
+"bump": 10.3,
+"bumpAt": [
+37.65901,
+126.76161,
+2178
+],
+"grade": 0.186,
+"gradeAt": [
+37.65101,
+126.76668,
+3290
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -5.5m)",
+"솟음·꺼짐 10.3m @2178m"
+],
+"id": "ilsanlake-gil",
+"kind": "road",
+"name": "Ilsanhosu Park Loop",
+"city": "goyang",
+"lab": false,
+"file": "data/route/ilsanlake-gil.json"
+},
+{
+"km": 1.83,
+"minE": 36.0,
+"sea": 0,
+"bump": 17.4,
+"bumpAt": [
+35.1277,
+126.86876,
+313
+],
+"grade": 0.346,
+"gradeAt": [
+35.12724,
+126.86863,
+370
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 17.4m @313m",
+"경사 35% @370m"
+],
+"id": "pungam-gil",
+"kind": "road",
+"name": "Pungamhosu Lake Loop",
+"city": "gwangju",
+"lab": false,
+"file": "data/route/pungam-gil.json"
+},
+{
+"km": 6.63,
+"minE": 37.9,
+"sea": 0,
+"bump": 8.5,
+"bumpAt": [
+35.1642,
+126.90982,
+143
+],
+"grade": 0.165,
+"gradeAt": [
+35.16404,
+126.91041,
+200
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.5m @143m"
+],
+"id": "pureungil-gil",
+"kind": "road",
+"name": "Gwangju Pureun Trail (Gwangju Station→Namgwangju Station→Baegun Plaza)",
+"city": "gwangju",
+"lab": false,
+"file": "data/route/pureungil-gil.json"
+},
+{
+"km": 2.9,
+"minE": 86.9,
+"sea": 0,
+"bump": 4.7,
+"bumpAt": [
+36.95804,
+127.92113,
+1643
+],
+"grade": 0.122,
+"gradeAt": [
+36.96226,
+127.92516,
+2513
+],
+"ok": true,
+"why": [],
+"id": "hoamji-gil",
+"kind": "road",
+"name": "Hoamji Loop",
+"city": "chungju",
+"lab": false,
+"file": "data/route/hoamji-gil.json"
+},
+{
+"km": 19.23,
+"minE": -584.8,
+"sea": 1,
+"bump": 663.9,
+"bumpAt": [
+36.99432,
+127.88066,
+15930
+],
+"grade": 12.253,
+"gradeAt": [
+36.99473,
+127.88034,
+15984
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -584.8m)",
+"솟음·꺼짐 663.9m @15930m",
+"경사 1225% @15984m"
+],
+"id": "tangeum-bike",
+"kind": "road",
+"name": "Chungju Tangeumho Lake Bike Path (Chungjudaem→Tangeumdae→Jungangtap)",
+"city": "chungju",
+"lab": true,
+"file": "data/route/tangeum-bike.json"
+},
+{
+"km": 2.36,
+"minE": -4194.0,
+"sea": 19,
+"bump": 3249.8,
+"bumpAt": [
+36.11906,
+128.31392,
+1732
+],
+"grade": 77.34,
+"gradeAt": [
+36.118,
+128.31452,
+1884
+],
+"ok": false,
+"why": [
+"물속 꺼짐 19점(최저 -4194.0m)",
+"솟음·꺼짐 3249.8m @1732m",
+"경사 7734% @1884m"
+],
+"id": "geumoji-gil",
+"kind": "road",
+"name": "Geumosan Olle Trail (Geumoji Loop)",
+"city": "gumi",
+"lab": false,
+"file": "data/route/geumoji-gil.json"
+},
+{
+"km": 2.32,
+"minE": 55.3,
+"sea": 0,
+"bump": 7.4,
+"bumpAt": [
+36.83475,
+127.16882,
+134
+],
+"grade": 0.134,
+"gradeAt": [
+36.83167,
+127.17171,
+1250
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.4m @134m"
+],
+"id": "cheonhoji-gil",
+"kind": "road",
+"name": "Cheonhoji Loop (Dandaehosu Lake)",
+"city": "cheonan",
+"lab": true,
+"file": "data/route/cheonhoji-gil.json"
+},
+{
+"km": 17.38,
+"minE": -575.9,
+"sea": 2,
+"bump": 604.8,
+"bumpAt": [
+36.1843,
+127.19259,
+13264
+],
+"grade": 11.991,
+"gradeAt": [
+36.18397,
+127.19221,
+13314
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -575.9m)",
+"솟음·꺼짐 604.8m @13264m",
+"경사 1199% @13314m"
+],
+"id": "tapjeong-gil",
+"kind": "road",
+"name": "Tapjeongho Lake Loop",
+"city": "nonsan",
+"lab": false,
+"file": "data/route/tapjeong-gil.json"
+},
+{
+"km": 18.87,
+"minE": 14.0,
+"sea": 0,
+"bump": 15.7,
+"bumpAt": [
+36.17706,
+127.15607,
+5558
+],
+"grade": 0.239,
+"gradeAt": [
+36.17706,
+127.15607,
+5558
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.7m @5558m",
+"경사 24% @5558m"
+],
+"id": "tapjeong-road",
+"kind": "road",
+"name": "Tapjeongho Lake Chat Trail Loop",
+"city": "nonsan",
+"lab": false,
+"file": "data/route/tapjeong-road.json"
+},
+{
+"km": 6.09,
+"minE": 246.4,
+"sea": 0,
+"bump": 8.7,
+"bumpAt": [
+36.8044,
+128.0668,
+4828
+],
+"grade": 0.246,
+"gradeAt": [
+36.78447,
+128.06543,
+2362
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.7m @4828m",
+"경사 25% @2362m"
+],
+"id": "saejae-gil",
+"kind": "road",
+"name": "Mungyeongsaejae Pass Gwageo Trail (1 Gwanmun→2 Gwanmun→3 Gwanmun)",
+"city": "mungyeong",
+"lab": false,
+"file": "data/route/saejae-gil.json"
+},
+{
+"km": 3.8,
+"minE": 146.1,
+"sea": 0,
+"bump": 11.5,
+"bumpAt": [
+35.48673,
+126.91049,
+2787
+],
+"grade": 0.185,
+"gradeAt": [
+35.48666,
+126.90994,
+2856
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.5m @2787m"
+],
+"id": "naejang-gil",
+"kind": "road",
+"name": "Naejangsan Danpung Trail (Teomineol→Uhwajeong Pavilion→Naejangsa Temple)",
+"city": "jeongeup",
+"lab": false,
+"file": "data/route/naejang-gil.json"
+},
+{
+"km": 19.99,
+"minE": 1.9,
+"sea": 0,
+"bump": 6.9,
+"bumpAt": [
+35.02093,
+126.71478,
+8010
+],
+"grade": 0.14,
+"gradeAt": [
+35.00501,
+126.67834,
+12939
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.9m @8010m"
+],
+"id": "yeongsan-bike",
+"kind": "road",
+"name": "Yeongsangang River Bike Path (Seungchonbo→Juksanbo)",
+"city": "naju",
+"lab": false,
+"file": "data/route/yeongsan-bike.json"
+},
+{
+"km": 1.92,
+"minE": 71.7,
+"sea": 0,
+"bump": 6.2,
+"bumpAt": [
+35.8287,
+128.61544,
+1590
+],
+"grade": 0.158,
+"gradeAt": [
+35.8287,
+128.61544,
+1590
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.2m @1590m"
+],
+"id": "suseongmot-gil",
+"kind": "road",
+"name": "Suseongmot Pond Loop",
+"city": "daegu",
+"lab": false,
+"file": "data/route/suseongmot-gil.json"
+},
+{
+"km": 9.54,
+"minE": 26.1,
+"sea": 0,
+"bump": 20.6,
+"bumpAt": [
+35.85591,
+128.60602,
+2765
+],
+"grade": 0.382,
+"gradeAt": [
+35.85649,
+128.60608,
+2830
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 20.6m @2765m",
+"경사 38% @2830m"
+],
+"id": "sincheon-gil",
+"kind": "road",
+"name": "Daegu Sincheon (Sangdonggyo Bridge→Chimsangyo Bridge)",
+"city": "daegu",
+"lab": false,
+"file": "data/route/sincheon-gil-v2.json"
+},
+{
+"km": 19.85,
+"minE": 6.1,
+"sea": 0,
+"bump": 9.0,
+"bumpAt": [
+35.77515,
+128.43042,
+12389
+],
+"grade": 0.218,
+"gradeAt": [
+35.76897,
+128.4107,
+14509
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.0m @12389m",
+"경사 22% @14509m"
+],
+"id": "dalseong-bike",
+"kind": "road",
+"name": "Nakdonggang River Bike Path (Gangjeonggoryeongbo→Dalseongbo)",
+"city": "daegu",
+"lab": false,
+"file": "data/route/dalseong-bike.json"
+},
+{
+"km": 6.69,
+"minE": 91.6,
+"sea": 0,
+"bump": 5.8,
+"bumpAt": [
+35.83895,
+129.27381,
+4902
+],
+"grade": 0.148,
+"gradeAt": [
+35.84557,
+129.26873,
+3808
+],
+"ok": true,
+"why": [],
+"id": "bomun-gil",
+"kind": "road",
+"name": "Bomunho Lake Loop (Bomunhoban Trail)",
+"city": "gyeongju",
+"lab": false,
+"file": "data/route/bomun-gil-v2.json"
+},
+{
+"km": 6.26,
+"minE": 37.9,
+"sea": 0,
+"bump": 8.3,
+"bumpAt": [
+35.83014,
+129.22621,
+2889
+],
+"grade": 0.265,
+"gradeAt": [
+35.83025,
+129.22692,
+2953
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.3m @2889m",
+"경사 26% @2953m"
+],
+"id": "gyeongjuhist-gil",
+"kind": "road",
+"name": "Gyeongju Daereungwon→Cheomseongdae→Woljeonggyo Bridge→Donggunggwa Wolji return",
+"city": "gyeongju",
+"lab": true,
+"file": "data/route/gyeongjuhist-gil.json"
+},
+{
+"km": 29.69,
+"minE": -2981.1,
+"sea": 11,
+"bump": 2581.0,
+"bumpAt": [
+37.71149,
+127.39599,
+11620
+],
+"grade": 59.447,
+"gradeAt": [
+37.7119,
+127.39628,
+11671
+],
+"ok": false,
+"why": [
+"물속 꺼짐 11점(최저 -2981.1m)",
+"솟음·꺼짐 2581.0m @11620m",
+"경사 5945% @11671m"
+],
+"id": "gyeongchun-bike-24k",
+"kind": "road",
+"name": "Gyeongchunseon Bike Path (Maseok → Daeseong-ri → Cheongpyeong → Gapyeong)",
+"city": "gapyeong",
+"lab": false,
+"file": "data/route/gyeongchun-bike-24k.json"
+},
+{
+"km": 16.54,
+"minE": -0.8,
+"sea": 2,
+"bump": 19.8,
+"bumpAt": [
+33.24046,
+126.54204,
+2840
+],
+"grade": 0.408,
+"gradeAt": [
+33.24101,
+126.54171,
+2909
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -0.8m)",
+"솟음·꺼짐 19.8m @2840m",
+"경사 41% @2909m"
+],
+"id": "olle7-18k",
+"kind": "road",
+"name": "Jeju Olle Course 7 (Yeohaengja Center→Oedolgae→Wolpyeong)",
+"city": "jeju",
+"lab": true,
+"file": "data/route/olle7-18k.json"
+},
+{
+"km": 15.62,
+"minE": -0.9,
+"sea": 9,
+"bump": 24.6,
+"bumpAt": [
+33.45899,
+126.9386,
+13370
+],
+"grade": 0.536,
+"gradeAt": [
+33.45916,
+126.93858,
+13350
+],
+"ok": false,
+"why": [
+"물속 꺼짐 9점(최저 -0.9m)",
+"솟음·꺼짐 24.6m @13370m",
+"경사 54% @13350m"
+],
+"id": "olle1-15k",
+"kind": "road",
+"name": "Jeju Olle Course 1 (Siheung→Malmi Oreum→Seongsan→Gwangchigi)",
+"city": "jeju",
+"lab": true,
+"file": "data/route/olle1-15k.json"
+},
+{
+"km": 8.05,
+"minE": 1.5,
+"sea": 0,
+"bump": 10.7,
+"bumpAt": [
+33.24404,
+126.57901,
+6080
+],
+"grade": 0.197,
+"gradeAt": [
+33.24403,
+126.57908,
+6074
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.7m @6080m"
+],
+"id": "olle6-11k",
+"kind": "road",
+"name": "Jeju Olle Course 6 (Soesokkak→Jeongbang Falls→Seogwipo)",
+"city": "jeju",
+"lab": true,
+"file": "data/route/olle6-11k.json"
+},
+{
+"km": 2.32,
+"minE": 398.7,
+"sea": 0,
+"bump": 4.7,
+"bumpAt": [
+47.35249,
+8.55472,
+2215
+],
+"grade": 0.189,
+"gradeAt": [
+47.36263,
+8.54697,
+773
+],
+"ok": true,
+"why": [],
+"id": "zurich-lake",
+"kind": "road",
+"name": "Zurich Lakeside (Bürkliplatz → Tiefenbrunnen)",
+"city": "zurich",
+"lab": true,
+"file": "data/route/zurich-lake.json"
+},
+{
+"km": 3.08,
+"minE": 428.5,
+"sea": 0,
+"bump": 8.5,
+"bumpAt": [
+47.05371,
+8.30981,
+318
+],
+"grade": 0.25,
+"gradeAt": [
+47.05464,
+8.316,
+819
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.5m @318m",
+"경사 25% @819m"
+],
+"id": "luzern-lake",
+"kind": "road",
+"name": "Lucerne Lakeside (Chapel Bridge → Transport Museum)",
+"city": "luzern",
+"lab": true,
+"file": "data/route/luzern-lake.json"
+},
+{
+"km": 2.89,
+"minE": 370.0,
+"sea": 0,
+"bump": 5.6,
+"bumpAt": [
+46.20669,
+6.14795,
+827
+],
+"grade": 0.222,
+"gradeAt": [
+46.20669,
+6.14795,
+827
+],
+"ok": false,
+"why": [
+"경사 22% @827m"
+],
+"id": "geneva-lake",
+"kind": "road",
+"name": "Geneva Lakeside (Pâquis → Parc La Grange)",
+"city": "geneva",
+"lab": true,
+"file": "data/route/geneva-lake.json"
+},
+{
+"km": 20.22,
+"minE": 368.5,
+"sea": 0,
+"bump": 20.6,
+"bumpAt": [
+46.49736,
+6.70295,
+7043
+],
+"grade": 0.389,
+"gradeAt": [
+46.49685,
+6.70413,
+7149
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 20.6m @7043m",
+"경사 39% @7149m"
+],
+"id": "lavaux-bike",
+"kind": "road",
+"name": "Lavaux Vineyard Lake Trail (Lausanne Ouchy → Vevey)",
+"city": "lausanne",
+"lab": true,
+"file": "data/route/lavaux-bike.json"
+},
+{
+"km": 5.13,
+"minE": 639.9,
+"sea": 0,
+"bump": 3.2,
+"bumpAt": [
+40.4075,
+-3.68888,
+3388
+],
+"grade": 0.104,
+"gradeAt": [
+40.41181,
+-3.68865,
+3908
+],
+"ok": true,
+"why": [],
+"id": "retiro-loop",
+"kind": "road",
+"name": "Madrid Retiro Park Loop",
+"city": "madrid",
+"lab": true,
+"file": "data/route/retiro-loop.json"
+},
+{
+"km": 4.91,
+"minE": 576.4,
+"sea": 0,
+"bump": 6.3,
+"bumpAt": [
+40.40824,
+-3.71958,
+1612
+],
+"grade": 0.155,
+"gradeAt": [
+40.40834,
+-3.71959,
+1602
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.3m @1612m"
+],
+"id": "madrid-rio",
+"kind": "road",
+"name": "Madrid Río (Puente del Rey → Matadero)",
+"city": "madrid",
+"lab": true,
+"file": "data/route/madrid-rio.json"
+},
+{
+"km": 5.01,
+"minE": -0.6,
+"sea": 1,
+"bump": 4.0,
+"bumpAt": [
+41.38978,
+2.2007,
+3677
+],
+"grade": 0.113,
+"gradeAt": [
+41.3884,
+2.20077,
+3475
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -0.6m)"
+],
+"id": "barcelona-beach",
+"kind": "road",
+"name": "Barcelona Beaches (Barceloneta → Mar Bella)",
+"city": "barcelona",
+"lab": true,
+"file": "data/route/barcelona-beach.json"
+},
+{
+"km": 23.22,
+"minE": -8.0,
+"sea": 9,
+"bump": 66.3,
+"bumpAt": [
+39.96091,
+3.21168,
+23021
+],
+"grade": 3.486,
+"gradeAt": [
+39.96091,
+3.21168,
+23021
+],
+"ok": false,
+"why": [
+"물속 꺼짐 9점(최저 -8.0m)",
+"솟음·꺼짐 66.3m @23021m",
+"경사 349% @23021m"
+],
+"id": "formentor-bike",
+"kind": "road",
+"name": "Mallorca Cap de Formentor (Port de Pollença → Lighthouse)",
+"city": "mallorca",
+"lab": true,
+"file": "data/route/formentor-bike.json"
+},
+{
+"km": 6.21,
+"minE": 5.5,
+"sea": 0,
+"bump": 3.8,
+"bumpAt": [
+55.69457,
+12.57681,
+2749
+],
+"grade": 0.079,
+"gradeAt": [
+55.69427,
+12.57751,
+2804
+],
+"ok": true,
+"why": [],
+"id": "copenhagen-lakes",
+"kind": "road",
+"name": "Copenhagen Lakes Loop",
+"city": "copenhagen",
+"lab": true,
+"file": "data/route/copenhagen-lakes.json"
+},
+{
+"km": 9.85,
+"minE": 7.5,
+"sea": 0,
+"bump": 6.0,
+"bumpAt": [
+59.32261,
+18.11083,
+8014
+],
+"grade": 0.154,
+"gradeAt": [
+59.32256,
+18.11157,
+7971
+],
+"ok": true,
+"why": [],
+"id": "djurgarden-loop",
+"kind": "road",
+"name": "Stockholm Djurgården Loop",
+"city": "stockholm",
+"lab": true,
+"file": "data/route/djurgarden-loop.json"
+},
+{
+"km": 9.35,
+"minE": 2.8,
+"sea": 0,
+"bump": 7.0,
+"bumpAt": [
+59.92262,
+10.7518,
+7927
+],
+"grade": 0.249,
+"gradeAt": [
+59.95018,
+10.76182,
+3692
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.0m @7927m",
+"경사 25% @3692m"
+],
+"id": "akerselva",
+"kind": "road",
+"name": "Oslo Akerselva River Walk (Maridalsvannet → Vaterland)",
+"city": "oslo",
+"lab": true,
+"file": "data/route/akerselva.json"
+},
+{
+"km": 9.02,
+"minE": -0.1,
+"sea": 0,
+"bump": 10.5,
+"bumpAt": [
+63.01652,
+7.35186,
+3654
+],
+"grade": 0.201,
+"gradeAt": [
+63.01663,
+7.3533,
+3728
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.5m @3654m",
+"경사 20% @3728m"
+],
+"id": "atlantic-road",
+"kind": "road",
+"name": "Atlantic Ocean Road, Norway (Vevang → Kårvåg)",
+"city": "atlantic",
+"lab": true,
+"file": "data/route/atlantic-road.json"
+},
+{
+"km": 11.3,
+"minE": 5.4,
+"sea": 0,
+"bump": 5.8,
+"bumpAt": [
+40.78445,
+-73.96725,
+7854
+],
+"grade": 0.146,
+"gradeAt": [
+40.78445,
+-73.96725,
+7854
+],
+"ok": true,
+"why": [],
+"id": "centralpark-10k",
+"kind": "road",
+"name": "Central Park Loop, New York (Park Drive)",
+"city": "newyork",
+"lab": true,
+"file": "data/route/centralpark-10k.json"
+},
+{
+"km": 6.8,
+"minE": -3.6,
+"sea": 3,
+"bump": 21.1,
+"bumpAt": [
+35.68708,
+139.76167,
+1958
+],
+"grade": 0.524,
+"gradeAt": [
+35.6874,
+139.76139,
+2014
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -3.6m)",
+"솟음·꺼짐 21.1m @1958m",
+"경사 52% @2014m"
+],
+"id": "kokyo-5k",
+"kind": "road",
+"name": "Tokyo Imperial Palace Loop (Kokyo Run)",
+"city": "tokyo",
+"lab": true,
+"file": "data/route/kokyo-5k.json"
+},
+{
+"km": 9.46,
+"minE": 3.4,
+"sea": 0,
+"bump": 28.9,
+"bumpAt": [
+22.26357,
+114.24097,
+6918
+],
+"grade": 0.618,
+"gradeAt": [
+22.26394,
+114.24156,
+6995
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 28.9m @6918m",
+"경사 62% @6995m"
+],
+"id": "dragonsback-9k",
+"kind": "road",
+"name": "Hong Kong Dragon's Back (To Tei Wan → Big Wave Bay)",
+"city": "hongkong",
+"lab": true,
+"file": "data/route/dragonsback-9k.json"
+},
+{
+"km": 16.0,
+"minE": -4.2,
+"sea": 8,
+"bump": 41.4,
+"bumpAt": [
+35.15391,
+129.14492,
+13108
+],
+"grade": 0.763,
+"gradeAt": [
+35.15373,
+129.14555,
+13169
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -4.2m)",
+"솟음·꺼짐 41.4m @13108m",
+"경사 76% @13169m"
+],
+"id": "kt-hp-01",
+"kind": "road",
+"name": "Haeparang Trail Course 1",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-01.json"
+},
+{
+"km": 13.84,
+"minE": 2.0,
+"sea": 0,
+"bump": 22.2,
+"bumpAt": [
+35.1596,
+129.1644,
+383
+],
+"grade": 0.541,
+"gradeAt": [
+35.15964,
+129.16496,
+433
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 22.2m @383m",
+"경사 54% @433m"
+],
+"id": "kt-hp-02",
+"kind": "road",
+"name": "Haeparang Trail Course 2",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-02.json"
+},
+{
+"km": 16.46,
+"minE": -1026.5,
+"sea": 3,
+"bump": 1030.4,
+"bumpAt": [
+35.29679,
+129.26112,
+13473
+],
+"grade": 19.357,
+"gradeAt": [
+35.29719,
+129.26079,
+13527
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1026.5m)",
+"솟음·꺼짐 1030.4m @13473m",
+"경사 1936% @13527m"
+],
+"id": "kt-hp-03",
+"kind": "road",
+"name": "Haeparang Trail Course 3",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-03.json"
+},
+{
+"km": 16.23,
+"minE": -1620.5,
+"sea": 8,
+"bump": 1626.4,
+"bumpAt": [
+35.37404,
+129.34631,
+14753
+],
+"grade": 31.789,
+"gradeAt": [
+35.37428,
+129.34583,
+14804
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -1620.5m)",
+"솟음·꺼짐 1626.4m @14753m",
+"경사 3179% @14804m"
+],
+"id": "kt-hp-04",
+"kind": "road",
+"name": "Haeparang Trail Course 4",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-04.json"
+},
+{
+"km": 17.48,
+"minE": -207.7,
+"sea": 48,
+"bump": 212.9,
+"bumpAt": [
+35.38649,
+129.34725,
+71
+],
+"grade": 4.22,
+"gradeAt": [
+35.38691,
+129.34702,
+122
+],
+"ok": false,
+"why": [
+"물속 꺼짐 48점(최저 -207.7m)",
+"솟음·꺼짐 212.9m @71m",
+"경사 422% @122m"
+],
+"id": "kt-hp-05",
+"kind": "road",
+"name": "Haeparang Trail Course 5",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-05.json"
+},
+{
+"km": 15.19,
+"minE": -145.8,
+"sea": 1,
+"bump": 189.2,
+"bumpAt": [
+35.51583,
+129.32585,
+4077
+],
+"grade": 3.734,
+"gradeAt": [
+35.51583,
+129.32585,
+4077
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -145.8m)",
+"솟음·꺼짐 189.2m @4077m",
+"경사 373% @4077m"
+],
+"id": "kt-hp-06",
+"kind": "road",
+"name": "Haeparang Trail Course 6",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-06.json"
+},
+{
+"km": 17.81,
+"minE": -850.8,
+"sea": 20,
+"bump": 861.0,
+"bumpAt": [
+35.55321,
+129.30404,
+6673
+],
+"grade": 16.403,
+"gradeAt": [
+35.55321,
+129.30404,
+6673
+],
+"ok": false,
+"why": [
+"물속 꺼짐 20점(최저 -850.8m)",
+"솟음·꺼짐 861.0m @6673m",
+"경사 1640% @6673m"
+],
+"id": "kt-hp-07",
+"kind": "road",
+"name": "Haeparang Trail Course 7",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-07.json"
+},
+{
+"km": 11.54,
+"minE": -4.7,
+"sea": 2,
+"bump": 19.9,
+"bumpAt": [
+35.49366,
+129.4122,
+4781
+],
+"grade": 0.607,
+"gradeAt": [
+35.49372,
+129.41212,
+4771
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -4.7m)",
+"솟음·꺼짐 19.9m @4781m",
+"경사 61% @4771m"
+],
+"id": "kt-hp-08",
+"kind": "road",
+"name": "Haeparang Trail Course 8",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-08.json"
+},
+{
+"km": 19.42,
+"minE": -4.8,
+"sea": 5,
+"bump": 16.6,
+"bumpAt": [
+35.51874,
+129.43169,
+2971
+],
+"grade": 0.423,
+"gradeAt": [
+35.54216,
+129.43973,
+6952
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -4.8m)",
+"솟음·꺼짐 16.6m @2971m",
+"경사 42% @6952m"
+],
+"id": "kt-hp-09",
+"kind": "road",
+"name": "Haeparang Trail Course 9",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-09.json"
+},
+{
+"km": 12.81,
+"minE": -848.7,
+"sea": 7,
+"bump": 856.4,
+"bumpAt": [
+35.64579,
+129.44223,
+4221
+],
+"grade": 16.773,
+"gradeAt": [
+35.64596,
+129.44269,
+4272
+],
+"ok": false,
+"why": [
+"물속 꺼짐 7점(최저 -848.7m)",
+"솟음·꺼짐 856.4m @4221m",
+"경사 1677% @4272m"
+],
+"id": "kt-hp-10",
+"kind": "road",
+"name": "Haeparang Trail Course 10",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-10.json"
+},
+{
+"km": 16.2,
+"minE": -986.8,
+"sea": 3,
+"bump": 990.7,
+"bumpAt": [
+35.77752,
+129.4939,
+12297
+],
+"grade": 19.498,
+"gradeAt": [
+35.77752,
+129.4939,
+12297
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -986.8m)",
+"솟음·꺼짐 990.7m @12297m",
+"경사 1950% @12297m"
+],
+"id": "kt-hp-11",
+"kind": "road",
+"name": "Haeparang Trail Course 11",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-11.json"
+},
+{
+"km": 12.97,
+"minE": -32.3,
+"sea": 2,
+"bump": 34.1,
+"bumpAt": [
+35.8083,
+129.50466,
+723
+],
+"grade": 0.713,
+"gradeAt": [
+35.8083,
+129.50466,
+723
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -32.3m)",
+"솟음·꺼짐 34.1m @723m",
+"경사 71% @723m"
+],
+"id": "kt-hp-12",
+"kind": "road",
+"name": "Haeparang Trail Course 12",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-12-v2.json"
+},
+{
+"km": 19.56,
+"minE": -39.3,
+"sea": 1,
+"bump": 46.9,
+"bumpAt": [
+35.91103,
+129.52541,
+5172
+],
+"grade": 0.943,
+"gradeAt": [
+35.91103,
+129.52541,
+5172
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -39.3m)",
+"솟음·꺼짐 46.9m @5172m",
+"경사 94% @5172m"
+],
+"id": "kt-hp-13",
+"kind": "road",
+"name": "Haeparang Trail Course 13",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-13.json"
+},
+{
+"km": 13.96,
+"minE": 1.4,
+"sea": 0,
+"bump": 5.6,
+"bumpAt": [
+36.03651,
+129.57809,
+7906
+],
+"grade": 0.165,
+"gradeAt": [
+36.05617,
+129.57722,
+11250
+],
+"ok": true,
+"why": [],
+"id": "kt-hp-14",
+"kind": "road",
+"name": "Haeparang Trail Course 14",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-14.json"
+},
+{
+"km": 12.65,
+"minE": -1334.8,
+"sea": 13,
+"bump": 1349.2,
+"bumpAt": [
+36.07132,
+129.54052,
+4647
+],
+"grade": 25.476,
+"gradeAt": [
+36.07086,
+129.54068,
+4701
+],
+"ok": false,
+"why": [
+"물속 꺼짐 13점(최저 -1334.8m)",
+"솟음·꺼짐 1349.2m @4647m",
+"경사 2548% @4701m"
+],
+"id": "kt-hp-15",
+"kind": "road",
+"name": "Haeparang Trail Course 15",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-15.json"
+},
+{
+"km": 18.75,
+"minE": -1342.4,
+"sea": 45,
+"bump": 1348.6,
+"bumpAt": [
+36.0181,
+129.49163,
+1544
+],
+"grade": 26.466,
+"gradeAt": [
+36.01793,
+129.4911,
+1596
+],
+"ok": false,
+"why": [
+"물속 꺼짐 45점(최저 -1342.4m)",
+"솟음·꺼짐 1348.6m @1544m",
+"경사 2647% @1596m"
+],
+"id": "kt-hp-16",
+"kind": "road",
+"name": "Haeparang Trail Course 16",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-16.json"
+},
+{
+"km": 17.82,
+"minE": -0.5,
+"sea": 0,
+"bump": 10.7,
+"bumpAt": [
+36.08764,
+129.4177,
+9960
+],
+"grade": 0.206,
+"gradeAt": [
+36.08781,
+129.41782,
+9981
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.7m @9960m",
+"경사 21% @9981m"
+],
+"id": "kt-hp-17",
+"kind": "road",
+"name": "Haeparang Trail Course 17",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-17.json"
+},
+{
+"km": 17.93,
+"minE": -917.7,
+"sea": 2,
+"bump": 461.5,
+"bumpAt": [
+36.25181,
+129.37383,
+17810
+],
+"grade": 17.881,
+"gradeAt": [
+36.25228,
+129.37344,
+17872
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -917.7m)",
+"솟음·꺼짐 461.5m @17810m",
+"경사 1788% @17872m"
+],
+"id": "kt-hp-18",
+"kind": "road",
+"name": "Haeparang Trail Course 18",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-18-v2.json"
+},
+{
+"km": 15.33,
+"minE": -71.9,
+"sea": 1,
+"bump": 79.7,
+"bumpAt": [
+36.25345,
+129.37315,
+138
+],
+"grade": 1.594,
+"gradeAt": [
+36.25389,
+129.37296,
+189
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -71.9m)",
+"솟음·꺼짐 79.7m @138m",
+"경사 159% @189m"
+],
+"id": "kt-hp-19",
+"kind": "road",
+"name": "Haeparang Trail Course 19",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-19.json"
+},
+{
+"km": 16.53,
+"minE": 5.3,
+"sea": 0,
+"bump": 18.6,
+"bumpAt": [
+36.40174,
+129.3847,
+6471
+],
+"grade": 0.505,
+"gradeAt": [
+36.4018,
+129.3848,
+6459
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.6m @6471m",
+"경사 50% @6459m"
+],
+"id": "kt-hp-20",
+"kind": "road",
+"name": "Haeparang Trail Course 20",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-20.json"
+},
+{
+"km": 11.87,
+"minE": 3.5,
+"sea": 0,
+"bump": 18.1,
+"bumpAt": [
+36.50368,
+129.446,
+9954
+],
+"grade": 0.384,
+"gradeAt": [
+36.50219,
+129.44613,
+9780
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.1m @9954m",
+"경사 38% @9780m"
+],
+"id": "kt-hp-21",
+"kind": "road",
+"name": "Haeparang Trail Course 21",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-21.json"
+},
+{
+"km": 15.72,
+"minE": -16.9,
+"sea": 4,
+"bump": 23.0,
+"bumpAt": [
+36.59882,
+129.41026,
+15634
+],
+"grade": 0.45,
+"gradeAt": [
+36.59921,
+129.41054,
+15684
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -16.9m)",
+"솟음·꺼짐 23.0m @15634m",
+"경사 45% @15684m"
+],
+"id": "kt-hp-22",
+"kind": "road",
+"name": "Haeparang Trail Course 22",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-22.json"
+},
+{
+"km": 11.53,
+"minE": -228.2,
+"sea": 4,
+"bump": 166.1,
+"bumpAt": [
+36.67102,
+129.43798,
+9234
+],
+"grade": 4.671,
+"gradeAt": [
+36.67137,
+129.43834,
+9284
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -228.2m)",
+"솟음·꺼짐 166.1m @9234m",
+"경사 467% @9284m"
+],
+"id": "kt-hp-23",
+"kind": "road",
+"name": "Haeparang Trail Course 23",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-23.json"
+},
+{
+"km": 17.8,
+"minE": -1000.8,
+"sea": 5,
+"bump": 653.6,
+"bumpAt": [
+36.71395,
+129.47345,
+5428
+],
+"grade": 20.011,
+"gradeAt": [
+36.71438,
+129.47326,
+5478
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -1000.8m)",
+"솟음·꺼짐 653.6m @5428m",
+"경사 2001% @5478m"
+],
+"id": "kt-hp-24",
+"kind": "road",
+"name": "Haeparang Trail Course 24",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-24.json"
+},
+{
+"km": 22.86,
+"minE": -1059.9,
+"sea": 33,
+"bump": 1065.9,
+"bumpAt": [
+36.83646,
+129.44086,
+4838
+],
+"grade": 20.341,
+"gradeAt": [
+36.83682,
+129.44048,
+4891
+],
+"ok": false,
+"why": [
+"물속 꺼짐 33점(최저 -1059.9m)",
+"솟음·꺼짐 1065.9m @4838m",
+"경사 2034% @4891m"
+],
+"id": "kt-hp-25",
+"kind": "road",
+"name": "Haeparang Trail Course 25",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-25.json"
+},
+{
+"km": 12.53,
+"minE": 0.2,
+"sea": 0,
+"bump": 10.6,
+"bumpAt": [
+37.03202,
+129.41175,
+9902
+],
+"grade": 0.278,
+"gradeAt": [
+37.00162,
+129.41671,
+6252
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.6m @9902m",
+"경사 28% @6252m"
+],
+"id": "kt-hp-26",
+"kind": "road",
+"name": "Haeparang Trail Course 26",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-26.json"
+},
+{
+"km": 10.87,
+"minE": -502.6,
+"sea": 2,
+"bump": 509.6,
+"bumpAt": [
+37.05574,
+129.41613,
+236
+],
+"grade": 9.948,
+"gradeAt": [
+37.05615,
+129.41641,
+287
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -502.6m)",
+"솟음·꺼짐 509.6m @236m",
+"경사 995% @287m"
+],
+"id": "kt-hp-27",
+"kind": "road",
+"name": "Haeparang Trail Course 27",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-27.json"
+},
+{
+"km": 10.45,
+"minE": -541.0,
+"sea": 5,
+"bump": 545.3,
+"bumpAt": [
+37.1112,
+129.37426,
+1355
+],
+"grade": 10.586,
+"gradeAt": [
+37.11166,
+129.37432,
+1406
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -541.0m)",
+"솟음·꺼짐 545.3m @1355m",
+"경사 1059% @1406m"
+],
+"id": "kt-hp-28",
+"kind": "road",
+"name": "Haeparang Trail Course 28",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-28.json"
+},
+{
+"km": 17.93,
+"minE": 2.6,
+"sea": 0,
+"bump": 10.6,
+"bumpAt": [
+37.20868,
+129.3403,
+5577
+],
+"grade": 0.352,
+"gradeAt": [
+37.25573,
+129.30356,
+14011
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.6m @5577m",
+"경사 35% @14011m"
+],
+"id": "kt-hp-29",
+"kind": "road",
+"name": "Haeparang Trail Course 29",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-29.json"
+},
+{
+"km": 6.95,
+"minE": 3.0,
+"sea": 0,
+"bump": 8.3,
+"bumpAt": [
+37.30725,
+129.29363,
+3064
+],
+"grade": 0.251,
+"gradeAt": [
+37.29152,
+129.2984,
+731
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.3m @3064m",
+"경사 25% @731m"
+],
+"id": "kt-hp-30",
+"kind": "road",
+"name": "Haeparang Trail Course 30",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-30.json"
+},
+{
+"km": 9.44,
+"minE": 2.3,
+"sea": 0,
+"bump": 5.4,
+"bumpAt": [
+37.33255,
+129.24917,
+1804
+],
+"grade": 0.178,
+"gradeAt": [
+37.33267,
+129.24837,
+1876
+],
+"ok": true,
+"why": [],
+"id": "kt-hp-31",
+"kind": "road",
+"name": "Haeparang Trail Course 31",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-31.json"
+},
+{
+"km": 21.54,
+"minE": -1331.2,
+"sea": 8,
+"bump": 1198.6,
+"bumpAt": [
+37.4355,
+129.17381,
+11619
+],
+"grade": 26.792,
+"gradeAt": [
+37.4355,
+129.17381,
+11619
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -1331.2m)",
+"솟음·꺼짐 1198.6m @11619m",
+"경사 2679% @11619m"
+],
+"id": "kt-hp-32",
+"kind": "road",
+"name": "Haeparang Trail Course 32",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-32.json"
+},
+{
+"km": 13.46,
+"minE": -4.1,
+"sea": 8,
+"bump": 18.7,
+"bumpAt": [
+37.49117,
+129.14416,
+2217
+],
+"grade": 0.304,
+"gradeAt": [
+37.49117,
+129.14416,
+2217
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -4.1m)",
+"솟음·꺼짐 18.7m @2217m",
+"경사 30% @2217m"
+],
+"id": "kt-hp-33",
+"kind": "road",
+"name": "Haeparang Trail Course 33",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-33.json"
+},
+{
+"km": 14.24,
+"minE": -1071.4,
+"sea": 4,
+"bump": 1073.9,
+"bumpAt": [
+37.59979,
+129.08128,
+8650
+],
+"grade": 21.085,
+"gradeAt": [
+37.60009,
+129.08084,
+8700
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -1071.4m)",
+"솟음·꺼짐 1073.9m @8650m",
+"경사 2108% @8700m"
+],
+"id": "kt-hp-34",
+"kind": "road",
+"name": "Haeparang Trail Course 34",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-34.json"
+},
+{
+"km": 9.64,
+"minE": 2.3,
+"sea": 0,
+"bump": 14.5,
+"bumpAt": [
+37.67346,
+129.03783,
+7010
+],
+"grade": 0.341,
+"gradeAt": [
+37.66573,
+129.05137,
+5315
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.5m @7010m",
+"경사 34% @5315m"
+],
+"id": "kt-hp-35",
+"kind": "road",
+"name": "Haeparang Trail Course 35",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-35.json"
+},
+{
+"km": 8.47,
+"minE": 14.1,
+"sea": 0,
+"bump": 17.6,
+"bumpAt": [
+37.69029,
+129.01991,
+1252
+],
+"grade": 0.457,
+"gradeAt": [
+37.68984,
+129.03072,
+87
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 17.6m @1252m",
+"경사 46% @87m"
+],
+"id": "kt-hp-36",
+"kind": "road",
+"name": "Haeparang Trail Course 36",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-36.json"
+},
+{
+"km": 15.73,
+"minE": 0.8,
+"sea": 0,
+"bump": 9.0,
+"bumpAt": [
+37.69243,
+128.9217,
+9996
+],
+"grade": 0.332,
+"gradeAt": [
+37.69197,
+128.92127,
+10060
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.0m @9996m",
+"경사 33% @10060m"
+],
+"id": "kt-hp-37",
+"kind": "road",
+"name": "Haeparang Trail Course 37",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-37.json"
+},
+{
+"km": 17.31,
+"minE": 0.8,
+"sea": 0,
+"bump": 13.5,
+"bumpAt": [
+37.73485,
+128.90524,
+6190
+],
+"grade": 0.444,
+"gradeAt": [
+37.73615,
+128.90548,
+6334
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 13.5m @6190m",
+"경사 44% @6334m"
+],
+"id": "kt-hp-38",
+"kind": "road",
+"name": "Haeparang Trail Course 38",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-38.json"
+},
+{
+"km": 15.61,
+"minE": -1.4,
+"sea": 2,
+"bump": 8.0,
+"bumpAt": [
+37.79289,
+128.90851,
+6768
+],
+"grade": 0.231,
+"gradeAt": [
+37.79295,
+128.90841,
+6757
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -1.4m)",
+"솟음·꺼짐 8.0m @6768m",
+"경사 23% @6757m"
+],
+"id": "kt-hp-39",
+"kind": "road",
+"name": "Haeparang Trail Course 39",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-39.json"
+},
+{
+"km": 12.4,
+"minE": 0.9,
+"sea": 0,
+"bump": 6.9,
+"bumpAt": [
+37.86203,
+128.84538,
+4232
+],
+"grade": 0.207,
+"gradeAt": [
+37.86072,
+128.84206,
+4569
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.9m @4232m",
+"경사 21% @4569m"
+],
+"id": "kt-hp-40",
+"kind": "road",
+"name": "Haeparang Trail Course 40",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-40.json"
+},
+{
+"km": 12.71,
+"minE": 0.1,
+"sea": 0,
+"bump": 11.0,
+"bumpAt": [
+37.96284,
+128.76544,
+10773
+],
+"grade": 0.325,
+"gradeAt": [
+37.96335,
+128.7652,
+10833
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.0m @10773m",
+"경사 32% @10833m"
+],
+"id": "kt-hp-41",
+"kind": "road",
+"name": "Haeparang Trail Course 41",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-41.json"
+},
+{
+"km": 9.49,
+"minE": -1002.7,
+"sea": 2,
+"bump": 1007.9,
+"bumpAt": [
+37.97763,
+128.75955,
+629
+],
+"grade": 19.863,
+"gradeAt": [
+37.97763,
+128.75955,
+629
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -1002.7m)",
+"솟음·꺼짐 1007.9m @629m",
+"경사 1986% @629m"
+],
+"id": "kt-hp-42",
+"kind": "road",
+"name": "Haeparang Trail Course 42",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-42.json"
+},
+{
+"km": 9.25,
+"minE": -1355.8,
+"sea": 18,
+"bump": 1361.5,
+"bumpAt": [
+38.05645,
+128.68455,
+6386
+],
+"grade": 26.827,
+"gradeAt": [
+38.05645,
+128.68455,
+6386
+],
+"ok": false,
+"why": [
+"물속 꺼짐 18점(최저 -1355.8m)",
+"솟음·꺼짐 1361.5m @6386m",
+"경사 2683% @6386m"
+],
+"id": "kt-hp-43",
+"kind": "road",
+"name": "Haeparang Trail Course 43",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-43.json"
+},
+{
+"km": 13.65,
+"minE": -0.9,
+"sea": 11,
+"bump": 5.2,
+"bumpAt": [
+38.08328,
+128.66592,
+1075
+],
+"grade": 0.149,
+"gradeAt": [
+38.12198,
+128.62243,
+8260
+],
+"ok": false,
+"why": [
+"물속 꺼짐 11점(최저 -0.9m)"
+],
+"id": "kt-hp-44",
+"kind": "road",
+"name": "Haeparang Trail Course 44",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-44.json"
+},
+{
+"km": 17.1,
+"minE": -1.8,
+"sea": 1,
+"bump": 13.2,
+"bumpAt": [
+38.17943,
+128.60927,
+2116
+],
+"grade": 0.257,
+"gradeAt": [
+38.21426,
+128.59949,
+8318
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -1.8m)",
+"솟음·꺼짐 13.2m @2116m",
+"경사 26% @8318m"
+],
+"id": "kt-hp-45",
+"kind": "road",
+"name": "Haeparang Trail Course 45",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-45.json"
+},
+{
+"km": 14.58,
+"minE": -0.2,
+"sea": 0,
+"bump": 8.4,
+"bumpAt": [
+38.28846,
+128.54772,
+9814
+],
+"grade": 0.174,
+"gradeAt": [
+38.28891,
+128.54796,
+9868
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.4m @9814m"
+],
+"id": "kt-hp-46",
+"kind": "road",
+"name": "Haeparang Trail Course 46",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-46.json"
+},
+{
+"km": 9.57,
+"minE": -521.1,
+"sea": 5,
+"bump": 529.1,
+"bumpAt": [
+38.35762,
+128.50889,
+8219
+],
+"grade": 10.108,
+"gradeAt": [
+38.3574,
+128.50836,
+8271
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -521.1m)",
+"솟음·꺼짐 529.1m @8219m",
+"경사 1011% @8271m"
+],
+"id": "kt-hp-47",
+"kind": "road",
+"name": "Haeparang Trail Course 47",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-47.json"
+},
+{
+"km": 13.39,
+"minE": -1601.3,
+"sea": 3,
+"bump": 1606.2,
+"bumpAt": [
+38.41901,
+128.4643,
+9307
+],
+"grade": 31.625,
+"gradeAt": [
+38.4194,
+128.46401,
+9358
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1601.3m)",
+"솟음·꺼짐 1606.2m @9307m",
+"경사 3162% @9358m"
+],
+"id": "kt-hp-48",
+"kind": "road",
+"name": "Haeparang Trail Course 48",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-48.json"
+},
+{
+"km": 11.98,
+"minE": -1204.9,
+"sea": 10,
+"bump": 1218.3,
+"bumpAt": [
+38.51332,
+128.41862,
+11692
+],
+"grade": 23.477,
+"gradeAt": [
+38.51378,
+128.41874,
+11745
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -1204.9m)",
+"솟음·꺼짐 1218.3m @11692m",
+"경사 2348% @11745m"
+],
+"id": "kt-hp-49",
+"kind": "road",
+"name": "Haeparang Trail Course 49",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-49.json"
+},
+{
+"km": 10.72,
+"minE": 1.3,
+"sea": 0,
+"bump": 12.3,
+"bumpAt": [
+38.53544,
+128.41081,
+3268
+],
+"grade": 0.335,
+"gradeAt": [
+38.54198,
+128.40414,
+4285
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 12.3m @3268m",
+"경사 34% @4285m"
+],
+"id": "kt-hp-50",
+"kind": "road",
+"name": "Haeparang Trail Course 50",
+"city": "kt-hp",
+"lab": false,
+"file": "data/kt/seg/hp-50.json"
+},
+{
+"km": 18.31,
+"minE": 3.1,
+"sea": 0,
+"bump": 22.5,
+"bumpAt": [
+35.12614,
+129.03281,
+15809
+],
+"grade": 0.529,
+"gradeAt": [
+35.12556,
+129.0327,
+15876
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 22.5m @15809m",
+"경사 53% @15876m"
+],
+"id": "kt-np-01",
+"kind": "road",
+"name": "Namparang Trail Course 1",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-01.json"
+},
+{
+"km": 18.4,
+"minE": -5560.5,
+"sea": 29,
+"bump": 4706.5,
+"bumpAt": [
+35.06968,
+129.06303,
+12516
+],
+"grade": 108.961,
+"gradeAt": [
+35.06967,
+129.06314,
+12505
+],
+"ok": false,
+"why": [
+"물속 꺼짐 29점(최저 -5560.5m)",
+"솟음·꺼짐 4706.5m @12516m",
+"경사 10896% @12505m"
+],
+"id": "kt-np-02",
+"kind": "road",
+"name": "Namparang Trail Course 2",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-02.json"
+},
+{
+"km": 14.27,
+"minE": -1025.7,
+"sea": 23,
+"bump": 1034.2,
+"bumpAt": [
+35.0754,
+129.01655,
+6127
+],
+"grade": 19.983,
+"gradeAt": [
+35.07496,
+129.01637,
+6178
+],
+"ok": false,
+"why": [
+"물속 꺼짐 23점(최저 -1025.7m)",
+"솟음·꺼짐 1034.2m @6127m",
+"경사 1998% @6178m"
+],
+"id": "kt-np-03",
+"kind": "road",
+"name": "Namparang Trail Course 3",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-03.json"
+},
+{
+"km": 22.14,
+"minE": -656.2,
+"sea": 21,
+"bump": 662.5,
+"bumpAt": [
+35.04803,
+128.96354,
+12241
+],
+"grade": 13.104,
+"gradeAt": [
+35.04813,
+128.96299,
+12292
+],
+"ok": false,
+"why": [
+"물속 꺼짐 21점(최저 -656.2m)",
+"솟음·꺼짐 662.5m @12241m",
+"경사 1310% @12292m"
+],
+"id": "kt-np-04",
+"kind": "road",
+"name": "Namparang Trail Course 4",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-04.json"
+},
+{
+"km": 21.2,
+"minE": -13.8,
+"sea": 86,
+"bump": 10.4,
+"bumpAt": [
+35.10317,
+128.9562,
+753
+],
+"grade": 0.216,
+"gradeAt": [
+35.10299,
+128.95618,
+733
+],
+"ok": false,
+"why": [
+"물속 꺼짐 86점(최저 -13.8m)",
+"솟음·꺼짐 10.4m @753m",
+"경사 22% @733m"
+],
+"id": "kt-np-05",
+"kind": "road",
+"name": "Namparang Trail Course 5",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-05.json"
+},
+{
+"km": 14.54,
+"minE": -1363.6,
+"sea": 19,
+"bump": 1373.2,
+"bumpAt": [
+35.10846,
+128.78103,
+8462
+],
+"grade": 26.996,
+"gradeAt": [
+35.108,
+128.78102,
+8513
+],
+"ok": false,
+"why": [
+"물속 꺼짐 19점(최저 -1363.6m)",
+"솟음·꺼짐 1373.2m @8462m",
+"경사 2700% @8513m"
+],
+"id": "kt-np-06",
+"kind": "road",
+"name": "Namparang Trail Course 6",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-06.json"
+},
+{
+"km": 10.79,
+"minE": 0.1,
+"sea": 0,
+"bump": 9.8,
+"bumpAt": [
+35.09675,
+128.73104,
+1578
+],
+"grade": 0.282,
+"gradeAt": [
+35.09678,
+128.73115,
+1567
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.8m @1578m",
+"경사 28% @1567m"
+],
+"id": "kt-np-07",
+"kind": "road",
+"name": "Namparang Trail Course 7",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-07.json"
+},
+{
+"km": 15.07,
+"minE": 71.4,
+"sea": 0,
+"bump": 16.5,
+"bumpAt": [
+35.12749,
+128.72131,
+2027
+],
+"grade": 0.375,
+"gradeAt": [
+35.13109,
+128.72299,
+2627
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.5m @2027m",
+"경사 38% @2627m"
+],
+"id": "kt-np-08",
+"kind": "road",
+"name": "Namparang Trail Course 8",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-08.json"
+},
+{
+"km": 14.72,
+"minE": -3570.2,
+"sea": 8,
+"bump": 3574.2,
+"bumpAt": [
+35.21212,
+128.62241,
+7483
+],
+"grade": 70.782,
+"gradeAt": [
+35.21212,
+128.62241,
+7483
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -3570.2m)",
+"솟음·꺼짐 3574.2m @7483m",
+"경사 7078% @7483m"
+],
+"id": "kt-np-09",
+"kind": "road",
+"name": "Namparang Trail Course 9",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-09.json"
+},
+{
+"km": 15.65,
+"minE": -0.3,
+"sea": 0,
+"bump": 20.0,
+"bumpAt": [
+35.17273,
+128.56033,
+3136
+],
+"grade": 0.501,
+"gradeAt": [
+35.17234,
+128.56079,
+3196
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 20.0m @3136m",
+"경사 50% @3196m"
+],
+"id": "kt-np-10",
+"kind": "road",
+"name": "Namparang Trail Course 10",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-10.json"
+},
+{
+"km": 15.79,
+"minE": -1184.5,
+"sea": 19,
+"bump": 1187.4,
+"bumpAt": [
+35.10567,
+128.49636,
+7098
+],
+"grade": 23.565,
+"gradeAt": [
+35.10611,
+128.4962,
+7148
+],
+"ok": false,
+"why": [
+"물속 꺼짐 19점(최저 -1184.5m)",
+"솟음·꺼짐 1187.4m @7098m",
+"경사 2356% @7148m"
+],
+"id": "kt-np-11",
+"kind": "road",
+"name": "Namparang Trail Course 11",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-11.json"
+},
+{
+"km": 17.8,
+"minE": -2535.0,
+"sea": 38,
+"bump": 2550.4,
+"bumpAt": [
+35.06659,
+128.43552,
+8023
+],
+"grade": 49.558,
+"gradeAt": [
+35.06613,
+128.43554,
+8075
+],
+"ok": false,
+"why": [
+"물속 꺼짐 38점(최저 -2535.0m)",
+"솟음·꺼짐 2550.4m @8023m",
+"경사 4956% @8075m"
+],
+"id": "kt-np-12",
+"kind": "road",
+"name": "Namparang Trail Course 12",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-12.json"
+},
+{
+"km": 20.5,
+"minE": -5161.1,
+"sea": 49,
+"bump": 5167.7,
+"bumpAt": [
+34.98783,
+128.40643,
+10739
+],
+"grade": 99.483,
+"gradeAt": [
+34.98783,
+128.40643,
+10739
+],
+"ok": false,
+"why": [
+"물속 꺼짐 49점(최저 -5161.1m)",
+"솟음·꺼짐 5167.7m @10739m",
+"경사 9948% @10739m"
+],
+"id": "kt-np-13",
+"kind": "road",
+"name": "Namparang Trail Course 13",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-13.json"
+},
+{
+"km": 13.39,
+"minE": -148.0,
+"sea": 2,
+"bump": 153.7,
+"bumpAt": [
+34.9108,
+128.41805,
+8315
+],
+"grade": 2.802,
+"gradeAt": [
+34.9108,
+128.41805,
+8315
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -148.0m)",
+"솟음·꺼짐 153.7m @8315m",
+"경사 280% @8315m"
+],
+"id": "kt-np-14",
+"kind": "road",
+"name": "Namparang Trail Course 14",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-14.json"
+},
+{
+"km": 15.56,
+"minE": -5959.5,
+"sea": 35,
+"bump": 5415.8,
+"bumpAt": [
+34.9175,
+128.52069,
+15294
+],
+"grade": 117.278,
+"gradeAt": [
+34.9175,
+128.52069,
+15294
+],
+"ok": false,
+"why": [
+"물속 꺼짐 35점(최저 -5959.5m)",
+"솟음·꺼짐 5415.8m @15294m",
+"경사 11728% @15294m"
+],
+"id": "kt-np-15",
+"kind": "road",
+"name": "Namparang Trail Course 15",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-15.json"
+},
+{
+"km": 13.02,
+"minE": -3303.7,
+"sea": 32,
+"bump": 1912.5,
+"bumpAt": [
+34.9213,
+128.52296,
+217
+],
+"grade": 65.654,
+"gradeAt": [
+34.92098,
+128.5226,
+162
+],
+"ok": false,
+"why": [
+"물속 꺼짐 32점(최저 -3303.7m)",
+"솟음·꺼짐 1912.5m @217m",
+"경사 6565% @162m"
+],
+"id": "kt-np-16",
+"kind": "road",
+"name": "Namparang Trail Course 16",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-16.json"
+},
+{
+"km": 19.49,
+"minE": -1350.5,
+"sea": 38,
+"bump": 1030.5,
+"bumpAt": [
+34.9595,
+128.65237,
+14090
+],
+"grade": 26.349,
+"gradeAt": [
+34.95994,
+128.65255,
+14141
+],
+"ok": false,
+"why": [
+"물속 꺼짐 38점(최저 -1350.5m)",
+"솟음·꺼짐 1030.5m @14090m",
+"경사 2635% @14141m"
+],
+"id": "kt-np-17",
+"kind": "road",
+"name": "Namparang Trail Course 17",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-17.json"
+},
+{
+"km": 16.14,
+"minE": -1118.5,
+"sea": 4,
+"bump": 1123.0,
+"bumpAt": [
+34.97064,
+128.69949,
+7841
+],
+"grade": 21.801,
+"gradeAt": [
+34.97031,
+128.69961,
+7892
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -1118.5m)",
+"솟음·꺼짐 1123.0m @7841m",
+"경사 2180% @7892m"
+],
+"id": "kt-np-18",
+"kind": "road",
+"name": "Namparang Trail Course 18",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-18.json"
+},
+{
+"km": 16.03,
+"minE": -1627.5,
+"sea": 16,
+"bump": 1641.3,
+"bumpAt": [
+34.89132,
+128.70436,
+7370
+],
+"grade": 32.211,
+"gradeAt": [
+34.89132,
+128.70436,
+7370
+],
+"ok": false,
+"why": [
+"물속 꺼짐 16점(최저 -1627.5m)",
+"솟음·꺼짐 1641.3m @7370m",
+"경사 3221% @7370m"
+],
+"id": "kt-np-19",
+"kind": "road",
+"name": "Namparang Trail Course 19",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-19.json"
+},
+{
+"km": 17.79,
+"minE": -1442.7,
+"sea": 30,
+"bump": 1447.6,
+"bumpAt": [
+34.83379,
+128.70157,
+17730
+],
+"grade": 28.377,
+"gradeAt": [
+34.83379,
+128.70157,
+17730
+],
+"ok": false,
+"why": [
+"물속 꺼짐 30점(최저 -1442.7m)",
+"솟음·꺼짐 1447.6m @17730m",
+"경사 2838% @17730m"
+],
+"id": "kt-np-20",
+"kind": "road",
+"name": "Namparang Trail Course 20",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-20.json"
+},
+{
+"km": 14.24,
+"minE": -2699.5,
+"sea": 15,
+"bump": 2704.0,
+"bumpAt": [
+34.82871,
+128.708,
+790
+],
+"grade": 53.823,
+"gradeAt": [
+34.82871,
+128.708,
+790
+],
+"ok": false,
+"why": [
+"물속 꺼짐 15점(최저 -2699.5m)",
+"솟음·꺼짐 2704.0m @790m",
+"경사 5382% @790m"
+],
+"id": "kt-np-21",
+"kind": "road",
+"name": "Namparang Trail Course 21",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-21.json"
+},
+{
+"km": 13.06,
+"minE": -3711.0,
+"sea": 5,
+"bump": 3720.7,
+"bumpAt": [
+34.81297,
+128.66843,
+5066
+],
+"grade": 70.957,
+"gradeAt": [
+34.81297,
+128.66843,
+5066
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -3711.0m)",
+"솟음·꺼짐 3720.7m @5066m",
+"경사 7096% @5066m"
+],
+"id": "kt-np-22",
+"kind": "road",
+"name": "Namparang Trail Course 22",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-22.json"
+},
+{
+"km": 8.62,
+"minE": 4.1,
+"sea": 0,
+"bump": 17.0,
+"bumpAt": [
+34.7782,
+128.61893,
+1473
+],
+"grade": 0.59,
+"gradeAt": [
+34.75053,
+128.62071,
+5077
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 17.0m @1473m",
+"경사 59% @5077m"
+],
+"id": "kt-np-23",
+"kind": "road",
+"name": "Namparang Trail Course 23",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-23.json"
+},
+{
+"km": 10.26,
+"minE": -3590.6,
+"sea": 9,
+"bump": 3595.2,
+"bumpAt": [
+34.73255,
+128.60736,
+187
+],
+"grade": 71.851,
+"gradeAt": [
+34.73255,
+128.60736,
+187
+],
+"ok": false,
+"why": [
+"물속 꺼짐 9점(최저 -3590.6m)",
+"솟음·꺼짐 3595.2m @187m",
+"경사 7185% @187m"
+],
+"id": "kt-np-24",
+"kind": "road",
+"name": "Namparang Trail Course 24",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-24.json"
+},
+{
+"km": 14.21,
+"minE": -1597.2,
+"sea": 24,
+"bump": 1601.9,
+"bumpAt": [
+34.76718,
+128.60065,
+102
+],
+"grade": 31.437,
+"gradeAt": [
+34.76718,
+128.60065,
+102
+],
+"ok": false,
+"why": [
+"물속 꺼짐 24점(최저 -1597.2m)",
+"솟음·꺼짐 1601.9m @102m",
+"경사 3144% @102m"
+],
+"id": "kt-np-25",
+"kind": "road",
+"name": "Namparang Trail Course 25",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-25.json"
+},
+{
+"km": 12.69,
+"minE": 1.0,
+"sea": 0,
+"bump": 14.3,
+"bumpAt": [
+34.8579,
+128.55292,
+5895
+],
+"grade": 0.415,
+"gradeAt": [
+34.85764,
+128.55352,
+5959
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.3m @5895m",
+"경사 42% @5959m"
+],
+"id": "kt-np-26",
+"kind": "road",
+"name": "Namparang Trail Course 26",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-26.json"
+},
+{
+"km": 9.94,
+"minE": -0.4,
+"sea": 0,
+"bump": 11.4,
+"bumpAt": [
+34.86351,
+128.50765,
+2471
+],
+"grade": 0.322,
+"gradeAt": [
+34.8852,
+128.49083,
+7339
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.4m @2471m",
+"경사 32% @7339m"
+],
+"id": "kt-np-27",
+"kind": "road",
+"name": "Namparang Trail Course 27",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-27.json"
+},
+{
+"km": 14.49,
+"minE": -469.6,
+"sea": 1,
+"bump": 473.0,
+"bumpAt": [
+34.86125,
+128.44907,
+8436
+],
+"grade": 9.049,
+"gradeAt": [
+34.86125,
+128.44907,
+8436
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -469.6m)",
+"솟음·꺼짐 473.0m @8436m",
+"경사 905% @8436m"
+],
+"id": "kt-np-28",
+"kind": "road",
+"name": "Namparang Trail Course 28",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-28.json"
+},
+{
+"km": 16.64,
+"minE": -1336.4,
+"sea": 21,
+"bump": 1342.9,
+"bumpAt": [
+34.859,
+128.41324,
+15603
+],
+"grade": 26.382,
+"gradeAt": [
+34.85897,
+128.41379,
+15654
+],
+"ok": false,
+"why": [
+"물속 꺼짐 21점(최저 -1336.4m)",
+"솟음·꺼짐 1342.9m @15603m",
+"경사 2638% @15654m"
+],
+"id": "kt-np-29",
+"kind": "road",
+"name": "Namparang Trail Course 29",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-29.json"
+},
+{
+"km": 15.91,
+"minE": -285.6,
+"sea": 1,
+"bump": 287.0,
+"bumpAt": [
+34.9318,
+128.3457,
+14769
+],
+"grade": 5.697,
+"gradeAt": [
+34.93217,
+128.34599,
+14820
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -285.6m)",
+"솟음·꺼짐 287.0m @14769m",
+"경사 570% @14820m"
+],
+"id": "kt-np-30",
+"kind": "road",
+"name": "Namparang Trail Course 30",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-30.json"
+},
+{
+"km": 15.9,
+"minE": -0.6,
+"sea": 1,
+"bump": 13.2,
+"bumpAt": [
+34.97033,
+128.32641,
+6324
+],
+"grade": 0.294,
+"gradeAt": [
+34.97098,
+128.32654,
+6403
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -0.6m)",
+"솟음·꺼짐 13.2m @6324m",
+"경사 29% @6403m"
+],
+"id": "kt-np-31",
+"kind": "road",
+"name": "Namparang Trail Course 31",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-31.json"
+},
+{
+"km": 13.8,
+"minE": 3.0,
+"sea": 0,
+"bump": 14.9,
+"bumpAt": [
+34.97847,
+128.20453,
+5732
+],
+"grade": 0.451,
+"gradeAt": [
+34.95818,
+128.1937,
+10693
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.9m @5732m",
+"경사 45% @10693m"
+],
+"id": "kt-np-32",
+"kind": "road",
+"name": "Namparang Trail Course 32",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-32.json"
+},
+{
+"km": 17.34,
+"minE": -1156.9,
+"sea": 20,
+"bump": 1160.9,
+"bumpAt": [
+34.93376,
+128.19888,
+1172
+],
+"grade": 22.964,
+"gradeAt": [
+34.93376,
+128.19888,
+1172
+],
+"ok": false,
+"why": [
+"물속 꺼짐 20점(최저 -1156.9m)",
+"솟음·꺼짐 1160.9m @1172m",
+"경사 2296% @1172m"
+],
+"id": "kt-np-33",
+"kind": "road",
+"name": "Namparang Trail Course 33",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-33.json"
+},
+{
+"km": 9.9,
+"minE": -312.4,
+"sea": 2,
+"bump": 306.6,
+"bumpAt": [
+34.9268,
+128.07662,
+6703
+],
+"grade": 6.301,
+"gradeAt": [
+34.92637,
+128.07646,
+6753
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -312.4m)",
+"솟음·꺼짐 306.6m @6703m",
+"경사 630% @6753m"
+],
+"id": "kt-np-34",
+"kind": "road",
+"name": "Namparang Trail Course 34",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-34.json"
+},
+{
+"km": 12.35,
+"minE": -2835.3,
+"sea": 30,
+"bump": 2828.0,
+"bumpAt": [
+34.94949,
+128.0366,
+9568
+],
+"grade": 55.5,
+"gradeAt": [
+34.94914,
+128.03696,
+9620
+],
+"ok": false,
+"why": [
+"물속 꺼짐 30점(최저 -2835.3m)",
+"솟음·꺼짐 2828.0m @9568m",
+"경사 5550% @9620m"
+],
+"id": "kt-np-35",
+"kind": "road",
+"name": "Namparang Trail Course 35",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-35.json"
+},
+{
+"km": 17.16,
+"minE": -1261.0,
+"sea": 16,
+"bump": 1266.1,
+"bumpAt": [
+34.91675,
+128.00845,
+5508
+],
+"grade": 23.894,
+"gradeAt": [
+34.91675,
+128.00845,
+5508
+],
+"ok": false,
+"why": [
+"물속 꺼짐 16점(최저 -1261.0m)",
+"솟음·꺼짐 1266.1m @5508m",
+"경사 2389% @5508m"
+],
+"id": "kt-np-36",
+"kind": "road",
+"name": "Namparang Trail Course 36",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-36.json"
+},
+{
+"km": 14.53,
+"minE": -439.0,
+"sea": 45,
+"bump": 458.6,
+"bumpAt": [
+34.88425,
+128.05361,
+9425
+],
+"grade": 8.82,
+"gradeAt": [
+34.88403,
+128.05409,
+9478
+],
+"ok": false,
+"why": [
+"물속 꺼짐 45점(최저 -439.0m)",
+"솟음·꺼짐 458.6m @9425m",
+"경사 882% @9478m"
+],
+"id": "kt-np-37",
+"kind": "road",
+"name": "Namparang Trail Course 37",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-37.json"
+},
+{
+"km": 11.96,
+"minE": -364.0,
+"sea": 28,
+"bump": 371.3,
+"bumpAt": [
+34.8577,
+128.05628,
+313
+],
+"grade": 7.25,
+"gradeAt": [
+34.85743,
+128.05582,
+365
+],
+"ok": false,
+"why": [
+"물속 꺼짐 28점(최저 -364.0m)",
+"솟음·꺼짐 371.3m @313m",
+"경사 725% @365m"
+],
+"id": "kt-np-38",
+"kind": "road",
+"name": "Namparang Trail Course 38",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-38.json"
+},
+{
+"km": 10.06,
+"minE": -1621.7,
+"sea": 32,
+"bump": 1623.9,
+"bumpAt": [
+34.83208,
+128.00409,
+450
+],
+"grade": 32.042,
+"gradeAt": [
+34.83208,
+128.00409,
+450
+],
+"ok": false,
+"why": [
+"물속 꺼짐 32점(최저 -1621.7m)",
+"솟음·꺼짐 1623.9m @450m",
+"경사 3204% @450m"
+],
+"id": "kt-np-39",
+"kind": "road",
+"name": "Namparang Trail Course 39",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-39.json"
+},
+{
+"km": 16.67,
+"minE": 13.1,
+"sea": 0,
+"bump": 16.5,
+"bumpAt": [
+34.7462,
+128.02351,
+12343
+],
+"grade": 0.413,
+"gradeAt": [
+34.74419,
+128.02009,
+12840
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.5m @12343m",
+"경사 41% @12840m"
+],
+"id": "kt-np-40",
+"kind": "road",
+"name": "Namparang Trail Course 40",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-40.json"
+},
+{
+"km": 15.06,
+"minE": -3275.7,
+"sea": 12,
+"bump": 3283.0,
+"bumpAt": [
+34.72101,
+127.98897,
+3466
+],
+"grade": 63.7,
+"gradeAt": [
+34.72104,
+127.98841,
+3517
+],
+"ok": false,
+"why": [
+"물속 꺼짐 12점(최저 -3275.7m)",
+"솟음·꺼짐 3283.0m @3466m",
+"경사 6370% @3517m"
+],
+"id": "kt-np-41",
+"kind": "road",
+"name": "Namparang Trail Course 41",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-41.json"
+},
+{
+"km": 15.94,
+"minE": -3977.8,
+"sea": 14,
+"bump": 3981.9,
+"bumpAt": [
+34.77787,
+127.94331,
+872
+],
+"grade": 79.606,
+"gradeAt": [
+34.77787,
+127.94331,
+872
+],
+"ok": false,
+"why": [
+"물속 꺼짐 14점(최저 -3977.8m)",
+"솟음·꺼짐 3981.9m @872m",
+"경사 7961% @872m"
+],
+"id": "kt-np-42",
+"kind": "road",
+"name": "Namparang Trail Course 42",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-42.json"
+},
+{
+"km": 17.4,
+"minE": -5849.9,
+"sea": 46,
+"bump": 5233.6,
+"bumpAt": [
+34.77192,
+127.95405,
+1181
+],
+"grade": 114.903,
+"gradeAt": [
+34.77192,
+127.95405,
+1181
+],
+"ok": false,
+"why": [
+"물속 꺼짐 46점(최저 -5849.9m)",
+"솟음·꺼짐 5233.6m @1181m",
+"경사 11490% @1181m"
+],
+"id": "kt-np-43",
+"kind": "road",
+"name": "Namparang Trail Course 43",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-43.json"
+},
+{
+"km": 13.25,
+"minE": 0.3,
+"sea": 0,
+"bump": 14.8,
+"bumpAt": [
+34.79289,
+127.85017,
+9854
+],
+"grade": 0.348,
+"gradeAt": [
+34.79471,
+127.8448,
+10840
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.8m @9854m",
+"경사 35% @10840m"
+],
+"id": "kt-np-44",
+"kind": "road",
+"name": "Namparang Trail Course 44",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-44.json"
+},
+{
+"km": 17.22,
+"minE": -4103.1,
+"sea": 60,
+"bump": 4117.4,
+"bumpAt": [
+34.94183,
+127.87084,
+16058
+],
+"grade": 81.209,
+"gradeAt": [
+34.94183,
+127.87084,
+16058
+],
+"ok": false,
+"why": [
+"물속 꺼짐 60점(최저 -4103.1m)",
+"솟음·꺼짐 4117.4m @16058m",
+"경사 8121% @16058m"
+],
+"id": "kt-np-46",
+"kind": "road",
+"name": "Namparang Trail Course 46",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-46.json"
+},
+{
+"km": 13.23,
+"minE": -3768.5,
+"sea": 35,
+"bump": 3498.5,
+"bumpAt": [
+35.05857,
+127.74347,
+1378
+],
+"grade": 73.016,
+"gradeAt": [
+35.05763,
+127.74623,
+1652
+],
+"ok": false,
+"why": [
+"물속 꺼짐 35점(최저 -3768.5m)",
+"솟음·꺼짐 3498.5m @1378m",
+"경사 7302% @1652m"
+],
+"id": "kt-np-48",
+"kind": "road",
+"name": "Namparang Trail Course 48",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-48.json"
+},
+{
+"km": 15.04,
+"minE": -2551.0,
+"sea": 53,
+"bump": 2556.3,
+"bumpAt": [
+34.94065,
+127.71851,
+12212
+],
+"grade": 50.826,
+"gradeAt": [
+34.94031,
+127.71813,
+12263
+],
+"ok": false,
+"why": [
+"물속 꺼짐 53점(최저 -2551.0m)",
+"솟음·꺼짐 2556.3m @12212m",
+"경사 5083% @12263m"
+],
+"id": "kt-np-49",
+"kind": "road",
+"name": "Namparang Trail Course 49",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-49.json"
+},
+{
+"km": 14.29,
+"minE": -5.6,
+"sea": 79,
+"bump": 19.0,
+"bumpAt": [
+34.90733,
+127.58063,
+8940
+],
+"grade": 0.328,
+"gradeAt": [
+34.90742,
+127.58041,
+8918
+],
+"ok": false,
+"why": [
+"물속 꺼짐 79점(최저 -5.6m)",
+"솟음·꺼짐 19.0m @8940m",
+"경사 33% @8918m"
+],
+"id": "kt-np-51",
+"kind": "road",
+"name": "Namparang Trail Course 51",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-51.json"
+},
+{
+"km": 7.08,
+"minE": -0.3,
+"sea": 0,
+"bump": 17.3,
+"bumpAt": [
+34.74113,
+127.7537,
+5373
+],
+"grade": 0.628,
+"gradeAt": [
+34.74057,
+127.75358,
+5435
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 17.3m @5373m",
+"경사 63% @5435m"
+],
+"id": "kt-np-54",
+"kind": "road",
+"name": "Namparang Trail Course 54",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-54.json"
+},
+{
+"km": 15.41,
+"minE": -3281.2,
+"sea": 60,
+"bump": 3287.7,
+"bumpAt": [
+34.74544,
+127.65378,
+14389
+],
+"grade": 59.496,
+"gradeAt": [
+34.74544,
+127.65378,
+14389
+],
+"ok": false,
+"why": [
+"물속 꺼짐 60점(최저 -3281.2m)",
+"솟음·꺼짐 3287.7m @14389m",
+"경사 5950% @14389m"
+],
+"id": "kt-np-55",
+"kind": "road",
+"name": "Namparang Trail Course 55",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-55.json"
+},
+{
+"km": 13.41,
+"minE": -1627.7,
+"sea": 15,
+"bump": 1633.6,
+"bumpAt": [
+34.72798,
+127.64238,
+1297
+],
+"grade": 31.745,
+"gradeAt": [
+34.72798,
+127.64238,
+1297
+],
+"ok": false,
+"why": [
+"물속 꺼짐 15점(최저 -1627.7m)",
+"솟음·꺼짐 1633.6m @1297m",
+"경사 3174% @1297m"
+],
+"id": "kt-np-56",
+"kind": "road",
+"name": "Namparang Trail Course 56",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-56.json"
+},
+{
+"km": 17.45,
+"minE": -639.2,
+"sea": 3,
+"bump": 325.5,
+"bumpAt": [
+34.6772,
+127.56249,
+12016
+],
+"grade": 12.901,
+"gradeAt": [
+34.67736,
+127.56198,
+12066
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -639.2m)",
+"솟음·꺼짐 325.5m @12016m",
+"경사 1290% @12066m"
+],
+"id": "kt-np-57",
+"kind": "road",
+"name": "Namparang Trail Course 57",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-57.json"
+},
+{
+"km": 15.47,
+"minE": -1285.1,
+"sea": 40,
+"bump": 1293.6,
+"bumpAt": [
+34.69978,
+127.57727,
+1872
+],
+"grade": 25.878,
+"gradeAt": [
+34.69978,
+127.57727,
+1872
+],
+"ok": false,
+"why": [
+"물속 꺼짐 40점(최저 -1285.1m)",
+"솟음·꺼짐 1293.6m @1872m",
+"경사 2588% @1872m"
+],
+"id": "kt-np-58",
+"kind": "road",
+"name": "Namparang Trail Course 58",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-58.json"
+},
+{
+"km": 7.65,
+"minE": -1126.5,
+"sea": 11,
+"bump": 1132.2,
+"bumpAt": [
+34.76626,
+127.57331,
+5311
+],
+"grade": 21.995,
+"gradeAt": [
+34.76667,
+127.57351,
+5362
+],
+"ok": false,
+"why": [
+"물속 꺼짐 11점(최저 -1126.5m)",
+"솟음·꺼짐 1132.2m @5311m",
+"경사 2200% @5362m"
+],
+"id": "kt-np-59",
+"kind": "road",
+"name": "Namparang Trail Course 59",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-59.json"
+},
+{
+"km": 14.91,
+"minE": -4553.5,
+"sea": 41,
+"bump": 4556.7,
+"bumpAt": [
+34.8087,
+127.5544,
+4920
+],
+"grade": 86.455,
+"gradeAt": [
+34.80908,
+127.55405,
+4972
+],
+"ok": false,
+"why": [
+"물속 꺼짐 41점(최저 -4553.5m)",
+"솟음·꺼짐 4556.7m @4920m",
+"경사 8646% @4972m"
+],
+"id": "kt-np-60",
+"kind": "road",
+"name": "Namparang Trail Course 60",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-60.json"
+},
+{
+"km": 13.5,
+"minE": -860.0,
+"sea": 37,
+"bump": 870.3,
+"bumpAt": [
+34.84621,
+127.49181,
+12512
+],
+"grade": 16.268,
+"gradeAt": [
+34.84621,
+127.49181,
+12512
+],
+"ok": false,
+"why": [
+"물속 꺼짐 37점(최저 -860.0m)",
+"솟음·꺼짐 870.3m @12512m",
+"경사 1627% @12512m"
+],
+"id": "kt-np-61",
+"kind": "road",
+"name": "Namparang Trail Course 61",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-61.json"
+},
+{
+"km": 24.44,
+"minE": -1068.3,
+"sea": 16,
+"bump": 1069.8,
+"bumpAt": [
+34.83655,
+127.37765,
+21523
+],
+"grade": 21.317,
+"gradeAt": [
+34.83655,
+127.37765,
+21523
+],
+"ok": false,
+"why": [
+"물속 꺼짐 16점(최저 -1068.3m)",
+"솟음·꺼짐 1069.8m @21523m",
+"경사 2132% @21523m"
+],
+"id": "kt-np-62",
+"kind": "road",
+"name": "Namparang Trail Course 62",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-62.json"
+},
+{
+"km": 20.75,
+"minE": -5825.8,
+"sea": 85,
+"bump": 5830.4,
+"bumpAt": [
+34.77542,
+127.38384,
+17166
+],
+"grade": 112.997,
+"gradeAt": [
+34.77558,
+127.38331,
+17217
+],
+"ok": false,
+"why": [
+"물속 꺼짐 85점(최저 -5825.8m)",
+"솟음·꺼짐 5830.4m @17166m",
+"경사 11300% @17217m"
+],
+"id": "kt-np-63",
+"kind": "road",
+"name": "Namparang Trail Course 63",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-63.json"
+},
+{
+"km": 11.7,
+"minE": -1.0,
+"sea": 4,
+"bump": 7.1,
+"bumpAt": [
+34.73827,
+127.36951,
+3488
+],
+"grade": 0.217,
+"gradeAt": [
+34.73243,
+127.36548,
+4472
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -1.0m)",
+"솟음·꺼짐 7.1m @3488m",
+"경사 22% @4472m"
+],
+"id": "kt-np-64",
+"kind": "road",
+"name": "Namparang Trail Course 64",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-64.json"
+},
+{
+"km": 24.23,
+"minE": -1.2,
+"sea": 5,
+"bump": 10.9,
+"bumpAt": [
+34.66017,
+127.47037,
+14737
+],
+"grade": 0.257,
+"gradeAt": [
+34.65593,
+127.46995,
+15718
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -1.2m)",
+"솟음·꺼짐 10.9m @14737m",
+"경사 26% @15718m"
+],
+"id": "kt-np-65",
+"kind": "road",
+"name": "Namparang Trail Course 65",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-65.json"
+},
+{
+"km": 10.82,
+"minE": 6.3,
+"sea": 0,
+"bump": 29.0,
+"bumpAt": [
+34.5858,
+127.49408,
+8562
+],
+"grade": 0.565,
+"gradeAt": [
+34.58586,
+127.49417,
+8551
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 29.0m @8562m",
+"경사 56% @8551m"
+],
+"id": "kt-np-66",
+"kind": "road",
+"name": "Namparang Trail Course 66",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-66.json"
+},
+{
+"km": 15.82,
+"minE": -1059.1,
+"sea": 6,
+"bump": 1063.0,
+"bumpAt": [
+34.5916,
+127.45733,
+5314
+],
+"grade": 21.251,
+"gradeAt": [
+34.59133,
+127.45689,
+5364
+],
+"ok": false,
+"why": [
+"물속 꺼짐 6점(최저 -1059.1m)",
+"솟음·꺼짐 1063.0m @5314m",
+"경사 2125% @5364m"
+],
+"id": "kt-np-67",
+"kind": "road",
+"name": "Namparang Trail Course 67",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-67.json"
+},
+{
+"km": 20.4,
+"minE": -3196.3,
+"sea": 40,
+"bump": 3200.0,
+"bumpAt": [
+34.51011,
+127.38988,
+11959
+],
+"grade": 61.73,
+"gradeAt": [
+34.51011,
+127.38988,
+11959
+],
+"ok": false,
+"why": [
+"물속 꺼짐 40점(최저 -3196.3m)",
+"솟음·꺼짐 3200.0m @11959m",
+"경사 6173% @11959m"
+],
+"id": "kt-np-68",
+"kind": "road",
+"name": "Namparang Trail Course 68",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-68.json"
+},
+{
+"km": 15.28,
+"minE": 1.4,
+"sea": 0,
+"bump": 14.5,
+"bumpAt": [
+34.53656,
+127.27893,
+7652
+],
+"grade": 0.315,
+"gradeAt": [
+34.54018,
+127.27214,
+8907
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.5m @7652m",
+"경사 32% @8907m"
+],
+"id": "kt-np-69",
+"kind": "road",
+"name": "Namparang Trail Course 69",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-69.json"
+},
+{
+"km": 13.04,
+"minE": -988.5,
+"sea": 12,
+"bump": 967.1,
+"bumpAt": [
+34.5302,
+127.22378,
+1237
+],
+"grade": 19.216,
+"gradeAt": [
+34.5302,
+127.22378,
+1237
+],
+"ok": false,
+"why": [
+"물속 꺼짐 12점(최저 -988.5m)",
+"솟음·꺼짐 967.1m @1237m",
+"경사 1922% @1237m"
+],
+"id": "kt-np-70",
+"kind": "road",
+"name": "Namparang Trail Course 70",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-70.json"
+},
+{
+"km": 21.48,
+"minE": -1040.3,
+"sea": 5,
+"bump": 1054.7,
+"bumpAt": [
+34.64207,
+127.18915,
+20348
+],
+"grade": 20.586,
+"gradeAt": [
+34.64252,
+127.18929,
+20399
+],
+"ok": false,
+"why": [
+"물속 꺼짐 5점(최저 -1040.3m)",
+"솟음·꺼짐 1054.7m @20348m",
+"경사 2059% @20399m"
+],
+"id": "kt-np-71",
+"kind": "road",
+"name": "Namparang Trail Course 71",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-71.json"
+},
+{
+"km": 14.41,
+"minE": -847.8,
+"sea": 7,
+"bump": 853.7,
+"bumpAt": [
+34.70209,
+127.24747,
+9888
+],
+"grade": 17.101,
+"gradeAt": [
+34.70232,
+127.24794,
+9938
+],
+"ok": false,
+"why": [
+"물속 꺼짐 7점(최저 -847.8m)",
+"솟음·꺼짐 853.7m @9888m",
+"경사 1710% @9938m"
+],
+"id": "kt-np-72",
+"kind": "road",
+"name": "Namparang Trail Course 72",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-72.json"
+},
+{
+"km": 16.56,
+"minE": -0.8,
+"sea": 1,
+"bump": 7.5,
+"bumpAt": [
+34.669,
+127.27962,
+7954
+],
+"grade": 0.207,
+"gradeAt": [
+34.66006,
+127.31195,
+13272
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -0.8m)",
+"솟음·꺼짐 7.5m @7954m",
+"경사 21% @13272m"
+],
+"id": "kt-np-73",
+"kind": "road",
+"name": "Namparang Trail Course 73",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-73.json"
+},
+{
+"km": 9.02,
+"minE": 0.9,
+"sea": 0,
+"bump": 6.9,
+"bumpAt": [
+34.72314,
+127.33864,
+8486
+],
+"grade": 0.162,
+"gradeAt": [
+34.71507,
+127.34515,
+6942
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.9m @8486m"
+],
+"id": "kt-np-74",
+"kind": "road",
+"name": "Namparang Trail Course 74",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-74.json"
+},
+{
+"km": 20.62,
+"minE": 0.0,
+"sea": 0,
+"bump": 7.2,
+"bumpAt": [
+34.74127,
+127.27013,
+18968
+],
+"grade": 0.179,
+"gradeAt": [
+34.74138,
+127.26944,
+19033
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.2m @18968m"
+],
+"id": "kt-np-75",
+"kind": "road",
+"name": "Namparang Trail Course 75",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-75.json"
+},
+{
+"km": 13.74,
+"minE": -1822.5,
+"sea": 58,
+"bump": 1825.0,
+"bumpAt": [
+34.74096,
+127.21236,
+8706
+],
+"grade": 36.513,
+"gradeAt": [
+34.74096,
+127.21236,
+8706
+],
+"ok": false,
+"why": [
+"물속 꺼짐 58점(최저 -1822.5m)",
+"솟음·꺼짐 1825.0m @8706m",
+"경사 3651% @8706m"
+],
+"id": "kt-np-76",
+"kind": "road",
+"name": "Namparang Trail Course 76",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-76.json"
+},
+{
+"km": 15.12,
+"minE": -3008.1,
+"sea": 26,
+"bump": 3009.1,
+"bumpAt": [
+34.68743,
+127.11165,
+11604
+],
+"grade": 59.537,
+"gradeAt": [
+34.68705,
+127.11134,
+11655
+],
+"ok": false,
+"why": [
+"물속 꺼짐 26점(최저 -3008.1m)",
+"솟음·꺼짐 3009.1m @11604m",
+"경사 5954% @11655m"
+],
+"id": "kt-np-77",
+"kind": "road",
+"name": "Namparang Trail Course 77",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-77.json"
+},
+{
+"km": 18.43,
+"minE": -1887.9,
+"sea": 24,
+"bump": 1911.7,
+"bumpAt": [
+34.63846,
+127.04808,
+7458
+],
+"grade": 37.573,
+"gradeAt": [
+34.63809,
+127.04776,
+7509
+],
+"ok": false,
+"why": [
+"물속 꺼짐 24점(최저 -1887.9m)",
+"솟음·꺼짐 1911.7m @7458m",
+"경사 3757% @7509m"
+],
+"id": "kt-np-78",
+"kind": "road",
+"name": "Namparang Trail Course 78",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-78.json"
+},
+{
+"km": 26.71,
+"minE": -835.9,
+"sea": 43,
+"bump": 847.0,
+"bumpAt": [
+34.58123,
+126.99043,
+9629
+],
+"grade": 16.177,
+"gradeAt": [
+34.58098,
+126.98994,
+9681
+],
+"ok": false,
+"why": [
+"물속 꺼짐 43점(최저 -835.9m)",
+"솟음·꺼짐 847.0m @9629m",
+"경사 1618% @9681m"
+],
+"id": "kt-np-79",
+"kind": "road",
+"name": "Namparang Trail Course 79",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-79.json"
+},
+{
+"km": 19.79,
+"minE": -401.7,
+"sea": 127,
+"bump": 403.9,
+"bumpAt": [
+34.4629,
+126.94102,
+2733
+],
+"grade": 8.091,
+"gradeAt": [
+34.46245,
+126.94107,
+2783
+],
+"ok": false,
+"why": [
+"물속 꺼짐 127점(최저 -401.7m)",
+"솟음·꺼짐 403.9m @2733m",
+"경사 809% @2783m"
+],
+"id": "kt-np-80",
+"kind": "road",
+"name": "Namparang Trail Course 80",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-80.json"
+},
+{
+"km": 14.69,
+"minE": -2143.6,
+"sea": 23,
+"bump": 2152.9,
+"bumpAt": [
+34.50656,
+126.78956,
+10672
+],
+"grade": 41.903,
+"gradeAt": [
+34.50656,
+126.78956,
+10672
+],
+"ok": false,
+"why": [
+"물속 꺼짐 23점(최저 -2143.6m)",
+"솟음·꺼짐 2152.9m @10672m",
+"경사 4190% @10672m"
+],
+"id": "kt-np-81",
+"kind": "road",
+"name": "Namparang Trail Course 81",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-81.json"
+},
+{
+"km": 14.28,
+"minE": -1152.7,
+"sea": 34,
+"bump": 1155.7,
+"bumpAt": [
+34.53601,
+126.7902,
+90
+],
+"grade": 22.743,
+"gradeAt": [
+34.53628,
+126.79065,
+141
+],
+"ok": false,
+"why": [
+"물속 꺼짐 34점(최저 -1152.7m)",
+"솟음·꺼짐 1155.7m @90m",
+"경사 2274% @141m"
+],
+"id": "kt-np-82",
+"kind": "road",
+"name": "Namparang Trail Course 82",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-82.json"
+},
+{
+"km": 17.76,
+"minE": -2.5,
+"sea": 20,
+"bump": 24.2,
+"bumpAt": [
+34.56243,
+126.7202,
+14933
+],
+"grade": 0.515,
+"gradeAt": [
+34.56253,
+126.72022,
+14922
+],
+"ok": false,
+"why": [
+"물속 꺼짐 20점(최저 -2.5m)",
+"솟음·꺼짐 24.2m @14933m",
+"경사 52% @14922m"
+],
+"id": "kt-np-83",
+"kind": "road",
+"name": "Namparang Trail Course 83",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-83.json"
+},
+{
+"km": 13.53,
+"minE": -1.3,
+"sea": 6,
+"bump": 9.8,
+"bumpAt": [
+34.5336,
+126.74579,
+3004
+],
+"grade": 0.212,
+"gradeAt": [
+34.53369,
+126.74579,
+2994
+],
+"ok": false,
+"why": [
+"물속 꺼짐 6점(최저 -1.3m)",
+"솟음·꺼짐 9.8m @3004m",
+"경사 21% @2994m"
+],
+"id": "kt-np-84",
+"kind": "road",
+"name": "Namparang Trail Course 84",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-84.json"
+},
+{
+"km": 17.54,
+"minE": -1.0,
+"sea": 3,
+"bump": 9.7,
+"bumpAt": [
+34.44099,
+126.71133,
+5490
+],
+"grade": 0.255,
+"gradeAt": [
+34.43267,
+126.68984,
+8318
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1.0m)",
+"솟음·꺼짐 9.7m @5490m",
+"경사 26% @8318m"
+],
+"id": "kt-np-85",
+"kind": "road",
+"name": "Namparang Trail Course 85",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-85.json"
+},
+{
+"km": 24.54,
+"minE": -1331.6,
+"sea": 30,
+"bump": 1338.7,
+"bumpAt": [
+34.38735,
+126.71569,
+12982
+],
+"grade": 25.73,
+"gradeAt": [
+34.38735,
+126.71569,
+12982
+],
+"ok": false,
+"why": [
+"물속 꺼짐 30점(최저 -1331.6m)",
+"솟음·꺼짐 1338.7m @12982m",
+"경사 2573% @12982m"
+],
+"id": "kt-np-86",
+"kind": "road",
+"name": "Namparang Trail Course 86",
+"city": "kt-np",
+"lab": false,
+"file": "data/kt/seg/np-86-v2.json"
+},
+{
+"km": 14.72,
+"minE": -360.7,
+"sea": 3,
+"bump": 367.6,
+"bumpAt": [
+34.31296,
+126.51959,
+3058
+],
+"grade": 7.373,
+"gradeAt": [
+34.31339,
+126.51942,
+3108
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -360.7m)",
+"솟음·꺼짐 367.6m @3058m",
+"경사 737% @3108m"
+],
+"id": "kt-sh-01",
+"kind": "road",
+"name": "Seohaerang Trail Course 1",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-01.json"
+},
+{
+"km": 17.68,
+"minE": -2.7,
+"sea": 69,
+"bump": 8.4,
+"bumpAt": [
+34.46202,
+126.46941,
+16895
+],
+"grade": 0.243,
+"gradeAt": [
+34.46245,
+126.4696,
+16946
+],
+"ok": false,
+"why": [
+"물속 꺼짐 69점(최저 -2.7m)",
+"솟음·꺼짐 8.4m @16895m",
+"경사 24% @16946m"
+],
+"id": "kt-sh-02",
+"kind": "road",
+"name": "Seohaerang Trail Course 2",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-02.json"
+},
+{
+"km": 14.71,
+"minE": -435.5,
+"sea": 8,
+"bump": 437.2,
+"bumpAt": [
+34.48351,
+126.4661,
+4576
+],
+"grade": 8.134,
+"gradeAt": [
+34.48383,
+126.46584,
+4629
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -435.5m)",
+"솟음·꺼짐 437.2m @4576m",
+"경사 813% @4629m"
+],
+"id": "kt-sh-03",
+"kind": "road",
+"name": "Seohaerang Trail Course 3",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-03.json"
+},
+{
+"km": 14.25,
+"minE": -1.2,
+"sea": 13,
+"bump": 4.9,
+"bumpAt": [
+34.57522,
+126.36001,
+12741
+],
+"grade": 0.142,
+"gradeAt": [
+34.56527,
+126.37246,
+10751
+],
+"ok": false,
+"why": [
+"물속 꺼짐 13점(최저 -1.2m)"
+],
+"id": "kt-sh-04",
+"kind": "road",
+"name": "Seohaerang Trail Course 4",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-04.json"
+},
+{
+"km": 11.76,
+"minE": -2.1,
+"sea": 15,
+"bump": 12.8,
+"bumpAt": [
+34.56972,
+126.31088,
+10456
+],
+"grade": 0.313,
+"gradeAt": [
+34.56976,
+126.31099,
+10446
+],
+"ok": false,
+"why": [
+"물속 꺼짐 15점(최저 -2.1m)",
+"솟음·꺼짐 12.8m @10456m",
+"경사 31% @10446m"
+],
+"id": "kt-sh-05",
+"kind": "road",
+"name": "Seohaerang Trail Course 5",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-05.json"
+},
+{
+"km": 15.22,
+"minE": -2.8,
+"sea": 21,
+"bump": 12.1,
+"bumpAt": [
+34.51653,
+126.34988,
+13474
+],
+"grade": 0.355,
+"gradeAt": [
+34.51784,
+126.34611,
+14058
+],
+"ok": false,
+"why": [
+"물속 꺼짐 21점(최저 -2.8m)",
+"솟음·꺼짐 12.1m @13474m",
+"경사 36% @14058m"
+],
+"id": "kt-sh-06",
+"kind": "road",
+"name": "Seohaerang Trail Course 6",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-06.json"
+},
+{
+"km": 12.11,
+"minE": 24.0,
+"sea": 0,
+"bump": 14.5,
+"bumpAt": [
+34.48013,
+126.32885,
+7887
+],
+"grade": 0.403,
+"gradeAt": [
+34.47408,
+126.32382,
+9698
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.5m @7887m",
+"경사 40% @9698m"
+],
+"id": "kt-sh-07",
+"kind": "road",
+"name": "Seohaerang Trail Course 7",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-07.json"
+},
+{
+"km": 22.3,
+"minE": -197.5,
+"sea": 1,
+"bump": 214.8,
+"bumpAt": [
+34.41446,
+126.27383,
+11192
+],
+"grade": 4.233,
+"gradeAt": [
+34.41411,
+126.27364,
+11243
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -197.5m)",
+"솟음·꺼짐 214.8m @11192m",
+"경사 423% @11243m"
+],
+"id": "kt-sh-08",
+"kind": "road",
+"name": "Seohaerang Trail Course 8",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-08.json"
+},
+{
+"km": 12.07,
+"minE": 1.8,
+"sea": 0,
+"bump": 10.4,
+"bumpAt": [
+34.35732,
+126.1697,
+7553
+],
+"grade": 0.219,
+"gradeAt": [
+34.372,
+126.20995,
+2437
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.4m @7553m",
+"경사 22% @2437m"
+],
+"id": "kt-sh-09",
+"kind": "road",
+"name": "Seohaerang Trail Course 9",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-09.json"
+},
+{
+"km": 13.45,
+"minE": -2608.2,
+"sea": 59,
+"bump": 2610.9,
+"bumpAt": [
+34.37838,
+126.14533,
+2671
+],
+"grade": 47.98,
+"gradeAt": [
+34.37838,
+126.14533,
+2671
+],
+"ok": false,
+"why": [
+"물속 꺼짐 59점(최저 -2608.2m)",
+"솟음·꺼짐 2610.9m @2671m",
+"경사 4798% @2671m"
+],
+"id": "kt-sh-10",
+"kind": "road",
+"name": "Seohaerang Trail Course 10",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-10.json"
+},
+{
+"km": 21.8,
+"minE": -502.8,
+"sea": 33,
+"bump": 504.6,
+"bumpAt": [
+34.48639,
+126.17354,
+14504
+],
+"grade": 10.051,
+"gradeAt": [
+34.48639,
+126.17354,
+14504
+],
+"ok": false,
+"why": [
+"물속 꺼짐 33점(최저 -502.8m)",
+"솟음·꺼짐 504.6m @14504m",
+"경사 1005% @14504m"
+],
+"id": "kt-sh-11",
+"kind": "road",
+"name": "Seohaerang Trail Course 11",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-11.json"
+},
+{
+"km": 21.42,
+"minE": -762.9,
+"sea": 7,
+"bump": 766.0,
+"bumpAt": [
+34.51668,
+126.22348,
+3248
+],
+"grade": 14.659,
+"gradeAt": [
+34.51668,
+126.22348,
+3248
+],
+"ok": false,
+"why": [
+"물속 꺼짐 7점(최저 -762.9m)",
+"솟음·꺼짐 766.0m @3248m",
+"경사 1466% @3248m"
+],
+"id": "kt-sh-12",
+"kind": "road",
+"name": "Seohaerang Trail Course 12",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-12.json"
+},
+{
+"km": 15.98,
+"minE": -1.6,
+"sea": 32,
+"bump": 11.8,
+"bumpAt": [
+34.5786,
+126.31656,
+1146
+],
+"grade": 0.316,
+"gradeAt": [
+34.57919,
+126.317,
+1224
+],
+"ok": false,
+"why": [
+"물속 꺼짐 32점(최저 -1.6m)",
+"솟음·꺼짐 11.8m @1146m",
+"경사 32% @1224m"
+],
+"id": "kt-sh-13",
+"kind": "road",
+"name": "Seohaerang Trail Course 13",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-13.json"
+},
+{
+"km": 17.99,
+"minE": -1.0,
+"sea": 3,
+"bump": 10.5,
+"bumpAt": [
+34.71841,
+126.27784,
+14554
+],
+"grade": 0.252,
+"gradeAt": [
+34.71886,
+126.27813,
+14610
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1.0m)",
+"솟음·꺼짐 10.5m @14554m",
+"경사 25% @14610m"
+],
+"id": "kt-sh-14",
+"kind": "road",
+"name": "Seohaerang Trail Course 14",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-14.json"
+},
+{
+"km": 13.35,
+"minE": -541.3,
+"sea": 19,
+"bump": 544.2,
+"bumpAt": [
+34.69651,
+126.34062,
+7409
+],
+"grade": 10.744,
+"gradeAt": [
+34.69651,
+126.34062,
+7409
+],
+"ok": false,
+"why": [
+"물속 꺼짐 19점(최저 -541.3m)",
+"솟음·꺼짐 544.2m @7409m",
+"경사 1074% @7409m"
+],
+"id": "kt-sh-15",
+"kind": "road",
+"name": "Seohaerang Trail Course 15",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-15.json"
+},
+{
+"km": 16.2,
+"minE": -1.4,
+"sea": 28,
+"bump": 8.4,
+"bumpAt": [
+34.73984,
+126.4794,
+15178
+],
+"grade": 0.192,
+"gradeAt": [
+34.73983,
+126.4787,
+15243
+],
+"ok": false,
+"why": [
+"물속 꺼짐 28점(최저 -1.4m)",
+"솟음·꺼짐 8.4m @15178m"
+],
+"id": "kt-sh-16",
+"kind": "road",
+"name": "Seohaerang Trail Course 16",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-16-v2.json"
+},
+{
+"km": 10.84,
+"minE": -3.2,
+"sea": 45,
+"bump": 4.1,
+"bumpAt": [
+34.77951,
+126.46177,
+6309
+],
+"grade": 0.159,
+"gradeAt": [
+34.7803,
+126.46225,
+6202
+],
+"ok": false,
+"why": [
+"물속 꺼짐 45점(최저 -3.2m)"
+],
+"id": "kt-sh-17",
+"kind": "road",
+"name": "Seohaerang Trail Course 17",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-17.json"
+},
+{
+"km": 17.65,
+"minE": -0.8,
+"sea": 9,
+"bump": 16.1,
+"bumpAt": [
+34.79509,
+126.36877,
+11873
+],
+"grade": 0.361,
+"gradeAt": [
+34.78763,
+126.37806,
+9884
+],
+"ok": false,
+"why": [
+"물속 꺼짐 9점(최저 -0.8m)",
+"솟음·꺼짐 16.1m @11873m",
+"경사 36% @9884m"
+],
+"id": "kt-sh-18",
+"kind": "road",
+"name": "Seohaerang Trail Course 18",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-18.json"
+},
+{
+"km": 16.65,
+"minE": -3.1,
+"sea": 60,
+"bump": 11.3,
+"bumpAt": [
+34.82407,
+126.4122,
+2213
+],
+"grade": 0.41,
+"gradeAt": [
+34.82028,
+126.40848,
+1422
+],
+"ok": false,
+"why": [
+"물속 꺼짐 60점(최저 -3.1m)",
+"솟음·꺼짐 11.3m @2213m",
+"경사 41% @1422m"
+],
+"id": "kt-sh-19",
+"kind": "road",
+"name": "Seohaerang Trail Course 19",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-19.json"
+},
+{
+"km": 18.54,
+"minE": -1.0,
+"sea": 3,
+"bump": 7.2,
+"bumpAt": [
+34.92049,
+126.41498,
+2466
+],
+"grade": 0.194,
+"gradeAt": [
+34.9194,
+126.41908,
+2007
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1.0m)",
+"솟음·꺼짐 7.2m @2466m"
+],
+"id": "kt-sh-20",
+"kind": "road",
+"name": "Seohaerang Trail Course 20",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-20.json"
+},
+{
+"km": 11.76,
+"minE": 0.4,
+"sea": 0,
+"bump": 5.7,
+"bumpAt": [
+34.97653,
+126.36013,
+2806
+],
+"grade": 0.168,
+"gradeAt": [
+34.97596,
+126.36024,
+2869
+],
+"ok": true,
+"why": [],
+"id": "kt-sh-21",
+"kind": "road",
+"name": "Seohaerang Trail Course 21",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-21.json"
+},
+{
+"km": 11.66,
+"minE": 0.1,
+"sea": 0,
+"bump": 9.7,
+"bumpAt": [
+34.93658,
+126.31811,
+7837
+],
+"grade": 0.188,
+"gradeAt": [
+34.93656,
+126.318,
+7826
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.7m @7837m"
+],
+"id": "kt-sh-22",
+"kind": "road",
+"name": "Seohaerang Trail Course 22",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-22.json"
+},
+{
+"km": 19.33,
+"minE": -0.1,
+"sea": 0,
+"bump": 6.1,
+"bumpAt": [
+35.03757,
+126.38858,
+17693
+],
+"grade": 0.14,
+"gradeAt": [
+35.01238,
+126.3678,
+13495
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.1m @17693m"
+],
+"id": "kt-sh-23",
+"kind": "road",
+"name": "Seohaerang Trail Course 23",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-23.json"
+},
+{
+"km": 20.41,
+"minE": -1.1,
+"sea": 17,
+"bump": 6.6,
+"bumpAt": [
+35.05665,
+126.31226,
+19894
+],
+"grade": 0.181,
+"gradeAt": [
+35.0547,
+126.31234,
+20149
+],
+"ok": false,
+"why": [
+"물속 꺼짐 17점(최저 -1.1m)",
+"솟음·꺼짐 6.6m @19894m"
+],
+"id": "kt-sh-24",
+"kind": "road",
+"name": "Seohaerang Trail Course 24",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-24-v2.json"
+},
+{
+"km": 16.45,
+"minE": -57.1,
+"sea": 36,
+"bump": 58.0,
+"bumpAt": [
+35.04793,
+126.23423,
+12837
+],
+"grade": 1.164,
+"gradeAt": [
+35.04838,
+126.23411,
+12887
+],
+"ok": false,
+"why": [
+"물속 꺼짐 36점(최저 -57.1m)",
+"솟음·꺼짐 58.0m @12837m",
+"경사 116% @12887m"
+],
+"id": "kt-sh-25",
+"kind": "road",
+"name": "Seohaerang Trail Course 25",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-25.json"
+},
+{
+"km": 14.41,
+"minE": -0.9,
+"sea": 23,
+"bump": 12.7,
+"bumpAt": [
+35.02588,
+126.16834,
+9536
+],
+"grade": 0.389,
+"gradeAt": [
+35.02595,
+126.1684,
+9526
+],
+"ok": false,
+"why": [
+"물속 꺼짐 23점(최저 -0.9m)",
+"솟음·꺼짐 12.7m @9536m",
+"경사 39% @9526m"
+],
+"id": "kt-sh-26",
+"kind": "road",
+"name": "Seohaerang Trail Course 26",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-26.json"
+},
+{
+"km": 15.54,
+"minE": -0.4,
+"sea": 0,
+"bump": 15.3,
+"bumpAt": [
+34.99561,
+126.17679,
+142
+],
+"grade": 0.335,
+"gradeAt": [
+34.99571,
+126.17678,
+132
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.3m @142m",
+"경사 34% @132m"
+],
+"id": "kt-sh-27",
+"kind": "road",
+"name": "Seohaerang Trail Course 27",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-27.json"
+},
+{
+"km": 15.25,
+"minE": -1066.9,
+"sea": 17,
+"bump": 1068.0,
+"bumpAt": [
+35.01958,
+126.12739,
+10478
+],
+"grade": 20.558,
+"gradeAt": [
+35.01958,
+126.12739,
+10478
+],
+"ok": false,
+"why": [
+"물속 꺼짐 17점(최저 -1066.9m)",
+"솟음·꺼짐 1068.0m @10478m",
+"경사 2056% @10478m"
+],
+"id": "kt-sh-28",
+"kind": "road",
+"name": "Seohaerang Trail Course 28",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-28.json"
+},
+{
+"km": 16.67,
+"minE": -1.0,
+"sea": 16,
+"bump": 11.5,
+"bumpAt": [
+35.02591,
+126.1682,
+1371
+],
+"grade": 0.37,
+"gradeAt": [
+35.0264,
+126.1685,
+1431
+],
+"ok": false,
+"why": [
+"물속 꺼짐 16점(최저 -1.0m)",
+"솟음·꺼짐 11.5m @1371m",
+"경사 37% @1431m"
+],
+"id": "kt-sh-29",
+"kind": "road",
+"name": "Seohaerang Trail Course 29",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-29.json"
+},
+{
+"km": 16.72,
+"minE": 1.0,
+"sea": 0,
+"bump": 8.5,
+"bumpAt": [
+35.04124,
+126.43585,
+7974
+],
+"grade": 0.186,
+"gradeAt": [
+35.04157,
+126.43662,
+8086
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.5m @7974m"
+],
+"id": "kt-sh-34",
+"kind": "road",
+"name": "Seohaerang Trail Course 34",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-34-v2.json"
+},
+{
+"km": 13.81,
+"minE": -2.2,
+"sea": 8,
+"bump": 6.2,
+"bumpAt": [
+35.19184,
+126.37205,
+3894
+],
+"grade": 0.219,
+"gradeAt": [
+35.19853,
+126.3722,
+4861
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -2.2m)",
+"솟음·꺼짐 6.2m @3894m",
+"경사 22% @4861m"
+],
+"id": "kt-sh-36",
+"kind": "road",
+"name": "Seohaerang Trail Course 36",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-36.json"
+},
+{
+"km": 19.66,
+"minE": -1.3,
+"sea": 60,
+"bump": 8.3,
+"bumpAt": [
+35.25206,
+126.31275,
+12816
+],
+"grade": 0.328,
+"gradeAt": [
+35.25178,
+126.3132,
+12868
+],
+"ok": false,
+"why": [
+"물속 꺼짐 60점(최저 -1.3m)",
+"솟음·꺼짐 8.3m @12816m",
+"경사 33% @12868m"
+],
+"id": "kt-sh-37",
+"kind": "road",
+"name": "Seohaerang Trail Course 37",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-37.json"
+},
+{
+"km": 15.27,
+"minE": -0.1,
+"sea": 0,
+"bump": 8.6,
+"bumpAt": [
+35.30909,
+126.3779,
+14557
+],
+"grade": 0.256,
+"gradeAt": [
+35.309,
+126.37796,
+14546
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 8.6m @14557m",
+"경사 26% @14546m"
+],
+"id": "kt-sh-38",
+"kind": "road",
+"name": "Seohaerang Trail Course 38",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-38.json"
+},
+{
+"km": 16.03,
+"minE": -1628.6,
+"sea": 47,
+"bump": 1630.1,
+"bumpAt": [
+35.36849,
+126.42708,
+12338
+],
+"grade": 32.551,
+"gradeAt": [
+35.36833,
+126.42759,
+12388
+],
+"ok": false,
+"why": [
+"물속 꺼짐 47점(최저 -1628.6m)",
+"솟음·꺼짐 1630.1m @12338m",
+"경사 3255% @12388m"
+],
+"id": "kt-sh-39",
+"kind": "road",
+"name": "Seohaerang Trail Course 39",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-39.json"
+},
+{
+"km": 13.71,
+"minE": -1.3,
+"sea": 13,
+"bump": 9.2,
+"bumpAt": [
+35.36431,
+126.44426,
+945
+],
+"grade": 0.222,
+"gradeAt": [
+35.36431,
+126.44426,
+945
+],
+"ok": false,
+"why": [
+"물속 꺼짐 13점(최저 -1.3m)",
+"솟음·꺼짐 9.2m @945m",
+"경사 22% @945m"
+],
+"id": "kt-sh-40",
+"kind": "road",
+"name": "Seohaerang Trail Course 40",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-40.json"
+},
+{
+"km": 19.51,
+"minE": -0.2,
+"sea": 0,
+"bump": 7.8,
+"bumpAt": [
+35.47912,
+126.46056,
+5098
+],
+"grade": 0.198,
+"gradeAt": [
+35.50119,
+126.47288,
+8027
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.8m @5098m"
+],
+"id": "kt-sh-41",
+"kind": "road",
+"name": "Seohaerang Trail Course 41",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-41.json"
+},
+{
+"km": 11.24,
+"minE": 12.0,
+"sea": 0,
+"bump": 30.9,
+"bumpAt": [
+35.47852,
+126.56204,
+6899
+],
+"grade": 0.55,
+"gradeAt": [
+35.48015,
+126.56256,
+7270
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 30.9m @6899m",
+"경사 55% @7270m"
+],
+"id": "kt-sh-42",
+"kind": "road",
+"name": "Seohaerang Trail Course 42",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-42.json"
+},
+{
+"km": 20.8,
+"minE": -0.8,
+"sea": 10,
+"bump": 14.4,
+"bumpAt": [
+35.51222,
+126.61111,
+3024
+],
+"grade": 0.403,
+"gradeAt": [
+35.51222,
+126.61111,
+3024
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -0.8m)",
+"솟음·꺼짐 14.4m @3024m",
+"경사 40% @3024m"
+],
+"id": "kt-sh-43",
+"kind": "road",
+"name": "Seohaerang Trail Course 43",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-43.json"
+},
+{
+"km": 13.84,
+"minE": -1.1,
+"sea": 28,
+"bump": 7.8,
+"bumpAt": [
+35.56563,
+126.6751,
+2477
+],
+"grade": 0.168,
+"gradeAt": [
+35.56606,
+126.67468,
+2538
+],
+"ok": false,
+"why": [
+"물속 꺼짐 28점(최저 -1.1m)",
+"솟음·꺼짐 7.8m @2477m"
+],
+"id": "kt-sh-44",
+"kind": "road",
+"name": "Seohaerang Trail Course 44",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-44.json"
+},
+{
+"km": 15.05,
+"minE": -3357.5,
+"sea": 24,
+"bump": 3368.4,
+"bumpAt": [
+35.58602,
+126.51292,
+13553
+],
+"grade": 66.623,
+"gradeAt": [
+35.5856,
+126.51272,
+13604
+],
+"ok": false,
+"why": [
+"물속 꺼짐 24점(최저 -3357.5m)",
+"솟음·꺼짐 3368.4m @13553m",
+"경사 6662% @13604m"
+],
+"id": "kt-sh-45",
+"kind": "road",
+"name": "Seohaerang Trail Course 45",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-45.json"
+},
+{
+"km": 9.7,
+"minE": 0.0,
+"sea": 0,
+"bump": 10.1,
+"bumpAt": [
+35.59629,
+126.48601,
+4099
+],
+"grade": 0.265,
+"gradeAt": [
+35.60304,
+126.47198,
+6088
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 10.1m @4099m",
+"경사 26% @6088m"
+],
+"id": "kt-sh-46",
+"kind": "road",
+"name": "Seohaerang Trail Course 46",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-46-v2.json"
+},
+{
+"km": 13.67,
+"minE": -536.1,
+"sea": 1,
+"bump": 538.3,
+"bumpAt": [
+35.65619,
+126.49927,
+8050
+],
+"grade": 9.895,
+"gradeAt": [
+35.65668,
+126.49925,
+8105
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -536.1m)",
+"솟음·꺼짐 538.3m @8050m",
+"경사 990% @8105m"
+],
+"id": "kt-sh-47",
+"kind": "road",
+"name": "Seohaerang Trail Course 47",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-47.json"
+},
+{
+"km": 9.73,
+"minE": -471.9,
+"sea": 2,
+"bump": 486.7,
+"bumpAt": [
+35.69197,
+126.54335,
+1855
+],
+"grade": 9.037,
+"gradeAt": [
+35.69197,
+126.54335,
+1855
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -471.9m)",
+"솟음·꺼짐 486.7m @1855m",
+"경사 904% @1855m"
+],
+"id": "kt-sh-48",
+"kind": "road",
+"name": "Seohaerang Trail Course 48",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-48.json"
+},
+{
+"km": 18.68,
+"minE": 1.8,
+"sea": 0,
+"bump": 11.5,
+"bumpAt": [
+35.7324,
+126.73005,
+18340
+],
+"grade": 0.313,
+"gradeAt": [
+35.73244,
+126.73067,
+18399
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.5m @18340m",
+"경사 31% @18399m"
+],
+"id": "kt-sh-49",
+"kind": "road",
+"name": "Seohaerang Trail Course 49",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-49.json"
+},
+{
+"km": 10.36,
+"minE": -0.8,
+"sea": 8,
+"bump": 9.4,
+"bumpAt": [
+35.73824,
+126.75249,
+4826
+],
+"grade": 0.202,
+"gradeAt": [
+35.7382,
+126.7526,
+4837
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -0.8m)",
+"솟음·꺼짐 9.4m @4826m",
+"경사 20% @4837m"
+],
+"id": "kt-sh-50",
+"kind": "road",
+"name": "Seohaerang Trail Course 50",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-50.json"
+},
+{
+"km": 23.2,
+"minE": -0.4,
+"sea": 0,
+"bump": 9.7,
+"bumpAt": [
+35.84804,
+126.69266,
+21513
+],
+"grade": 0.217,
+"gradeAt": [
+35.85143,
+126.69904,
+22251
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.7m @21513m",
+"경사 22% @22251m"
+],
+"id": "kt-sh-51",
+"kind": "road",
+"name": "Seohaerang Trail Course 51",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-51.json"
+},
+{
+"km": 18.25,
+"minE": 0.1,
+"sea": 0,
+"bump": 13.9,
+"bumpAt": [
+35.86537,
+126.73027,
+3187
+],
+"grade": 0.332,
+"gradeAt": [
+35.86537,
+126.73027,
+3187
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 13.9m @3187m",
+"경사 33% @3187m"
+],
+"id": "kt-sh-52",
+"kind": "road",
+"name": "Seohaerang Trail Course 52",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-52.json"
+},
+{
+"km": 19.05,
+"minE": -0.1,
+"sea": 0,
+"bump": 11.5,
+"bumpAt": [
+35.93213,
+126.74735,
+13891
+],
+"grade": 0.233,
+"gradeAt": [
+35.93222,
+126.74696,
+13945
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 11.5m @13891m",
+"경사 23% @13945m"
+],
+"id": "kt-sh-53",
+"kind": "road",
+"name": "Seohaerang Trail Course 53",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-53.json"
+},
+{
+"km": 10.72,
+"minE": 3.2,
+"sea": 0,
+"bump": 13.8,
+"bumpAt": [
+35.96296,
+126.69265,
+5206
+],
+"grade": 0.274,
+"gradeAt": [
+35.98302,
+126.69987,
+8717
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 13.8m @5206m",
+"경사 27% @8717m"
+],
+"id": "kt-sh-54",
+"kind": "road",
+"name": "Seohaerang Trail Course 54",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-54.json"
+},
+{
+"km": 14.98,
+"minE": -1.1,
+"sea": 18,
+"bump": 6.4,
+"bumpAt": [
+35.99073,
+126.74612,
+4376
+],
+"grade": 0.156,
+"gradeAt": [
+35.9912,
+126.74665,
+4447
+],
+"ok": false,
+"why": [
+"물속 꺼짐 18점(최저 -1.1m)",
+"솟음·꺼짐 6.4m @4376m"
+],
+"id": "kt-sh-55",
+"kind": "road",
+"name": "Seohaerang Trail Course 55",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-55.json"
+},
+{
+"km": 13.93,
+"minE": 1.3,
+"sea": 0,
+"bump": 6.1,
+"bumpAt": [
+36.05989,
+126.63257,
+11503
+],
+"grade": 0.183,
+"gradeAt": [
+36.04921,
+126.65033,
+8477
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.1m @11503m"
+],
+"id": "kt-sh-56",
+"kind": "road",
+"name": "Seohaerang Trail Course 56",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-56-v2.json"
+},
+{
+"km": 15.72,
+"minE": 1.4,
+"sea": 0,
+"bump": 12.6,
+"bumpAt": [
+36.08233,
+126.63716,
+1800
+],
+"grade": 0.271,
+"gradeAt": [
+36.08231,
+126.63706,
+1790
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 12.6m @1800m",
+"경사 27% @1790m"
+],
+"id": "kt-sh-57",
+"kind": "road",
+"name": "Seohaerang Trail Course 57",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-57.json"
+},
+{
+"km": 12.24,
+"minE": -0.0,
+"sea": 0,
+"bump": 7.2,
+"bumpAt": [
+36.14106,
+126.55023,
+4530
+],
+"grade": 0.259,
+"gradeAt": [
+36.15767,
+126.50723,
+9951
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 7.2m @4530m",
+"경사 26% @9951m"
+],
+"id": "kt-sh-58",
+"kind": "road",
+"name": "Seohaerang Trail Course 58",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-58-v2.json"
+},
+{
+"km": 16.63,
+"minE": -514.8,
+"sea": 11,
+"bump": 525.2,
+"bumpAt": [
+36.33129,
+126.52,
+3647
+],
+"grade": 10.348,
+"gradeAt": [
+36.33129,
+126.52,
+3647
+],
+"ok": false,
+"why": [
+"물속 꺼짐 11점(최저 -514.8m)",
+"솟음·꺼짐 525.2m @3647m",
+"경사 1035% @3647m"
+],
+"id": "kt-sh-60",
+"kind": "road",
+"name": "Seohaerang Trail Course 60",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-60-v2.json"
+},
+{
+"km": 8.62,
+"minE": -2.6,
+"sea": 42,
+"bump": 10.6,
+"bumpAt": [
+36.39652,
+126.51015,
+1134
+],
+"grade": 0.342,
+"gradeAt": [
+36.4188,
+126.50433,
+5529
+],
+"ok": false,
+"why": [
+"물속 꺼짐 42점(최저 -2.6m)",
+"솟음·꺼짐 10.6m @1134m",
+"경사 34% @5529m"
+],
+"id": "kt-sh-61",
+"kind": "road",
+"name": "Seohaerang Trail Course 61",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-61.json"
+},
+{
+"km": 14.94,
+"minE": -997.2,
+"sea": 27,
+"bump": 1005.8,
+"bumpAt": [
+36.50697,
+126.48325,
+14737
+],
+"grade": 19.618,
+"gradeAt": [
+36.50697,
+126.48325,
+14737
+],
+"ok": false,
+"why": [
+"물속 꺼짐 27점(최저 -997.2m)",
+"솟음·꺼짐 1005.8m @14737m",
+"경사 1962% @14737m"
+],
+"id": "kt-sh-62",
+"kind": "road",
+"name": "Seohaerang Trail Course 62",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-62-v2.json"
+},
+{
+"km": 17.14,
+"minE": 36.9,
+"sea": 0,
+"bump": 19.2,
+"bumpAt": [
+36.78837,
+126.59448,
+14219
+],
+"grade": 0.535,
+"gradeAt": [
+36.78888,
+126.5943,
+14284
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 19.2m @14219m",
+"경사 54% @14284m"
+],
+"id": "kt-sh-64",
+"kind": "road",
+"name": "Seohaerang Trail Course 64",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-64.json"
+},
+{
+"km": 22.38,
+"minE": -1.0,
+"sea": 3,
+"bump": 8.7,
+"bumpAt": [
+36.69084,
+126.26878,
+5521
+],
+"grade": 0.249,
+"gradeAt": [
+36.69139,
+126.26886,
+5582
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -1.0m)",
+"솟음·꺼짐 8.7m @5521m",
+"경사 25% @5582m"
+],
+"id": "kt-sh-66",
+"kind": "road",
+"name": "Seohaerang Trail Course 66",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-66.json"
+},
+{
+"km": 17.27,
+"minE": -0.8,
+"sea": 14,
+"bump": 8.7,
+"bumpAt": [
+36.71629,
+126.22655,
+7796
+],
+"grade": 0.33,
+"gradeAt": [
+36.71767,
+126.22596,
+8043
+],
+"ok": false,
+"why": [
+"물속 꺼짐 14점(최저 -0.8m)",
+"솟음·꺼짐 8.7m @7796m",
+"경사 33% @8043m"
+],
+"id": "kt-sh-67",
+"kind": "road",
+"name": "Seohaerang Trail Course 67",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-67-v2.json"
+},
+{
+"km": 12.97,
+"minE": -297.0,
+"sea": 3,
+"bump": 308.6,
+"bumpAt": [
+36.82613,
+126.16109,
+7722
+],
+"grade": 5.923,
+"gradeAt": [
+36.82613,
+126.16109,
+7722
+],
+"ok": false,
+"why": [
+"물속 꺼짐 3점(최저 -297.0m)",
+"솟음·꺼짐 308.6m @7722m",
+"경사 592% @7722m"
+],
+"id": "kt-sh-69",
+"kind": "road",
+"name": "Seohaerang Trail Course 69",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-69-v2.json"
+},
+{
+"km": 18.49,
+"minE": -1.0,
+"sea": 21,
+"bump": 13.1,
+"bumpAt": [
+36.87492,
+126.19184,
+14140
+],
+"grade": 0.4,
+"gradeAt": [
+36.87343,
+126.19144,
+13884
+],
+"ok": false,
+"why": [
+"물속 꺼짐 21점(최저 -1.0m)",
+"솟음·꺼짐 13.1m @14140m",
+"경사 40% @13884m"
+],
+"id": "kt-sh-70",
+"kind": "road",
+"name": "Seohaerang Trail Course 70",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-70.json"
+},
+{
+"km": 19.83,
+"minE": -1.0,
+"sea": 15,
+"bump": 11.5,
+"bumpAt": [
+36.91811,
+126.28996,
+16846
+],
+"grade": 0.292,
+"gradeAt": [
+36.93492,
+126.29437,
+19600
+],
+"ok": false,
+"why": [
+"물속 꺼짐 15점(최저 -1.0m)",
+"솟음·꺼짐 11.5m @16846m",
+"경사 29% @19600m"
+],
+"id": "kt-sh-71",
+"kind": "road",
+"name": "Seohaerang Trail Course 71",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-71-v2.json"
+},
+{
+"km": 8.06,
+"minE": 4.1,
+"sea": 0,
+"bump": 18.2,
+"bumpAt": [
+36.94992,
+126.29033,
+1932
+],
+"grade": 0.351,
+"gradeAt": [
+36.96811,
+126.2866,
+4422
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.2m @1932m",
+"경사 35% @4422m"
+],
+"id": "kt-sh-72",
+"kind": "road",
+"name": "Seohaerang Trail Course 72",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-72.json"
+},
+{
+"km": 11.34,
+"minE": -2.0,
+"sea": 36,
+"bump": 11.6,
+"bumpAt": [
+36.91386,
+126.30465,
+10582
+],
+"grade": 0.286,
+"gradeAt": [
+36.92977,
+126.30157,
+7394
+],
+"ok": false,
+"why": [
+"물속 꺼짐 36점(최저 -2.0m)",
+"솟음·꺼짐 11.6m @10582m",
+"경사 29% @7394m"
+],
+"id": "kt-sh-73",
+"kind": "road",
+"name": "Seohaerang Trail Course 73",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-73-v2.json"
+},
+{
+"km": 15.82,
+"minE": -302.5,
+"sea": 7,
+"bump": 310.8,
+"bumpAt": [
+36.84177,
+126.29758,
+12540
+],
+"grade": 6.057,
+"gradeAt": [
+36.84161,
+126.29811,
+12591
+],
+"ok": false,
+"why": [
+"물속 꺼짐 7점(최저 -302.5m)",
+"솟음·꺼짐 310.8m @12540m",
+"경사 606% @12591m"
+],
+"id": "kt-sh-74",
+"kind": "road",
+"name": "Seohaerang Trail Course 74",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-74.json"
+},
+{
+"km": 13.57,
+"minE": -388.3,
+"sea": 4,
+"bump": 391.8,
+"bumpAt": [
+36.84956,
+126.32433,
+4242
+],
+"grade": 7.689,
+"gradeAt": [
+36.85,
+126.32416,
+4293
+],
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -388.3m)",
+"솟음·꺼짐 391.8m @4242m",
+"경사 769% @4293m"
+],
+"id": "kt-sh-76",
+"kind": "road",
+"name": "Seohaerang Trail Course 76",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-76.json"
+},
+{
+"km": 18.11,
+"minE": -0.6,
+"sea": 1,
+"bump": 9.7,
+"bumpAt": [
+37.02536,
+126.56459,
+727
+],
+"grade": 0.221,
+"gradeAt": [
+36.96156,
+126.68628,
+18072
+],
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -0.6m)",
+"솟음·꺼짐 9.7m @727m",
+"경사 22% @18072m"
+],
+"id": "kt-sh-81",
+"kind": "road",
+"name": "Seohaerang Trail Course 81",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-81.json"
+},
+{
+"km": 14.09,
+"minE": 1.0,
+"sea": 0,
+"bump": 9.0,
+"bumpAt": [
+36.95422,
+126.76478,
+11389
+],
+"grade": 0.315,
+"gradeAt": [
+36.95442,
+126.74193,
+8078
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.0m @11389m",
+"경사 32% @8078m"
+],
+"id": "kt-sh-82",
+"kind": "road",
+"name": "Seohaerang Trail Course 82",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-82-v2.json"
+},
+{
+"km": 17.52,
+"minE": -1.6,
+"sea": 8,
+"bump": 11.1,
+"bumpAt": [
+36.9328,
+126.99126,
+17076
+],
+"grade": 0.241,
+"gradeAt": [
+36.93275,
+126.99117,
+17066
+],
+"ok": false,
+"why": [
+"물속 꺼짐 8점(최저 -1.6m)",
+"솟음·꺼짐 11.1m @17076m",
+"경사 24% @17066m"
+],
+"id": "kt-sh-84",
+"kind": "road",
+"name": "Seohaerang Trail Course 84",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-84-v2.json"
+},
+{
+"km": 23.77,
+"minE": -863.4,
+"sea": 2,
+"bump": 875.3,
+"bumpAt": [
+36.94121,
+126.97877,
+2434
+],
+"grade": 17.088,
+"gradeAt": [
+36.94121,
+126.97877,
+2434
+],
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -863.4m)",
+"솟음·꺼짐 875.3m @2434m",
+"경사 1709% @2434m"
+],
+"id": "kt-sh-85",
+"kind": "road",
+"name": "Seohaerang Trail Course 85",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-85-v2.json"
+},
+{
+"km": 13.95,
+"minE": -1.8,
+"sea": 10,
+"bump": 38.1,
+"bumpAt": [
+37.00853,
+126.80975,
+10680
+],
+"grade": 0.756,
+"gradeAt": [
+37.00857,
+126.80907,
+10741
+],
+"ok": false,
+"why": [
+"물속 꺼짐 10점(최저 -1.8m)",
+"솟음·꺼짐 38.1m @10680m",
+"경사 76% @10741m"
+],
+"id": "kt-sh-86",
+"kind": "road",
+"name": "Seohaerang Trail Course 86",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-86.json"
+},
+{
+"km": 17.87,
+"minE": -0.0,
+"sea": 0,
+"bump": 6.6,
+"bumpAt": [
+37.02878,
+126.79109,
+413
+],
+"grade": 0.157,
+"gradeAt": [
+37.04802,
+126.74883,
+7136
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 6.6m @413m"
+],
+"id": "kt-sh-87",
+"kind": "road",
+"name": "Seohaerang Trail Course 87",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-87.json"
+},
+{
+"km": 18.63,
+"minE": -1.1,
+"sea": 12,
+"bump": 17.7,
+"bumpAt": [
+37.1976,
+126.64794,
+1528
+],
+"grade": 0.416,
+"gradeAt": [
+37.19757,
+126.64862,
+1589
+],
+"ok": false,
+"why": [
+"물속 꺼짐 12점(최저 -1.1m)",
+"솟음·꺼짐 17.7m @1528m",
+"경사 42% @1589m"
+],
+"id": "kt-sh-89",
+"kind": "road",
+"name": "Seohaerang Trail Course 89",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-89.json"
+},
+{
+"km": 15.01,
+"minE": 0.5,
+"sea": 0,
+"bump": 12.5,
+"bumpAt": [
+37.23446,
+126.55824,
+13651
+],
+"grade": 0.342,
+"gradeAt": [
+37.23341,
+126.54314,
+11981
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 12.5m @13651m",
+"경사 34% @11981m"
+],
+"id": "kt-sh-90",
+"kind": "road",
+"name": "Seohaerang Trail Course 90",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-90.json"
+},
+{
+"km": 14.83,
+"minE": 2.0,
+"sea": 0,
+"bump": 16.5,
+"bumpAt": [
+37.26302,
+126.55943,
+3308
+],
+"grade": 0.377,
+"gradeAt": [
+37.26354,
+126.55925,
+3369
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 16.5m @3308m",
+"경사 38% @3369m"
+],
+"id": "kt-sh-91",
+"kind": "road",
+"name": "Seohaerang Trail Course 91",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-91.json"
+},
+{
+"km": 15.82,
+"minE": -1.2,
+"sea": 15,
+"bump": 10.0,
+"bumpAt": [
+37.33658,
+126.69177,
+12192
+],
+"grade": 0.235,
+"gradeAt": [
+37.3365,
+126.69174,
+12182
+],
+"ok": false,
+"why": [
+"물속 꺼짐 15점(최저 -1.2m)",
+"솟음·꺼짐 10.0m @12192m",
+"경사 24% @12182m"
+],
+"id": "kt-sh-92",
+"kind": "road",
+"name": "Seohaerang Trail Course 92",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-92.json"
+},
+{
+"km": 11.76,
+"minE": -0.3,
+"sea": 0,
+"bump": 5.8,
+"bumpAt": [
+37.3961,
+126.73597,
+5900
+],
+"grade": 0.132,
+"gradeAt": [
+37.41657,
+126.74403,
+9600
+],
+"ok": true,
+"why": [],
+"id": "kt-sh-93",
+"kind": "road",
+"name": "Seohaerang Trail Course 93",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-93.json"
+},
+{
+"km": 12.12,
+"minE": 0.1,
+"sea": 0,
+"bump": 12.5,
+"bumpAt": [
+37.41568,
+126.7353,
+3015
+],
+"grade": 0.356,
+"gradeAt": [
+37.40985,
+126.7261,
+4218
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 12.5m @3015m",
+"경사 36% @4218m"
+],
+"id": "kt-sh-94",
+"kind": "road",
+"name": "Seohaerang Trail Course 94",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-94.json"
+},
+{
+"km": 16.28,
+"minE": -1.9,
+"sea": 30,
+"bump": 16.5,
+"bumpAt": [
+37.43062,
+126.68261,
+2001
+],
+"grade": 0.373,
+"gradeAt": [
+37.43025,
+126.68565,
+1683
+],
+"ok": false,
+"why": [
+"물속 꺼짐 30점(최저 -1.9m)",
+"솟음·꺼짐 16.5m @2001m",
+"경사 37% @1683m"
+],
+"id": "kt-sh-95",
+"kind": "road",
+"name": "Seohaerang Trail Course 95",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-95.json"
+},
+{
+"km": 14.05,
+"minE": 4.8,
+"sea": 0,
+"bump": 14.8,
+"bumpAt": [
+37.50181,
+126.69399,
+10314
+],
+"grade": 0.404,
+"gradeAt": [
+37.50171,
+126.69403,
+10303
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 14.8m @10314m",
+"경사 40% @10303m"
+],
+"id": "kt-sh-96",
+"kind": "road",
+"name": "Seohaerang Trail Course 96",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-96.json"
+},
+{
+"km": 14.2,
+"minE": 4.0,
+"sea": 0,
+"bump": 18.3,
+"bumpAt": [
+37.53991,
+126.69916,
+3434
+],
+"grade": 0.544,
+"gradeAt": [
+37.55682,
+126.70568,
+10330
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 18.3m @3434m",
+"경사 54% @10330m"
+],
+"id": "kt-sh-97",
+"kind": "road",
+"name": "Seohaerang Trail Course 97",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-97.json"
+},
+{
+"km": 11.62,
+"minE": 4.0,
+"sea": 0,
+"bump": 15.5,
+"bumpAt": [
+37.5908,
+126.6636,
+3754
+],
+"grade": 0.453,
+"gradeAt": [
+37.61741,
+126.65202,
+8099
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 15.5m @3754m",
+"경사 45% @8099m"
+],
+"id": "kt-sh-98",
+"kind": "road",
+"name": "Seohaerang Trail Course 98",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-98.json"
+},
+{
+"km": 12.95,
+"minE": 3.1,
+"sea": 0,
+"bump": 9.5,
+"bumpAt": [
+37.66405,
+126.45156,
+1755
+],
+"grade": 0.437,
+"gradeAt": [
+37.66824,
+126.42233,
+6834
+],
+"ok": false,
+"why": [
+"솟음·꺼짐 9.5m @1755m",
+"경사 44% @6834m"
+],
+"id": "kt-sh-101",
+"kind": "road",
+"name": "Seohaerang Trail Course 101",
+"city": "kt-sh",
+"lab": false,
+"file": "data/kt/seg/sh-101.json"
+},
+{
+"km": 1.01,
+"minE": 807.2,
+"sea": 0,
+"bump": 14.6,
+"bumpAt": [
+35.59739,
+127.66406,
+109
+],
+"grade": 0.506,
+"gradeAt": [
+35.59221,
+127.66814,
+887
+],
+"dz": 42.4,
+"ok": false,
+"why": [
+"높이 차 42.4m"
+],
+"id": "gamtu",
+"kind": "mtn",
+"name": "Gamtusan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/gamtu.json"
+},
+{
+"km": 3.7,
+"minE": 754.4,
+"sea": 0,
+"bump": 16.4,
+"bumpAt": [
+35.44768,
+127.68891,
+1371
+],
+"grade": 0.431,
+"gradeAt": [
+35.4475,
+127.68909,
+1346
+],
+"dz": 48.3,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.4m @1371m",
+"높이 차 48.3m"
+],
+"id": "sambong",
+"kind": "mtn",
+"name": "Sambongsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/sambong.json"
+},
+{
+"km": 4.62,
+"minE": 807.2,
+"sea": 0,
+"bump": 17.9,
+"bumpAt": [
+35.59207,
+127.66932,
+1009
+],
+"grade": 0.506,
+"gradeAt": [
+35.59221,
+127.66814,
+887
+],
+"dz": 42.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.9m @1009m",
+"높이 차 42.4m"
+],
+"id": "daebong",
+"kind": "mtn",
+"name": "Daebongsan (Gyegwanbong)",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/daebong.json"
+},
+{
+"km": 4.95,
+"minE": 818.7,
+"sea": 0,
+"bump": 20.1,
+"bumpAt": [
+35.62124,
+127.65041,
+3458
+],
+"grade": 0.595,
+"gradeAt": [
+35.61877,
+127.63668,
+4823
+],
+"dz": 57.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 20.1m @3458m",
+"높이 차 57.1m"
+],
+"id": "baegun",
+"kind": "mtn",
+"name": "Baegunsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/baegun.json"
+},
+{
+"km": 3.84,
+"minE": 640.2,
+"sea": 0,
+"bump": 20.3,
+"bumpAt": [
+35.72098,
+127.72925,
+2685
+],
+"grade": 0.476,
+"gradeAt": [
+35.72448,
+127.72397,
+3337
+],
+"dz": 64.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 20.3m @2685m",
+"높이 차 64.0m"
+],
+"id": "wolbong",
+"kind": "mtn",
+"name": "Wolbongsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/wolbong.json"
+},
+{
+"km": 4.85,
+"minE": 531.6,
+"sea": 0,
+"bump": 26.3,
+"bumpAt": [
+35.39171,
+127.73517,
+3441
+],
+"grade": 0.6,
+"gradeAt": [
+35.39219,
+127.73553,
+3504
+],
+"dz": 66.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 26.3m @3441m",
+"높이 차 66.2m"
+],
+"id": "wabul",
+"kind": "mtn",
+"name": "Wabulsan (Sangnaebong)",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/wabul.json"
+},
+{
+"km": 3.87,
+"minE": 448.9,
+"sea": 0,
+"bump": 16.1,
+"bumpAt": [
+35.68381,
+127.75027,
+2356
+],
+"grade": 0.586,
+"gradeAt": [
+35.68245,
+127.74586,
+2831
+],
+"dz": 63.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.1m @2356m",
+"높이 차 63.2m"
+],
+"id": "geomang",
+"kind": "mtn",
+"name": "Geomangsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/geomang.json"
+},
+{
+"km": 3.85,
+"minE": 624.2,
+"sea": 0,
+"bump": 17.7,
+"bumpAt": [
+35.76589,
+127.68149,
+3566
+],
+"grade": 0.557,
+"gradeAt": [
+35.76492,
+127.6819,
+3433
+],
+"dz": 53.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.7m @3566m",
+"높이 차 53.0m"
+],
+"id": "namdeogyu",
+"kind": "mtn",
+"name": "Namdeogyusan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/namdeogyu.json"
+},
+{
+"km": 4.71,
+"minE": 353.8,
+"sea": 0,
+"bump": 26.0,
+"bumpAt": [
+35.38627,
+127.62878,
+2885
+],
+"grade": 0.636,
+"gradeAt": [
+35.37589,
+127.62648,
+4541
+],
+"dz": 66.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 26.0m @2885m",
+"높이 차 66.4m"
+],
+"id": "samjeong",
+"kind": "mtn",
+"name": "Samjeongsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/samjeong.json"
+},
+{
+"km": 2.91,
+"minE": 651.2,
+"sea": 0,
+"bump": 17.8,
+"bumpAt": [
+35.72837,
+127.77724,
+1137
+],
+"grade": 0.659,
+"gradeAt": [
+35.72897,
+127.77647,
+1237
+],
+"dz": 45.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.8m @1137m",
+"높이 차 45.4m"
+],
+"id": "geumwon",
+"kind": "mtn",
+"name": "Geumwonsan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/geumwon.json"
+},
+{
+"km": 4.14,
+"minE": 454.2,
+"sea": 0,
+"bump": 11.6,
+"bumpAt": [
+35.70278,
+127.77176,
+2959
+],
+"grade": 0.441,
+"gradeAt": [
+35.70529,
+127.77505,
+3395
+],
+"dz": 46.7,
+"ok": false,
+"why": [
+"높이 차 46.7m"
+],
+"id": "gibaek",
+"kind": "mtn",
+"name": "Gibaeksan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/gibaek.json"
+},
+{
+"km": 3.76,
+"minE": 352.4,
+"sea": 0,
+"bump": 15.3,
+"bumpAt": [
+35.65525,
+127.76121,
+3126
+],
+"grade": 0.629,
+"gradeAt": [
+35.65608,
+127.77017,
+2113
+],
+"dz": 46.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 15.3m @3126m",
+"높이 차 46.1m"
+],
+"id": "hwangseok",
+"kind": "mtn",
+"name": "Hwangseoksan",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/hwangseok.json"
+},
+{
+"km": 7.17,
+"minE": 502.4,
+"sea": 0,
+"bump": 16.1,
+"bumpAt": [
+35.33578,
+127.7161,
+5265
+],
+"grade": 0.615,
+"gradeAt": [
+35.33746,
+127.71337,
+4919
+],
+"dz": 43.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.1m @5265m",
+"높이 차 43.9m"
+],
+"id": "cheonwang",
+"kind": "mtn",
+"name": "Jirisan Cheonwangbong",
+"city": "hamyang",
+"lab": false,
+"file": "data/mtn/cheonwang.json"
+},
+{
+"km": 4.92,
+"minE": 621.1,
+"sea": 0,
+"bump": 19.2,
+"bumpAt": [
+35.32587,
+127.7394,
+2892
+],
+"grade": 0.659,
+"gradeAt": [
+35.32975,
+127.73547,
+3642
+],
+"dz": 42.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.2m @2892m",
+"높이 차 42.4m"
+],
+"id": "cheonwang-jungsan",
+"kind": "mtn",
+"name": "Jirisan Cheonwangbong",
+"city": "sancheong",
+"lab": false,
+"file": "data/mtn/cheonwang-jungsan.json"
+},
+{
+"km": 34.23,
+"minE": 133.4,
+"sea": 0,
+"bump": 22.9,
+"bumpAt": [
+35.32206,
+127.68598,
+29143
+],
+"grade": 0.708,
+"gradeAt": [
+35.29543,
+127.52002,
+7060
+],
+"dz": 224.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 22.9m @29143m",
+"높이 차 224.9m"
+],
+"id": "cheonwang-hwaeom",
+"kind": "mtn",
+"name": "Jirisan Cheonwangbong",
+"city": "gurye",
+"lab": false,
+"file": "data/mtn/cheonwang-hwaeom.json"
+},
+{
+"km": 1.01,
+"minE": 253.8,
+"sea": 0,
+"bump": 5.1,
+"bumpAt": [
+33.44705,
+126.78067,
+866
+],
+"grade": 0.187,
+"gradeAt": [
+33.44752,
+126.78006,
+951
+],
+"dz": 22.0,
+"ok": true,
+"why": [],
+"id": "abu",
+"kind": "mtn",
+"name": "Abu Oreum",
+"city": "jeju",
+"lab": false,
+"file": "data/mtn/abu.json"
+},
+{
+"km": 0.9,
+"minE": 282.4,
+"sea": 0,
+"bump": 8.8,
+"bumpAt": [
+33.35511,
+126.3068,
+793
+],
+"grade": 0.292,
+"gradeAt": [
+33.35369,
+126.30522,
+522
+],
+"dz": 38.4,
+"ok": true,
+"why": [],
+"id": "geumoreum",
+"kind": "mtn",
+"name": "Geum Oreum",
+"city": "jeju",
+"lab": false,
+"file": "data/mtn/geumoreum.json"
+},
+{
+"km": 0.8,
+"minE": 165.3,
+"sea": 0,
+"bump": 14.6,
+"bumpAt": [
+33.47574,
+126.82327,
+515
+],
+"grade": 0.496,
+"gradeAt": [
+33.4757,
+126.8234,
+502
+],
+"dz": 53.6,
+"ok": false,
+"why": [
+"높이 차 53.6m"
+],
+"id": "darangswi",
+"kind": "mtn",
+"name": "Darangswi Oreum",
+"city": "jeju",
+"lab": false,
+"file": "data/mtn/darangswi.json"
+},
+{
+"km": 9.42,
+"minE": 748.6,
+"sea": 0,
+"bump": 9.2,
+"bumpAt": [
+33.36093,
+126.53736,
+9166
+],
+"grade": 0.397,
+"gradeAt": [
+33.36176,
+126.53916,
+8965
+],
+"dz": 32.6,
+"ok": true,
+"why": [],
+"id": "halla",
+"kind": "mtn",
+"name": "Hallasan Baengnokdam",
+"city": "jeju",
+"lab": false,
+"file": "data/mtn/halla.json"
+},
+{
+"km": 4.03,
+"minE": 39.4,
+"sea": 0,
+"bump": 11.0,
+"bumpAt": [
+37.94794,
+126.96339,
+2904
+],
+"grade": 0.475,
+"gradeAt": [
+37.94815,
+126.96331,
+2878
+],
+"dz": 36.2,
+"ok": true,
+"why": [],
+"id": "m100-005",
+"kind": "mtn",
+"name": "Gamaksan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-005.json"
+},
+{
+"km": 5.82,
+"minE": 56.1,
+"sea": 0,
+"bump": 13.5,
+"bumpAt": [
+37.44681,
+126.96894,
+5272
+],
+"grade": 0.507,
+"gradeAt": [
+37.44544,
+126.96455,
+5753
+],
+"dz": 53.5,
+"ok": false,
+"why": [
+"높이 차 53.5m"
+],
+"id": "m100-010",
+"kind": "mtn",
+"name": "Gwanaksan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-010.json"
+},
+{
+"km": 2.89,
+"minE": 69.8,
+"sea": 0,
+"bump": 36.8,
+"bumpAt": [
+37.69687,
+127.01648,
+2630
+],
+"grade": 1.184,
+"gradeAt": [
+37.69687,
+127.01648,
+2630
+],
+"dz": 126.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 36.8m @2630m",
+"높이 차 126.4m"
+],
+"id": "m100-027",
+"kind": "mtn",
+"name": "Dobongsan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-027.json"
+},
+{
+"km": 2.38,
+"minE": 20.0,
+"sea": 0,
+"bump": 14.8,
+"bumpAt": [
+37.61589,
+126.42963,
+2308
+],
+"grade": 0.558,
+"gradeAt": [
+37.61835,
+126.4291,
+2015
+],
+"dz": 35.2,
+"ok": true,
+"why": [],
+"id": "m100-030",
+"kind": "mtn",
+"name": "Manisan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-030.json"
+},
+{
+"km": 5.13,
+"minE": 221.4,
+"sea": 0,
+"bump": 9.2,
+"bumpAt": [
+38.08435,
+127.33673,
+4425
+],
+"grade": 0.39,
+"gradeAt": [
+38.08097,
+127.33783,
+3844
+],
+"dz": 46.3,
+"ok": false,
+"why": [
+"높이 차 46.3m"
+],
+"id": "m100-032",
+"kind": "mtn",
+"name": "Myeongseongsan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-032.json"
+},
+{
+"km": 7.22,
+"minE": 197.6,
+"sea": 0,
+"bump": 27.8,
+"bumpAt": [
+37.94121,
+127.43239,
+7114
+],
+"grade": 0.615,
+"gradeAt": [
+37.93458,
+127.44141,
+4747
+],
+"dz": 94.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 27.8m @7114m",
+"높이 차 94.8m"
+],
+"id": "m100-033",
+"kind": "mtn",
+"name": "Myeongjisan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-033.json"
+},
+{
+"km": 2.93,
+"minE": 590.7,
+"sea": 0,
+"bump": 21.7,
+"bumpAt": [
+38.12517,
+127.48033,
+1584
+],
+"grade": 0.749,
+"gradeAt": [
+38.12517,
+127.48033,
+1584
+],
+"dz": 41.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 21.7m @1584m",
+"높이 차 41.6m"
+],
+"id": "m100-045",
+"kind": "mtn",
+"name": "Baegunsan (Pocheon)",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-045.json"
+},
+{
+"km": 3.81,
+"minE": 70.5,
+"sea": 0,
+"bump": 23.2,
+"bumpAt": [
+37.65672,
+126.97672,
+3264
+],
+"grade": 1.23,
+"gradeAt": [
+37.65678,
+126.97734,
+3320
+],
+"dz": 44.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 23.2m @3264m",
+"높이 차 44.6m"
+],
+"id": "m100-047",
+"kind": "mtn",
+"name": "Bukhansan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-047.json"
+},
+{
+"km": 5.44,
+"minE": 57.2,
+"sea": 0,
+"bump": 28.4,
+"bumpAt": [
+37.93934,
+127.09033,
+5175
+],
+"grade": 0.775,
+"gradeAt": [
+37.93934,
+127.09045,
+5164
+],
+"dz": 33.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 28.4m @5175m"
+],
+"id": "m100-055",
+"kind": "mtn",
+"name": "Soyosan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-055.json"
+},
+{
+"km": 6.33,
+"minE": 217.1,
+"sea": 0,
+"bump": 37.8,
+"bumpAt": [
+37.55022,
+127.5393,
+4518
+],
+"grade": 0.862,
+"gradeAt": [
+37.54922,
+127.54216,
+4220
+],
+"dz": 134.3,
+"ok": false,
+"why": [
+"솟음·꺼짐 37.8m @4518m",
+"높이 차 134.3m"
+],
+"id": "m100-061",
+"kind": "mtn",
+"name": "Yongmunsan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-061.json"
+},
+{
+"km": 2.88,
+"minE": 214.4,
+"sea": 0,
+"bump": 29.0,
+"bumpAt": [
+37.88095,
+127.32043,
+2313
+],
+"grade": 1.004,
+"gradeAt": [
+37.88093,
+127.3203,
+2301
+],
+"dz": 67.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 29.0m @2313m",
+"높이 차 67.5m"
+],
+"id": "m100-064",
+"kind": "mtn",
+"name": "Unaksan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-064.json"
+},
+{
+"km": 5.71,
+"minE": 88.2,
+"sea": 0,
+"bump": 20.2,
+"bumpAt": [
+37.55329,
+127.47655,
+1955
+],
+"grade": 0.485,
+"gradeAt": [
+37.55501,
+127.47591,
+2267
+],
+"dz": 36.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 20.2m @1955m"
+],
+"id": "m100-068",
+"kind": "mtn",
+"name": "Yumyeongsan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-068.json"
+},
+{
+"km": 3.28,
+"minE": 124.0,
+"sea": 0,
+"bump": 17.8,
+"bumpAt": [
+37.67936,
+127.27227,
+3136
+],
+"grade": 0.615,
+"gradeAt": [
+37.67929,
+127.27219,
+3125
+],
+"dz": 76.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.8m @3136m",
+"높이 차 76.4m"
+],
+"id": "m100-080",
+"kind": "mtn",
+"name": "Cheonmasan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-080.json"
+},
+{
+"km": 3.4,
+"minE": 270.0,
+"sea": 0,
+"bump": 16.0,
+"bumpAt": [
+37.75427,
+127.3133,
+538
+],
+"grade": 0.47,
+"gradeAt": [
+37.75421,
+127.3319,
+3108
+],
+"dz": 34.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.0m @538m"
+],
+"id": "m100-085",
+"kind": "mtn",
+"name": "Chungnyeongsan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-085.json"
+},
+{
+"km": 5.6,
+"minE": 307.6,
+"sea": 0,
+"bump": 19.2,
+"bumpAt": [
+37.98907,
+127.49991,
+5329
+],
+"grade": 0.676,
+"gradeAt": [
+37.98656,
+127.50844,
+4056
+],
+"dz": 47.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.2m @5329m",
+"높이 차 47.7m"
+],
+"id": "m100-094",
+"kind": "mtn",
+"name": "Hwaaksan",
+"city": "m100-sudo",
+"lab": false,
+"file": "data/mtn/m100-094.json"
+},
+{
+"km": 4.29,
+"minE": 356.6,
+"sea": 0,
+"bump": 13.0,
+"bumpAt": [
+37.87912,
+127.96745,
+2818
+],
+"grade": 0.492,
+"gradeAt": [
+37.87211,
+127.97168,
+1805
+],
+"dz": 27.1,
+"ok": true,
+"why": [],
+"id": "m100-001",
+"kind": "mtn",
+"name": "Garisan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-001.json"
+},
+{
+"km": 4.24,
+"minE": 410.6,
+"sea": 0,
+"bump": 13.4,
+"bumpAt": [
+37.48161,
+128.58165,
+698
+],
+"grade": 0.69,
+"gradeAt": [
+37.46804,
+128.56904,
+2942
+],
+"dz": 104.5,
+"ok": false,
+"why": [
+"높이 차 104.5m"
+],
+"id": "m100-002",
+"kind": "mtn",
+"name": "Gariwangsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-002.json"
+},
+{
+"km": 4.04,
+"minE": 1086.2,
+"sea": 0,
+"bump": 12.9,
+"bumpAt": [
+37.72529,
+128.45128,
+2317
+],
+"grade": 0.546,
+"gradeAt": [
+37.72633,
+128.45242,
+2475
+],
+"dz": 78.8,
+"ok": false,
+"why": [
+"높이 차 78.8m"
+],
+"id": "m100-008",
+"kind": "mtn",
+"name": "Gyebangsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-008.json"
+},
+{
+"km": 8.64,
+"minE": 155.8,
+"sea": 0,
+"bump": 16.6,
+"bumpAt": [
+37.71122,
+128.00147,
+7423
+],
+"grade": 0.7,
+"gradeAt": [
+37.71404,
+128.00815,
+8162
+],
+"dz": 95.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.6m @7423m",
+"높이 차 95.1m"
+],
+"id": "m100-009",
+"kind": "mtn",
+"name": "Gongjaksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-009.json"
+},
+{
+"km": 3.93,
+"minE": 695.9,
+"sea": 0,
+"bump": 10.4,
+"bumpAt": [
+37.30322,
+129.01805,
+2867
+],
+"grade": 0.326,
+"gradeAt": [
+37.30386,
+129.00768,
+1717
+],
+"dz": 60.1,
+"ok": false,
+"why": [
+"높이 차 60.1m"
+],
+"id": "m100-025",
+"kind": "mtn",
+"name": "Deokhangsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-025.json"
+},
+{
+"km": 9.08,
+"minE": -5018.2,
+"sea": 1,
+"bump": 6192.2,
+"bumpAt": [
+37.42939,
+129.0,
+6358
+],
+"grade": 97.056,
+"gradeAt": [
+37.42939,
+129.0,
+6358
+],
+"dz": 6217.2,
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -5018.2m)",
+"솟음·꺼짐 6192.2m @6358m",
+"높이 차 6217.2m"
+],
+"id": "m100-029",
+"kind": "mtn",
+"name": "Dutasan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-029.json"
+},
+{
+"km": 6.32,
+"minE": 620.1,
+"sea": 0,
+"bump": 11.7,
+"bumpAt": [
+37.91183,
+128.40648,
+290
+],
+"grade": 0.654,
+"gradeAt": [
+37.89401,
+128.41622,
+2639
+],
+"dz": 26.9,
+"ok": true,
+"why": [],
+"id": "m100-040",
+"kind": "mtn",
+"name": "Bangtaesan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-040.json"
+},
+{
+"km": 3.65,
+"minE": 482.7,
+"sea": 0,
+"bump": 21.9,
+"bumpAt": [
+37.39675,
+128.29164,
+3403
+],
+"grade": 0.781,
+"gradeAt": [
+37.39254,
+128.27551,
+1552
+],
+"dz": 53.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 21.9m @3403m",
+"높이 차 53.8m"
+],
+"id": "m100-041",
+"kind": "mtn",
+"name": "Baekdeoksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-041.json"
+},
+{
+"km": 5.92,
+"minE": 237.9,
+"sea": 0,
+"bump": 115.8,
+"bumpAt": [
+37.27193,
+128.58324,
+4275
+],
+"grade": 2.644,
+"gradeAt": [
+37.27238,
+128.58357,
+4335
+],
+"dz": 260.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 115.8m @4275m",
+"높이 차 260.7m"
+],
+"id": "m100-044",
+"kind": "mtn",
+"name": "Baegunsan (Jeongseon)",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-044.json"
+},
+{
+"km": 1.86,
+"minE": 107.7,
+"sea": 0,
+"bump": 16.4,
+"bumpAt": [
+37.84139,
+127.67316,
+84
+],
+"grade": 0.623,
+"gradeAt": [
+37.84066,
+127.66863,
+762
+],
+"dz": 53.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.4m @84m",
+"높이 차 53.1m"
+],
+"id": "m100-049",
+"kind": "mtn",
+"name": "Samaksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-049.json"
+},
+{
+"km": 5.08,
+"minE": 402.9,
+"sea": 0,
+"bump": 19.6,
+"bumpAt": [
+38.09691,
+128.45316,
+1938
+],
+"grade": 0.618,
+"gradeAt": [
+38.09169,
+128.44998,
+1165
+],
+"dz": 28.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.6m @1938m"
+],
+"id": "m100-052",
+"kind": "mtn",
+"name": "Seoraksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-052.json"
+},
+{
+"km": 10.07,
+"minE": 865.0,
+"sea": 0,
+"bump": 28.4,
+"bumpAt": [
+37.79214,
+128.56983,
+3961
+],
+"grade": 0.527,
+"gradeAt": [
+37.80822,
+128.55813,
+7673
+],
+"dz": 55.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 28.4m @3961m",
+"높이 차 55.5m"
+],
+"id": "m100-059",
+"kind": "mtn",
+"name": "Odaesan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-059.json"
+},
+{
+"km": 5.6,
+"minE": 212.8,
+"sea": 0,
+"bump": 16.7,
+"bumpAt": [
+37.98448,
+127.79413,
+2845
+],
+"grade": 0.772,
+"gradeAt": [
+37.98301,
+127.80229,
+1787
+],
+"dz": 51.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.7m @2845m",
+"높이 차 51.8m"
+],
+"id": "m100-060",
+"kind": "mtn",
+"name": "Obongsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-060.json"
+},
+{
+"km": 4.98,
+"minE": 199.7,
+"sea": 0,
+"bump": 14.1,
+"bumpAt": [
+38.01355,
+127.75089,
+1427
+],
+"grade": 0.482,
+"gradeAt": [
+38.03045,
+127.74999,
+3887
+],
+"dz": 42.5,
+"ok": false,
+"why": [
+"높이 차 42.5m"
+],
+"id": "m100-062",
+"kind": "mtn",
+"name": "Yonghwasan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-062.json"
+},
+{
+"km": 5.28,
+"minE": 715.4,
+"sea": 0,
+"bump": 9.2,
+"bumpAt": [
+38.03054,
+128.46193,
+1370
+],
+"grade": 0.261,
+"gradeAt": [
+38.03694,
+128.45211,
+2601
+],
+"dz": 32.6,
+"ok": true,
+"why": [],
+"id": "m100-073",
+"kind": "mtn",
+"name": "Jeombongsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-073.json"
+},
+{
+"km": 5.21,
+"minE": 328.0,
+"sea": 0,
+"bump": 19.0,
+"bumpAt": [
+37.38946,
+128.05635,
+2116
+],
+"grade": 0.646,
+"gradeAt": [
+37.36681,
+128.05549,
+4998
+],
+"dz": 118.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.0m @2116m",
+"높이 차 118.8m"
+],
+"id": "m100-086",
+"kind": "mtn",
+"name": "Chiaksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-086.json"
+},
+{
+"km": 4.02,
+"minE": 894.9,
+"sea": 0,
+"bump": 14.9,
+"bumpAt": [
+37.11198,
+128.91156,
+1188
+],
+"grade": 0.543,
+"gradeAt": [
+37.1076,
+128.9119,
+2525
+],
+"dz": 32.5,
+"ok": true,
+"why": [],
+"id": "m100-088",
+"kind": "mtn",
+"name": "Taebaeksan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-088.json"
+},
+{
+"km": 1.02,
+"minE": 92.1,
+"sea": 0,
+"bump": 12.7,
+"bumpAt": [
+37.69794,
+127.69979,
+101
+],
+"grade": 0.528,
+"gradeAt": [
+37.69622,
+127.70017,
+400
+],
+"dz": 67.9,
+"ok": false,
+"why": [
+"높이 차 67.9m"
+],
+"id": "m100-091",
+"kind": "mtn",
+"name": "Palbongsan",
+"city": "m100-gangwon",
+"lab": false,
+"file": "data/mtn/m100-091.json"
+},
+{
+"km": 5.63,
+"minE": 106.9,
+"sea": 0,
+"bump": 23.0,
+"bumpAt": [
+36.36292,
+127.21307,
+5292
+],
+"grade": 0.695,
+"gradeAt": [
+36.37254,
+127.24907,
+960
+],
+"dz": 67.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 23.0m @5292m",
+"높이 차 67.5m"
+],
+"id": "m100-007",
+"kind": "mtn",
+"name": "Gyeryongsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-007.json"
+},
+{
+"km": 5.54,
+"minE": 171.0,
+"sea": 0,
+"bump": 19.4,
+"bumpAt": [
+36.46784,
+127.87436,
+4080
+],
+"grade": 0.488,
+"gradeAt": [
+36.46023,
+127.88138,
+2741
+],
+"dz": 93.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.4m @4080m",
+"높이 차 93.1m"
+],
+"id": "m100-011",
+"kind": "mtn",
+"name": "Gubyeongsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-011.json"
+},
+{
+"km": 7.46,
+"minE": 153.0,
+"sea": 0,
+"bump": 14.5,
+"bumpAt": [
+36.98695,
+128.19804,
+112
+],
+"grade": 0.405,
+"gradeAt": [
+36.98748,
+128.2436,
+6026
+],
+"dz": 49.0,
+"ok": false,
+"why": [
+"높이 차 49.0m"
+],
+"id": "m100-013",
+"kind": "mtn",
+"name": "Geumsusan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-013.json"
+},
+{
+"km": 3.74,
+"minE": 247.1,
+"sea": 0,
+"bump": 11.7,
+"bumpAt": [
+36.13414,
+127.30805,
+1423
+],
+"grade": 0.536,
+"gradeAt": [
+36.12722,
+127.31407,
+2610
+],
+"dz": 33.3,
+"ok": true,
+"why": [],
+"id": "m100-020",
+"kind": "mtn",
+"name": "Daedunsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-020.json"
+},
+{
+"km": 3.37,
+"minE": 94.8,
+"sea": 0,
+"bump": 15.5,
+"bumpAt": [
+36.6633,
+126.61598,
+1550
+],
+"grade": 0.443,
+"gradeAt": [
+36.66312,
+126.61708,
+1650
+],
+"dz": 57.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 15.5m @1550m",
+"높이 차 57.2m"
+],
+"id": "m100-023",
+"kind": "mtn",
+"name": "Deoksungsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-023.json"
+},
+{
+"km": 3.5,
+"minE": 270.2,
+"sea": 0,
+"bump": 18.6,
+"bumpAt": [
+36.86849,
+128.29703,
+1031
+],
+"grade": 0.785,
+"gradeAt": [
+36.86812,
+128.29781,
+1117
+],
+"dz": 51.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.6m @1031m",
+"높이 차 51.2m"
+],
+"id": "m100-026",
+"kind": "mtn",
+"name": "Doraksan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-026.json"
+},
+{
+"km": 4.5,
+"minE": 498.4,
+"sea": 0,
+"bump": 16.4,
+"bumpAt": [
+36.04748,
+127.85871,
+2943
+],
+"grade": 0.515,
+"gradeAt": [
+36.03997,
+127.8504,
+4352
+],
+"dz": 53.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.4m @2943m",
+"높이 차 53.2m"
+],
+"id": "m100-038",
+"kind": "mtn",
+"name": "Minjujisan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-038.json"
+},
+{
+"km": 0.96,
+"minE": 487.7,
+"sea": 0,
+"bump": 25.5,
+"bumpAt": [
+36.22359,
+127.53716,
+517
+],
+"grade": 0.88,
+"gradeAt": [
+36.22507,
+127.53559,
+256
+],
+"dz": 58.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 25.5m @517m",
+"높이 차 58.7m"
+],
+"id": "m100-050",
+"kind": "mtn",
+"name": "Seodaesan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-050.json"
+},
+{
+"km": 2.94,
+"minE": 309.6,
+"sea": 0,
+"bump": 12.6,
+"bumpAt": [
+36.54261,
+127.8716,
+2777
+],
+"grade": 0.705,
+"gradeAt": [
+36.54047,
+127.87273,
+2402
+],
+"dz": 53.0,
+"ok": false,
+"why": [
+"높이 차 53.0m"
+],
+"id": "m100-056",
+"kind": "mtn",
+"name": "Songnisan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-056.json"
+},
+{
+"km": 5.36,
+"minE": 208.7,
+"sea": 0,
+"bump": 22.7,
+"bumpAt": [
+36.87447,
+128.10393,
+3318
+],
+"grade": 0.804,
+"gradeAt": [
+36.87157,
+128.10349,
+2945
+],
+"dz": 84.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 22.7m @3318m",
+"높이 차 84.7m"
+],
+"id": "m100-066",
+"kind": "mtn",
+"name": "Woraksan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-066.json"
+},
+{
+"km": 2.95,
+"minE": 226.8,
+"sea": 0,
+"bump": 21.8,
+"bumpAt": [
+36.16422,
+127.60113,
+2295
+],
+"grade": 0.732,
+"gradeAt": [
+36.16422,
+127.60113,
+2295
+],
+"dz": 59.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 21.8m @2295m",
+"높이 차 59.6m"
+],
+"id": "m100-082",
+"kind": "mtn",
+"name": "Cheontaesan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-082.json"
+},
+{
+"km": 4.41,
+"minE": -1320.0,
+"sea": 2,
+"bump": 1438.6,
+"bumpAt": [
+36.41527,
+126.91506,
+1018
+],
+"grade": 29.27,
+"gradeAt": [
+36.41521,
+126.91462,
+1067
+],
+"dz": 1444.0,
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -1320.0m)",
+"솟음·꺼짐 1438.6m @1018m",
+"높이 차 1444.0m"
+],
+"id": "m100-087",
+"kind": "mtn",
+"name": "Chilgapsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-087.json"
+},
+{
+"km": 5.19,
+"minE": 181.0,
+"sea": 0,
+"bump": 16.2,
+"bumpAt": [
+37.11597,
+128.4835,
+4822
+],
+"grade": 0.57,
+"gradeAt": [
+37.09239,
+128.48862,
+1010
+],
+"dz": 78.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.2m @4822m",
+"높이 차 78.4m"
+],
+"id": "m100-089",
+"kind": "mtn",
+"name": "Taehwasan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-089.json"
+},
+{
+"km": 5.83,
+"minE": -1263.7,
+"sea": 1,
+"bump": 2059.4,
+"bumpAt": [
+36.71812,
+127.9998,
+5087
+],
+"grade": 35.378,
+"gradeAt": [
+36.71812,
+127.9998,
+5087
+],
+"dz": 2050.7,
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -1263.7m)",
+"솟음·꺼짐 2059.4m @5087m",
+"높이 차 2050.7m"
+],
+"id": "m100-100",
+"kind": "mtn",
+"name": "Huiyangsan",
+"city": "m100-chung",
+"lab": false,
+"file": "data/mtn/m100-100.json"
+},
+{
+"km": 7.4,
+"minE": 171.7,
+"sea": 0,
+"bump": 14.9,
+"bumpAt": [
+35.39995,
+127.04931,
+2731
+],
+"grade": 0.632,
+"gradeAt": [
+35.40033,
+127.04833,
+2833
+],
+"dz": 62.3,
+"ok": false,
+"why": [
+"높이 차 62.3m"
+],
+"id": "m100-006",
+"kind": "mtn",
+"name": "Gangcheonsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-006.json"
+},
+{
+"km": 2.61,
+"minE": -1228.9,
+"sea": 4,
+"bump": 1231.8,
+"bumpAt": [
+34.68354,
+125.19294,
+153
+],
+"grade": 20.311,
+"gradeAt": [
+34.68399,
+125.19285,
+214
+],
+"dz": 1271.9,
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -1228.9m)",
+"솟음·꺼짐 1231.8m @153m",
+"높이 차 1271.9m"
+],
+"id": "m100-016",
+"kind": "mtn",
+"name": "Gitdaebong",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-016.json"
+},
+{
+"km": 9.36,
+"minE": 150.5,
+"sea": 0,
+"bump": 40.7,
+"bumpAt": [
+35.49878,
+126.90198,
+4564
+],
+"grade": 1.071,
+"gradeAt": [
+35.49875,
+126.90208,
+4555
+],
+"dz": 48.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 40.7m @4564m",
+"높이 차 48.9m"
+],
+"id": "m100-019",
+"kind": "mtn",
+"name": "Naejangsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-019.json"
+},
+{
+"km": 6.75,
+"minE": 530.8,
+"sea": 0,
+"bump": 15.5,
+"bumpAt": [
+35.7725,
+127.68142,
+6056
+],
+"grade": 0.531,
+"gradeAt": [
+35.77532,
+127.68447,
+5611
+],
+"dz": 44.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 15.5m @6056m",
+"높이 차 44.4m"
+],
+"id": "m100-024",
+"kind": "mtn",
+"name": "Deogyusan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-024.json"
+},
+{
+"km": 2.64,
+"minE": 152.0,
+"sea": 0,
+"bump": 12.3,
+"bumpAt": [
+34.47745,
+126.63492,
+1768
+],
+"grade": 0.422,
+"gradeAt": [
+34.47373,
+126.63626,
+2319
+],
+"dz": 51.0,
+"ok": false,
+"why": [
+"높이 차 51.0m"
+],
+"id": "m100-028",
+"kind": "mtn",
+"name": "Duryunsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-028.json"
+},
+{
+"km": 4.81,
+"minE": 324.9,
+"sea": 0,
+"bump": 54.0,
+"bumpAt": [
+35.76083,
+127.41194,
+4735
+],
+"grade": 1.764,
+"gradeAt": [
+35.76054,
+127.41139,
+4796
+],
+"dz": 125.4,
+"ok": false,
+"why": [
+"솟음·꺼짐 54.0m @4735m",
+"높이 차 125.4m"
+],
+"id": "m100-031",
+"kind": "mtn",
+"name": "Maisan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-031.json"
+},
+{
+"km": 4.76,
+"minE": 101.4,
+"sea": 0,
+"bump": 12.9,
+"bumpAt": [
+35.7399,
+127.07228,
+2752
+],
+"grade": 0.609,
+"gradeAt": [
+35.74032,
+127.07221,
+2698
+],
+"dz": 51.2,
+"ok": false,
+"why": [
+"높이 차 51.2m"
+],
+"id": "m100-034",
+"kind": "mtn",
+"name": "Moaksan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-034.json"
+},
+{
+"km": 3.31,
+"minE": -5059.5,
+"sea": 1,
+"bump": 2986.3,
+"bumpAt": [
+35.11076,
+127.00056,
+3212
+],
+"grade": 106.733,
+"gradeAt": [
+35.11119,
+127.00002,
+3281
+],
+"dz": 6000.5,
+"ok": false,
+"why": [
+"물속 꺼짐 1점(최저 -5059.5m)",
+"솟음·꺼짐 2986.3m @3212m",
+"높이 차 6000.5m"
+],
+"id": "m100-035",
+"kind": "mtn",
+"name": "Mudeungsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-035.json"
+},
+{
+"km": 2.99,
+"minE": 104.1,
+"sea": 0,
+"bump": 19.3,
+"bumpAt": [
+35.46117,
+126.7568,
+2301
+],
+"grade": 0.697,
+"gradeAt": [
+35.46137,
+126.7568,
+2278
+],
+"dz": 35.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 19.3m @2301m"
+],
+"id": "m100-039",
+"kind": "mtn",
+"name": "Bangjangsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-039.json"
+},
+{
+"km": 5.48,
+"minE": 127.3,
+"sea": 0,
+"bump": 26.4,
+"bumpAt": [
+35.44698,
+126.88251,
+2883
+],
+"grade": 1.185,
+"gradeAt": [
+35.44671,
+126.88152,
+2776
+],
+"dz": 52.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 26.4m @2883m",
+"높이 차 52.2m"
+],
+"id": "m100-042",
+"kind": "mtn",
+"name": "Baegamsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-042.json"
+},
+{
+"km": 9.48,
+"minE": 185.0,
+"sea": 0,
+"bump": 34.5,
+"bumpAt": [
+35.08961,
+127.61674,
+6680
+],
+"grade": 0.685,
+"gradeAt": [
+35.08988,
+127.61728,
+6738
+],
+"dz": 170.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 34.5m @6680m",
+"높이 차 170.1m"
+],
+"id": "m100-043",
+"kind": "mtn",
+"name": "Baegunsan (Gwangyang)",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-043.json"
+},
+{
+"km": 3.97,
+"minE": 6.3,
+"sea": 0,
+"bump": 15.8,
+"bumpAt": [
+35.62348,
+126.58135,
+3705
+],
+"grade": 0.62,
+"gradeAt": [
+35.61954,
+126.58218,
+3093
+],
+"dz": 47.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 15.8m @3705m",
+"높이 차 47.7m"
+],
+"id": "m100-046",
+"kind": "mtn",
+"name": "Byeonsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-046.json"
+},
+{
+"km": 16.12,
+"minE": -344.1,
+"sea": 2,
+"bump": 403.7,
+"bumpAt": [
+35.48794,
+126.57685,
+1670
+],
+"grade": 6.335,
+"gradeAt": [
+35.48794,
+126.57685,
+1670
+],
+"dz": 434.1,
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -344.1m)",
+"솟음·꺼짐 403.7m @1670m",
+"높이 차 434.1m"
+],
+"id": "m100-051",
+"kind": "mtn",
+"name": "Seonunsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-051.json"
+},
+{
+"km": 9.55,
+"minE": 317.0,
+"sea": 0,
+"bump": 23.0,
+"bumpAt": [
+35.92003,
+127.37282,
+8432
+],
+"grade": 0.934,
+"gradeAt": [
+35.92444,
+127.41775,
+2299
+],
+"dz": 129.3,
+"ok": false,
+"why": [
+"솟음·꺼짐 23.0m @8432m",
+"높이 차 129.3m"
+],
+"id": "m100-065",
+"kind": "mtn",
+"name": "Unjangsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-065.json"
+},
+{
+"km": 4.41,
+"minE": 24.0,
+"sea": 0,
+"bump": 24.5,
+"bumpAt": [
+34.77898,
+126.69961,
+2534
+],
+"grade": 0.876,
+"gradeAt": [
+34.76719,
+126.70558,
+4198
+],
+"dz": 56.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 24.5m @2534m",
+"높이 차 56.1m"
+],
+"id": "m100-067",
+"kind": "mtn",
+"name": "Wolchulsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-067.json"
+},
+{
+"km": 4.89,
+"minE": 638.9,
+"sea": 0,
+"bump": 18.2,
+"bumpAt": [
+35.62262,
+127.57863,
+2794
+],
+"grade": 0.5,
+"gradeAt": [
+35.619,
+127.58956,
+3998
+],
+"dz": 129.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.2m @2794m",
+"높이 차 129.1m"
+],
+"id": "m100-070",
+"kind": "mtn",
+"name": "Jangansan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-070.json"
+},
+{
+"km": 4.05,
+"minE": 245.0,
+"sea": 0,
+"bump": 18.6,
+"bumpAt": [
+35.95405,
+127.68311,
+2745
+],
+"grade": 0.638,
+"gradeAt": [
+35.95408,
+127.68367,
+2803
+],
+"dz": 29.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.6m @2745m"
+],
+"id": "m100-072",
+"kind": "mtn",
+"name": "Jeoksangsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-072.json"
+},
+{
+"km": 4.09,
+"minE": -7933.0,
+"sea": 2,
+"bump": 8758.7,
+"bumpAt": [
+35.00016,
+127.31259,
+3937
+],
+"grade": 163.765,
+"gradeAt": [
+35.00049,
+127.31296,
+3991
+],
+"dz": 8788.0,
+"ok": false,
+"why": [
+"물속 꺼짐 2점(최저 -7933.0m)",
+"솟음·꺼짐 8758.7m @3937m",
+"높이 차 8788.0m"
+],
+"id": "m100-074",
+"kind": "mtn",
+"name": "Jogyesan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-074.json"
+},
+{
+"km": 4.82,
+"minE": 59.6,
+"sea": 0,
+"bump": 15.0,
+"bumpAt": [
+34.54721,
+126.92492,
+1202
+],
+"grade": 0.499,
+"gradeAt": [
+34.54724,
+126.92505,
+1190
+],
+"dz": 56.4,
+"ok": false,
+"why": [
+"높이 차 56.4m"
+],
+"id": "m100-079",
+"kind": "mtn",
+"name": "Cheongwansan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-079.json"
+},
+{
+"km": 3.58,
+"minE": 134.1,
+"sea": 0,
+"bump": 39.5,
+"bumpAt": [
+35.39388,
+126.98856,
+1648
+],
+"grade": 0.739,
+"gradeAt": [
+35.39339,
+126.98711,
+1924
+],
+"dz": 53.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 39.5m @1648m",
+"높이 차 53.0m"
+],
+"id": "m100-084",
+"kind": "mtn",
+"name": "Chuwolsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-084.json"
+},
+{
+"km": 3.53,
+"minE": 9.8,
+"sea": 0,
+"bump": 18.4,
+"bumpAt": [
+34.63094,
+127.4426,
+1834
+],
+"grade": 0.596,
+"gradeAt": [
+34.63223,
+127.44403,
+1571
+],
+"dz": 67.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.4m @1834m",
+"높이 차 67.1m"
+],
+"id": "m100-092",
+"kind": "mtn",
+"name": "Paryeongsan",
+"city": "m100-jeolla",
+"lab": false,
+"file": "data/mtn/m100-092.json"
+},
+{
+"km": 4.99,
+"minE": 546.0,
+"sea": 0,
+"bump": 12.8,
+"bumpAt": [
+35.80497,
+128.09858,
+1481
+],
+"grade": 0.563,
+"gradeAt": [
+35.82106,
+128.11687,
+4422
+],
+"dz": 38.4,
+"ok": true,
+"why": [],
+"id": "m100-003",
+"kind": "mtn",
+"name": "Gayasan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-003.json"
+},
+{
+"km": 4.42,
+"minE": 277.6,
+"sea": 0,
+"bump": 13.8,
+"bumpAt": [
+35.61995,
+129.00305,
+4305
+],
+"grade": 0.625,
+"gradeAt": [
+35.61375,
+129.02294,
+1985
+],
+"dz": 62.8,
+"ok": false,
+"why": [
+"높이 차 62.8m"
+],
+"id": "m100-004",
+"kind": "mtn",
+"name": "Gajisan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-004.json"
+},
+{
+"km": 5.68,
+"minE": 90.7,
+"sea": 0,
+"bump": 16.8,
+"bumpAt": [
+34.74932,
+127.98,
+5025
+],
+"grade": 0.589,
+"gradeAt": [
+34.75234,
+127.97698,
+4349
+],
+"dz": 48.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.8m @5025m",
+"높이 차 48.6m"
+],
+"id": "m100-012",
+"kind": "mtn",
+"name": "Geumsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-012.json"
+},
+{
+"km": 4.83,
+"minE": 94.1,
+"sea": 0,
+"bump": 39.2,
+"bumpAt": [
+36.09512,
+128.30158,
+4435
+],
+"grade": 0.862,
+"gradeAt": [
+36.09347,
+128.30084,
+4697
+],
+"dz": 131.7,
+"ok": false,
+"why": [
+"솟음·꺼짐 39.2m @4435m",
+"높이 차 131.7m"
+],
+"id": "m100-014",
+"kind": "mtn",
+"name": "Geumosan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-014.json"
+},
+{
+"km": 4.03,
+"minE": 42.0,
+"sea": 0,
+"bump": 12.0,
+"bumpAt": [
+35.28058,
+129.04977,
+3897
+],
+"grade": 0.502,
+"gradeAt": [
+35.27496,
+129.04284,
+2865
+],
+"dz": 81.5,
+"ok": false,
+"why": [
+"높이 차 81.5m"
+],
+"id": "m100-015",
+"kind": "mtn",
+"name": "Geumjeongsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-015.json"
+},
+{
+"km": 5.04,
+"minE": 65.1,
+"sea": 0,
+"bump": 14.4,
+"bumpAt": [
+35.78887,
+129.22273,
+4775
+],
+"grade": 0.281,
+"gradeAt": [
+35.79308,
+129.22744,
+3965
+],
+"dz": 42.4,
+"ok": false,
+"why": [
+"높이 차 42.4m"
+],
+"id": "m100-017",
+"kind": "mtn",
+"name": "Namsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-017.json"
+},
+{
+"km": 2.93,
+"minE": 280.7,
+"sea": 0,
+"bump": 31.8,
+"bumpAt": [
+36.26971,
+129.23803,
+327
+],
+"grade": 0.748,
+"gradeAt": [
+36.26971,
+129.23803,
+327
+],
+"dz": 41.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 31.8m @327m",
+"높이 차 41.8m"
+],
+"id": "m100-018",
+"kind": "mtn",
+"name": "Naeyeonsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-018.json"
+},
+{
+"km": 5.26,
+"minE": 288.9,
+"sea": 0,
+"bump": 18.2,
+"bumpAt": [
+36.66671,
+127.92997,
+4968
+],
+"grade": 0.591,
+"gradeAt": [
+36.66723,
+127.92928,
+5054
+],
+"dz": 38.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.2m @4968m"
+],
+"id": "m100-022",
+"kind": "mtn",
+"name": "Daeyasan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-022.json"
+},
+{
+"km": 3.86,
+"minE": 87.8,
+"sea": 0,
+"bump": 24.0,
+"bumpAt": [
+35.22526,
+128.53717,
+1741
+],
+"grade": 0.698,
+"gradeAt": [
+35.211,
+128.5367,
+3711
+],
+"dz": 49.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 24.0m @1741m",
+"높이 차 49.9m"
+],
+"id": "m100-036",
+"kind": "mtn",
+"name": "Muhaksan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-036.json"
+},
+{
+"km": 3.77,
+"minE": 50.8,
+"sea": 0,
+"bump": 17.1,
+"bumpAt": [
+34.81094,
+128.41574,
+3703
+],
+"grade": 0.555,
+"gradeAt": [
+34.81969,
+128.40467,
+1633
+],
+"dz": 57.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.1m @3703m",
+"높이 차 57.5m"
+],
+"id": "m100-037",
+"kind": "mtn",
+"name": "Mireuksan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-037.json"
+},
+{
+"km": 8.39,
+"minE": 191.2,
+"sea": 0,
+"bump": 23.1,
+"bumpAt": [
+35.73741,
+128.53741,
+4551
+],
+"grade": 0.541,
+"gradeAt": [
+35.74999,
+128.53468,
+2791
+],
+"dz": 97.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 23.1m @4551m",
+"높이 차 97.6m"
+],
+"id": "m100-048",
+"kind": "mtn",
+"name": "Biseulsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-048.json"
+},
+{
+"km": 7.19,
+"minE": 56.7,
+"sea": 0,
+"bump": 16.7,
+"bumpAt": [
+37.53584,
+130.87067,
+595
+],
+"grade": 0.679,
+"gradeAt": [
+37.50022,
+130.85963,
+6234
+],
+"dz": 114.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.7m @595m",
+"높이 차 114.9m"
+],
+"id": "m100-053",
+"kind": "mtn",
+"name": "Seonginbong",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-053.json"
+},
+{
+"km": 7.72,
+"minE": 290.0,
+"sea": 0,
+"bump": 12.2,
+"bumpAt": [
+36.97022,
+128.50648,
+7436
+],
+"grade": 0.548,
+"gradeAt": [
+36.96762,
+128.50673,
+7133
+],
+"dz": 33.8,
+"ok": true,
+"why": [],
+"id": "m100-054",
+"kind": "mtn",
+"name": "Sobaeksan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-054.json"
+},
+{
+"km": 5.96,
+"minE": 103.4,
+"sea": 0,
+"bump": 29.3,
+"bumpAt": [
+35.54054,
+129.06394,
+4929
+],
+"grade": 0.797,
+"gradeAt": [
+35.54108,
+129.06174,
+5172
+],
+"dz": 44.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 29.3m @4929m",
+"높이 차 44.0m"
+],
+"id": "m100-057",
+"kind": "mtn",
+"name": "Sinbulsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-057.json"
+},
+{
+"km": 1.87,
+"minE": 141.9,
+"sea": 0,
+"bump": 11.5,
+"bumpAt": [
+35.07388,
+128.26567,
+1535
+],
+"grade": 0.614,
+"gradeAt": [
+35.07238,
+128.26534,
+1708
+],
+"dz": 50.8,
+"ok": false,
+"why": [
+"높이 차 50.8m"
+],
+"id": "m100-058",
+"kind": "mtn",
+"name": "Yeonhwasan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-058.json"
+},
+{
+"km": 4.96,
+"minE": 169.5,
+"sea": 0,
+"bump": 18.9,
+"bumpAt": [
+35.61436,
+128.93617,
+2520
+],
+"grade": 0.612,
+"gradeAt": [
+35.61405,
+128.94844,
+3763
+],
+"dz": 48.9,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.9m @2520m",
+"높이 차 48.9m"
+],
+"id": "m100-063",
+"kind": "mtn",
+"name": "Unmunsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-063.json"
+},
+{
+"km": 6.13,
+"minE": 132.5,
+"sea": 0,
+"bump": 17.3,
+"bumpAt": [
+37.07372,
+129.23511,
+5562
+],
+"grade": 0.588,
+"gradeAt": [
+37.06997,
+129.24649,
+4310
+],
+"dz": 51.0,
+"ok": false,
+"why": [
+"솟음·꺼짐 17.3m @5562m",
+"높이 차 51.0m"
+],
+"id": "m100-069",
+"kind": "mtn",
+"name": "Eungbongsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-069.json"
+},
+{
+"km": 4.12,
+"minE": 186.5,
+"sea": 0,
+"bump": 11.6,
+"bumpAt": [
+35.54263,
+128.9619,
+1506
+],
+"grade": 0.619,
+"gradeAt": [
+35.55325,
+128.96296,
+2984
+],
+"dz": 82.0,
+"ok": false,
+"why": [
+"높이 차 82.0m"
+],
+"id": "m100-071",
+"kind": "mtn",
+"name": "Jaeyaksan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-071.json"
+},
+{
+"km": 1.83,
+"minE": 275.0,
+"sea": 0,
+"bump": 22.7,
+"bumpAt": [
+36.39325,
+129.15445,
+921
+],
+"grade": 0.738,
+"gradeAt": [
+36.39273,
+129.15463,
+981
+],
+"dz": 44.1,
+"ok": false,
+"why": [
+"솟음·꺼짐 22.7m @921m",
+"높이 차 44.1m"
+],
+"id": "m100-075",
+"kind": "mtn",
+"name": "Juwangsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-075.json"
+},
+{
+"km": 10.96,
+"minE": 219.0,
+"sea": 0,
+"bump": 24.0,
+"bumpAt": [
+36.79995,
+128.07368,
+7408
+],
+"grade": 0.605,
+"gradeAt": [
+36.7998,
+128.08488,
+8645
+],
+"dz": 75.8,
+"ok": false,
+"why": [
+"솟음·꺼짐 24.0m @7408m",
+"높이 차 75.8m"
+],
+"id": "m100-076",
+"kind": "mtn",
+"name": "Juheulsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-076.json"
+},
+{
+"km": 2.3,
+"minE": 10.7,
+"sea": 0,
+"bump": 22.8,
+"bumpAt": [
+34.8473,
+128.20602,
+1311
+],
+"grade": 0.584,
+"gradeAt": [
+34.84748,
+128.20521,
+1391
+],
+"dz": 94.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 22.8m @1311m",
+"높이 차 94.5m"
+],
+"id": "m100-078",
+"kind": "mtn",
+"name": "Jirisan (Tongyeong)",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-078.json"
+},
+{
+"km": 4.53,
+"minE": 7.5,
+"sea": 0,
+"bump": 18.0,
+"bumpAt": [
+35.37344,
+128.95093,
+3926
+],
+"grade": 0.502,
+"gradeAt": [
+35.35362,
+128.95652,
+1410
+],
+"dz": 58.6,
+"ok": false,
+"why": [
+"솟음·꺼짐 18.0m @3926m",
+"높이 차 58.6m"
+],
+"id": "m100-081",
+"kind": "mtn",
+"name": "Cheonseongsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-081.json"
+},
+{
+"km": 2.06,
+"minE": 200.0,
+"sea": 0,
+"bump": 64.3,
+"bumpAt": [
+36.79057,
+128.89779,
+458
+],
+"grade": 1.713,
+"gradeAt": [
+36.79163,
+128.89842,
+638
+],
+"dz": 59.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 64.3m @458m",
+"높이 차 59.5m"
+],
+"id": "m100-083",
+"kind": "mtn",
+"name": "Cheongnyangsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-083.json"
+},
+{
+"km": 4.21,
+"minE": -4896.3,
+"sea": 4,
+"bump": 5627.8,
+"bumpAt": [
+35.99986,
+128.69592,
+1524
+],
+"grade": 109.54,
+"gradeAt": [
+36.00003,
+128.69548,
+1575
+],
+"dz": 5601.3,
+"ok": false,
+"why": [
+"물속 꺼짐 4점(최저 -4896.3m)",
+"솟음·꺼짐 5627.8m @1524m",
+"높이 차 5601.3m"
+],
+"id": "m100-090",
+"kind": "mtn",
+"name": "Palgongsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-090.json"
+},
+{
+"km": 3.45,
+"minE": 99.2,
+"sea": 0,
+"bump": 14.5,
+"bumpAt": [
+35.54846,
+128.5372,
+2934
+],
+"grade": 0.653,
+"gradeAt": [
+35.54889,
+128.53704,
+2883
+],
+"dz": 50.8,
+"ok": false,
+"why": [
+"높이 차 50.8m"
+],
+"id": "m100-095",
+"kind": "mtn",
+"name": "Hwawangsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-095.json"
+},
+{
+"km": 4.62,
+"minE": 470.6,
+"sea": 0,
+"bump": 16.7,
+"bumpAt": [
+35.49127,
+127.97484,
+4287
+],
+"grade": 0.55,
+"gradeAt": [
+35.49029,
+127.97492,
+4170
+],
+"dz": 41.5,
+"ok": false,
+"why": [
+"솟음·꺼짐 16.7m @4287m",
+"높이 차 41.5m"
+],
+"id": "m100-096",
+"kind": "mtn",
+"name": "Hwangmaesan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-096.json"
+},
+{
+"km": 4.61,
+"minE": 212.3,
+"sea": 0,
+"bump": 11.7,
+"bumpAt": [
+36.12463,
+127.98015,
+3061
+],
+"grade": 0.6,
+"gradeAt": [
+36.12653,
+127.98549,
+2382
+],
+"dz": 47.5,
+"ok": false,
+"why": [
+"높이 차 47.5m"
+],
+"id": "m100-098",
+"kind": "mtn",
+"name": "Hwangaksan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-098.json"
+},
+{
+"km": 2.79,
+"minE": 479.8,
+"sea": 0,
+"bump": 13.7,
+"bumpAt": [
+36.81083,
+128.27723,
+2502
+],
+"grade": 0.717,
+"gradeAt": [
+36.8108,
+128.27706,
+2486
+],
+"dz": 33.8,
+"ok": true,
+"why": [],
+"id": "m100-099",
+"kind": "mtn",
+"name": "Hwangjangsan",
+"city": "m100-gyeong",
+"lab": false,
+"file": "data/mtn/m100-099.json"
+},
+{
+"km": 8.31,
+"minE": 575.0,
+"sea": 0,
+"bump": 25.3,
+"bumpAt": [
+33.37403,
+126.52975,
+6386
+],
+"grade": 0.573,
+"gradeAt": [
+33.36747,
+126.53395,
+7551
+],
+"dz": 59.2,
+"ok": false,
+"why": [
+"솟음·꺼짐 25.3m @6386m",
+"높이 차 59.2m"
+],
+"id": "m100-093",
+"kind": "mtn",
+"name": "Hallasan Baengnokdam",
+"city": "m100-jeju",
+"lab": false,
+"file": "data/mtn/m100-093.json"
+}
+]
