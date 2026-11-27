@@ -1402,7 +1402,7 @@
 </div>
 
 <script>
-const BUILD = '202611280720';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611280740';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4147,6 +4147,8 @@ const V3D_LAB = new Set(["baegun-gil", "buyeo-gil", "dalseong-bike", "dongbaek-1
 const V3D_LAB_MTN = new Set(["baegun", "cheonwang", "cheonwang-hwaeom", "cheonwang-jungsan", "daebong", "darangswi", "gamtu", "geomang", "geumwon", "gibaek", "hwangseok", "m100-002", "m100-004", "m100-006", "m100-007", "m100-008", "m100-009", "m100-010", "m100-011", "m100-012", "m100-013", "m100-014", "m100-015", "m100-016", "m100-017", "m100-018", "m100-019", "m100-022", "m100-023", "m100-024", "m100-025", "m100-026", "m100-027", "m100-028", "m100-029", "m100-031", "m100-032", "m100-033", "m100-034", "m100-035", "m100-036", "m100-037", "m100-038", "m100-039", "m100-041", "m100-042", "m100-043", "m100-044", "m100-045", "m100-046", "m100-047", "m100-048", "m100-049", "m100-050", "m100-051", "m100-052", "m100-053", "m100-055", "m100-056", "m100-057", "m100-058", "m100-059", "m100-060", "m100-061", "m100-062", "m100-063", "m100-064", "m100-065", "m100-066", "m100-067", "m100-068", "m100-069", "m100-070", "m100-071", "m100-072", "m100-074", "m100-075", "m100-076", "m100-078", "m100-079", "m100-080", "m100-081", "m100-082", "m100-083", "m100-084", "m100-085", "m100-086", "m100-087", "m100-089", "m100-090", "m100-091", "m100-092", "m100-093", "m100-094", "m100-095", "m100-096", "m100-098", "m100-100", "namdeogyu", "sambong", "samjeong", "wabul", "wolbong"]);
 /* 11/27 저녁 보스 "3D는 점검이 더 필요 → 3D는 감추고, 위성·그림 지도가 맞으면 오픈": 3D 보기 자체를 실험실 폰에서만(V3D_LAB_ONLY) → 위 두 목록은 코스를 숨기지 않고 '3D 다시 열 때 점검할 목록'으로만 남김 */
 const V3D_LAB_ONLY = true;
+/* 11/28 보스 폰(실험실 켜짐) 낙동강 자전거길에 '3D'가 그대로 → 보스 폰이 늘 실험실이라 '실험실만'이면 보스에게도 계속 보임. 길·자전거 코스 3D는 실험실에서도 끔(높이 자료가 길과 안 맞음, 6f57264 점검 목록 V3D_LAB 그대로). 산 3D만 실험실에 남김. 다시 시험하려면 false */
+const V3D_ROAD_OFF = true;
 /* 11/27 보스 "사용자가 앱 보고 실제로 찾아가니 검증되고 확실한 것만 오픈, 애매·미확인은 실험실" (tools/verify_courses.py --apply 가 아래 한 줄을 고침)
    오픈 = ①공식 GPX(두루누비·지리산둘레길·산림청 100대명산) 또는 보스 현장 GPS ②되돌림·엉킴 통과 ③그림 지도(오픈스트리트맵) 위 실제 길(길 밖 ≤5%·자전거 산길 ≤3%·찻길 ≤40%)
    표: data/course_verify.json · 검증되면 다시 돌려 이 줄에서 빠짐 → 일반 목록 복귀(기록·진행 그대로). ROUTE_LAB(노선 불량)과 따로 */
@@ -4822,7 +4824,7 @@ function preTick(){
   PRE.busy = true;
   (async () => {
     if (await preAll()) return;
-    if (DB.v3d === false || (V3D_LAB_ONLY && !LAB_ON()) || $('startScreen').classList.contains('hidden') || !preNetOk(true)) { PRE.k = ''; return; }
+    if (DB.v3d === false || (V3D_LAB_ONLY && !LAB_ON()) || (V3D_ROAD_OFF && !(DB.pick && DB.pick.type === 'climb')) || $('startScreen').classList.contains('hidden') || !preNetOk(true)) { PRE.k = ''; return; }
     const key = preKey(); if (DB.pre?.[key]) return;
     if (PRE.k !== key){ PRE.k = key; PRE.t = Date.now(); return; }
     if (Date.now() - PRE.t < 4000) return;
@@ -7459,7 +7461,7 @@ function v3dSat(lat, lon){   // 코스 위치에 맞게 위성 사진 출처·�
   V3D.kr = kr; if (V3D.sty === 'toon') return; $('v3dCredit').textContent = (ACTIVE.lang !== 'ko' ? (kr ? 'Imagery © VWorld (MOLIT) · KOGL Type 1' : 'Imagery © Esri · Maxar') : kr ? '위성 사진 © 브이월드(국토교통부) · 공공누리 제1유형' : '위성 사진 © Esri · Maxar') + (ACTIVE.lang !== 'ko' ? ' · Elevation © AWS Terrain Tiles' : ' · 높이 © AWS Terrain Tiles') + (V3D_BLD ? (ACTIVE.lang !== 'ko' ? ' · Buildings © OpenFreeMap · OpenStreetMap' : ' · 건물 © OpenFreeMap · OpenStreetMap') : '');
 }
 const V3D = { map: null, ready: false, loading: false, failed: false, key: '', me: null, tags: [], brg: null, last: 0, mc: null, kr: null, bad: 0, ok: 0 };
-const v3dAble = () => S.running && !S.free && !S.gps && !V3D.failed && !V3D.hot && !LOWP && (isClimb() ? TGT(DB.climb.sel).kind === 'mountain' && !!MTN_GEO[DB.climb.sel] : SAT_OK);
+const v3dAble = () => S.running && !S.free && !S.gps && !V3D.failed && !V3D.hot && !LOWP && (isClimb() ? TGT(DB.climb.sel).kind === 'mountain' && !!MTN_GEO[DB.climb.sel] : SAT_OK && !V3D_ROAD_OFF);
 const v3dOn = () => DB.v3d !== false && (!V3D_LAB_ONLY || LAB_ON()) && V3D.ready && !NAV.full && v3dAble();
 function v3dLoad(){
   if (V3D.map || V3D.loading || V3D.failed) return; V3D.loading = true;
