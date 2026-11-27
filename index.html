@@ -349,7 +349,7 @@
   .sum4 div{background:rgba(var(--ink),.08);border-radius:14px;padding:10px 12px}
   .sum4 .kc{grid-column:span 2}
   .kcday{background:rgba(var(--ink),.08);border-radius:14px;padding:10px 14px;margin:12px 0 4px}.kcday .kt{display:flex;justify-content:space-between;font-weight:800;font-size:17px;margin-bottom:4px}.kcday .kl{display:flex;justify-content:space-between;font-size:14px;opacity:.85;padding:3px 0}.kcday .kl b{font-weight:700}
-  #tGoal{margin:4px 0 2px;min-width:0}#tGoal .seg button{white-space:nowrap}.mrow .muted{word-break:keep-all}.mrow .nw{white-space:nowrap}#tGoal .tgl{font-size:14px;font-weight:800;margin-bottom:6px}#tGoal .tgn{font-size:13px;margin-top:6px;line-height:1.5}
+  #tGoal{margin:4px 0 2px;min-width:0}#tGoal .seg button{white-space:nowrap}.mrow .muted{word-break:keep-all}.mrow .nw{white-space:nowrap}#tGoal .tgl{font-size:15px;font-weight:700;opacity:.75;margin-bottom:8px}#tGoal .tgn{font-size:13px;margin-top:6px;line-height:1.5}
   .kbasis{margin-top:10px;font-size:13.5px;line-height:1.6;word-break:keep-all}.kbasis summary{cursor:pointer;padding:8px 0;font-weight:700;color:var(--vtx)}.kbasis p{margin:8px 0;color:var(--tx2)}.kbasis b{color:var(--tx)}
   #bodyBox .sb{max-height:88vh;overflow:auto}
   .bodyrow{display:flex;align-items:center;gap:8px;margin:6px 0}.bodyrow label{width:44px}.bodyrow input{flex:1;min-width:0;padding:10px 12px;border-radius:12px;border:0;font-size:17px}
@@ -508,7 +508,7 @@
   #setBox .kbasis[open] summary::after{content:'▴'}
   #setBox .kbasis > div{padding-bottom:10px}
   #recScreen .titlebar{justify-content:flex-start;gap:12px}
-  #recScreen .titlebar h1{font-size:20px;flex:0 1 auto;text-align:left}
+  #recScreen .titlebar h1{font-size:22px;flex:0 1 auto;text-align:left}
   .titlebar .back{height:34px;border:0;border-radius:999px;background:var(--ch2);color:var(--tx);font-size:13px;font-weight:700;padding:0 12px}
   .stepbtn,.recbtn,.zoneBtn{background:var(--ch2)}
   /* 내 기록 */
@@ -679,7 +679,8 @@
   #bStart .bsG{font-size:27px;letter-spacing:-.5px}
   #startScreen{padding-bottom:calc(106px + env(safe-area-inset-bottom))}
   /* 11/25: 끝 화면이 길어도 '✓ 완료'는 늘 보이게 */
-  #bHome{height:68px;position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}
+  #endScreen h1{font-size:22px}   /* 11/27 재검수: 화면 제목 22로 통일 (내 기록과 같게) */
+  #bHome{height:68px;font-size:27px;letter-spacing:-.5px;position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:5;box-shadow:0 6px 22px rgba(0,0,0,var(--sha)),0 26px 0 18px var(--ch)}
   /* 11/25 보스 '코스를 선택하면 전체 경로 미리 확인': 고른 코스 카드 오른쪽 작은 길 그림(산은 높이 그래프) · 누르면 크게 */
   .rthumb{flex:none;width:64px;height:64px;border-radius:10px;background:rgba(var(--ink),.06);position:relative;overflow:hidden;cursor:pointer}
   .rthumb svg{position:absolute;inset:0;width:100%;height:100%}
@@ -743,7 +744,7 @@
   .mrApply{display:block;width:100%;margin-top:10px;min-height:46px;border:0;border-radius:12px;background:var(--vt);color:#1b1c1f;font-size:15px;font-weight:900}
   .mrSeg{display:flex;gap:6px;margin-top:14px;background:var(--ch2);padding:4px;border-radius:999px}
   .mrSeg button{flex:1;height:40px;border:0;border-radius:999px;background:transparent;color:var(--tx);font-size:15px;font-weight:700}
-  .mrSeg button.on{background:var(--vt);color:var(--onv);font-weight:900}
+  .mrSeg button.on{background:var(--ch3);color:var(--tx);font-weight:800}   /* 11/27 재검수: 고르기 칸은 다른 화면처럼 회색 (연두는 오늘 카드 테두리·운동 칩만) */
   .mrWeek{background:var(--ch2);border-radius:16px;padding:10px 12px 12px;margin-top:10px}
   .mrBars{display:flex;align-items:flex-end;gap:6px;height:170px;margin-top:6px;padding:0 2px}
   .mrBars>div{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
@@ -1387,7 +1388,7 @@
 </div>
 
 <script>
-const BUILD = '202611270830';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611270902';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2046,7 +2047,7 @@ const TEXT = {
     toScene: '🎬 풍경 보기', up: '⬆ 오르막', down: '⬇ 내리막', flat: '➡ 평지',
     cfTitle: '운동을 끝낼까요?', cfNo: '계속하기', cfYes: '끝내기', again: '↻ 한 번 더',   /* 11/19 검수 #2: 이어지지 않고 새 운동이라 이름을 맞춤 */
     nearWait: '📍 지금 위치를 찾는 중…', nearHere: '📍 지금 위치에서 가까운 순', nearFallback: '📍 위치를 못 받아서 {s} 기준으로 가까운 순 (위치 권한을 켜면 내 주변으로)',
-    nearPass: '(지나가는 길)', tempLow: '산 아래보다 {t}℃ 낮아요', kcToday: '오늘 소모 칼로리', kcLife: '생활 걸음', kcSteps: '보', kcNone: '아직 기록이 없어요', sKcal: '소모 칼로리', kcalLv0: '기본값 계산', kcalLv1: '체중 반영', kcalLv2: '개인 맞춤', bodyBtn: '⚖️ 내 몸 정보 넣기 (칼로리 정확도)', bodySaved: '몸 정보 저장 — 칼로리를 다시 계산했어요', bodyCleared: '몸 정보를 지웠어요 — 기본값으로 계산해요', ipClose: '▴ 눌러서 접기', ipOpen: '▾ 눌러서 펼치기', gOfficial: '공식 노선 GPX', mapOfficial: '노선: 공식 GPX (두루누비·지리산둘레길)', nearApprox: '지역 중심', longTag: '🧭 장거리', noCourse: '코스가 없어요',
+    nearPass: '(지나가는 길)', tempLow: '산 아래보다 {t}℃ 낮아요', kcToday: '오늘 태운 칼로리', kcLife: '생활 걸음', kcSteps: '보', kcNone: '아직 기록이 없어요', sKcal: '태운 칼로리', kcalLv0: '기본값 계산', kcalLv1: '체중 반영', kcalLv2: '개인 맞춤', bodyBtn: '⚖️ 내 몸 정보 넣기 (칼로리 정확도)', bodySaved: '몸 정보 저장 — 칼로리를 다시 계산했어요', bodyCleared: '몸 정보를 지웠어요 — 기본값으로 계산해요', ipClose: '▴ 눌러서 접기', ipOpen: '▾ 눌러서 펼치기', gOfficial: '공식 노선 GPX', mapOfficial: '노선: 공식 GPX (두루누비·지리산둘레길)', nearApprox: '지역 중심', longTag: '🧭 장거리', noCourse: '코스가 없어요',
     rsTitle: '이어서 할까요?', rsNext: '다음 거점 {s}까지 {d}km', rsLeft: '완주까지 {d}km 남음', rsGo: '▶ 이어서 하기', rsRestart: '↺ 처음부터', rsStopped: '{s} 지나서 멈췄어요', cont: '이어서',
     mapNote: '지도 모양은 임시 (GPX 받으면 실제 모양으로)',
     myRec: '📒 내 기록', myRecAll: '📒 내 기록 전체 보기', myRecTitle: '📒 내 기록', back: '‹ 돌아가기',
@@ -3233,7 +3234,7 @@ function lapDone(p){
   S.lapHold = { m: S.sessionM, el: S.elapsed };   // 11/19 검수 #3: 축하 창이 떠 있는 동안 거리가 올라가 끝 화면 숫자가 어긋나던 것
   say(fillT('v_finish', { d: sayM(S.sessionM), t: sayDur(elapsedNow()) }));
   if (!S.running){ showPopup(p.name, p.desc, false); return; }
-  $('lapTitle').textContent = p.name; $('lapBody').textContent = p.desc + ' · ' + T.today + ' ' + (S.sessionM / 1000).toFixed(2) + 'km · ' + fmtTime(S.elapsed);
+  $('lapTitle').textContent = p.name.replace(/^🎉\s*/, '');   // 11/27: 위 '🎉 도착을 축하합니다!'와 🎉 두 번 $('lapBody').textContent = p.desc + ' · ' + T.today + ' ' + (S.sessionM / 1000).toFixed(2) + 'km · ' + fmtTime(S.elapsed);
   lapVisit(); $('lapBox').classList.remove('hidden'); shown(); celebrate(T.w_finish);
   clearTimeout(lapDone.t); lapDone.t = setTimeout(() => { if (!$('lapBox').classList.contains('hidden')) $('lapMore').click(); }, 25000);
 }
