@@ -1421,7 +1421,7 @@
 </div>
 
 <script>
-const BUILD = '202611281600';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281935';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4179,8 +4179,8 @@ Object.values(ALL_ROADS).forEach(c => { if (ROUTE_LAB.has(c.id)) c.lab = true; }
    코스 거리 위치에 못 맞추고 최대 2배라 달리기에선 계속 뒤처짐 → 같은 날 보스 '영상을 빼고 길만 살려줘': 코스는 일반 그대로, 영상만 실험실(video.lab)
    영상 위치를 코스 거리에 맞춘 영상(sync+clips)만 일반 공개 · 영상을 맞춘 뒤 이 목록에서 id를 지우면 영상도 일반으로 */
 const VIDEO_LAB = new Set(["jeonjuhanok-gil", "gyeongbok-3k", "jongmyo-5k", "seokchon-3k", "namhangang-bike", "gyeongchun-bike-24k"]);
-Object.values(ALL_ROADS).forEach(c => { const v = c.video || c.videoHold; if (VIDEO_LAB.has(c.id) && v) v.lab = true; });
-labVideos();
+/* 11/28 저녁 보스 '전주 영상 여전히 나옴'(보스 폰은 실험실 켜짐): 실험실을 켜도 안 나오게 영상을 아예 떼어 둠(videoOff, 자료만 보관) */
+Object.values(ALL_ROADS).forEach(c => { const v = c.video || c.videoHold; if (VIDEO_LAB.has(c.id) && v){ c.videoOff = v; delete c.video; delete c.videoHold; } });
 /* 11/27 보스 "3D 지도와 코스가 조금이라도 안 맞으면 실험실로 — 정확히 맞는 것만 오픈, 3D를 확실히 맞춘 뒤 다시 반입"
    자동 점검 tools/route_3d_audit.py (앱 3D와 같은 높이 자료를 10m마다 짚음 → data/route_3d_audit.json): 물속 꺼짐·60m 안 솟음/꺼짐(길 6m·산 15m 넘음)·평지 길 경사 20% 넘음·산 높이 차 40m 넘음 중 하나라도 있으면 여기에.
    ROUTE_LAB(노선 불량)과 따로 둠 → 3D를 맞춘 코스는 이 목록에서 id만 지우면 바로 일반 목록으로 복귀 (기록·진행 그대로) */
