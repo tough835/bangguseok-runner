@@ -1419,7 +1419,7 @@
 </div>
 
 <script>
-const BUILD = '202611281120';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281140';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -6232,6 +6232,7 @@ document.querySelectorAll('[data-sv]').forEach(b => b.onclick = () => { REC.sv =
    시간대 걸음: 폰 걸음 숫자는 하루 합계만 오므로, 앱이 켜져 있을 때 시간마다 남긴 합계(DB.steps[날].hs)의 차이 → 앱을 안 켠 시간은 다음에 켠 시간에 몰림 */
 function hourSteps(k){
   const t = (DB.steps || {})[k] || {}, hs = t.hs || {}, out = new Array(24).fill(0), tot = stepsOn(k).n;
+  if (Array.isArray(t.hh) && t.hh.length === 24 && t.fix == null) return { out: t.hh.slice(), has: true, hc: true };   // 11/28 새 APK: 삼성 헬스 시간대 그대로 (날짜 팝업에서 손으로 고친 날은 예전 방식)
   let prev = 0; for (let h = 0; h < 24; h++) if (hs[h] != null){ const v = Math.min(hs[h], tot || hs[h]); out[h] = Math.max(0, v - prev); prev = Math.max(prev, v); }
   return { out, has: Object.keys(hs).length > 0 };
 }
@@ -6242,7 +6243,8 @@ function mrDayFill(){
   $('mrWeek').innerHTML = '<div class="calh"><button id="wkPrev" aria-label="&lsaquo;">‹</button><span>' + mrDate(dt, true) + ' · ' + x.n.toLocaleString() + mrSU() + '</span><button id="wkNext" aria-label="&rsaquo;"' + (td ? ' style="opacity:.25"' : '') + '>›</button></div>' +
     '<div class="mrBars hrs">' + hsx.out.map((v, h) => '<div class="' + (h === nowH ? 'td' : '') + '">' + (runH[h] ? '<span class="r">🏃</span>' : '') + '<span class="v">' + (v && h === top ? v.toLocaleString() : '') + '</span><div class="c" style="height:' + Math.round(v / mx * H) + 'px"></div></div>').join('') + '</div>' +
     '<div class="mrDays hrs">' + hsx.out.map((v, h) => '<span>' + (h % 6 === 0 ? h + (ACTIVE.lang === 'ko' ? '시' : 'h') : '') + '</span>').join('') + '</div>' +
-    (x.n > 0 ? '<div class="muted" style="font-size:12px;margin:8px 2px 0;line-height:1.4">' + T.mr_hrNote + '</div>' : '') +
+    (x.n > 0 && !hsx.hc ? '<div class="muted" style="font-size:12px;margin:8px 2px 0;line-height:1.4">' + T.mr_hrNote + '</div>' : '') +   // 삼성 헬스 시간대 자료가 있으면 안내 뺌
+
     '<div class="mrSum"><div><small>' + T.mr_km + '</small><b>' + x.km.toFixed(1) + '<i>km</i></b></div><div><small>' + T.mr_kcSum + '</small><b>' + x.kc.toLocaleString() + '<i>kcal</i></b></div><div><small>' + T.mr_runs + '</small><b>' + x.recs.length + T.cntUnit + '</b></div></div>';
   const go = n => { const a = new Date(y, m - 1, d + n, 12); if (a > new Date()) return; REC.dk = calKey(a); refreshRec(); };
   $('wkPrev').onclick = () => go(-1); $('wkNext').onclick = () => { if (!td) go(1); };
@@ -6839,6 +6841,7 @@ function nativeSteps(first){
       HC.t = Date.now(); Object.values(DB.steps || {}).forEach(t => { delete t.set; delete t.setBase; delete t.setT; });   // 손으로 맞춘 값 지움 → 화면 숫자 = 삼성 숫자
       stepDay().native = h.steps; stepDay().hc = h.steps;   // 11/27: 삼성(헬스 커넥트) 숫자는 hc에 따로 → 폰 걸음 칩 기록이 덮어쓰지 못함
       Object.entries(h.history || {}).forEach(([k, v]) => { DB.steps = DB.steps || {}; if (!(v > 0)) return; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.native = v; t.hc = v; });   // 삼성 숫자로 덮어씀 (옛 센서 오차 지움)
+      Object.entries(h.hours || {}).forEach(([k, a]) => { if (!Array.isArray(a) || a.length !== 24) return; DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.hh = a.map(v => Math.max(0, Math.round(+v || 0))); });   // 11/28 새 APK: 헬스 커넥트 시간대별 걸음 (오늘+지난 7일)
       saveDB(); refreshSteps();
       if (first && P) P.start().catch(() => {});   // 센서 예약은 예비로 유지
       return;

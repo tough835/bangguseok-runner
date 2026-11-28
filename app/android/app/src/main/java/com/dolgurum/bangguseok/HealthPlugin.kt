@@ -11,6 +11,7 @@ import androidx.health.connect.client.request.AggregateGroupByPeriodRequest
 import androidx.health.connect.client.request.ReadRecordsRequest
 import java.time.ZoneId
 import androidx.health.connect.client.time.TimeRangeFilter
+import com.getcapacitor.JSArray
 import com.getcapacitor.JSObject
 import com.getcapacitor.Plugin
 import com.getcapacitor.PluginCall
@@ -29,7 +30,7 @@ import java.time.Period
  * 걸음 수 '읽기' 하나만 요청. 웹 화면에서 window.Capacitor.Plugins.Health 로 부름.
  *  status()       → { available, update, granted }
  *  request()      → 권한 화면 → { granted }
- *  steps()        → { ok, day, steps, history{ "2026-11-23": n, ... 7일 } }
+ *  steps()        → { ok, day, steps, history{ "2026-11-23": n, ... 7일 }, hours{ "2026-11-23": [0시..23시 걸음 24개], ... 오늘+7일 } }
  *  openSettings() → 헬스 커넥트 설정 화면
  */
 @CapacitorPlugin(name = "Health")
@@ -92,6 +93,7 @@ class HealthPlugin : Plugin() {
                    그래서 걸음 기록을 직접 읽어 앱별로 더해 둠 → 합계가 0이면 삼성 헬스 것(없으면 가장 많은 앱) 사용 */
                 val zone = ZoneId.systemDefault()
                 val byDay = HashMap<LocalDate, HashMap<String, Long>>()
+                val byHour = HashMap<LocalDate, HashMap<String, LongArray>>()   // 11/28 보스 '일 = 시간대 그래프': 날·앱별 0~23시 걸음 (기록 가운데 시각 기준)
                 var recN = 0
                 var token: String? = null
                 do {
@@ -102,6 +104,10 @@ class HealthPlugin : Plugin() {
                         val m = byDay.getOrPut(d) { HashMap() }
                         val o = rec.metadata.dataOrigin.packageName
                         m[o] = (m[o] ?: 0L) + rec.count
+                        val mid = rec.startTime.plusMillis((rec.endTime.toEpochMilli() - rec.startTime.toEpochMilli()) / 2).atZone(zone)
+                        val hm = byHour.getOrPut(mid.toLocalDate()) { HashMap() }
+                        val arr = hm.getOrPut(o) { LongArray(24) }
+                        arr[mid.hour] += rec.count
                     }
                     token = res.pageToken
                 } while (token != null && recN < 60000)
@@ -116,6 +122,16 @@ class HealthPlugin : Plugin() {
                 val hist = JSObject()
                 for (i in 1..7) { val d = today.minusDays(i.toLong()); hist.put(key(d), pick(d)) }
                 val now = pick(today)
+                /* 시간대: 하루 합계와 같은 앱(삼성 헬스 우선, 없으면 가장 많은 앱)의 시간별 걸음 → 하루 합계에 맞춰 비율로 맞춤 */
+                val hours = JSObject()
+                for (i in 0..7) {
+                    val d = today.minusDays(i.toLong()); val hm = byHour[d] ?: continue
+                    val arr = hm["com.sec.android.app.shealth"] ?: hm.values.maxByOrNull { it.sum() } ?: continue
+                    val sum = arr.sum(); val tot = pick(d); if (sum <= 0L) continue
+                    val ja = JSArray(); for (h in 0..23) ja.put(if (tot > 0) Math.round(arr[h].toDouble() * tot / sum) else arr[h])
+                    hours.put(key(d), ja)
+                }
+                r.put("hours", hours)
                 val dbg = JSObject()   // 실험실 화면용: 오늘 합계 · 기록 수 · 앱별 걸음
                 dbg.put("agg", agg[today] ?: 0L); dbg.put("records", recN)
                 val og = JSObject(); (byDay[today] ?: HashMap()).forEach { (k, v) -> og.put(k, v) }; dbg.put("origins", og)
