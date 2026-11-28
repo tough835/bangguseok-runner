@@ -1421,7 +1421,7 @@
 </div>
 
 <script>
-const BUILD = '202611281210';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281530';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4175,6 +4175,11 @@ function renderCourseRows(lists, onlySel){
    oncheon-loop-14k(수영강~부산대 13km)는 교대 위쪽(동래·부산대 부근)에서 같은 길을 되짚는 곳이 합쳐 1.7km(13%)라 실험실 */
 const ROUTE_LAB = new Set(["oncheon-loop-14k", "gwangalli-3k", "woryeong-gil", "gwanghallu-gil", "dumulmeori-gil", "gongsanseong-gil", "yeouido-10k", "gyeongjuhist-gil", "giheung-gil", "banpo-6k", "saryeoni-10k", "kukto-633k", "jeju-ring-234k", "jeju-olle-437k", "olle1-15k", "olle6-11k", "olle7-18k", "greenrail-5k", "moontan-3k", "namsan-7k", "oncheon-bike-8k", "musimcheon-gil", "sorigil-gil", "sinjeong-gil", "daecheong-bike", "tangeum-bike", "seomjin-bike", "upo-gil", "jinjuseong-gil", "expo-gil", "cheonhoji-gil"]);
 Object.values(ALL_ROADS).forEach(c => { if (ROUTE_LAB.has(c.id)) c.lab = true; });
+/* 11/28 보스 '전주는 속도도 안 맞고, 속도 게이지와 안 맞는 영상 코스는 의미 없음': 남이 찍은 걷기·라이딩 영상(sync·clips 없음)은 배속만 바꿀 뿐
+   코스 거리 위치에 못 맞추고 최대 2배라 달리기에선 계속 뒤처짐 → 실험실로. 영상 위치를 코스 거리에 맞춘 영상(sync+clips, 예: 상림)만 일반 공개
+   새 영상 코스는 sync+clips를 갖춘 뒤 이 목록에서 id를 지우면 복귀 (기록·진행 그대로) */
+const VIDEO_LAB = new Set(["jeonjuhanok-gil", "gyeongbok-3k", "jongmyo-5k", "seokchon-3k", "namhangang-bike", "gyeongchun-bike-24k"]);
+Object.values(ALL_ROADS).forEach(c => { if (VIDEO_LAB.has(c.id)) c.lab = true; });
 /* 11/27 보스 "3D 지도와 코스가 조금이라도 안 맞으면 실험실로 — 정확히 맞는 것만 오픈, 3D를 확실히 맞춘 뒤 다시 반입"
    자동 점검 tools/route_3d_audit.py (앱 3D와 같은 높이 자료를 10m마다 짚음 → data/route_3d_audit.json): 물속 꺼짐·60m 안 솟음/꺼짐(길 6m·산 15m 넘음)·평지 길 경사 20% 넘음·산 높이 차 40m 넘음 중 하나라도 있으면 여기에.
    ROUTE_LAB(노선 불량)과 따로 둠 → 3D를 맞춘 코스는 이 목록에서 id만 지우면 바로 일반 목록으로 복귀 (기록·진행 그대로) */
