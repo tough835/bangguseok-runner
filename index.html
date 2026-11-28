@@ -529,11 +529,10 @@
   #setBox .kbasis summary::after{content:'▾';margin-left:auto;padding-left:8px;color:var(--mut);font-size:12px}
   #setBox .kbasis[open] summary::after{content:'▴'}
   #setBox .kbasis > div{padding-bottom:10px}
-  #recScreen .titlebar,#setScreen .titlebar{justify-content:flex-start;gap:12px}
-  #setScreen .titlebar h1{font-size:22px;flex:0 1 auto;text-align:left}
+  #recScreen .titlebar,#setScreen .titlebar{justify-content:space-between;gap:12px}
+  #recScreen .titlebar h1,#setScreen .titlebar h1{font-size:17px!important;flex:0 1 auto;text-align:right;margin:0}   /* 11/28 보스 '설정은 좀 작게 오른쪽 위로': ‹ 는 왼쪽, 제목은 작게 오른쪽 (내 기록도 같게) */
   /* 11/28 보스 '돌아가기 글자 대신 표식, 다른 곳도': 둥근 ‹ 버튼 (44px · 화면 읽기 이름은 aria-label) */
   .titlebar .back.ico,.rhead .rback.ico{width:44px;height:44px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;line-height:1;padding-bottom:3px;box-sizing:border-box;flex:none}
-  #recScreen .titlebar h1{font-size:22px;flex:0 1 auto;text-align:left}
   .titlebar .back{height:34px;border:0;border-radius:999px;background:var(--ch2);color:var(--tx);font-size:13px;font-weight:700;padding:0 12px}
   .stepbtn,.recbtn,.zoneBtn{background:var(--ch2)}
   /* 내 기록 */
@@ -1422,7 +1421,7 @@
 </div>
 
 <script>
-const BUILD = '202611281200';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281210';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
