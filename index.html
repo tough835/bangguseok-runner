@@ -774,6 +774,7 @@
   .mrDays{display:flex;gap:6px;margin-top:6px;padding:0 2px}
   .mrDays span{flex:1;min-width:0;text-align:center;font-size:13px;color:var(--mut);font-weight:700;white-space:nowrap}
   .mrDays span.td{color:var(--vtx);font-weight:900}
+  .mrBars.hrs,.mrDays.hrs{gap:2px}.mrBars.hrs .c{border-radius:3px 3px 1px 1px}.mrBars.hrs .r{font-size:10px}.mrBars.hrs .v{overflow:visible;font-size:10px}.mrDays.hrs span{overflow:visible;text-align:left;font-size:11px}   /* 11/28 일 = 24칸 */
   .mrSum{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:6px;margin-top:12px}
   .mrSum div{background:rgba(var(--ink),.07);border-radius:12px;padding:9px 10px;text-align:left;min-width:0}   /* 11/27 보스: 세 칸 제목·숫자 위치를 아래 합계 칸·오늘 카드와 같게 (왼쪽 정렬, 같은 높이) */
   .mrSum small{display:block;font-size:12px;line-height:18px;height:18px;color:var(--mut);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1166,7 +1167,7 @@
     <button data-per="week" data-t="pWeek">이번 주</button><button data-per="month" data-t="pMonth">이번 달</button><button data-per="all" data-t="pAll">전체</button>
   </div>
   <div class="mrToday" id="mrToday"></div>   <!-- 11/26 보스: 오늘 걸음·칼로리를 맨 위에 크게 -->
-  <div class="mrSeg" id="mrSeg"><button data-sv="week" data-t="mr_week">주</button><button data-sv="month" data-t="mr_month">월</button></div>
+  <div class="mrSeg" id="mrSeg"><button data-sv="day" data-t="mr_day">일</button><button data-sv="week" data-t="mr_week">주</button><button data-sv="month" data-t="mr_month">월</button></div>
   <div class="mrWeek" id="mrWeek"></div>
   <div class="card" id="recCal"></div>
   <div class="recCap" id="recCap"></div>
@@ -1414,7 +1415,7 @@
 </div>
 
 <script>
-const BUILD = '202611280900';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281100';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -2225,6 +2226,14 @@ const SHORT_I18N = {"en": {"fUpAct": "Stairs·Hike", "aBike": "Bike", "myRec": "
 /* 11/25 다국어: 경상도 응원 대사 → 언어별 표준 말투 한 벌 (문 응원 door · 산 응원 mtc) */
 const DLG_I18N = {"en": {"door": {"peek": ["…who's there?", "…what time is it?", "Thump thump again…", "…what's that noise?"], "angry": ["THUMP THUMP!<br>Let me sleep!!", "What are you doing in there?!", "Now I'm wide awake!!", "I thought it was an earthquake!!"], "bye": ["I'm going back to bed…", "Don't wake me again…", "I'll cheer for you in my dreams…", "The chicken is mine… zzz"], "start": ["…starting your workout?<br>Then go go go!!", "Oh~ again today?<br>Take it easy~", "Well begun is half done<br>You're halfway there!", "Let's go~!!<br>Today we run!"], "q1": ["A quarter done?<br>Not bad at all!", "Warmed up already~<br>Keep it going", "Great start!<br>Go go go~"], "half": ["Halfway already?<br>Nice nice~!!", "Past halfway~<br>Almost there now", "Exactly half!<br>Have a sip of water", "Am I your cheerleader?<br>…Fine, go go!!"], "q3": ["Almost there!<br>Just a little more~", "Three quarters?<br>Really almost done~", "Final stretch<br>Push it~!!"], "arr": ["You made it?!<br>Great job~!!", "Wow~ you did it!<br>Kind of cool, you know", "All done?<br>Now let me sleep~ well done", "Today's MVP<br>is you!"], "keep": ["Oh~ you're sweating<br>Keep it up~", "Seriously impressive~<br>Have some water", "Looking good~<br>Go go!!"]}, "mtc": {"p25": [["📣", "A quarter done! The hardest part, starting, is behind you", "Go go! Go~"], ["💪", "Warmed up? Now the real mountain begins", "You got this!"], ["🙌", "Great early pace. Keep this up and the summit comes to you", "Heave-ho!"]], "p50": [["cheer", "Halfway? Just as much again and you're at the top~"], ["cheer", "Half done! No walking down needed, you're at home lol"]], "p90": [["cheer", "The summit is right there! Practice your 'yahoo'"], ["cheer", "I can see the summit stone~ pick your photo pose"]], "t20": [["yawn", "{m} min… have a sip of water"], ["yawn", "{m} min. Wipe off that sweat"]], "t40": [["yawn", "Over {m} min~ the mountain won't run away if you rest"]], "t60": [["sleepy", "{m} min! You can stop for today. We'll continue from here next time"]], "alt": [["sleepy", "Over {a} m above sea level! It's {t}° cooler up here, right?"]], "alt0": [["sleepy", "Over {a} m above sea level!"]], "goal": ["{up} m in {min} min! Well done", "{min}-minute goal done. Well done.", "Goal done! Rest now, or keep going~", "Halfway to your goal! Just {h} min more~", "Halfway to your goal."], "say": {"p25": "Go! A quarter done.", "p75": "Three quarters. Almost there.", "p50": "Halfway.", "p90": "The summit is close.", "t40": "Over {m} minutes. You can rest.", "t60": "{m} minutes. You can stop for today."}}}, "zh": {"door": {"peek": ["…谁啊？", "…几点了？", "又在咚咚咚…", "…什么声音？"], "angry": ["咚咚咚！<br>让我睡会儿！！", "你在房间里干嘛呢！！", "我都被吵醒了！！", "还以为地震了！！"], "bye": ["我再去睡会儿…", "别再吵醒我了…", "我在梦里给你加油…", "炸鸡是我的…呼呼"], "start": ["…要开始运动了？<br>那就加油！！", "哦~今天也来了<br>慢慢来~", "好的开始是成功的一半<br>已经一半了！", "走起~！！<br>今天也跑一跑"], "q1": ["四分之一了？<br>哦~挺厉害嘛！", "已经热身好了~<br>继续保持", "开局不错！<br>加油加油~"], "half": ["一半了？<br>真棒真棒~！！", "过半啦~<br>马上就到了", "正好一半！<br>喝口水吧", "我是你的啦啦队长？<br>…好吧，加油！！"], "q3": ["快到了！<br>再坚持一下~", "四分之三？<br>真的快到了~", "最后冲刺<br>冲啊~！！"], "arr": ["到了？！<br>辛苦啦~！！", "哇~做到了！<br>你有点帅哦", "都完成了？<br>现在让我睡吧~辛苦了", "今天的MVP<br>就是你！"], "keep": ["哦~出汗了<br>继续保持~", "真的厉害~<br>喝口水吧", "挺帅的嘛~<br>加油！！"]}, "mtc": {"p25": [["📣", "四分之一了！最难的「开始」已经过去了", "加油！加油~"], ["💪", "热身好了吧？现在才是真正的爬山", "冲冲冲！"], ["🙌", "开局配速很好。保持下去山顶就在眼前", "嘿哟！嘿哟！"]], "p50": [["cheer", "一半了？再爬一样多就到山顶啦~"], ["cheer", "一半！不用担心下山，你在家里嘛 哈哈"]], "p90": [["cheer", "山顶就在眼前！先练练喊「呀吼」"], ["cheer", "看到山顶石碑了~想好拍照姿势吧"]], "t20": [["yawn", "{m}分钟了…喝口水吧"], ["yawn", "{m}分钟了。擦擦汗吧"]], "t40": [["yawn", "超过{m}分钟了~休息一下山也不会跑"]], "t60": [["sleepy", "{m}分钟了！今天可以到此为止，下次从这里继续"]], "alt": [["sleepy", "海拔超过{a}m了！这里凉快{t}度吧？"]], "alt0": [["sleepy", "海拔超过{a}m了！"]], "goal": ["{min}分钟爬了{up}m！真棒", "{min}分钟目标完成。真棒。", "目标完成！休息或者继续都行~", "目标过半！再{h}分钟~", "目标过半。"], "say": {"p25": "加油！四分之一了。", "p75": "四分之三。快到了。", "p50": "一半了。", "p90": "山顶就在眼前。", "t40": "超过{m}分钟了。可以休息。", "t60": "{m}分钟了。今天可以结束了。"}}}, "ja": {"door": {"peek": ["…だれ？", "…いま何時？", "またドンドン…", "…なんの音？"], "angry": ["ドンドンドン！<br>寝かせてよ！！", "部屋で何してんの！！", "完全に目が覚めた！！", "地震かと思った！！"], "bye": ["もうひと眠りする…", "もう起こさないで…", "夢の中で応援するね…", "からあげは私の…ぐう"], "start": ["…運動はじめるの？<br>じゃあファイト！！", "お~今日もやるんだ<br>ゆっくりね~", "始めれば半分終わり<br>もう半分だね！", "いくよ~！！<br>今日も走ろう"], "q1": ["4分の1来た？<br>お~やるじゃん！", "もう体あったまったね~<br>そのまま行こう", "いいスタート！<br>ファイトファイト~"], "half": ["半分来た？<br>えらいえらい~！！", "半分すぎたよ~<br>あとすぐだ", "ちょうど半分！<br>水ひとくち飲んで", "私って応援団長？<br>…まあいいや、ファイト！！"], "q3": ["もうすぐだよ！<br>あとちょっと~", "4分の3？<br>ほんとにもうすぐ~", "ラストスパート<br>押しきれ~！！"], "arr": ["着いたの？！<br>おつかれ~！！", "わ~やったね！<br>ちょっとかっこいい", "全部終わった？<br>じゃあ寝かせて~おつかれ", "今日のMVPは<br>きみだ！"], "keep": ["お~汗かいてる<br>そのまま行こう~", "ほんとにすごい~<br>水飲んでね", "ちょっとかっこいいじゃん~<br>ファイト！！"]}, "mtc": {"p25": [["📣", "4分の1通過！いちばん大変な「始めること」はもう終わり", "ファイト！ファイト~"], ["💪", "体あったまった？ここからが本当の山だよ", "がんばれ！"], ["🙌", "序盤のペースいいね。このままなら山頂のほうから来るよ", "よいしょ！よいしょ！"]], "p50": [["cheer", "半分来た？登った分だけもう一回で山頂だよ~"], ["cheer", "半分！下山の心配はなし、おうちだからね笑"]], "p90": [["cheer", "山頂は目の前！ヤッホーの練習しといて"], ["cheer", "山頂の石が見えてきた~写真のポーズ決めといて"]], "t20": [["yawn", "{m}分目…水ひとくち飲んで"], ["yawn", "{m}分目だよ。汗ふいてね"]], "t40": [["yawn", "{m}分すぎた~休んでも山は逃げないよ"]], "t60": [["sleepy", "{m}分目！今日はもう終わりでいいよ。次はここから続けよう"]], "alt": [["sleepy", "標高{a}m超えた！ここは{t}度涼しいでしょ？"]], "alt0": [["sleepy", "標高{a}m超えた！"]], "goal": ["{min}分で{up}m！よくやった", "目標の{min}分おわり。よくやった。", "目標達成！休むか、まだやるか~", "目標の半分！あと{h}分~", "目標の半分。"], "say": {"p25": "ファイト！4分の1来たよ。", "p75": "4分の3。もうすぐ。", "p50": "半分来たよ。", "p90": "山頂は目の前。", "t40": "{m}分すぎた。休んでもいいよ。", "t60": "{m}分目。今日はもう終わりでいいよ。"}}}, "vi": {"door": {"peek": ["…ai đấy?", "…mấy giờ rồi?", "Lại thình thịch…", "…tiếng gì vậy?"], "angry": ["Thình thịch thình thịch!<br>Cho ngủ với!!", "Làm gì trong phòng thế?!", "Tỉnh ngủ luôn rồi!!", "Tưởng động đất chứ!!"], "bye": ["Tôi ngủ tiếp đây…", "Đừng đánh thức nữa nhé…", "Cổ vũ trong mơ nhé…", "Gà rán là của tôi… khò khò"], "start": ["…bắt đầu tập à?<br>Vậy cố lên!!", "Ồ~ hôm nay cũng tập<br>Từ từ thôi~", "Bắt đầu là xong một nửa<br>Nửa rồi đó!", "Đi nào~!!<br>Hôm nay chạy thôi"], "q1": ["Được một phần tư rồi?<br>Ồ~ giỏi đấy!", "Nóng người rồi~<br>Cứ thế mà đi", "Khởi đầu tốt!<br>Cố lên cố lên~"], "half": ["Nửa đường rồi?<br>Giỏi lắm~!!", "Quá nửa rồi~<br>Sắp tới rồi", "Đúng một nửa!<br>Uống ngụm nước đi", "Tôi là đội trưởng cổ vũ à?<br>…Thôi được, cố lên!!"], "q3": ["Sắp tới rồi!<br>Thêm chút nữa~", "Ba phần tư?<br>Thật sự sắp xong~", "Chặng cuối<br>Bứt tốc nào~!!"], "arr": ["Tới rồi à?!<br>Vất vả rồi~!!", "Oa~ làm được rồi!<br>Ngầu đấy nhé", "Xong hết rồi?<br>Giờ cho tôi ngủ~ vất vả rồi", "MVP hôm nay<br>là bạn!"], "keep": ["Ồ~ ra mồ hôi rồi<br>Cứ thế nhé~", "Giỏi thật đấy~<br>Uống nước đi", "Trông ngầu đấy~<br>Cố lên!!"]}, "mtc": {"p25": [["📣", "Qua một phần tư! Phần khó nhất là bắt đầu đã xong", "Cố lên! Cố lên~"], ["💪", "Nóng người chưa? Giờ mới là leo núi thật", "Tiến lên!"], ["🙌", "Nhịp đầu rất tốt. Cứ thế này đỉnh núi sẽ tới", "Hò dô! Hò dô!"]], "p50": [["cheer", "Nửa đường rồi? Leo thêm bằng chừng ấy là tới đỉnh~"], ["cheer", "Một nửa! Không lo xuống núi, đang ở nhà mà haha"]], "p90": [["cheer", "Đỉnh núi ngay trước mặt! Tập hô 'Yahoo' đi"], ["cheer", "Thấy bia đá trên đỉnh rồi~ chọn dáng chụp ảnh đi"]], "t20": [["yawn", "{m} phút rồi… uống ngụm nước đi"], ["yawn", "{m} phút rồi. Lau mồ hôi đi"]], "t40": [["yawn", "Quá {m} phút rồi~ nghỉ chút núi cũng không chạy mất"]], "t60": [["sleepy", "{m} phút rồi! Hôm nay dừng được rồi. Lần sau đi tiếp từ đây"]], "alt": [["sleepy", "Đã qua độ cao {a} m! Ở đây mát hơn {t} độ nhỉ?"]], "alt0": [["sleepy", "Đã qua độ cao {a} m!"]], "goal": ["{up} m trong {min} phút! Giỏi lắm", "Xong mục tiêu {min} phút. Giỏi lắm.", "Xong mục tiêu! Nghỉ hay tập tiếp tùy bạn~", "Được nửa mục tiêu! Thêm {h} phút nữa~", "Được nửa mục tiêu."], "say": {"p25": "Cố lên! Được một phần tư.", "p75": "Ba phần tư. Sắp tới rồi.", "p50": "Được một nửa.", "p90": "Đỉnh núi ngay trước mặt.", "t40": "Quá {m} phút. Có thể nghỉ.", "t60": "{m} phút. Hôm nay dừng được rồi."}}}, "fr": {"door": {"peek": ["…qui est là ?", "…il est quelle heure ?", "Encore boum boum…", "…c'est quoi ce bruit ?"], "angry": ["BOUM BOUM !<br>Laisse-moi dormir !!", "Tu fais quoi là-dedans ?!", "Je suis complètement réveillé !!", "J'ai cru à un tremblement de terre !!"], "bye": ["Je retourne me coucher…", "Ne me réveille plus…", "Je t'encourage en rêve…", "Le poulet frit est à moi… zzz"], "start": ["…tu commences ta séance ?<br>Alors allez !!", "Oh~ encore aujourd'hui ?<br>Doucement~", "Bien commencé, à moitié fait<br>Déjà la moitié !", "C'est parti~ !!<br>On court aujourd'hui"], "q1": ["Déjà un quart ?<br>Pas mal du tout !", "Déjà échauffé~<br>Continue comme ça", "Super départ !<br>Allez allez~"], "half": ["La moitié déjà ?<br>Bravo bravo~ !!", "Plus de la moitié~<br>C'est bientôt fini", "Pile la moitié !<br>Bois une gorgée d'eau", "Je suis ton supporter ?<br>…Bon, allez !!"], "q3": ["Presque arrivé !<br>Encore un petit effort~", "Trois quarts ?<br>Vraiment presque fini~", "Dernière ligne droite<br>Pousse~ !!"], "arr": ["Arrivé ?!<br>Bien joué~ !!", "Waouh~ tu l'as fait !<br>Plutôt classe", "Fini ?<br>Laisse-moi dormir~ bravo", "Le MVP du jour<br>c'est toi !"], "keep": ["Oh~ tu transpires<br>Continue~", "Vraiment impressionnant~<br>Bois un peu d'eau", "Plutôt classe~<br>Allez !!"]}, "mtc": {"p25": [["📣", "Un quart de fait ! Le plus dur, commencer, c'est derrière toi", "Allez ! Allez~"], ["💪", "Échauffé ? La vraie montagne commence maintenant", "Tu vas y arriver !"], ["🙌", "Super rythme au départ. Continue et le sommet viendra à toi", "Hop ! Hop !"]], "p50": [["cheer", "La moitié ? Encore autant et tu es au sommet~"], ["cheer", "La moitié ! Pas de descente à faire, tu es chez toi mdr"]], "p90": [["cheer", "Le sommet est juste là ! Entraîne-toi à crier « youhou »"], ["cheer", "Je vois la borne du sommet~ choisis ta pose photo"]], "t20": [["yawn", "{m} min… bois une gorgée d'eau"], ["yawn", "{m} min. Essuie ta sueur"]], "t40": [["yawn", "Plus de {m} min~ la montagne ne s'enfuira pas si tu te reposes"]], "t60": [["sleepy", "{m} min ! Tu peux t'arrêter pour aujourd'hui. On reprendra d'ici"]], "alt": [["sleepy", "Plus de {a} m d'altitude ! Il fait {t}° de moins ici, non ?"]], "alt0": [["sleepy", "Plus de {a} m d'altitude !"]], "goal": ["{up} m en {min} min ! Bravo", "Objectif de {min} min fait. Bravo.", "Objectif atteint ! Repos ou on continue~", "La moitié de l'objectif ! Encore {h} min~", "La moitié de l'objectif."], "say": {"p25": "Allez ! Un quart de fait.", "p75": "Trois quarts. Presque arrivé.", "p50": "La moitié.", "p90": "Le sommet est tout près.", "t40": "Plus de {m} minutes. Tu peux te reposer.", "t60": "{m} minutes. Tu peux t'arrêter pour aujourd'hui."}}}, "es": {"door": {"peek": ["…¿quién anda ahí?", "…¿qué hora es?", "Otra vez pum pum…", "…¿qué es ese ruido?"], "angry": ["¡PUM PUM PUM!<br>¡¡Déjame dormir!!", "¡¿Qué haces ahí dentro?!", "¡¡Ya me desvelé!!", "¡¡Creí que era un terremoto!!"], "bye": ["Me vuelvo a la cama…", "No me despiertes más…", "Te animo en sueños…", "El pollo frito es mío… zzz"], "start": ["…¿empiezas a entrenar?<br>¡¡Pues vamos!!", "Oh~ ¿hoy también?<br>Con calma~", "Empezar es la mitad<br>¡Ya llevas la mitad!", "¡¡Vamos~!!<br>Hoy toca correr"], "q1": ["¿Ya un cuarto?<br>¡Nada mal!", "Ya calentaste~<br>Sigue así", "¡Gran comienzo!<br>Vamos vamos~"], "half": ["¿Ya la mitad?<br>¡¡Muy bien~!!", "Pasaste la mitad~<br>Ya casi", "¡Justo la mitad!<br>Bebe un sorbo de agua", "¿Soy tu animadora?<br>…Bueno, ¡¡vamos!!"], "q3": ["¡Ya casi!<br>Un poquito más~", "¿Tres cuartos?<br>De verdad, ya casi~", "Recta final<br>¡¡Empuja~!!"], "arr": ["¡¿Llegaste?!<br>¡¡Buen trabajo~!!", "¡Guau~ lo lograste!<br>Qué estilo", "¿Terminaste?<br>Ahora déjame dormir~ bien hecho", "El MVP de hoy<br>¡eres tú!"], "keep": ["Oh~ estás sudando<br>Sigue así~", "De verdad impresionante~<br>Bebe agua", "Qué estilo~<br>¡¡Vamos!!"]}, "mtc": {"p25": [["📣", "¡Un cuarto! Lo más difícil, empezar, ya pasó", "¡Vamos! ¡Vamos~!"], ["💪", "¿Ya calentaste? Ahora empieza la montaña de verdad", "¡Tú puedes!"], ["🙌", "Gran ritmo al inicio. Sigue así y la cima vendrá a ti", "¡Aúpa! ¡Aúpa!"]], "p50": [["cheer", "¿La mitad? Lo mismo otra vez y estás en la cima~"], ["cheer", "¡La mitad! Sin bajada, que estás en casa jaja"]], "p90": [["cheer", "¡La cima está ahí! Practica tu «¡yuju!»"], ["cheer", "Veo la piedra de la cima~ elige tu pose para la foto"]], "t20": [["yawn", "{m} min… bebe un sorbo de agua"], ["yawn", "{m} min. Sécate el sudor"]], "t40": [["yawn", "Más de {m} min~ la montaña no se va si descansas"]], "t60": [["sleepy", "¡{m} min! Puedes parar por hoy. Seguimos desde aquí la próxima vez"]], "alt": [["sleepy", "¡Más de {a} m de altitud! Aquí hace {t}° menos, ¿verdad?"]], "alt0": [["sleepy", "¡Más de {a} m de altitud!"]], "goal": ["¡{up} m en {min} min! Bien hecho", "Meta de {min} min cumplida. Bien hecho.", "¡Meta cumplida! Descansa o sigue~", "¡Mitad de la meta! Solo {h} min más~", "Mitad de la meta."], "say": {"p25": "¡Vamos! Un cuarto.", "p75": "Tres cuartos. Ya casi.", "p50": "La mitad.", "p90": "La cima está cerca.", "t40": "Más de {m} minutos. Puedes descansar.", "t60": "{m} minutos. Puedes parar por hoy."}}}};
 
+/* 11/28 보스 '일·주·월': 일 = 시간대 막대 */
+Object.assign(TEXT.ko, {"mr_day": "일", "mr_hrNote": "시간대 걸음은 앱이 켜져 있던 때 기준이라 한 시간에 몰려 보일 수 있어요"});
+Object.assign(TEXT.en, {"mr_day": "Day", "mr_hrNote": "Hourly steps are counted while the app is open, so some hours may look bunched"});
+Object.assign(TEXT.zh, {"mr_day": "日", "mr_hrNote": "按小时的步数以应用开启时为准，可能集中在某一小时"});
+Object.assign(TEXT.ja, {"mr_day": "日", "mr_hrNote": "時間帯の歩数はアプリを開いていた時の集計のため、一つの時間に偏ることがあります"});
+Object.assign(TEXT.vi, {"mr_day": "Ngày", "mr_hrNote": "Số bước theo giờ được tính khi ứng dụng đang mở nên có thể dồn vào một giờ"});
+Object.assign(TEXT.fr, {"mr_day": "Jour", "mr_hrNote": "Les pas par heure sont comptés quand l’appli est ouverte, certaines heures peuvent sembler groupées"});
+Object.assign(TEXT.es, {"mr_day": "Día", "mr_hrNote": "Los pasos por hora se cuentan con la app abierta, por eso algunas horas pueden verse agrupadas"});
 const T = Object.assign({}, TEXT.ko, ACTIVE.lang === 'ko' ? {} : TEXT[ACTIVE.lang]);   // 빠진 글자는 한국어
 if (SHORT_I18N[ACTIVE.lang]) Object.assign(T, SHORT_I18N[ACTIVE.lang]);
 const HANGUL = /[가-힣]/;
@@ -6047,7 +6056,8 @@ $('hubSheet').onclick = e => { if (e.target.id === 'hubSheet') $('hubSheet').cla
     else if (dy > 90 && Math.abs(dy) > Math.abs(dx)) $('hubSheet').classList.add('hidden'); }, { passive: true }); })();
 function refreshRec(){
   try { refreshSteps(); } catch(e){}
-  if (REC.day) REC.sv = 'month';
+  if (REC.day){ REC.sv = 'day'; REC.dk = REC.day; REC.day = ''; }   // 11/28: 날짜 팝업 '그날 기록 보기' = 일 탭
+  const dayF = REC.sv === 'day' ? (REC.dk || dayKey()) : '';
   refreshStamps(); $('stampBox').classList.toggle('hidden', DB.pick.type === 'climb');
   document.querySelectorAll('[data-per]').forEach(b => b.classList.toggle('on', b.dataset.per === REC.per && !REC.day));
   document.querySelectorAll('[data-f]').forEach(b => b.classList.toggle('on', b.dataset.f === REC.f));
@@ -6056,10 +6066,10 @@ function refreshRec(){
   /* 11/18 B2: 기간 고르기를 없애고 달력 하나로 — 합계·목록 = 달력에 보이는 달 (날짜를 누르면 그날) */
   const nowD = new Date(); if (!REC.mon) REC.mon = [nowD.getFullYear(), nowD.getMonth()];
   const inMon = r => { const d = new Date(r.date); return d.getFullYear() === REC.mon[0] && d.getMonth() === REC.mon[1]; };
-  const list = REC.day ? DB.records.filter(r => r.src !== 'legacy' && calKey(new Date(r.date)) === REC.day && fOK(r))   // 달력에서 고른 날
+  const list = dayF ? DB.records.filter(r => r.src !== 'legacy' && calKey(new Date(r.date)) === dayF && fOK(r))   // 달력에서 고른 날
     : DB.records.filter(r => r.src !== 'legacy' && inMon(r) && fOK(r));
-  $('recCap').textContent = ACTIVE.lang !== 'ko' ? fillT('w_total', { p: REC.day ? calFmt(new Date(REC.day + 'T12:00'), { month: 'short', day: 'numeric' }) : calFmt(new Date(REC.mon[0], REC.mon[1], 15), REC.mon[0] !== nowD.getFullYear() ? { year: 'numeric', month: 'long' } : { month: 'long' }) })
-    : REC.day ? REC.day.split('-').slice(1).join('월 ') + '일 합계' : (REC.mon[0] !== nowD.getFullYear() ? REC.mon[0] + '년 ' : '') + (REC.mon[1] + 1) + '월 합계';
+  $('recCap').textContent = ACTIVE.lang !== 'ko' ? fillT('w_total', { p: dayF ? calFmt(new Date(dayF.replace(/-(\d)(?!\d)/g, '-0$1') + 'T12:00'), { month: 'short', day: 'numeric' }) : calFmt(new Date(REC.mon[0], REC.mon[1], 15), REC.mon[0] !== nowD.getFullYear() ? { year: 'numeric', month: 'long' } : { month: 'long' }) })
+    : dayF ? dayF.split('-').slice(1).join('월 ') + '일 합계' : (REC.mon[0] !== nowD.getFullYear() ? REC.mon[0] + '년 ' : '') + (REC.mon[1] + 1) + '월 합계';
   calFill(fOK);
   const dist = list.reduce((a, r) => a + (r.distM || 0), 0), up = list.reduce((a, r) => a + (r.upM || 0), 0), sec = list.reduce((a, r) => a + (r.sec || 0), 0);
   const cnt = list.filter(r => r.src !== 'legacy').length;
@@ -6079,7 +6089,7 @@ function refreshRec(){
   if (!REC.days) REC.days = {};
   let html = '';
   groups.forEach((g, gi) => {
-    const open = REC.day ? true : REC.days[g.key] != null ? REC.days[g.key] : gi === 0;
+    const open = dayF ? true : REC.days[g.key] != null ? REC.days[g.key] : gi === 0;
     const km = g.rs.reduce((a, r) => a + (r.distM || 0), 0), up = g.rs.reduce((a, r) => a + (r.upM || 0), 0), mn = Math.round(g.rs.reduce((a, r) => a + (r.sec || 0), 0) / 60);
     html += '<div class="rday rdk' + (open ? ' on' : '') + '" data-dk="' + esc(g.key) + '"><span>' + g.key + '</span><span class="rds">' + g.rs.length + '번' + (km >= 50 ? ' · ' + (km / 1000).toFixed(1) + 'km' : '') + (up > 0 ? ' · ↑' + up.toLocaleString() + 'm' : '') + (mn ? ' · ' + mn + T.min : '') + ' ' + (open ? '▴' : '▾') + '</span></div>';
     if (!open) return;
@@ -6201,10 +6211,46 @@ function mrFill(){
   try { mrTodayFill(); } catch(e){}
   const sv = REC.sv || 'week';
   document.querySelectorAll('[data-sv]').forEach(b => b.classList.toggle('on', b.dataset.sv === sv));
-  $('mrWeek').classList.toggle('hidden', sv !== 'week'); $('recCal').classList.toggle('hidden', sv !== 'month');
-  if (sv === 'week') try { mrWeekFill(); } catch(e){}
+  $('mrWeek').classList.remove('hidden'); $('recCal').classList.add('hidden');   // 11/28 보스 '달력 말고 막대': 일·주·월 모두 막대 그래프 한 칸에
+  try { (sv === 'day' ? mrDayFill : sv === 'month' ? mrMonFill : mrWeekFill)(); } catch(e){ console.log(e); }
 }
-document.querySelectorAll('[data-sv]').forEach(b => b.onclick = () => { REC.sv = b.dataset.sv; if (REC.sv === 'week') REC.day = ''; refreshRec(); });
+document.querySelectorAll('[data-sv]').forEach(b => b.onclick = () => { REC.sv = b.dataset.sv; REC.day = ''; if (REC.sv === 'day') REC.dk = dayKey(); if (REC.sv !== 'day'){ const n = new Date(); REC.mon = [n.getFullYear(), n.getMonth()]; } refreshRec(); });
+/* 11/28 보스: 일 = 그날 시간대(0~23시) 걸음 막대 · 월 = 한 달 = 막대 하나(6달씩, ‹ › 로 앞뒤) · 요약 칸은 각 단위에 맞게
+   시간대 걸음: 폰 걸음 숫자는 하루 합계만 오므로, 앱이 켜져 있을 때 시간마다 남긴 합계(DB.steps[날].hs)의 차이 → 앱을 안 켠 시간은 다음에 켠 시간에 몰림 */
+function hourSteps(k){
+  const t = (DB.steps || {})[k] || {}, hs = t.hs || {}, out = new Array(24).fill(0), tot = stepsOn(k).n;
+  let prev = 0; for (let h = 0; h < 24; h++) if (hs[h] != null){ const v = Math.min(hs[h], tot || hs[h]); out[h] = Math.max(0, v - prev); prev = Math.max(prev, v); }
+  return { out, has: Object.keys(hs).length > 0 };
+}
+function mrDayFill(){
+  const k = REC.dk || dayKey(), [y, m, d] = k.split('-').map(Number), dt = new Date(y, m - 1, d, 12), td = k === dayKey(), x = dayAll(k), hsx = hourSteps(k);
+  const runH = new Array(24).fill(0); x.recs.forEach(r => { runH[new Date(r.date).getHours()]++; });
+  const nowH = td ? new Date().getHours() : 99, mx = Math.max(500, ...hsx.out) * 1.08, H = 128, top = hsx.out.indexOf(Math.max(...hsx.out));
+  $('mrWeek').innerHTML = '<div class="calh"><button id="wkPrev" aria-label="&lsaquo;">‹</button><span>' + mrDate(dt, true) + ' · ' + x.n.toLocaleString() + mrSU() + '</span><button id="wkNext" aria-label="&rsaquo;"' + (td ? ' style="opacity:.25"' : '') + '>›</button></div>' +
+    '<div class="mrBars hrs">' + hsx.out.map((v, h) => '<div class="' + (h === nowH ? 'td' : '') + '">' + (runH[h] ? '<span class="r">🏃</span>' : '') + '<span class="v">' + (v && h === top ? v.toLocaleString() : '') + '</span><div class="c" style="height:' + Math.round(v / mx * H) + 'px"></div></div>').join('') + '</div>' +
+    '<div class="mrDays hrs">' + hsx.out.map((v, h) => '<span>' + (h % 6 === 0 ? h + (ACTIVE.lang === 'ko' ? '시' : 'h') : '') + '</span>').join('') + '</div>' +
+    (x.n > 0 ? '<div class="muted" style="font-size:12px;margin:8px 2px 0;line-height:1.4">' + T.mr_hrNote + '</div>' : '') +
+    '<div class="mrSum"><div><small>' + T.mr_km + '</small><b>' + x.km.toFixed(1) + '<i>km</i></b></div><div><small>' + T.mr_kcSum + '</small><b>' + x.kc.toLocaleString() + '<i>kcal</i></b></div><div><small>' + T.mr_runs + '</small><b>' + x.recs.length + T.cntUnit + '</b></div></div>';
+  const go = n => { const a = new Date(y, m - 1, d + n, 12); if (a > new Date()) return; REC.dk = calKey(a); refreshRec(); };
+  $('wkPrev').onclick = () => go(-1); $('wkNext').onclick = () => { if (!td) go(1); };
+}
+function mrMonFill(){
+  const now = new Date(); if (!REC.mon) REC.mon = [now.getFullYear(), now.getMonth()];
+  const off = REC.mo || 0, ko = ACTIVE.lang === 'ko', ms = [];
+  for (let i = 5; i >= 0; i--){ const a = new Date(now.getFullYear(), now.getMonth() - i - 6 * off, 1); const yy = a.getFullYear(), mm = a.getMonth(), nd = new Date(yy, mm + 1, 0).getDate();
+    let n = 0, kc = 0, runs = 0, days = 0; for (let dd = 1; dd <= nd; dd++){ const dt = new Date(yy, mm, dd); if (dt > now) break; const k = calKey(dt), s = stepsOn(k).n; if (s > 0){ const x = dayAll(k); n += s; kc += x.kc; runs += x.recs.length; days++; } else runs += DB.records.filter(r => r.src !== 'legacy' && r.src !== 'steps' && calKey(new Date(r.date)) === k).length; }
+    ms.push({ yy, mm, n, kc, runs, days, cur: yy === now.getFullYear() && mm === now.getMonth(), sel: yy === REC.mon[0] && mm === REC.mon[1] }); }
+  const mx = Math.max(50000, ...ms.map(x => x.n)) * 1.08, H = 128, tot = ms.reduce((a, x) => a + x.n, 0), days = ms.reduce((a, x) => a + x.days, 0);
+  const lab = x => ko ? (x.mm + 1) + '월' : calFmt(new Date(x.yy, x.mm, 15), { month: 'short' });
+  const yr = x => ko ? x.yy + '년 ' + (x.mm + 1) + '월' : calFmt(new Date(x.yy, x.mm, 15), { year: 'numeric', month: 'short' });
+  $('mrWeek').innerHTML = '<div class="calh"><button id="wkPrev" aria-label="&lsaquo;">‹</button><span>' + yr(ms[0]) + ' ~ ' + yr(ms[5]) + '</span><button id="wkNext" aria-label="&rsaquo;"' + (off ? '' : ' style="opacity:.25"') + '>›</button></div>' +
+    '<div class="mrBars">' + ms.map(x => '<div data-mo="' + x.yy + '-' + x.mm + '" class="' + (x.sel ? 'td' : '') + '">' + (x.runs ? '<span class="r">🏃</span>' : '') + '<span class="v">' + (x.n ? (x.n >= 100000 ? Math.round(x.n / 1000).toLocaleString() + 'k' : x.n.toLocaleString()) : '') + '</span><div class="c" style="height:' + Math.round(x.n / mx * H) + 'px"></div></div>').join('') + '</div>' +
+    '<div class="mrDays">' + ms.map(x => '<span class="' + (x.sel ? 'td' : '') + '">' + lab(x) + '</span>').join('') + '</div>' +
+    '<div class="mrSum"><div><small>👣 ' + T.mr_avg + '</small><b>' + (days ? Math.round(tot / days).toLocaleString() : 0) + mrSU() + '</b></div><div><small>' + T.mr_kcSum + '</small><b>' + Math.round(ms.reduce((a, x) => a + x.kc, 0)).toLocaleString() + '<i>kcal</i></b></div><div><small>' + T.mr_runs + '</small><b>' + ms.reduce((a, x) => a + x.runs, 0) + T.cntUnit + '</b></div></div>';
+  $('wkPrev').onclick = () => { REC.mo = off + 1; mrMonFill(); };
+  $('wkNext').onclick = () => { if (off){ REC.mo = off - 1; mrMonFill(); } };
+  $('mrWeek').querySelectorAll('[data-mo]').forEach(b => b.onclick = () => { const [a, c] = b.dataset.mo.split('-').map(Number); REC.mon = [a, c]; refreshRec(); });   // 막대를 누르면 아래 목록·합계가 그 달
+}
 function dayPop(k){
   const [y, m, d] = k.split('-').map(Number), dt = new Date(y, m - 1, d); if (dt > new Date()) return;
   const x = dayAll(k);
@@ -6216,7 +6262,7 @@ function dayPop(k){
   if ($('dbFixL')){ $('dbFixL').onclick = () => { $('dbFixL').classList.add('hidden'); $('dbFixF').classList.remove('hidden'); $('dbFixN').focus(); };
     $('dbFixB').onclick = () => { const v = parseInt($('dbFixN').value, 10); if (!(v >= 0)) return; DB.steps = DB.steps || {}; const t = DB.steps[k] || (DB.steps[k] = { n: 0, run: 0, used: 0 }); t.fix = v; saveDB(); refreshRec(); dayPop(k); }; }
   $('dbGo').classList.toggle('hidden', !x.recs.length);
-  $('dbGo').onclick = () => { $('dayBox').classList.add('hidden'); REC.day = k; REC.mon = [y, m - 1]; REC.sv = 'month'; refreshRec(); setTimeout(() => $('recCap').scrollIntoView({ block: 'start', behavior: 'smooth' }), 60); };
+  $('dbGo').onclick = () => { $('dayBox').classList.add('hidden'); REC.day = ''; REC.dk = k; REC.mon = [y, m - 1]; REC.sv = 'day'; refreshRec(); setTimeout(() => $('recCap').scrollIntoView({ block: 'start', behavior: 'smooth' }), 60); };
   $('dayBox').classList.remove('hidden');
 }
 $('dbClose').onclick = () => $('dayBox').classList.add('hidden');
@@ -6259,7 +6305,7 @@ $('edClose').onclick = () => $('editBox').classList.add('hidden');
 document.querySelectorAll('[data-per]').forEach(b => b.onclick = () => { REC.per = b.dataset.per; REC.day = ''; refreshRec(); });
 document.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { REC.f = b.dataset.f; refreshRec(); });
 $('bSet').onclick = () => { const open = $('setBox').classList.toggle('hidden'); $('bSet').textContent = open ? T.h_settingsOpen || '⚙️ 설정 ▾' : T.j_setClose; if (!open) setTimeout(() => $('bTel').scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 50); };
-function openRec(){ REC.sv = 'week'; REC.wk = 0; REC.delId = null; REC.day = ''; REC.mon = null; $('startScreen').classList.add('hidden'); $('recScreen').classList.remove('hidden'); $('recScreen').scrollTop = 0; refreshRec(); meterBoxFill(); saverBtn(); }
+function openRec(){ REC.sv = 'week'; REC.wk = 0; REC.mo = 0; REC.dk = ''; REC.delId = null; REC.day = ''; REC.mon = null; $('startScreen').classList.add('hidden'); $('recScreen').classList.remove('hidden'); $('recScreen').scrollTop = 0; refreshRec(); meterBoxFill(); saverBtn(); }
 $('bRec').onclick = () => { REC.fromHome = false; openRec(); };
 /* 11/28 보스 '설정을 톱니바퀴로 첫 화면 오른쪽 위에': 설정 칸을 따로 화면으로 (내 기록의 '⚙️ 설정 ▾' 접기 버튼은 숨김) */
 $('setHost').append($('setBox')); $('setBox').classList.remove('hidden'); $('bSet').classList.add('hidden');
@@ -6695,6 +6741,7 @@ function stepInfo(){   // { total 하루 합계, work 운동 걸음, other 운�
   let total = raw;
   if (d.set != null && !(HC && HC.ok)) total = d.set + Math.max(0, raw - (d.setBase != null ? d.setBase : raw));
   const free = Math.max(0, total - work - d.used);
+  if (total > 0){ const h = new Date().getHours(); d.hs = d.hs || {}; if (!(d.hs[h] >= total)){ const nw = d.hs[h] == null; d.hs[h] = total; if (nw) try { saveDB(); } catch(e){} } }   // 11/28 시간대 걸음: 그 시각까지의 하루 합계를 시간마다 남김 (앱이 켜져 있을 때)
   return { total, work, other: total - work, free };
 }
 function stepFree(){ return stepInfo().free; }
