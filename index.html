@@ -529,7 +529,10 @@
   #setBox .kbasis summary::after{content:'▾';margin-left:auto;padding-left:8px;color:var(--mut);font-size:12px}
   #setBox .kbasis[open] summary::after{content:'▴'}
   #setBox .kbasis > div{padding-bottom:10px}
-  #recScreen .titlebar{justify-content:flex-start;gap:12px}
+  #recScreen .titlebar,#setScreen .titlebar{justify-content:flex-start;gap:12px}
+  #setScreen .titlebar h1{font-size:22px;flex:0 1 auto;text-align:left}
+  /* 11/28 보스 '돌아가기 글자 대신 표식, 다른 곳도': 둥근 ‹ 버튼 (44px · 화면 읽기 이름은 aria-label) */
+  .titlebar .back.ico,.rhead .rback.ico{width:44px;height:44px;padding:0;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;line-height:1;padding-bottom:3px;box-sizing:border-box;flex:none}
   #recScreen .titlebar h1{font-size:22px;flex:0 1 auto;text-align:left}
   .titlebar .back{height:34px;border:0;border-radius:999px;background:var(--ch2);color:var(--tx);font-size:13px;font-weight:700;padding:0 12px}
   .stepbtn,.recbtn,.zoneBtn{background:var(--ch2)}
@@ -1088,7 +1091,7 @@
   </div>
 
   <h2 data-t="course">코스</h2>
-  <div class="rhead" id="rHead"><button class="rback" id="rBack">‹ 지역</button><b id="rName"></b><button id="bPromo" class="promobtn"><span data-t="h_promo">📣 행사</span><i id="promoDot" class="hidden"></i></button></div>
+  <div class="rhead" id="rHead"><button class="rback" id="rBack" aria-label="지역">‹</button><b id="rName"></b><button id="bPromo" class="promobtn"><span data-t="h_promo">📣 행사</span><i id="promoDot" class="hidden"></i></button></div>
   <div class="rcards hidden" id="rCards"></div>
   <div id="rCityView">
   <div class="seg" id="tabSeg"></div>
@@ -1162,11 +1165,11 @@
 
 <!-- 내 기록 화면 -->
 <div id="setScreen" class="screen hidden">   <!-- 11/28 보스: 설정은 첫 화면 ⚙에서 (내 기록 안 '⚙️ 설정 ▾'은 없앰 — 같은 버튼은 한 곳에만). 안의 칸(#setBox)은 시작할 때 여기로 옮김 -->
-  <div class="titlebar"><button id="setBack" class="back" data-t="back">‹ 돌아가기</button><h1 id="setTitle">⚙️ 설정</h1></div>
+  <div class="titlebar"><button id="setBack" class="back ico" aria-label="돌아가기">‹</button><h1 id="setTitle">⚙️ 설정</h1></div>
   <div id="setHost"></div>
 </div>
 <div id="recScreen" class="screen hidden">
-  <div class="titlebar"><button id="recBack" class="back" data-t="back">‹ 돌아가기</button><h1 data-t="myRecTitle">📒 내 기록</h1></div>
+  <div class="titlebar"><button id="recBack" class="back ico" aria-label="돌아가기">‹</button><h1 data-t="myRecTitle">📒 내 기록</h1></div>
   <div class="seg" id="recPeriod" style="margin-top:14px">
     <button data-per="week" data-t="pWeek">이번 주</button><button data-per="month" data-t="pMonth">이번 달</button><button data-per="all" data-t="pAll">전체</button>
   </div>
@@ -1419,7 +1422,7 @@
 </div>
 
 <script>
-const BUILD = '202611281140';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
+const BUILD = '202611281200';   // 올릴 때마다 바뀜 → 폰이 예전 파일을 붙잡고 있으면 새로 받음
 
 /* =====================================================================
    세계 데이터  —  도시 → 코스 → 구간 → 명소
@@ -4058,7 +4061,7 @@ function cityLists(cid0){
 let listOpen = false, rOpenNow = true, bOpenNow = true;   // 지금 목록이 펼쳐져 있는지 (지역별 / 주제별·내 주변)
 function refreshCourses(){
   if (rView === 'cards'){ rOpenNow = false; renderRegionCards(); $('regionPane').classList.add('shut'); distChips(); startLabel(); return; }
-  $('rCards').classList.add('hidden'); $('rCityView').classList.remove('hidden'); $('rBack').textContent = T.h_regionBack || '‹ 지역';
+  $('rCards').classList.add('hidden'); $('rCityView').classList.remove('hidden'); $('rBack').textContent = '‹'; $('rBack').classList.add('ico'); $('rBack').setAttribute('aria-label', (T.h_regionBack || '지역').replace(/^‹\s*/, ''));
   $('rName').textContent = regionName(DB.region.city);
   refreshCourses0(); $('regionPane').classList.toggle('shut', !rOpenNow); distChips();
 }
@@ -4072,7 +4075,7 @@ function fitCount(cid){
 }
 function renderRegionCards(){
   $('rCityView').classList.add('hidden'); $('rCards').classList.remove('hidden');
-  $('rBack').textContent = T.j_closeX; $('rName').textContent = T.j_pickRegion;
+  $('rBack').textContent = T.j_closeX; $('rBack').classList.remove('ico'); $('rBack').removeAttribute('aria-label'); $('rName').textContent = T.j_pickRegion;
   const grp = [['mine', T.j_mine], ['kr', T.j_kr], ['abroad', T.j_abroad], ['theme', T.j_themeJ]], out = {};
   WORLD.regions.forEach(c => c.children.forEach(p => p.children.forEach(ci => {
     const n = fitCount(ci.id); if (!n) return;
@@ -4546,7 +4549,7 @@ function setAct(a){
   refreshFree();
   $('gpsNote').classList.toggle('hidden', !out);
   $('gpsNote').textContent = th ? '정상 60m 안에 들어가면 🏔 정상 인증 도장' : hg ? T.hikeGpsHelp : up ? T.hikeHelp : gpsOK ? (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() ? T.gpsHelpApp : T.gpsHelp) : T.gpsNoHere;
-  $('bZone').textContent = out ? T.zOutTitle : T.zInTitle;
+  $('bZone').textContent = out ? '‹ 🌳' : '‹ 🏠'; $('bZone').setAttribute('aria-label', (out ? T.zOutTitle : T.zInTitle).replace(/^‹\s*/, ''));   // 11/28 보스: 글자 대신 표식 (어디인지는 그림으로)
   saveDB(); refreshStart(); drawIdle();
 }
 $('sMinus').onclick = () => setSpeed(curSpeed() - stepSize());
@@ -8335,6 +8338,7 @@ $('bSite').onclick = () => {
 };
 /* 화면 글자 채우기 (data-t → TEXT) 후 시작 */
 document.querySelectorAll('[data-t]').forEach(el => { el.innerHTML = T[el.dataset.t] ?? el.innerHTML; });
+document.querySelectorAll('.back.ico').forEach(b => b.setAttribute('aria-label', (T.back || '돌아가기').replace(/^‹\s*/, '')));   // 11/28 ‹ 표식 버튼의 화면 읽기 이름
 document.querySelectorAll('[data-tp]').forEach(el => { if (T[el.dataset.tp]) el.placeholder = T[el.dataset.tp]; });   // 11/25 다국어: 입력 칸 안내 글자
 document.querySelectorAll('[data-ta]').forEach(el => { if (T[el.dataset.ta]) el.setAttribute('aria-label', T[el.dataset.ta]); });
 /* 11/25 다국어: 언어 고르기 (내 기록 → ⚙️ 설정, 화면 색 바로 아래) · 처음엔 폰 언어 따라감 */
